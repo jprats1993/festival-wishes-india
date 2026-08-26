@@ -45,12 +45,12 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/${collection}/`, Astro.site)
 const titleMap: Record<string, Record<typeof locale, string>> = {
   'short-wishes': {
     en: `Short ${festival.data.displayName} wishes`,
-    hi: `छोटी ${festival.data.displayName} शुभकामनाएं`,
+    hi: `छोटी ${festival.data.displayName} शुभकामनाएँ`,
     hinglish: `Short ${festival.data.displayName} wishes`,
   },
   'brother-wishes': {
     en: `${festival.data.displayName} wishes for brother`,
-    hi: `${festival.data.displayName} भाई के लिए शुभकामनाएं`,
+    hi: `${festival.data.displayName} भाई के लिए शुभकामनाएँ`,
     hinglish: `${festival.data.displayName} bhai ke liye wishes`,
   },
   'sister-wishes': {
@@ -59,8 +59,8 @@ const titleMap: Record<string, Record<typeof locale, string>> = {
     hinglish: `${festival.data.displayName} behen ke liye wishes`,
   },
   'bhaiya-bhabhi-wishes': {
-    en: `${festival.data.displayName} wishes for bhaiya bhabhi`,
-    hi: `${festival.data.displayName} भान्या-भाभी के लिए शुभकामनाएँ`,
+    en: `${festival.data.displayName} wishes for bhaiya-bhabhi`,
+    hi: `${festival.data.displayName} भैया-भाभी के लिए शुभकामनाएँ`,
     hinglish: `${festival.data.displayName} bhaiya-bhabhi ke liye wishes`,
   },
   'whatsapp-messages': {
@@ -73,10 +73,32 @@ const titleMap: Record<string, Record<typeof locale, string>> = {
     hi: `${festival.data.displayName} परिवार के लिए शुभकामनाएँ`,
     hinglish: `${festival.data.displayName} family ke liye wishes`,
   },
+  'friend-wishes': {
+    en: `${festival.data.displayName} wishes for friend`,
+    hi: `${festival.data.displayName} दोस्त के लिए शुभकामनाएँ`,
+    hinglish: `${festival.data.displayName} friend ke liye wishes`,
+  },
+  'parent-wishes': {
+    en: `${festival.data.displayName} wishes for parents`,
+    hi: `${festival.data.displayName} माता-पिता के लिए शुभकामनाएँ`,
+    hinglish: `${festival.data.displayName} parents ke liye wishes`,
+  },
 };
 
 const title = titleMap[collection]?.[locale] || `${festival.data.displayName} wishes`;
-const description = `${title} in Hindi, English and Hinglish. Copy, download or share on WhatsApp.`;
+const description =
+  locale === 'hi'
+    ? `${title} हिन्दी, अंग्रेज़ी और हिंग्लिश में। कॉपी करें, डाउनलोड करें या व्हाट्सएप पर साझा करें।`
+    : locale === 'hinglish'
+      ? `${title} Hindi, English aur Hinglish mein. Copy, download ya WhatsApp par share karein.`
+      : `${title} in Hindi, English and Hinglish. Copy, download or share on WhatsApp.`;
+
+const emptyMessage =
+  locale === 'hi'
+    ? 'जल्द ही और शुभकामनाएँ आ रही हैं।'
+    : locale === 'hinglish'
+      ? 'Jald hi aur wishes aa rahi hain.'
+      : 'More wishes coming soon.';
 
 const alternateUrls = Object.fromEntries(
   locales.map((loc) => [loc, `/${loc}/${festivalSlug}/${collection}/`])
@@ -109,7 +131,7 @@ const noindex = filtered.length < 3;
   <AdSlot slotName="collection-top" />
 
   {filtered.length === 0 ? (
-    <p class="text-stone-600 text-center py-8">More wishes coming soon.</p>
+    <p class="text-stone-600 text-center py-8">{emptyMessage}</p>
   ) : (
     <div class="grid gap-6 md:grid-cols-2">
       {filtered.map((w) => (
