@@ -1,0 +1,21 @@
+---
+interface Props {
+  slotName: string;
+}
+
+const { slotName } = Astro.props;
+const adsEnabled = import.meta.env.PUBLIC_ADS_ENABLED === 'true';
+---
+
+<div class="ad-slot my-6 p-4 bg-stone-100 rounded-lg border border-stone-200 text-center" data-ad-slot={slotName}>
+  {adsEnabled ? (
+    <div class="ad-placeholder min-h-[250px] flex items-center justify-center">
+      {/* AdSense script will target this via data-ad-slot after approval */}
+      <span class="text-xs text-stone-400">Advertisement</span>
+    </div>
+  ) : (
+    <div class="house-promo text-sm text-stone-600">
+      <p>✨ Find more festival wishes and cards in our curated collections.</p>
+    </div>
+  )}
+</div>

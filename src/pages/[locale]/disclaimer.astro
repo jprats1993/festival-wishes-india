@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locales, isLocale } from '../../lib/i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
+
+const { locale } = Astro.params;
+if (!isLocale(locale)) return Astro.redirect('/en/disclaimer/');
+
+const alternateUrls = Object.fromEntries(locales.map((loc) => [loc, `/${loc}/disclaimer/`])) as Record<typeof locale, string>;
+
+const title = locale === 'hi' ? 'अस्वीकार' : locale === 'hinglish' ? 'Disclaimer' : 'Disclaimer';
+---
+
+<BaseLayout title={title} description="Disclaimer for Festival Wishes India" locale={locale} alternateUrls={alternateUrls}>
+  <article class="prose prose-stone max-w-3xl mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6">{title}</h1>
+    <p class="mb-4">The content on <strong>Festival Wishes India</strong> is for general festival-greeting and informational purposes only.</p>
+    <p class="mb-4">We strive to keep festival dates and regional customs accurate, but dates can vary by region, calendar convention and local observation. Please verify important dates locally before making plans.</p>
+    <p class="mb-4">Some images and text are AI-assisted. Every piece is reviewed for cultural respect before publication, but errors can occur. If you notice something inappropriate or factually wrong, please contact us and we will correct or remove it promptly.</p>
+    <p>Contact: <a href="mailto:jprats1993@gmail.com" class="text-rose-700 hover:underline">jprats1993@gmail.com</a>.</p>
+  </article>
+</BaseLayout>

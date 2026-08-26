@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locales, isLocale } from '../../lib/i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
+
+const { locale } = Astro.params;
+if (!isLocale(locale)) return Astro.redirect('/en/contact/');
+
+const alternateUrls = Object.fromEntries(locales.map((loc) => [loc, `/${loc}/contact/`])) as Record<typeof locale, string>;
+
+const content: Record<typeof locale, { title: string; body: string; email: string }> = {
+  en: {
+    title: 'Contact Us',
+    body: 'For feedback, corrections, or copyright concerns, please email us. We typically respond within 2 business days.',
+    email: 'jprats1993@gmail.com',
+  },
+  hi: {
+    title: 'संपर्क करें',
+    body: 'प्रतिक्रिया, संशोधन या कॉपीराइट संबंधी से संपर्क करें।',
+    email: 'jprats1993@gmail.com',
+  },
+  hinglish: {
+    title: 'Contact Us',
+    body: 'Feedback, corrections ya copyright concerns ke liye humein email karein. Hum usually 2 business days mein reply karte hain.',
+    email: 'jprats1993@gmail.com',
+  },
+};
+
+const c = content[locale];
+---
+
+<BaseLayout title={c.title} description={c.body} locale={locale} alternateUrls={alternateUrls}>
+  <article class="prose prose-stone max-w-3xl mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6">{c.title}</h1>
+    <p class="text-stone-700 mb-4">{c.body}</p>
+    <p class="text-lg">
+      <a href={`mailto:${c.email}`} class="text-rose-700 hover:underline">{c.email}</a>
+    </p>
+  </article>
+</BaseLayout>

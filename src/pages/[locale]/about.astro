@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locales, isLocale } from '../../lib/i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
+
+const { locale } = Astro.params;
+if (!isLocale(locale)) return Astro.redirect('/en/about/');
+
+const alternateUrls = Object.fromEntries(locales.map((loc) => [loc, `/${loc}/about/`])) as Record<typeof locale, string>;
+
+const content: Record<typeof locale, { title: string; body: string[] }> = {
+  en: {
+    title: 'About Festival Wishes India',
+    body: [
+      'Festival Wishes India is a small, curated collection of festival greetings and shareable cards for Indian users and the diaspora.',
+      'We publish wishes in Hindi (Devanagari), English and Hinglish (Roman-script Hindi). All text and images are original or AI-assisted, reviewed for cultural respect before publication.',
+      'Our goal is simple: help you find a sincere message in under a minute.',
+    ],
+  },
+  hi: {
+    title: 'फ़ेस्टिवल विशेस इंडिया के बारे में',
+    body: [
+      'फ़ेस्टिवल विशेस इंडिया भारतीय उपयोगकर्ताओं और प्रवासीओं के लिए त्योहारों की शुभकामनाओं और साझ़ा करने योग्य कार्डों का एक होम संग्रह है।',
+      'हम हिन्दी (देवनागरी), अंग्रेज़ी और हिंग्लिश में शुभकामनाएं प्रकाशित करते हैं। सभी टेक्स्ट और छवियाँ मूल या AI-सहायत हैं, जो सांस्कृतिक सम्मान के लिए व्यूरे विचारे जाती हैं।',
+      'हमारा लक्ष्य सरल है: एक मिनट से कम में एक स्वच्छ संदेश ढूंढना।',
+    ],
+  },
+  hinglish: {
+    title: 'About Festival Wishes India',
+    body: [
+      'Festival Wishes India Indian users aur diaspora ke liye festival greetings aur shareable cards ka ek curated collection hai.',
+      'Hum Hindi (Devanagari), English aur Hinglish mein wishes publish karte hain. Saara text aur images original ya AI-assisted hai, aur cultural respect ke saath review kiya jaata hai.',
+      'Hamara goal simple hai: ek minute se bhi kam mein ek sincere message dhoondhna.',
+    ],
+  },
+};
+
+const c = content[locale];
+---
+
+<BaseLayout title={c.title} description={c.body[0]} locale={locale} alternateUrls={alternateUrls}>
+  <article class="prose prose-stone max-w-3xl mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6">{c.title}</h1>
+    {c.body.map((p) => <p class="mb-4 text-stone-700 leading-relaxed">{p}</p>)}
+  </article>
+</BaseLayout>

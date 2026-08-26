@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WishCard from '../../../components/WishCard.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import { locales, localeLabels, isLocale } from '../../../lib/i18n';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+const collectionMap: Record<string, string[]> = {
+  'short-wishes': [],
+  'brother-wishes': ['brother'],
+  'sister-wishes': ['sister'],
+  'bhaiya-bhabhi-wishes': ['bhaiya-bhabhi'],
+  'whatsapp-messages': [],
+  'family-wishes': ['family'],
+};
+
+export const getStaticPaths = (() => {
+  const paths: { params: { locale: string; festival: string; collection: string } }[] = [];
+  const festivals = ['rakhi', 'diwali', 'holi', 'dussehra', 'navratri'];
+  for (const locale of locales) {
+    for (const festival of festivals) {
+      for (const collection of Object.keys(collectionMap)) {
+        paths.push({ params: { locale, festival, collection } });
+      }
+    }
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { locale, festival: festivalSlug, collection } = Astro.params;
+if (!isLocale(locale)) {
+  return Astro.redirect('/en/');
+}
+
+const festivals = await getCollection('festivals');
+const festival = festivals.find((f) => f.data.slug === festivalSlug);
+if (!festival) {
+  return new Response(null, { status: 404 });
+}
+
+const allWishes = await getCollection('wish');
+const relations = collectionMap[collection] || [];
+let filtered = allWishes.filter(
+  (w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved'
+);
+if (relations.length > 0) {
+  filtered = filtered.filter((w) => w.data.relations.some((r) => relations.includes(r)));
+}
+
+const pageUrl = new URL(`/${locale}/${festivalSlug}/${collection}/`, Astro.site).toString();
+
+const titleMap: Record<string, Record<typeof locale, string>> = {
+  'short-wishes': {
+    en: `Short ${festival.data.displayName} wishes`,
+    hi: `छोटी ${festival.data.displayName} शुभकामनाएं`,
+    hinglish: `Short ${festival.data.displayName} wishes`,
+  },
+  'brother-wishes': {
+    en: `${festival.data.displayName} wishes for brother`,
+    hi: `${festival.data.displayName} भाई के लिए शुभकामनाएं`,
+    hinglish: `${festival.data.displayName} bhai ke liye wishes`,
+  },
+  'sister-wishes': {
+    en: `${festival.data.displayName} wishes for sister`,
+    hi: `${festival.data.displayName} बहन के लिए शुभकामनाएँ`,
+    hinglish: `${festival.data.displayName} behen ke liye wishes`,
+  },
+  'bhaiya-bhabhi-wishes': {
+    en: `${festival.data.displayName} wishes for bhaiya bhabhi`,
+    hi: `${festival.data.displayName} भान्या-भाभी के लिए शुभकामनाएँ`,
+    hinglish: `${festival.data.displayName} bhaiya-bhabhi ke liye wishes`,
+  },
+  'whatsapp-messages': {
+    en: `${festival.data.displayName} WhatsApp messages`,
+    hi: `${festival.data.displayName} व्हाट्सएप संदेश`,
+    hinglish: `${festival.data.displayName} WhatsApp messages`,
+  },
+  'family-wishes': {
+    en: `${festival.data.displayName} wishes for family`,
+    hi: `${festival.data.displayName} परिवार के लिए शुभकामनाएँ`,
+    hinglish: `${festival.data.displayName} family ke liye wishes`,
+  },
+};
+
+const title = titleMap[collection]?.[locale] || `${festival.data.displayName} wishes`;
+const description = `${title} in Hindi, English and Hinglish. Copy, download or share on WhatsApp.`;
+
+const alternateUrls = Object.fromEntries(
+  locales.map((loc) => [loc, `/${loc}/${festivalSlug}/${collection}/`])
+) as Record<typeof locale, string>;
+
+// noindex if collection is too thin
+const noindex = filtered.length < 3;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  alternateUrls={alternateUrls}
+  noindex={noindex}
+>
+  <nav aria-label="Breadcrumb" class="text-sm text-stone-500 mb-4">
+    <a href={`/${locale}/`} class="hover:text-rose-700">{localeLabels[locale]}</a>
+    <span class="mx-2">/</span>
+    <a href={`/${locale}/${festivalSlug}/`} class="hover:text-rose-700">{festival.data.displayName}</a>
+    <span class="mx-2">/</span>
+    <span class="text-stone-800">{title}</span>
+  </nav>
+
+  <div class="text-center py-6">
+    <h1 class="text-2xl md:text-3xl font-bold mb-2">{title}</h1>
+    <p class="text-stone-600">{description}</p>
+  </div>
+
+  <AdSlot slotName="collection-top" />
+
+  {filtered.length === 0 ? (
+    <p class="text-stone-600 text-center py-8">More wishes coming soon.</p>
+  ) : (
+    <div class="grid gap-6 md:grid-cols-2">
+      {filtered.map((w) => (
+        <WishCard
+          id={w.data.id}
+          text={w.data.languages[locale]}
+          locale={locale}
+          pageUrl={pageUrl}
+          imageUrl={w.data.imageAssets?.square}
+          alt={w.data.altText?.[locale]}
+        />
+      ))}
+    </div>
+  )}
+
+  <AdSlot slotName="collection-bottom" />
+</BaseLayout>

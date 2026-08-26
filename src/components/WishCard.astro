@@ -1,0 +1,35 @@
+---
+import ShareBar from './ShareBar.astro';
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+  id: string;
+  text: string;
+  locale: Locale;
+  imageUrl?: string;
+  pageUrl: string;
+  alt?: string;
+}
+
+const { id, text, locale, imageUrl, pageUrl, alt } = Astro.props;
+---
+
+<article class="wish-card bg-white rounded-xl shadow-sm border border-stone-200 p-5 flex flex-col gap-3" id={id}>
+  {imageUrl && (
+    <figure class="-mx-5 -mt-5 mb-0">
+      <img
+        src={imageUrl}
+        alt={alt || text.slice(0, 80)}
+        width={800}
+        height={800}
+        loading="lazy"
+        decoding="async"
+        class="w-full h-auto rounded-t-xl object-cover"
+      />
+    </figure>
+  )}
+  <blockquote class="text-lg leading-relaxed font-medium text-stone-800" lang={locale === 'hinglish' ? 'hi-Latn' : locale}>
+    {text}
+  </blockquote>
+  <ShareBar text={text} imageUrl={imageUrl} pageUrl={pageUrl} />
+</article>

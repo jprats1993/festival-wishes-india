@@ -1,0 +1,16 @@
+{
+  "id": "rakhi-brother-001",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Dear brother, on this Raksha Bandhan, I pray for your happiness, success, and good health. You are my protector and my best friend.",
+    "hi": "प्यारे भाई, इस रक्षाबंधन पर मैं आपके सुख, सफलता और स्वास्थ्य की कामना करता हूँ। आप मेरे रक्षक और सबसे अछ्छे दोस्त हैं।",
+    "hinglish": "Pyaare bhai, is Raksha Bandhan pe main aapke sukh, safalta aur swasthya ki kaamna karta hoon. Aap mere rakshak aur sabse achhe dost hain."
+  },
+  "relations": ["brother"],
+  "tones": ["warm"],
+  "formats": ["whatsapp", "card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

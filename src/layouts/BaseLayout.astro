@@ -1,0 +1,89 @@
+---
+import { localeBcp47, locales, localeLabels, type Locale, isLocale } from '../lib/i18n';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  alternateUrls?: Partial<Record<Locale, string>>;
+  image?: string;
+  noindex?: boolean;
+}
+
+const { title, description, locale, alternateUrls = {}, image = '/og-default.jpg', noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const langAttr = localeBcp47[locale];
+---
+
+<!doctype html>
+<html lang={langAttr}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    
+    {/* hreflang */}
+    {locales.map((loc) => {
+      const url = alternateUrls[loc];
+      if (!url) return null;
+      return <link rel="alternate" hreflang={localeBcp47[loc]} href={new URL(url, Astro.site).toString()} />;
+    })}
+    {alternateUrls['en'] && <link rel="alternate" hreflang="x-default" href={new URL(alternateUrls['en'], Astro.site).toString()} />}
+    
+    {/* OG */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site).toString()} />
+    <meta property="og:locale" content={langAttr} />
+    
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site).toString()} />
+    
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen bg-stone-50 text-stone-900 antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+    <header class="border-b border-stone-200 bg-white">
+      <div class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
+        <a href={`/${locale === 'en' ? '' : locale}`} class="text-xl font-bold text-rose-700 hover:text-rose-800">
+          Festival Wishes India
+        </a>
+        <LanguageSwitcher current={locale} alternateUrls={alternateUrls} />
+      </div>
+    </header>
+    <main id="main" class="mx-auto max-w-5xl px-4 py-8">
+      <slot />
+    </main>
+    <footer class="border-t border-stone-200 bg-white mt-auto">
+      <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-stone-600">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href={`/${locale}/about/`} class="hover:text-rose-700">{locale === 'hi' ? 'हमारे बारे में' : locale === 'hinglish' ? 'About' : 'About'}</a>
+          <a href={`/${locale}/contact/`} class="hover:text-rose-700">Contact</a>
+          <a href={`/${locale}/privacy/`} class="hover:text-rose-700">Privacy</a>
+          <a href={`/${locale}/disclaimer/`} class="hover:text-rose-700">Disclaimer</a>
+        </div>
+        <p class="text-center mt-4">© {new Date().getFullYear()} Festival Wishes India. AI-assisted editorial content. Wishes are original; review our editorial policy.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-rose-700: #be123c;
+    --color-rose-800: #9f1239;
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WishCard from '../../../components/WishCard.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import { locales, localeLabels, isLocale } from '../../../lib/i18n';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => {
+  const paths: { params: { locale: string; festival: string } }[] = [];
+  const festivals = ['rakhi', 'diwali', 'holi', 'dussehra', 'navratri'];
+  for (const locale of locales) {
+    for (const festival of festivals) {
+      paths.push({ params: { locale, festival } });
+    }
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { locale, festival: festivalSlug } = Astro.params;
+if (!isLocale(locale)) {
+  return Astro.redirect('/en/');
+}
+
+const festivals = await getCollection('festivals');
+const festival = festivals.find((f) => f.data.slug === festivalSlug);
+if (!festival) {
+  return new Response(null, { status: 404 });
+}
+
+const allWishes = await getCollection('wish');
+const wishes = allWishes.filter(
+  (w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved'
+);
+
+// Group into collections by relation, capped
+const relationCollections = ['brother', 'sister', 'family', 'friend', 'spouse', 'parent'] as const;
+const collections = relationCollections
+  .map((rel) => ({
+    slug: `${rel}-wishes`,
+    title: {
+      en: `${festival.data.displayName} wishes for ${rel}`,
+      hi: `${festival.data.displayName} ${rel === 'brother' ? 'भाई' : rel === 'sister' ? 'बहन' : rel} के लिए शुभकामनाएँ`,
+      hinglish: `${festival.data.displayName} ${rel} ke liye wishes`,
+    }[locale],
+    wishes: wishes.filter((w) => w.data.relations.includes(rel as any)).slice(0, 8),
+  }))
+  .filter((c) => c.wishes.length >= 3);
+
+const copy = {
+  en: {
+    subtitle: `Find ${festival.data.displayName} wishes in Hindi, English and Hinglish — short messages, cards and WhatsApp status.`,
+    collectionsTitle: 'Curated collections',
+  },
+  hi: {
+    subtitle: `${festival.data.displayName} की शुभकामनाएँ हिंदी, अंग्रेज़ी और हिंग्लिश में — छोटे संदेश, कार्ड और व्हाट्सएप स्टेटस।`,
+    collectionsTitle: 'चयनित संग्रह',
+  },
+  hinglish: {
+    subtitle: `${festival.data.displayName} ki wishes Hindi, English aur Hinglish mein — chhote messages, cards aur WhatsApp status.`,
+    collectionsTitle: 'Featured collections',
+  },
+}[locale];
+
+const alternateUrls = Object.fromEntries(
+  locales.map((loc) => [loc, `/${loc}/${festivalSlug}/`])
+) as Record<typeof locale, string>;
+---
+
+<BaseLayout
+  title={`${festival.data.displayName} Wishes in ${localeLabels[locale]} — Festival Wishes India`}
+  description={copy.subtitle}
+  locale={locale}
+  alternateUrls={alternateUrls}
+>
+  <div class="text-center py-8">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">{festival.data.displayName}</h1>
+    <p class="text-stone-600 max-w-2xl mx-auto">{copy.subtitle}</p>
+  </div>
+
+  <AdSlot slotName="hub-top" />
+
+  <h2 class="text-2xl font-semibold mb-4">{copy.collectionsTitle}</h2>
+  <section class="grid gap-6 md:grid-cols-2">
+    {collections.map((c) => (
+      <a
+        href={`/${locale}/${festivalSlug}/${c.slug}/`}
+        class="block p-5 bg-white rounded-xl border border-stone-200 hover:border-rose-300 hover:shadow-sm transition"
+      >
+        <h3 class="text-lg font-semibold text-rose-700">{c.title}</h3>
+        <p class="text-sm text-stone-500 mt-1">{c.wishes.length} wishes</p>
+      </a>
+    ))}
+  </section>
+
+  <h2 class="text-2xl font-semibold mt-10 mb-4">
+    {locale === 'hi' ? 'लोकप्रिय शुभकामनाएँ' : locale === 'hinglish' ? 'Popular wishes' : 'Popular wishes'}
+  </h2>
+  <div class="grid gap-6 md:grid-cols-2">
+    {wishes.slice(0, 6).map((w) => (
+      <WishCard
+        id={w.data.id}
+        text={w.data.languages[locale]}
+        locale={locale}
+        pageUrl={new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString()}
+        imageUrl={w.data.imageAssets?.square}
+        alt={w.data.altText?.[locale]}
+      />
+    ))}
+  </div>
+
+  <AdSlot slotName="hub-bottom" />
+</BaseLayout>
