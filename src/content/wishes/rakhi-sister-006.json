@@ -6,11 +6,29 @@
     "hi": "उस बहन को जिसने मुझे सिखाया कि ताकत और दयालुता एक ही दिल में रह सकती हैं, आज और हमेशा आपका भाई होने पर मुझे गर्व है।",
     "hinglish": "Us behen ko jisne mujhe sikhaya ki taakat aur dayaluta ek hi dil mein reh sakti hain, aaj aur hamesha aapka bhai hone par mujhe garv hai."
   },
-  "relations": ["sister"],
-  "tones": ["warm", "emotional", "short", "funny"],
-  "formats": ["whatsapp", "card"],
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false
+  "humanReviewedSeed": false,
+  "imageAssets": {
+    "square": "/images/rakhi/cards/rakhi-sister-006-square.webp",
+    "portrait": "/images/rakhi/cards/rakhi-sister-006-portrait.webp"
+  },
+  "altText": {
+    "en": "Raksha Bandhan greeting card for sister: To the sister who taught me that strength and kindness can live in the same heart, I am proud to be your brother today and always.",
+    "hi": "रक्षाबंधन की शुभकामना कार्ड: उस बहन को जिसने मुझे सिखाया कि ताकत और दयालुता एक ही दिल में रह सकती हैं, आज और हमेशा आपका भाई होने पर मुझे गर्व है।"
+  }
 }

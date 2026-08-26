@@ -23,5 +23,13 @@
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false
+  "humanReviewedSeed": false,
+  "imageAssets": {
+    "square": "/images/rakhi/cards/rakhi-sister-025-square.webp",
+    "portrait": "/images/rakhi/cards/rakhi-sister-025-portrait.webp"
+  },
+  "altText": {
+    "en": "Raksha Bandhan greeting card for sister: To my amazing sister: thank you for tying my childhood together with love. Sending you the biggest Rakhi hug!",
+    "hi": "रक्षाबंधन की शुभकामना कार्ड: मेरी शानदार बहन को: मेरे बचपन को प्यार से बाँधने के लिए धन्यवाद। आपको सबसे बड़ी राखी वाली झप्पी!"
+  }
 }

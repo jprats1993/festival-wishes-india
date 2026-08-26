@@ -6,11 +6,29 @@
     "hi": "यह राखी बाँधना मेरा शांत तरीका है यह कहने का कि आपको हमेशा एक बहन का साथ मिलेगा जो आप में विश्वास करती है, चाहे हम कितनी भी दूर क्यों न हों।",
     "hinglish": "Yeh rakhi baandhna mera shaant tareeka hai yeh kehne ka ki aapko hamesha ek behen ka saath milega jo aap mein vishwas karti hai, chahe hum kitni bhi door kyun na hon."
   },
-  "relations": ["brother"],
-  "tones": ["warm", "emotional", "short", "funny"],
-  "formats": ["whatsapp", "card"],
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false
+  "humanReviewedSeed": false,
+  "imageAssets": {
+    "square": "/images/rakhi/cards/rakhi-brother-002-square.webp",
+    "portrait": "/images/rakhi/cards/rakhi-brother-002-portrait.webp"
+  },
+  "altText": {
+    "en": "Raksha Bandhan greeting card for brother: Tying this rakhi is my quiet way of saying you will always have a sister who believes in you, no matter the distance between us.",
+    "hi": "रक्षाबंधन की शुभकामना कार्ड: यह राखी बाँधना मेरा शांत तरीका है यह कहने का कि आपको हमेशा एक बहन का साथ मिलेगा जो आप में विश्वास करती है, चाहे हम कितनी भी दूर क्यों न हों।"
+  }
 }
