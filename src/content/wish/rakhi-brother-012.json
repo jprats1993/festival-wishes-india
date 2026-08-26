@@ -21,13 +21,5 @@
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false,
-  "imageAssets": {
-    "square": "/images/rakhi/cards/rakhi-brother-012-square.webp",
-    "portrait": "/images/rakhi/cards/rakhi-brother-012-portrait.webp"
-  },
-  "altText": {
-    "en": "Raksha Bandhan greeting card for brother: Dear brother, may this Rakhi always remind you that no matter the distance, my prayers and love are always with you.",
-    "hi": "रक्षाबंधन की शुभकामना कार्ड: प्यारे भैया, यह राखी हमेशा याद दिलाए कि दूरी चाहे जितनी भी हो, मेरी दुआएँ और प्यार हमेशा आपके साथ हैं।"
-  }
+  "humanReviewedSeed": false
 }

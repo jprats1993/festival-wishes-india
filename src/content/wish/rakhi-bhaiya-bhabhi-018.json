@@ -21,13 +21,5 @@
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false,
-  "imageAssets": {
-    "square": "/images/rakhi/cards/rakhi-bhaiya-bhabhi-018-square.webp",
-    "portrait": "/images/rakhi/cards/rakhi-bhaiya-bhabhi-018-portrait.webp"
-  },
-  "altText": {
-    "en": "Raksha Bandhan greeting card for bhaiya-bhabhi: To my dear bhaiya and bhabhi, your love and care make our family complete. Wishing you both a blessed Rakhi.",
-    "hi": "रक्षाबंधन की शुभकामना कार्ड: प्यारे भैया और भाभी, आपके प्यार और स्नेह से हमारा परिवार पूरा है। आप दोनों को राखी की ढेरों शुभकामनाएँ।"
-  }
+  "humanReviewedSeed": false
 }

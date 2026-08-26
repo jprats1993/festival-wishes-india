@@ -23,13 +23,5 @@
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false,
-  "imageAssets": {
-    "square": "/images/rakhi/cards/rakhi-family-029-square.webp",
-    "portrait": "/images/rakhi/cards/rakhi-family-029-portrait.webp"
-  },
-  "altText": {
-    "en": "Raksha Bandhan greeting card for family: Raksha Bandhan is a reminder that family ties are the strongest threads. Wishing my whole family endless love and togetherness.",
-    "hi": "रक्षाबंधन की शुभकामना कार्ड: रक्षाबंधन यह याद दिलाता है कि पारिवारिक बंधन सबसे मज़बूत धागे हैं। मेरे पूरे परिवार को अनंत प्यार और एकजुटता की शुभकामना।"
-  }
+  "humanReviewedSeed": false
 }

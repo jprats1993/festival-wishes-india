@@ -21,13 +21,5 @@
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false,
-  "imageAssets": {
-    "square": "/images/rakhi/cards/rakhi-sister-015-square.webp",
-    "portrait": "/images/rakhi/cards/rakhi-sister-015-portrait.webp"
-  },
-  "altText": {
-    "en": "Raksha Bandhan greeting card for sister: To my wonderful sister, your love makes every festival brighter. Thank you for being my forever friend.",
-    "hi": "रक्षाबंधन की शुभकामना कार्ड: मेरी प्यारी बहन, आपके प्यार से हर त्योहार और भी रोशन हो जाता है। हमेशा मेरे साथ रहने के लिए धन्यवाद।"
-  }
+  "humanReviewedSeed": false
 }

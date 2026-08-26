@@ -23,13 +23,5 @@
   "source": "original",
   "reviewStatus": "approved",
   "reviewedBy": "reviewer-agent",
-  "humanReviewedSeed": false,
-  "imageAssets": {
-    "square": "/images/rakhi/cards/rakhi-brother-022-square.webp",
-    "portrait": "/images/rakhi/cards/rakhi-brother-022-portrait.webp"
-  },
-  "altText": {
-    "en": "Raksha Bandhan greeting card for brother: Happy Raksha Bandhan, brother! Thanks for always being my superhero, even without a cape. This Rakhi comes with unlimited love and zero complaints.",
-    "hi": "रक्षाबंधन की शुभकामना कार्ड: रक्षाबंधन की शुभकामनाएँ, भाई! आप हमेशा मेरे सुपरहीरो रहे हैं, बिना केप के। यह राखी असीमित प्यार और शिकायतों के साथ आती है।"
-  }
+  "humanReviewedSeed": false
 }
