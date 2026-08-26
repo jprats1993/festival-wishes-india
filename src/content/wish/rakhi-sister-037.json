@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-sister-037",
+  "festival": "rakhi",
+  "languages": {
+    "en": "My sister is my oldest friend — she just needs to be reminded of it again and again. Happy Rakhi!",
+    "hi": "मेरी बहन मेरी सबसे पुरानी दोस्त है, बस ये बात उसे बार-बार याद दिलानी पड़ती है। राखी मुबारक!",
+    "hinglish": "Meri behen meri sabse purani dost hai, bas ye baat use baar-baar yaad dilani padti hai. Rakhi Mubarak!"
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "funny",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

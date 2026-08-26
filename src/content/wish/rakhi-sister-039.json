@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-sister-039",
+  "festival": "rakhi",
+  "languages": {
+    "en": "As a kid I used to steal your things; now I only steal moments to pray for your happiness. Happy Rakhi!",
+    "hi": "बचपन में तेरी चीज़ें चुराता था, अब बस तेरी खुशी की दुआ करने के लिए पल चुराता हूँ। राखी मुबारक!",
+    "hinglish": "Bachpan mein teri cheezein churata tha, ab bas teri khushi ki dua karne ke liye pal churata hoon. Rakhi Mubarak!"
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "funny",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

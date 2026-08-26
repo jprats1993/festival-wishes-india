@@ -1,0 +1,26 @@
+{
+  "id": "rakhi-friend-048",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Happy Rakhi to the friend who became family without even trying. You're the brother I never had—love you, yaar!",
+    "hi": "उस दोस्त को राखी मुबारक जो बिना कोशिश किए परिवार बन गया। तुम वो भाई हो जो मेरा था ही नहीं—लव यू यार!",
+    "hinglish": "Us dost ko Rakhi mubarak jo bina koshish kiye parivaar ban gaya. Tum wo bhai ho jo mera tha hi nahi—love you yaar!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

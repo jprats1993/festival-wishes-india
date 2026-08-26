@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-friend-049",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Raksha Bandhan is for blood, but some bonds are stronger than blood. Thanks for always having my back—Happy Rakhi, buddy!",
+    "hi": "रक्षाबंधन खून के रिश्ते का त्योहार है, लेकिन कुछ रिश्ते खून से भी गहरे होते हैं। हमेशा मेरे साथ खड़े रहने के लिए थैंक्स—राखी मुबारक यार!",
+    "hinglish": "Raksha Bandhan khoon ke rishte ka tyohaar hai, lekin kuchh rishte khoon se bhi gehre hote hain. Hamesha mere saath khade rehne ke liye thanks—Rakhi mubarak yaar!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

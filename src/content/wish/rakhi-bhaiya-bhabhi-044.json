@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-bhaiya-bhabhi-044",
+  "festival": "rakhi",
+  "languages": {
+    "en": "This Rakhi, I wish Bhaiya and Bhabhi a home full of sweets, stories, and little joys. You both deserve all the happiness in the world.",
+    "hi": "इस राखी पर भैया और भाभी को मिठाइयों, किस्सों और छोटी-छोटी खुशियों से भरा घर मिले। आप दोनों दुनिया भर की खुशियों के हकदार हो।",
+    "hinglish": "Is Rakhi par Bhaiya aur Bhabhi ko mithaiyon, kisson aur chhoti-chhoti khushiyon se bhara ghar mile. Aap dono duniya bhar ki khushiyon ke haqdaar ho."
+  },
+  "relations": [
+    "bhaiya-bhabhi"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

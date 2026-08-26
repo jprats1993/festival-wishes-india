@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-parent-050",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Maa and Papa, this Rakhi I just want to say thank you for being my biggest blessing. Your love is the thread that holds our whole family together.",
+    "hi": "मम्मी-पापा, इस राखी बस इतना कहना है कि आप मेरी सबसे बड़ी नेमत हो। आपका प्यार ही वो धागा है जो हमारे पूरे परिवार को जोड़े रखता है।",
+    "hinglish": "Mummy-Papa, is Rakhi bas itna kehna hai ki aap meri sabse badi nemat ho. Aapka pyaar hi wo dhaaga hai jo hamare poore parivaar ko jode rakhta hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

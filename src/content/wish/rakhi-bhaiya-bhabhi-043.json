@@ -1,0 +1,26 @@
+{
+  "id": "rakhi-bhaiya-bhabhi-043",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Happy Rakhi, Bhaiya and Bhabhi! You two are the reason our festivals feel so complete. Stay happy and keep spoiling us like always.",
+    "hi": "राखी मुबारक हो भैया और भाभी! आप दोनों की वजह से ही हमारे त्योहार इतने पूरे लगते हैं। खुश रहिए और हमेशा की तरह हमें लाड़ करते रहिए।",
+    "hinglish": "Rakhi mubarak ho Bhaiya aur Bhabhi! Aap dono ki wajah se hi humare tyohaar itne poore lagte hain. Khush rahiye aur hamesha ki tarah humein laad karte rahiye."
+  },
+  "relations": [
+    "bhaiya-bhabhi"
+  ],
+  "tones": [
+    "warm",
+    "funny",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

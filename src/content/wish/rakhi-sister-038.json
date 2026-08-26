@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-sister-038",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Wherever you are, keeping that smile safe is always my job. Happy Rakhi, sis!",
+    "hi": "तू जहाँ भी रहे, तेरी मुस्कान की रक्षा हमेशा मेरी ज़िम्मेदारी है। राखी मुबारक बहन!",
+    "hinglish": "Tu jahan bhi rahe, teri muskaan ki raksha hamesha meri zimmedari hai. Rakhi Mubarak behen!"
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

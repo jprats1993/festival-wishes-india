@@ -1,0 +1,26 @@
+{
+  "id": "rakhi-bhaiya-bhabhi-042",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Bhaiya and Bhabhi, may this Rakhi bring you both lots of love, laughter, and endless reasons to celebrate. You two make the whole family feel at home.",
+    "hi": "भैया और भाभी, ये राखी आप दोनों के लिए ढेर सारा प्यार, हँसी और जश्न की वजहें लेकर आए। आप दोनों की वजह से ही पूरे घर में अपनापन महसूस होता है।",
+    "hinglish": "Bhaiya aur Bhabhi, ye Rakhi aap dono ke liye dher saara pyaar, hansi aur jashn ki wajeh le kar aaye. Aap dono ki wajah se hi poore ghar mein apnapan feel hota hai."
+  },
+  "relations": [
+    "bhaiya-bhabhi"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

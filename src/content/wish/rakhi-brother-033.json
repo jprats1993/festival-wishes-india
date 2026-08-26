@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-brother-033",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Growing up with you made everything easier, and growing older feels easier too. Happy Raksha Bandhan, bhaiya!",
+    "hi": "तेरे साथ बचपन बिताना आसान था, और बड़ा होना भी आसान लगता है। रक्षाबंधन मुबारक भैया!",
+    "hinglish": "Tere saath bachpan bitana aasaan tha, aur bada hona bhi aasaan lagta hai. Raksha Bandhan Mubarak bhaiya!"
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

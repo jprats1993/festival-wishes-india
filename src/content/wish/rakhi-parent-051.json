@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-parent-051",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Happy Rakhi, Maa and Papa! No thread in the world can match the love and blessings you've tied around me all these years.",
+    "hi": "राखी मुबारक हो मम्मी-पापा! इतने सालों से आपने जो प्यार और आशीर्वाद मेरे चारों ओर बाँधा है, उसकी बराबरी दुनिया का कोई धागा नहीं कर सकता।",
+    "hinglish": "Rakhi mubarak ho Mummy-Papa! Itne saalon se aapne jo pyaar aur aashirvaad mere chaaron aur baandha hai, uski baraabari duniya ka koi dhaaga nahi kar sakta."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

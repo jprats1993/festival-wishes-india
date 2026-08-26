@@ -1,0 +1,26 @@
+{
+  "id": "rakhi-family-045",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Happy Rakhi to the loudest, craziest, and most loving family ever. May our bond only grow stronger with every festival.",
+    "hi": "हमारी सबसे शोर वाली, सबसे पगलू और सबसे प्यारी फैमिली को राखी मुबारक! हर त्योहार के साथ हमारा रिश्ता और मज़बूत होता जाए।",
+    "hinglish": "Hamari sabse shor waali, sabse paglu aur sabse pyaari family ko Rakhi mubarak! Har tyohaar ke saath hamara rishta aur mazboot hota jaaye."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "funny",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

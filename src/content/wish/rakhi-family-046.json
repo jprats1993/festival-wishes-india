@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-family-046",
+  "festival": "rakhi",
+  "languages": {
+    "en": "This Rakhi, let's promise to laugh more, fight less, and eat more sweets together. Family is the real blessing, everything else is a bonus.",
+    "hi": "इस राखी वादा करते हैं कि ज़्यादा हँसेंगे, कम झगड़ेंगे और साथ में ज़्यादा मिठाई खाएँगे। परिवार ही असली खुशी है, बाकी सब बोनस।",
+    "hinglish": "Is Rakhi vaada karte hain ki zyada hansenge, kam jhagdenge aur saath mein zyada mithai khayenge. Parivaar hi asli khushi hai, baaki sab bonus."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

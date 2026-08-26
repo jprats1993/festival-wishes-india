@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-family-047",
+  "festival": "rakhi",
+  "languages": {
+    "en": "May this Rakhi fill our home with laughter and our hearts with gratitude. So grateful to have each of you—Happy Rakhi, family!",
+    "hi": "ये राखी हमारे घर को हँसी से और दिलों को शुक्र से भर दे। आप सबका होना ही सबसे बड़ी बात है—फैमिली को राखी मुबारक!",
+    "hinglish": "Ye Rakhi hamare ghar ko hansi se aur dilon ko shukr se bhar de. Aap sabka hona hi sabse badi baat hai—family ko Rakhi mubarak!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

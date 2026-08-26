@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-sister-040",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Festivals feel incomplete without you, so come soon and tie the rakhi. With love, your brother.",
+    "hi": "तेरे बिना त्योहार अधूरा लगता है, इसलिए जल्दी आ और राखी बाँध। प्यार से, तेरा भाई।",
+    "hinglish": "Tere bina tyohar adhoora lagta hai, isliye jaldi aa aur rakhi baandh. Pyaar se, tera bhai."
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

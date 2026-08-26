@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-brother-035",
+  "festival": "rakhi",
+  "languages": {
+    "en": "You tease me all day, but if anyone says a word against you, I get angry first. That is just my brother. Happy Rakhi!",
+    "hi": "तू मुझे दिन भर छेड़ता है, पर तेरे खिलाफ़ कोई कुछ कहे तो पहले मुझे गुस्सा आता है। बस ऐसा ही है मेरा भाई। राखी मुबारक!",
+    "hinglish": "Tu mujhe din bhar chhedta hai, par tere khilaf koi kuch kahe to pehle mujhe gussa aata hai. Bas aisa hi hai mera bhai. Rakhi Mubarak!"
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

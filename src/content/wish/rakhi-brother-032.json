@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-brother-032",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Bro, you are my first hero and my favourite complaint, both rolled into one. Happy Rakhi!",
+    "hi": "भाई, तू मेरा पहला हीरो और पसंदीदा शिकायत, दोनों एक साथ है। राखी मुबारक!",
+    "hinglish": "Bhai, tu mera pehla hero aur pasandida shikayat, dono ek saath hai. Rakhi Mubarak!"
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "funny",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

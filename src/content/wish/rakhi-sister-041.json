@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-sister-041",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Your hurriedly tied rakhi, and the way you fight yet love me — I remember it all. Happy Rakhi, sis!",
+    "hi": "तेरी वो जल्दी-जल्दी बाँधी राखी, और झगड़ा करके भी प्यार करना — सब कुछ याद है मुझे। राखी मुबारक बहन!",
+    "hinglish": "Teri wo jaldi-jaldi baandhi rakhi, aur jhagda karke bhi pyaar karna — sab kuch yaad hai mujhe. Rakhi Mubarak behen!"
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

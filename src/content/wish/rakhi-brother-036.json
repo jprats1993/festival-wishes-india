@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-brother-036",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Every year I tie the rakhi, and every year the prayer stays the same — may you keep smiling and keep winning. Happy Rakhi, bhaiya!",
+    "hi": "हर साल राखी बाँधती हूँ, और हर साल दुआ वही रहती है — तू हँसता रहे और आगे बढ़ता रहे। भैया, राखी मुबारक!",
+    "hinglish": "Har saal rakhi baandhti hoon, aur har saal dua wahi rehti hai — tu hansta rahe aur aage badhta rahe. Bhaiya, Rakhi Mubarak!"
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

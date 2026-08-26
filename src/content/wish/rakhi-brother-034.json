@@ -1,0 +1,24 @@
+{
+  "id": "rakhi-brother-034",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Even if the whole world changes, my rakhi and my support stay right beside you. Happy Rakhi with lots of love!",
+    "hi": "चाहे पूरी दुनिया बदल जाए, मेरी राखी और मेरा साथ हमेशा तेरे पास रहेगा। ढेर सारे प्यार के साथ राखी मुबारक!",
+    "hinglish": "Chahe poori duniya badal jaye, meri rakhi aur mera saath hamesha tere paas rahega. Dher saare pyaar ke saath Rakhi Mubarak!"
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}
