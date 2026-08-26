@@ -12,8 +12,8 @@
 - [x] Build succeeds locally — agent
 - [x] Push repo to GitHub — agent
 - [ ] Connect Cloudflare Pages to GitHub — agent
-- [ ] Production deploy on festivalwishesindia.com — agent
-- [ ] Configure rakhiwishes.in 301 redirect to festivalwishesindia.com — agent
+- [x] Production deploy on festivalwishesindia.com — agent
+- [x] Configure rakhiwishes.in 301 redirect to festivalwishesindia.com — agent
 
 ## Content — Rakhi 2026 (Phase 1)
 - [x] Generate English Rakhi wishes (10) — agent
@@ -23,9 +23,9 @@
 - [x] Generate 8 language-tagged card images (en/hi/hinglish) + src/lib/cards.ts registry — agent
 - [x] Decouple cards from wish JSONs + add hub "Shareable cards" gallery — agent
 - [x] Final build with content passes — agent
-- [ ] Owner seed-batch approval for Rakhi — owner
-- [ ] Real-device QA (Android Chrome + iOS Safari) — owner
-- [ ] Go-live — owner
+- [x] Owner seed-batch approval for Rakhi — owner (approved Aug 26)
+- [ ] Real-device QA (Android Chrome + iOS Safari) — owner  ⏳ REMAINING
+- [x] Go-live — owner
 
 ## Trust & Compliance
 - [x] About page — agent
