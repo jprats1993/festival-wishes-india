@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { locales, localeLabels, localeBcp47, isLocale } from '../../lib/i18n';
+import { locales, localeLabels, isLocale } from '../../lib/i18n';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
@@ -21,17 +21,20 @@ const copy = {
   en: {
     title: 'Festival Wishes India',
     heading: 'Choose a festival',
-    sub: `${approvedWishes.length} wishes across ${festivals.length} festivals in Hindi, English and Hinglish.`,
+    sub: `${approvedWishes.length} wishes across ${festivals.length} festivals. Switch language on any festival page.`,
+    langNote: 'English · Hindi · Hinglish',
   },
   hi: {
     title: 'फ़ेस्टिवल विशेस इंडिया',
     heading: 'अपना त्योहार चुनें',
-    sub: `हिन्दी, अंग्रेज़ी और हिंग्लिश में ${approvedWishes.length} शुभकामनाएं।`,
+    sub: `${festivals.length} त्योहारों पर ${approvedWishes.length} शुभकामनाएं। किसी भी त्योहार के पेज से भाषा बदलें।`,
+    langNote: 'अंग्रेज़़ी · हिन्दी · हिंग्लिश',
   },
   hinglish: {
     title: 'Festival Wishes India',
     heading: 'Apna festival chunein',
-    sub: `Hindi, English aur Hinglish mein ${approvedWishes.length} wishes.`,
+    sub: `${festivals.length} festivals par ${approvedWishes.length} wishes. Kisi bhi festival page se language badlein.`,
+    langNote: 'English · Hindi · Hinglish',
   },
 }[locale];
 
@@ -49,16 +52,18 @@ const alternateUrls = Object.fromEntries(
   <div class="text-center py-10">
     <h1 class="text-3xl md:text-4xl font-bold mb-3">{copy.heading}</h1>
     <p class="text-stone-600">{copy.sub}</p>
+    <p class="text-sm text-stone-500 mt-2">{copy.langNote}</p>
   </div>
+
   <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     {festivals.map((f) => (
       <a
         href={`/${locale}/${f.data.slug}/`}
-        class="block p-6 bg-white rounded-xl border border-stone-200 hover:border-rose-300 hover:shadow-sm transition"
+        class="block p-6 bg-white rounded-xl border border-stone-200 hover:border-rose-300 hover:shadow-sm transition text-center"
       >
         <h2 class="text-xl font-semibold text-rose-700 mb-2">{f.data.displayName}</h2>
         <p class="text-sm text-stone-500">
-          {new Date(f.data.date).toLocaleDateString(locale === 'hi' ? 'hi-IN' : locale === 'hinglish' ? 'en-IN' : 'en-IN', {
+          {new Date(f.data.date).toLocaleDateString(locale === 'hi' ? 'hi-IN' : 'en-IN', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',

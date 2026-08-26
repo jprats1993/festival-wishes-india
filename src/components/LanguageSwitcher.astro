@@ -9,30 +9,31 @@ interface Props {
 const { current, alternateUrls } = Astro.props;
 ---
 
-<nav aria-label="Language">
-  <ul class="flex items-center gap-2 text-sm">
+<nav aria-label="Language" class="language-switcher">
+  <div class="inline-flex items-center gap-1 rounded-full border border-stone-300 bg-white p-1 text-sm shadow-sm">
+    <span class="px-2 pl-3 text-xs font-medium uppercase tracking-wide text-stone-400">Lang</span>
     {locales.map((loc) => {
       const url = alternateUrls[loc];
       const isCurrent = loc === current;
-      return (
-        <li>
-          {isCurrent ? (
-            <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 font-medium" aria-current="true">
-              {localeLabels[loc]}
-            </span>
-          ) : url ? (
-            <a
-              href={url}
-              hreflang={loc === 'hinglish' ? 'hi-Latn' : loc}
-              class="px-3 py-1 rounded-full border border-stone-300 text-stone-700 hover:border-rose-400 hover:text-rose-700 transition"
-            >
-              {localeLabels[loc]}
-            </a>
-          ) : (
-            <span class="px-3 py-1 rounded-full text-stone-400">{localeLabels[loc]}</span>
-          )}
-        </li>
+      const label = localeLabels[loc];
+      return isCurrent ? (
+        <span
+          class="px-3 py-1 rounded-full bg-rose-700 text-white font-semibold"
+          aria-current="true"
+        >
+          {label}
+        </span>
+      ) : url ? (
+        <a
+          href={url}
+          hreflang={loc === 'hinglish' ? 'hi-Latn' : loc}
+          class="px-3 py-1 rounded-full text-stone-700 hover:bg-rose-50 hover:text-rose-700 transition font-medium"
+        >
+          {label}
+        </a>
+      ) : (
+        <span class="px-3 py-1 rounded-full text-stone-300">{label}</span>
       );
     })}
-  </ul>
+  </div>
 </nav>

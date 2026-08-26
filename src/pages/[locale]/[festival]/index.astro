@@ -33,14 +33,13 @@ const wishes = allWishes.filter(
   (w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved'
 );
 
-// Group into collections by relation, capped
 const relationCollections = ['brother', 'sister', 'family', 'friend', 'spouse', 'parent'] as const;
 const collections = relationCollections
   .map((rel) => ({
     slug: `${rel}-wishes`,
     title: {
       en: `${festival.data.displayName} wishes for ${rel}`,
-      hi: `${festival.data.displayName} ${rel === 'brother' ? 'भाई' : rel === 'sister' ? 'बहन' : rel} के लिए शुभकामनाएँ`,
+      hi: `${festival.data.displayName} ${rel === 'brother' ? 'भाई' : rel === 'sister' ? 'बहन' : rel === 'parent' ? 'माता-पिता' : rel === 'friend' ? 'दोस्त' : rel === 'spouse' ? 'जीवनसाथी' : rel} के लिए शुभकामनाएँ`,
       hinglish: `${festival.data.displayName} ${rel} ke liye wishes`,
     }[locale],
     wishes: wishes.filter((w) => w.data.relations.includes(rel as any)).slice(0, 8),
@@ -51,14 +50,17 @@ const copy = {
   en: {
     subtitle: `Find ${festival.data.displayName} wishes in Hindi, English and Hinglish — short messages, cards and WhatsApp status.`,
     collectionsTitle: 'Curated collections',
+    popularTitle: 'Popular wishes',
   },
   hi: {
     subtitle: `${festival.data.displayName} की शुभकामनाएँ हिंदी, अंग्रेज़ी और हिंग्लिश में — छोटे संदेश, कार्ड और व्हाट्सएप स्टेटस।`,
     collectionsTitle: 'चयनित संग्रह',
+    popularTitle: 'लोकप्रिय शुभकामनाएँ',
   },
   hinglish: {
     subtitle: `${festival.data.displayName} ki wishes Hindi, English aur Hinglish mein — chhote messages, cards aur WhatsApp status.`,
     collectionsTitle: 'Featured collections',
+    popularTitle: 'Popular wishes',
   },
 }[locale];
 
@@ -93,9 +95,7 @@ const alternateUrls = Object.fromEntries(
     ))}
   </section>
 
-  <h2 class="text-2xl font-semibold mt-10 mb-4">
-    {locale === 'hi' ? 'लोकप्रिय शुभकामनाएँ' : locale === 'hinglish' ? 'Popular wishes' : 'Popular wishes'}
-  </h2>
+  <h2 class="text-2xl font-semibold mt-10 mb-4">{copy.popularTitle}</h2>
   <div class="grid gap-6 md:grid-cols-2">
     {wishes.slice(0, 6).map((w) => (
       <WishCard
@@ -103,8 +103,6 @@ const alternateUrls = Object.fromEntries(
         text={w.data.languages[locale]}
         locale={locale}
         pageUrl={new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString()}
-        imageUrl={w.data.imageAssets?.square}
-        alt={w.data.altText?.[locale]}
       />
     ))}
   </div>

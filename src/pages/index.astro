@@ -1,9 +1,11 @@
 ---
-import { locales } from '../lib/i18n';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const title = 'Festival Wishes India — Rakhi, Diwali & More in Hindi, English & Hinglish';
 const description = 'Find sincere festival wishes and ready-to-share cards for Raksha Bandhan, Diwali, Holi and more. Hindi, English and Hinglish messages for WhatsApp, status and cards.';
+
+const festivals = await getCollection('festival');
 ---
 
 <BaseLayout title={title} description={description} locale="en">
@@ -12,33 +14,32 @@ const description = 'Find sincere festival wishes and ready-to-share cards for R
       Festival Wishes India
     </h1>
     <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto mb-8">
-      Find a sincere festival message or ready-to-share card in the language and tone you need — in under a minute.
+      Find a sincere festival message or ready-to-share card in Hindi, English or Hinglish.
     </p>
-    <a
-      href="/en/rakhi/"
-      class="inline-block px-8 py-3 bg-rose-700 text-white rounded-full text-lg font-medium hover:bg-rose-800 transition"
-    >
-      ✨ Raksha Bandhan Wishes
-    </a>
   </div>
 
-  <section class="grid gap-6 md:grid-cols-3 py-8">
-    {locales.map((loc) => (
+  <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 py-8">
+    {festivals.map((f) => (
       <a
-        href={loc === 'en' ? '/en/' : `/${loc}/`}
-        class="block p-6 bg-white rounded-xl border border-stone-200 hover:border-rose-300 hover:shadow-sm transition"
+        href={`/en/${f.data.slug}/`}
+        class="block p-6 bg-white rounded-xl border border-stone-200 hover:border-rose-300 hover:shadow-sm transition text-center"
       >
-        <h2 class="text-xl font-semibold text-rose-700 mb-2">
-          {loc === 'hi' ? 'हिन्दी' : loc === 'hinglish' ? 'Hinglish' : 'English'}
-        </h2>
-        <p class="text-stone-600">
-          {loc === 'hi'
-            ? 'रक्षाबंधन, दिवाली और अन्य त्योहारों की शुभकामनाएँ।'
-            : loc === 'hinglish'
-            ? 'Rakhi, Diwali aur baki festivals ke liye messages aur cards.'
-            : 'Wishes, messages and cards for Rakhi, Diwali and other festivals.'}
+        <h2 class="text-xl font-semibold text-rose-700 mb-2">{f.data.displayName}</h2>
+        <p class="text-sm text-stone-500">
+          {new Date(f.data.date).toLocaleDateString('en-IN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
         </p>
+        <p class="text-sm text-stone-600 mt-3">English wishes · Hindi shubhkamnayein · Hinglish messages</p>
       </a>
     ))}
+  </section>
+
+  <section class="py-8 text-center">
+    <p class="text-stone-600">
+      Use the language switcher on any festival page to switch between English, हिन्दी and Hinglish.
+    </p>
   </section>
 </BaseLayout>
