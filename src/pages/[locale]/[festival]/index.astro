@@ -7,12 +7,12 @@ import { cards } from '../../../lib/cards';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
-export const getStaticPaths = (() => {
+export const getStaticPaths = (async () => {
   const paths: { params: { locale: string; festival: string } }[] = [];
-  const festivals = ['rakhi', 'diwali', 'holi', 'dussehra', 'navratri'];
+  const festivals = await getCollection('festival');
   for (const locale of locales) {
     for (const festival of festivals) {
-      paths.push({ params: { locale, festival } });
+      paths.push({ params: { locale, festival: festival.data.slug } });
     }
   }
   return paths;

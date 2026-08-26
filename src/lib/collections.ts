@@ -5,6 +5,8 @@ export const collectionMap: Record<string, string[]> = {
   'bhaiya-bhabhi-wishes': ['bhaiya-bhabhi'],
   'whatsapp-messages': [],
   'family-wishes': ['family'],
+  'friend-wishes': ['friend'],
+  'parent-wishes': ['parent'],
 };
 
 export const collections = {

@@ -19,9 +19,9 @@
 - [x] Generate English Rakhi wishes (10) — agent
 - [x] Generate Hindi Rakhi wishes (10) — agent
 - [x] Generate Hinglish Rakhi wishes (10) — agent
-- [x] Merge + de-duplicate + audit all 30 wishes — agent
-- [x] Generate 8-10 card images (square + portrait) — agent
-- [x] Update wish JSONs with imageAssets + altText — agent
+- [x] Merge + de-duplicate + audit all 51 wishes (30 seed + 20 expansion, conversational Hindi rewrite) — agent
+- [x] Generate 8 language-tagged card images (en/hi/hinglish) + src/lib/cards.ts registry — agent
+- [x] Decouple cards from wish JSONs + add hub "Shareable cards" gallery — agent
 - [x] Final build with content passes — agent
 - [ ] Owner seed-batch approval for Rakhi — owner
 - [ ] Real-device QA (Android Chrome + iOS Safari) — owner
@@ -52,5 +52,5 @@
 ## Owner Blockers / Decisions Needed
 - [ ] Confirm rakhiwishes.in NIXI registrant-verification email clicked
 - [ ] Approve final Rakhi seed batch before go-live
-- [ ] Provide Cloudflare API token for Pages/DNS automation
+- [ ] Provide Cloudflare API token for Pages/DNS automation (token file already present at `~/.hermes/secrets/cloudflare-token`)
 - [ ] Real-device QA results by Aug 28 afternoon

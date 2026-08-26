@@ -38,6 +38,12 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
       const copyBtn = bar.querySelector('[data-action="copy"]');
       const shareBtn = bar.querySelector('[data-action="share-native"]');
 
+      // Hide the native share button where Web Share API is unavailable
+      // (e.g. desktop Chrome/Firefox). Copy / WhatsApp / Download still work.
+      if (shareBtn && typeof navigator.share !== 'function') {
+        shareBtn.style.display = 'none';
+      }
+
       const track = (name: string, fallback = false) => {
         // fire-and-forget analytics; Worker endpoint may be absent
         try {

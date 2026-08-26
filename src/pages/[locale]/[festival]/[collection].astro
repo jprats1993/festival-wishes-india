@@ -7,13 +7,13 @@ import { locales, localeLabels, isLocale } from '../../../lib/i18n';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
-export const getStaticPaths = (() => {
+export const getStaticPaths = (async () => {
   const paths: { params: { locale: string; festival: string; collection: string } }[] = [];
-  const festivals = ['rakhi', 'diwali', 'holi', 'dussehra', 'navratri'];
+  const festivals = await getCollection('festival');
   for (const locale of locales) {
     for (const festival of festivals) {
       for (const collection of collections.getCollectionSlugs()) {
-        paths.push({ params: { locale, festival, collection } });
+        paths.push({ params: { locale, festival: festival.data.slug, collection } });
       }
     }
   }
