@@ -12,19 +12,26 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
 ---
 
 <div class="share-bar flex flex-wrap items-center gap-2 mt-4" data-share-bar data-text={text} data-image={imageUrl} data-url={pageUrl}>
-  <button type="button" class="copy-btn px-4 py-2 bg-rose-700 text-white rounded-lg text-sm hover:bg-rose-800 transition" data-action="copy">
-    Copy
+  <button type="button" class="copy-btn inline-flex items-center gap-1.5 px-3 py-2 bg-rose-700 text-white rounded-lg text-sm font-medium hover:bg-rose-800 transition" data-action="copy" aria-label="Copy wish">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Copy</span>
   </button>
+
   {imageUrl && (
-    <a href={imageUrl} download class="download-btn px-4 py-2 bg-stone-800 text-white rounded-lg text-sm hover:bg-stone-900 transition inline-block" data-action="download">
-      Download Card
+    <a href={imageUrl} download class="download-btn inline-flex items-center gap-1.5 px-3 py-2 bg-stone-800 text-white rounded-lg text-sm font-medium hover:bg-stone-900 transition" data-action="download" aria-label="Download card">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>Download</span>
     </a>
   )}
-  <button type="button" class="share-native-btn px-4 py-2 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 transition" data-action="share-native">
-    Share
+
+  <button type="button" class="share-native-btn inline-flex items-center gap-1.5 px-3 py-2 bg-stone-600 text-white rounded-lg text-sm font-medium hover:bg-stone-700 transition" data-action="share-native" aria-label="Share">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    <span>Share</span>
   </button>
-  <a href={whatsappUrl} target="_blank" rel="noopener" class="whatsapp-fallback-btn px-4 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition inline-block" data-action="whatsapp">
-    WhatsApp
+
+  <a href={whatsappUrl} target="_blank" rel="noopener" class="whatsapp-fallback-btn inline-flex items-center gap-1.5 px-3 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition" data-action="whatsapp" aria-label="Share on WhatsApp">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
   </a>
 </div>
 
@@ -38,14 +45,12 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
       const copyBtn = bar.querySelector('[data-action="copy"]');
       const shareBtn = bar.querySelector('[data-action="share-native"]');
 
-      // Hide the native share button where Web Share API is unavailable
-      // (e.g. desktop Chrome/Firefox). Copy / WhatsApp / Download still work.
+      // Hide native share where Web Share API is unavailable (desktop).
       if (shareBtn && typeof navigator.share !== 'function') {
         shareBtn.style.display = 'none';
       }
 
       const track = (name: string, fallback = false) => {
-        // fire-and-forget analytics; Worker endpoint may be absent
         try {
           fetch('/api/event', {
             method: 'POST',
@@ -55,21 +60,43 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
         } catch {}
       };
 
-      copyBtn?.addEventListener('click', async () => {
+      const doCopy = async (t: string) => {
         try {
-          await navigator.clipboard.writeText(text);
-          copyBtn.textContent = 'Copied!';
-          setTimeout(() => (copyBtn.textContent = 'Copy'), 2000);
-          track('copy_wish');
+          await navigator.clipboard.writeText(t);
+          return true;
         } catch {
-          copyBtn.textContent = 'Use share instead';
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = t;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            const ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            return ok;
+          } catch {
+            return false;
+          }
+        }
+      };
+
+      copyBtn?.addEventListener('click', async () => {
+        const ok = await doCopy(text);
+        const span = copyBtn.querySelector('span');
+        if (ok) {
+          copyBtn.classList.add('bg-green-700');
+          if (span) { const orig = span.textContent; span.textContent = 'Copied!'; setTimeout(() => (span.textContent = orig), 1500); }
+          track('copy_wish');
+        } else if (span) {
+          span.textContent = 'Select text';
         }
       });
 
       shareBtn?.addEventListener('click', async () => {
         const shareData: ShareData = { title: 'Festival Wishes India', text, url };
         let files: File[] | undefined;
-
         if (image && navigator.canShare && navigator.canShare({ files: [] })) {
           try {
             const resp = await fetch(image);
@@ -78,7 +105,6 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
             files = [new File([blob], `festival-wish.${ext}`, { type: blob.type })];
           } catch {}
         }
-
         try {
           if (navigator.share) {
             await navigator.share(files ? { ...shareData, files } : shareData);
@@ -88,9 +114,7 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
           }
         } catch {
           track('share_attempt', true);
-          // fallback: open WhatsApp text link
-          const wa = `https://wa.me/?text=${encodeURIComponent(`${text}\n\n${url}`)}`;
-          window.open(wa, '_blank');
+          window.open(`https://wa.me/?text=${encodeURIComponent(`${text}\n\n${url}`)}`, '_blank');
         }
       });
     });
