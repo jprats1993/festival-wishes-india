@@ -62,5 +62,26 @@ export const cards: Card[] = [
     "src": "/images/rakhi/cards/rakhi-hi-3.webp",
     "alt": "राखी का पवित्र त्योहार आपके जीवन में खुशियाँ और समृद्धि लाए।",
     "text": "राखी का पवित्र त्योहार आपके जीवन में खुशियाँ और समृद्धि लाए।"
+  },
+  {
+    "id": "rakhi-hinglish-3",
+    "lang": "hinglish",
+    "src": "/images/rakhi/cards/rakhi-hinglish-3.webp",
+    "alt": "Rakhi mubarak bhai! Tu hamesha mera hero rahega, kitne bhi jhagde ho.",
+    "text": "Rakhi mubarak bhai! Tu hamesha mera hero rahega, kitne bhi jhagde ho."
+  },
+  {
+    "id": "rakhi-hinglish-4",
+    "lang": "hinglish",
+    "src": "/images/rakhi/cards/rakhi-hinglish-4.webp",
+    "alt": "Behen teri Rakhi, aur teri khushi dono ke liye ready hoon. Rakhi mubarak!",
+    "text": "Behen teri Rakhi, aur teri khushi dono ke liye ready hoon. Rakhi mubarak!"
+  },
+  {
+    "id": "rakhi-hinglish-5",
+    "lang": "hinglish",
+    "src": "/images/rakhi/cards/rakhi-hinglish-5.webp",
+    "alt": "Is Rakhi pe bas ek wish — tu khush rahe, aur hamesha meri side pe rahe.",
+    "text": "Is Rakhi pe bas ek wish — tu khush rahe, aur hamesha meri side pe rahe."
   }
 ];
