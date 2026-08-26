@@ -10,7 +10,7 @@
 - [x] Create GitHub repo — owner
 - [x] Astro 7 scaffold with i18n, content collections, components — agent
 - [x] Build succeeds locally — agent
-- [ ] Push repo to GitHub — agent BLOCKED: needs GitHub auth (token or manual owner push)
+- [x] Push repo to GitHub — agent
 - [ ] Connect Cloudflare Pages to GitHub — agent
 - [ ] Production deploy on festivalwishesindia.com — agent
 - [ ] Configure rakhiwishes.in 301 redirect to festivalwishesindia.com — agent
