@@ -25,7 +25,7 @@ if (!isLocale(locale)) {
   return Astro.redirect('/en/');
 }
 
-const festivals = await getCollection('festivals');
+const festivals = await getCollection('festival');
 const festival = festivals.find((f) => f.data.slug === festivalSlug);
 if (!festival) {
   return new Response(null, { status: 404 });

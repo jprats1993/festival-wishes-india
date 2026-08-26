@@ -1,7 +1,8 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const wish = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/wish' }),
   schema: z.object({
     id: z.string().regex(/^[a-z0-9-]+$/),
     festival: z.enum(['rakhi', 'diwali', 'holi', 'dussehra', 'navratri']),
@@ -26,7 +27,7 @@ const wish = defineCollection({
 });
 
 const festival = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/festival' }),
   schema: z.object({
     slug: z.string(),
     displayName: z.string(),

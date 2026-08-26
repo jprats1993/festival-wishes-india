@@ -13,7 +13,7 @@ if (!isLocale(locale)) {
   return Astro.redirect('/en/');
 }
 
-const festivals = await getCollection('festivals');
+const festivals = await getCollection('festival');
 const wishes = await getCollection('wish');
 const approvedWishes = wishes.filter((w) => w.data.reviewStatus === 'approved');
 
