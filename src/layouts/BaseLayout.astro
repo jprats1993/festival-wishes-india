@@ -1,7 +1,7 @@
 ---
 import { localeBcp47, locales, localeLabels, type Locale, isLocale } from '../lib/i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -52,7 +52,7 @@ const langAttr = localeBcp47[locale];
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL('/og-default.svg', Astro.site).toString()} />
     
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="min-h-screen bg-stone-50 text-stone-900 antialiased">
     <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
