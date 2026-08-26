@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-brother-024",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Brother, you are my first friend and forever bodyguard. Happy Rakhi! May your life be full of laughter and sweets.",
+    "hi": "भाई, आप मेरे पहले दोस्त और हमेशा के बॉडीगार्ड हैं। राखी मुबारक! आपका जीवन हँसी और मिठाइयों से भरा रहे।",
+    "hinglish": "Bhai, tu mera pehla dost aur hamesha ka bodyguard hai. Happy Rakhi! Tera life hansi aur mithai se bhara rahe."
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

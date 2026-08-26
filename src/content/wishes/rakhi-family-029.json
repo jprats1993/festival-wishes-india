@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-family-029",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Raksha Bandhan is a reminder that family ties are the strongest threads. Wishing my whole family endless love and togetherness.",
+    "hi": "रक्षाबंधन यह याद दिलाता है कि पारिवारिक बंधन सबसे मज़बूत धागे हैं। मेरे पूरे परिवार को अनंत प्यार और एकजुटता की शुभकामना।",
+    "hinglish": "Raksha Bandhan yaad dilata hai ki parivaar ke rishte sabse mazboot dhaage hain. Meri poori family ko endless pyaar aur saath ki shubhkamna."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

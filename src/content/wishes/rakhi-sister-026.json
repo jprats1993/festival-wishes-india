@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-sister-026",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Sisters are the real bosses of every festival, and Rakhi is our official day. Love you tons!",
+    "hi": "बहनें हर त्योहार की असली बॉस होती हैं, और राखी हमारा आधिकारिक दिन है। बहुत प्यार!",
+    "hinglish": "Behenein har tyohar ki asli boss hoti hain, aur Rakhi hamara official day hai. Love you tons!"
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

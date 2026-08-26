@@ -1,0 +1,16 @@
+{
+  "id": "rakhi-brother-005",
+  "festival": "rakhi",
+  "languages": {
+    "en": "No matter how tall you grow or how far you travel, you will always be my little partner in crime. Happy Rakhi, brother.",
+    "hi": "चाहे आप कितने भी बड़े हो जाएँ या कितनी दूर चले जाएँ, आप हमेशा मेरे छोटे साथी रहेंगे। रक्षाबंधन की शुभकामनाएँ, भाई।",
+    "hinglish": "Chahe aap kitne bhi bade ho jaayein ya kitni door chale jaayein, aap hamesha mere chhote saathi rahenge. Rakhi ki shubhkamnayein, bhai."
+  },
+  "relations": ["brother"],
+  "tones": ["warm", "emotional", "short", "funny"],
+  "formats": ["whatsapp", "card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-bhaiya-bhabhi-018",
+  "festival": "rakhi",
+  "languages": {
+    "en": "To my dear bhaiya and bhabhi, your love and care make our family complete. Wishing you both a blessed Rakhi.",
+    "hi": "प्यारे भैया और भाभी, आपके प्यार और स्नेह से हमारा परिवार पूरा है। आप दोनों को राखी की ढेरों शुभकामनाएँ।",
+    "hinglish": "Pyaare bhaiya aur bhabhi, aapke pyaar aur sneh se humaara parivaar poora hai. Aap dono ko Rakhi ki dheron shubhkaamnaayein."
+  },
+  "relations": [
+    "bhaiya-bhabhi"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

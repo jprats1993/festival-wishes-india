@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-family-030",
+  "festival": "rakhi",
+  "languages": {
+    "en": "May this Rakhi bring our family closer, fill every corner with sweets, and turn small moments into big memories.",
+    "hi": "यह राखी हमारे परिवार को और करीब लाए, हर कोने को मिठाइयों से भरे, और छोटे पलों को बड़ी यादों में बदल दे।",
+    "hinglish": "Ye Rakhi hamare parivaar ko aur kareeb laaye, har corner ko mithai se bhare, aur chhote palon ko badi yaadon mein badal de."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

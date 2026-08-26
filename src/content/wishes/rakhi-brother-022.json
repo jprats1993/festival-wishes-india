@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-brother-022",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Happy Raksha Bandhan, brother! Thanks for always being my superhero, even without a cape. This Rakhi comes with unlimited love and zero complaints.",
+    "hi": "रक्षाबंधन की शुभकामनाएँ, भाई! आप हमेशा मेरे सुपरहीरो रहे हैं, बिना केप के। यह राखी असीमित प्यार और शिकायतों के साथ आती है।",
+    "hinglish": "Happy Raksha Bandhan, bhai! Thanks hamesha mere superhero banne ke liye, bina cape ke. Ye Rakhi unlimited pyaar aur zero shikayat ke saath aayi hai."
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

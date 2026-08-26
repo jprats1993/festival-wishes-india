@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-sister-025",
+  "festival": "rakhi",
+  "languages": {
+    "en": "To my amazing sister: thank you for tying my childhood together with love. Sending you the biggest Rakhi hug!",
+    "hi": "मेरी शानदार बहन को: मेरे बचपन को प्यार से बाँधने के लिए धन्यवाद। आपको सबसे बड़ी राखी वाली झप्पी!",
+    "hinglish": "Meri amazing behen ko: thanks mere bachpan ko pyaar se baandhne ke liye. Sending you sabse badi Rakhi wali jhappi!"
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

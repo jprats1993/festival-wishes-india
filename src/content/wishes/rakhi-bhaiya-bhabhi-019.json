@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-bhaiya-bhabhi-019",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Bhaiya and Bhabhi, may this Rakhi bring double the joy and endless prosperity to your beautiful home.",
+    "hi": "भैया और भाभी, यह राखी आपके सुंदर घर में दोगुनी खुशियाँ और खूब तरक्की लाए।",
+    "hinglish": "Bhaiya aur bhabhi, yeh rakhi aapke sundar ghar mein doguni khushiyaan aur khoob taraqqi laaye."
+  },
+  "relations": [
+    "bhaiya-bhabhi"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-sister-016",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Sister, the bond we share is my most precious gift. Wishing you a Rakhi full of love and sweet moments.",
+    "hi": "बहन, हमारा रिश्ता मेरी सबसे कीमती दौलत है। आपको प्यार और मीठे पलों से भरी राखी मुबारक हो।",
+    "hinglish": "Behen, humaara rishta meri sabse keemti daulat hai. Aapko pyaar aur meethe palon se bhari Rakhi mubaarak ho."
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

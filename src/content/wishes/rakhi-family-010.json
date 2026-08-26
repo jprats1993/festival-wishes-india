@@ -1,0 +1,16 @@
+{
+  "id": "rakhi-family-010",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Raksha Bandhan reminds us that family is not just blood, but the choice to stand by each other year after year. Grateful for ours.",
+    "hi": "रक्षाबंधन हमें याद दिलाता है कि परिवार सिर्फ़ ख़ून का रिश्ता नहीं, बल्कि साल दर साल एक-दूसरे के साथ खड़े रहने का चुनाव है। अपने परिवार के लिए कृतज्ञ हूँ।",
+    "hinglish": "Raksha Bandhan humein yaad dilata hai ki parivaar sirf khoon ka rishta nahi, balki saal dar saal ek-doosre ke saath khade rehne ka chunaav hai. Apne parivaar ke liye kritagya hoon."
+  },
+  "relations": ["family"],
+  "tones": ["warm", "emotional", "short", "funny"],
+  "formats": ["whatsapp", "card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

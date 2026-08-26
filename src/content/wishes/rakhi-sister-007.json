@@ -1,0 +1,16 @@
+{
+  "id": "rakhi-sister-007",
+  "festival": "rakhi",
+  "languages": {
+    "en": "You fill our home with laughter, stubborn opinions, and endless love. I promise to protect your smile long after this rakhi fades.",
+    "hi": "आप हमारे घर को हँसी, ज़िद्दी रायों और बेशुमार प्यार से भर देती हैं। मैं वादा करता हूँ कि इस राखी के फीके पड़ने के बाद भी आपकी मुस्कान की रक्षा करूँगा।",
+    "hinglish": "Aap humaare ghar ko hansi, ziddi raayon aur beshumaar pyaar se bhar deti hain. Main vaada karta hoon ki is rakhi ke feeka padne ke baad bhi aapki muskaan ki raksha karunga."
+  },
+  "relations": ["sister"],
+  "tones": ["warm", "emotional", "short", "funny"],
+  "formats": ["whatsapp", "card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

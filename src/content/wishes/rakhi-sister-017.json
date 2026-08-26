@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-sister-017",
+  "festival": "rakhi",
+  "languages": {
+    "en": "No matter how much we fight, you are the one I can never stay angry with. Happy Rakhi, dear sister!",
+    "hi": "चाहे कितनी भी लड़ाई हो जाए, आपसे मैं कभी नाराज़ नहीं रह सकती। राखी मुबारक हो, प्यारी बहन!",
+    "hinglish": "Chahe kitni bhi ladaai ho jaaye, aapse main kabhi naraaz nahi reh sakti. Rakhi mubaarak ho, pyaari behen!"
+  },
+  "relations": [
+    "sister"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

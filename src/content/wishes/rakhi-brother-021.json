@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-brother-021",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Brother, you have stood by me in every storm and every smile. I am truly blessed to have you in my life.",
+    "hi": "भैया, आप हर मुश्किल में और हर खुशी में मेरे साथ खड़े रहे। आप जैसा भाई पाकर मैं बहुत भाग्यशाली हूँ।",
+    "hinglish": "Bhaiya, aap har mushkil mein aur har khushi mein mere saath khade rahe. Aap jaisa bhai paakar main bahut bhagyashali hoon."
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

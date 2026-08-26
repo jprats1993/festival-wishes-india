@@ -1,0 +1,25 @@
+{
+  "id": "rakhi-family-020",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Rakhi is a celebration of the love that holds our family together. Wishing everyone health, happiness, and togetherness.",
+    "hi": "राखी उस प्यार का त्योहार है जो हमारे परिवार को जोड़े रखता है। सभी को सेहत, खुशी और साथ रहने का आशीर्वाद मिले।",
+    "hinglish": "Rakhi us pyaar ka tyohaar hai jo humaare parivaar ko jode rakhta hai. Sabhi ko sehat, khushi aur saath rehne ka aashirvaad mile."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional",
+    "short"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

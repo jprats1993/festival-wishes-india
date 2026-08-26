@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-brother-023",
+  "festival": "rakhi",
+  "languages": {
+    "en": "To the only boy who can annoy me and still get a Rakhi every year. Happy Raksha Bandhan, brother!",
+    "hi": "वही लड़का जो मुझे परेशान कर सकता है और फिर भी हर साल राखी पा सकता है। रक्षाबंधन मुबारक हो, भाई!",
+    "hinglish": "Usi ladke ke liye jo mujhe tang kar sakta hai aur phir bhi har saal Rakhi paata hai. Happy Raksha Bandhan, bhai!"
+  },
+  "relations": [
+    "brother"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

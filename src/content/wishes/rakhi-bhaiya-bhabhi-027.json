@@ -1,0 +1,27 @@
+{
+  "id": "rakhi-bhaiya-bhabhi-027",
+  "festival": "rakhi",
+  "languages": {
+    "en": "Happy Raksha Bandhan to my favourite couple! Bhaiya, thank you for the protection, and Bhabhi, thank you for the extra love.",
+    "hi": "मेरे पसंदीदा जोड़े को रक्षाबंधन की शुभकामनाएँ! भैया, रक्षा के लिए धन्यवाद, और भाभी, अतिरिक्त प्यार के लिए धन्यवाद।",
+    "hinglish": "Happy Raksha Bandhan mere favourite couple ko! Bhaiya, protection ke liye thanks, aur Bhabhi, extra pyaar ke liye thanks."
+  },
+  "relations": [
+    "bhaiya-bhabhi"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}
