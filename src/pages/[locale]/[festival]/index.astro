@@ -4,6 +4,7 @@ import WishCard from '../../../components/WishCard.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 import { locales, localeLabels, isLocale } from '../../../lib/i18n';
 import { cards } from '../../../lib/cards';
+import { popularWishIds } from '../../../lib/popular';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
@@ -30,38 +31,41 @@ if (!festival) {
 }
 
 const allWishes = await getCollection('wish');
-const wishes = allWishes.filter(
-  (w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved'
-);
+const wishes = allWishes
+  .filter((w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved')
+  .sort((a, b) => a.data.id.localeCompare(b.data.id));
 
-const relationCollections = ['brother', 'sister', 'family', 'friend', 'spouse', 'parent'] as const;
-const collections = relationCollections
-  .map((rel) => ({
-    slug: `${rel}-wishes`,
-    title: {
-      en: `${festival.data.displayName} wishes for ${rel}`,
-      hi: `${festival.data.displayName} ${rel === 'brother' ? 'भाई' : rel === 'sister' ? 'बहन' : rel === 'parent' ? 'माता-पिता' : rel === 'friend' ? 'दोस्त' : rel === 'spouse' ? 'जीवनसाथी' : rel} के लिए शुभकामनाएँ`,
-      hinglish: `${festival.data.displayName} ${rel} ke liye wishes`,
-    }[locale],
-    wishes: wishes.filter((w) => w.data.relations.includes(rel as any)).slice(0, 8),
-  }))
-  .filter((c) => c.wishes.length >= 3);
+const popularWishes = wishes.filter((w) => popularWishIds.includes(w.data.id));
+
+const relationTabs = [
+  { slug: 'brother-wishes', label: { en: 'Brother', hi: 'भाई', hinglish: 'Bhai' } },
+  { slug: 'sister-wishes', label: { en: 'Sister', hi: 'बहन', hinglish: 'Behen' } },
+  { slug: 'bhaiya-bhabhi-wishes', label: { en: 'Bhaiya-Bhabhi', hi: 'भैया-भाभी', hinglish: 'Bhaiya-Bhabhi' } },
+  { slug: 'family-wishes', label: { en: 'Family', hi: 'परिवार', hinglish: 'Family' } },
+  { slug: 'friend-wishes', label: { en: 'Friend', hi: 'दोस्त', hinglish: 'Dost' } },
+  { slug: 'parent-wishes', label: { en: 'Parents', hi: 'माता-पिता', hinglish: 'Parents' } },
+];
+
+const festivalCards = cards.filter((c) => c.lang === locale);
 
 const copy = {
   en: {
     subtitle: `Find ${festival.data.displayName} wishes in Hindi, English and Hinglish — short messages, cards and WhatsApp status.`,
-    collectionsTitle: 'Curated collections',
-    popularTitle: 'Popular wishes',
+    cardsTitle: 'Shareable cards',
+    allTab: 'All wishes',
+    popularTab: 'Popular wishes',
   },
   hi: {
     subtitle: `${festival.data.displayName} की शुभकामनाएँ हिंदी, अंग्रेज़ी और हिंग्लिश में — छोटे संदेश, कार्ड और व्हाट्सएप स्टेटस।`,
-    collectionsTitle: 'चयनित संग्रह',
-    popularTitle: 'लोकप्रिय शुभकामनाएँ',
+    cardsTitle: 'साझा करने योग्य कार्ड',
+    allTab: 'सभी शुभकामनाएँ',
+    popularTab: 'लोकप्रिय शुभकामनाएँ',
   },
   hinglish: {
     subtitle: `${festival.data.displayName} ki wishes Hindi, English aur Hinglish mein — chhote messages, cards aur WhatsApp status.`,
-    collectionsTitle: 'Featured collections',
-    popularTitle: 'Popular wishes',
+    cardsTitle: 'Shareable cards',
+    allTab: 'All wishes',
+    popularTab: 'Popular wishes',
   },
 }[locale];
 
@@ -69,14 +73,7 @@ const alternateUrls = Object.fromEntries(
   locales.map((loc) => [loc, `/${loc}/${festivalSlug}/`])
 ) as Record<typeof locale, string>;
 
-// Cards for this festival + locale
-const festivalCards = cards.filter((c) => c.lang === locale);
-
-const cardsTitle = {
-  en: 'Shareable cards',
-  hi: 'साझा करने योग्य कार्ड',
-  hinglish: 'Shareable cards',
-}[locale];
+const pageUrl = new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString();
 ---
 
 <BaseLayout
@@ -94,7 +91,7 @@ const cardsTitle = {
 
   {festivalCards.length > 0 && (
     <>
-      <h2 class="text-2xl font-semibold mb-4">{cardsTitle}</h2>
+      <h2 class="text-2xl font-semibold mb-4">{copy.cardsTitle}</h2>
       <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
         {festivalCards.map((card) => (
           <figure class="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm">
@@ -116,30 +113,64 @@ const cardsTitle = {
     </>
   )}
 
-  <h2 class="text-2xl font-semibold mb-4">{copy.collectionsTitle}</h2>
-  <section class="grid gap-6 md:grid-cols-2">
-    {collections.map((c) => (
+  <!-- Tabs -->
+  <div class="flex flex-wrap items-center gap-2 mb-6" role="tablist" aria-label="Wish categories">
+    <button type="button" data-tab="all" class="tab-btn active px-4 py-2 rounded-full bg-rose-700 text-white font-medium text-sm">
+      {copy.allTab} ({wishes.length})
+    </button>
+    <button type="button" data-tab="popular" class="tab-btn px-4 py-2 rounded-full border border-stone-300 text-stone-700 hover:border-rose-400 font-medium text-sm">
+      {copy.popularTab} ({popularWishes.length})
+    </button>
+    {relationTabs.map((t) => (
       <a
-        href={`/${locale}/${festivalSlug}/${c.slug}/`}
-        class="block p-5 bg-white rounded-xl border border-stone-200 hover:border-rose-300 hover:shadow-sm transition"
+        href={`/${locale}/${festivalSlug}/${t.slug}/`}
+        class="px-4 py-2 rounded-full border border-stone-300 text-stone-700 hover:border-rose-400 hover:text-rose-700 font-medium text-sm"
       >
-        <h3 class="text-lg font-semibold text-rose-700">{c.title}</h3>
-        <p class="text-sm text-stone-500 mt-1">{c.wishes.length} wishes</p>
+        {t.label[locale]}
       </a>
     ))}
-  </section>
+  </div>
 
-  <h2 class="text-2xl font-semibold mt-10 mb-4">{copy.popularTitle}</h2>
-  <div class="grid gap-6 md:grid-cols-2">
-    {wishes.slice(0, 6).map((w) => (
+  <!-- All wishes -->
+  <section data-panel="all" class="grid gap-6 md:grid-cols-2">
+    {wishes.map((w, i) => (
       <WishCard
         id={w.data.id}
         text={w.data.languages[locale]}
         locale={locale}
-        pageUrl={new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString()}
+        pageUrl={pageUrl}
+        number={i + 1}
       />
     ))}
-  </div>
+  </section>
+
+  <!-- Popular wishes -->
+  <section data-panel="popular" class="grid gap-6 md:grid-cols-2" hidden>
+    {popularWishes.map((w, i) => (
+      <WishCard
+        id={w.data.id}
+        text={w.data.languages[locale]}
+        locale={locale}
+        pageUrl={pageUrl}
+        number={i + 1}
+      />
+    ))}
+  </section>
 
   <AdSlot slotName="hub-bottom" />
 </BaseLayout>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('[data-panel]');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+      tabs.forEach((t) => t.classList.remove('active', 'bg-rose-700', 'text-white'));
+      tab.classList.add('active', 'bg-rose-700', 'text-white');
+      panels.forEach((p) => {
+        p.hidden = p.getAttribute('data-panel') !== target;
+      });
+    });
+  });
+</script>
