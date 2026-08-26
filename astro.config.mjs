@@ -2,9 +2,12 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://festivalwishesindia.com',
+
   integrations: [sitemap({
     i18n: {
       defaultLocale: 'en',
@@ -19,6 +22,7 @@ export default defineConfig({
       return !page.includes('/thin-') && !page.includes('/search');
     },
   })],
+
   i18n: {
     locales: ['en', 'hi', 'hinglish'],
     defaultLocale: 'en',
@@ -26,12 +30,18 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
+
   build: {
     format: 'directory',
   },
+
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
