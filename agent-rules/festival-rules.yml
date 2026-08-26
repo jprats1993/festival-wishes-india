@@ -1,0 +1,24 @@
+# Example configuration. Copy this file for each festival and review dates manually.
+festival:
+  slug: rakhi
+  display_name: Raksha Bandhan
+  aliases: [Rakhi, Rakhi festival]
+  date: "2026-08-28"
+  date_verified_by: owner
+  target_regions: [India, Indian diaspora]
+  languages: [hi, en, hinglish]
+  default_indexable_collections:
+    - short-wishes
+    - brother-wishes
+    - sister-wishes
+    - whatsapp-messages
+  prohibited_or_review_required:
+    - claims about regional rituals
+    - religious or historical assertions
+    - medical, financial, or political messaging
+  minimums:
+    approved_wishes: 24
+    approved_cards: 8
+    unique_indexable_collections: 3
+  publish_lead_time_days: 42
+  human_review_required: true
