@@ -2,25 +2,17 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WishCard from '../../../components/WishCard.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import { collections } from '../../../lib/collections';
 import { locales, localeLabels, isLocale } from '../../../lib/i18n';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-
-const collectionMap: Record<string, string[]> = {
-  'short-wishes': [],
-  'brother-wishes': ['brother'],
-  'sister-wishes': ['sister'],
-  'bhaiya-bhabhi-wishes': ['bhaiya-bhabhi'],
-  'whatsapp-messages': [],
-  'family-wishes': ['family'],
-};
 
 export const getStaticPaths = (() => {
   const paths: { params: { locale: string; festival: string; collection: string } }[] = [];
   const festivals = ['rakhi', 'diwali', 'holi', 'dussehra', 'navratri'];
   for (const locale of locales) {
     for (const festival of festivals) {
-      for (const collection of Object.keys(collectionMap)) {
+      for (const collection of collections.getCollectionSlugs()) {
         paths.push({ params: { locale, festival, collection } });
       }
     }
@@ -40,7 +32,7 @@ if (!festival) {
 }
 
 const allWishes = await getCollection('wish');
-const relations = collectionMap[collection] || [];
+const relations = collections.getRelationsForCollection(collection) || [];
 let filtered = allWishes.filter(
   (w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved'
 );
