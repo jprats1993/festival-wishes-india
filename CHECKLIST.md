@@ -16,13 +16,13 @@
 - [ ] Configure rakhiwishes.in 301 redirect to festivalwishesindia.com — agent
 
 ## Content — Rakhi 2026 (Phase 1)
-- [ ] Generate English Rakhi wishes (10) — agent
-- [ ] Generate Hindi Rakhi wishes (10) — agent
-- [ ] Generate Hinglish Rakhi wishes (10) — agent
-- [ ] Merge + de-duplicate + audit all 30 wishes — agent
-- [ ] Generate 8-10 card images (square + portrait) — agent
-- [ ] Update wish JSONs with imageAssets + altText — agent
-- [ ] Final build with content passes — agent
+- [x] Generate English Rakhi wishes (10) — agent
+- [x] Generate Hindi Rakhi wishes (10) — agent
+- [x] Generate Hinglish Rakhi wishes (10) — agent
+- [x] Merge + de-duplicate + audit all 30 wishes — agent
+- [x] Generate 8-10 card images (square + portrait) — agent
+- [x] Update wish JSONs with imageAssets + altText — agent
+- [x] Final build with content passes — agent
 - [ ] Owner seed-batch approval for Rakhi — owner
 - [ ] Real-device QA (Android Chrome + iOS Safari) — owner
 - [ ] Go-live — owner
