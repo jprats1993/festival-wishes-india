@@ -11,7 +11,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "validate": "node scripts/validate-content.mjs"
+    "validate": "node scripts/validate-content.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "ci": "npm run validate && npm run build && npm run check:links"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

@@ -1,10 +1,16 @@
 # Example configuration. Copy this file for each festival and review dates manually.
+#
+# SMOKE TEST EXEMPTION: a festival may set is_smoke_test: true to waive the
+# 42-day lead time when the goal is a pipeline test, not organic SEO
+# (e.g. Rakhi 2026 launched 2 days before the festival). All other rules
+# (reviewer-agent audit, originality, minimums) still apply.
 festival:
   slug: rakhi
   display_name: Raksha Bandhan
   aliases: [Rakhi, Rakhi festival]
   date: "2026-08-28"
   date_verified_by: owner
+  is_smoke_test: true
   target_regions: [India, Indian diaspora]
   languages: [hi, en, hinglish]
   default_indexable_collections:

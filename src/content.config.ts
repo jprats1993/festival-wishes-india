@@ -35,6 +35,8 @@ const festival = defineCollection({
     date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     dateSourceUrl: z.string().url(),
     dateVerifiedAt: z.string().datetime(),
+    dateVerifiedBy: z.string().optional(),
+    isSmokeTest: z.boolean().default(false),
     region: z.string(),
     calendarConvention: z.string(),
     languages: z.array(z.enum(['en', 'hi', 'hinglish'])),

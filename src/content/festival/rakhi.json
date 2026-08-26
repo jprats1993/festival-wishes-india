@@ -5,6 +5,8 @@
   "date": "2026-08-28",
   "dateSourceUrl": "https://www.drikpanchang.com/festivals/raksha-bandhan/raksha-bandhan-date-time.html",
   "dateVerifiedAt": "2026-08-26T18:00:00Z",
+  "dateVerifiedBy": "owner",
+  "isSmokeTest": true,
   "region": "India and Indian diaspora",
   "calendarConvention": "Hindu lunar calendar (Shravana Purnima)",
   "languages": ["en", "hi", "hinglish"],
