@@ -50,16 +50,6 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
         shareBtn.style.display = 'none';
       }
 
-      const track = (name: string, fallback = false) => {
-        try {
-          fetch('/api/event', {
-            method: 'POST',
-            body: JSON.stringify({ event: name, url, fallback }),
-            keepalive: true,
-          }).catch(() => {});
-        } catch {}
-      };
-
       const doCopy = async (t: string) => {
         try {
           await navigator.clipboard.writeText(t);
@@ -88,7 +78,6 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
         if (ok) {
           copyBtn.classList.add('bg-green-700');
           if (span) { const orig = span.textContent; span.textContent = 'Copied!'; setTimeout(() => (span.textContent = orig), 1500); }
-          track('copy_wish');
         } else if (span) {
           span.textContent = 'Select text';
         }
@@ -108,12 +97,12 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
         try {
           if (navigator.share) {
             await navigator.share(files ? { ...shareData, files } : shareData);
-            track('share_attempt', false);
           } else {
             throw new Error('navigator.share unavailable');
           }
-        } catch {
-          track('share_attempt', true);
+        } catch (err) {
+          // AbortError = user closed the native share sheet themselves; not a failure, no fallback needed.
+          if (err instanceof Error && err.name === 'AbortError') return;
           window.open(`https://wa.me/?text=${encodeURIComponent(`${text}\n\n${url}`)}`, '_blank');
         }
       });

@@ -20,7 +20,8 @@ greeting messages and image cards for Indian festivals, in three languages (**Hi
   and forwards it on WhatsApp/status.
 - Diwali, Holi, Dussehra, and Navratri are planned to follow.
 - Monetization is **post-launch** (Cloudflare Web Analytics → AdSense → Amazon Associates gift guides
-  for Diwali). No ads are live yet; analytics beacon is now wired (Cloudflare Web Analytics, automatic setup) (see §9).
+  for Diwali). No ads are live yet. **Correction 2026-08-27: the Cloudflare Web Analytics beacon is
+  NOT actually wired** — that claim was wrong; see HANDOVER.md §2, the authoritative doc.
 
 ---
 
@@ -164,7 +165,8 @@ Schemas are defined in `src/content.config.ts`:
 - Collection → relation mapping lives in `src/lib/collections.ts` (`collectionMap`).
 - "Popular" tab is driven by `src/lib/popular.ts` (`popularWishIds` — 12 curated IDs).
 - Static pages: `/[locale]/about`, `/[locale]/contact`, `/[locale]/privacy`, `/[locale]/disclaimer`.
-- `src/pages/robots.txt.ts` and `src/pages/api/event.ts` (analytics event stub — currently a no-op).
+- `src/pages/robots.txt.ts`. (`src/pages/api/event.ts`, a no-op analytics stub, was removed 2026-08-27
+  — it 404'd in production since this is a static, non-SSR deploy.)
 - Locale/collection pages emit `noindex` when the result set is too thin (collection < 3 wishes).
 
 ---
@@ -197,8 +199,9 @@ Files in `agent-rules/`:
 - **51 Rakhi wishes** committed (`12a6db2`): conversational-Hindi rewrite + 20 new. All
   `reviewStatus: approved`, `reviewedBy: reviewer-agent`.
   - Relations: brother 19 · sister 13 · bhaiya-bhabhi 7 · family 7 · friend 3 · parent 2.
-- **11 language-tagged card images** (`14e2660`): `rakhi-en-1/2/3`, `rakhi-hi-1/2/3`,
-  `rakhi-hinglish-1/2/3/4/5` in `public/images/rakhi/cards/`, driven by `src/lib/cards.ts` registry and a
+- **9 language-tagged card images** (originally 11 via `14e2660`, reduced 2026-08-27 when the older
+  `hinglish-1/2` cards were retired): `rakhi-en-1/2/3`, `rakhi-hi-1/2/3`,
+  `rakhi-hinglish-3/4/5` in `public/images/rakhi/cards/`, driven by `src/lib/cards.ts` registry and a
   locale-filtered "Shareable cards" gallery on the hub. Cards are **decoupled** from wish JSONs
   (no `imageAssets` refs remain in wish files).
 - **Tabbed wish listing** (`999c7b1`): All (51) / Popular (12) / relation tabs, with per-card numbering.
@@ -214,7 +217,8 @@ Files in `agent-rules/`:
 - Real-device QA (Android Chrome + iOS Safari) — owner.
 - Search Console property + verification + sitemap submission — owner.
 - `rakhiwishes.in` NIXI registrant-verification confirmation — owner.
-- Cloudflare Web Analytics beacon (privacy copy already discloses it; endpoint is a no-op stub).
+- Cloudflare Web Analytics beacon (privacy copy already discloses it; not wired yet — the old
+  `/api/event` stub endpoint was removed 2026-08-27, it never worked in production anyway).
 - AdSense application/approval + Diwali content + Amazon Associates gift guides (post-launch).
 
 **Data-level follow-up note:** owner seed-batch approval was recorded in the tracker (`fa9cdd4`), but
@@ -290,7 +294,7 @@ src/content/wish/*.json                      # 51 wishes (rakhi-*-NNN.json)
 src/content/festival/rakhi.json              # Rakhi festival config (smoke test, dateVerifiedBy)
 src/lib/collections.ts                       # collection slug → relation map
 src/lib/i18n.ts                              # locales, labels, BCP-47 mapping
-src/lib/cards.ts                             # language-tagged card registry (11 cards)
+src/lib/cards.ts                             # language-tagged card registry (9 cards)
 src/lib/popular.ts                           # curated "popular" wish IDs (12) for the Popular tab
 src/components/WishCard.astro                # wish card + numbered display
 src/components/ShareBar.astro                # icon+label share buttons + copy fallback
@@ -301,10 +305,9 @@ src/pages/[locale]/index.astro               # locale festival picker
 src/pages/[locale]/[festival]/index.astro    # festival hub (card gallery + tabbed listing)
 src/pages/[locale]/[festival]/[collection].astro  # collection page
 src/pages/[locale]/{about,contact,privacy,disclaimer}.astro  # trust pages
-src/pages/api/event.ts                       # analytics event stub (no-op)
 src/pages/robots.txt.ts                      # robots.txt
 public/_redirects                            # ⚠️ stale blanket rakhiwishes.in rule (see §3/§11.9)
-public/images/rakhi/cards/*.webp             # 11 language-tagged card images
+public/images/rakhi/cards/*.webp             # 9 language-tagged card images
 scripts/validate-content.mjs                 # content validation (npm run validate)
 scripts/check-links.mjs                      # dead-link/asset checker (npm run check:links)
 scripts/{card-specs.json,card-wish-ids.json,wish-assignments.json}  # card-generation inputs

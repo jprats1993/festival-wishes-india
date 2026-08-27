@@ -4,7 +4,8 @@
 > Last updated: 2026-08-26 (post-go-live)
 
 **Status:** 🟢 LIVE at https://festivalwishesindia.com (deployed Aug 26 evening).
-`rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 11 cards).
+`rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards, reduced
+from 11 on 2026-08-27 — see HANDOVER.md §2).
 
 ## Infrastructure
 - [x] Buy festivalwishesindia.com (Cloudflare Registrar) — owner
@@ -22,7 +23,7 @@
 ## Content — Rakhi 2026 (Phase 1)
 - [x] Generate English / Hindi / Hinglish Rakhi wishes — agent
 - [x] Merge + de-duplicate + audit all 51 wishes (30 seed + 20 expansion, conversational Hindi rewrite) — agent
-- [x] Generate 11 language-tagged card images (en/hi/hinglish) + src/lib/cards.ts registry — agent
+- [x] Generate 9 language-tagged card images (en/hi/hinglish) + src/lib/cards.ts registry — agent
 - [x] Decouple cards from wish JSONs + hub "Shareable cards" gallery — agent
 - [x] Tabbed wish listing (All 51 / Popular 12 / relation tabs) with numbering — agent
 - [x] Owner seed-batch approval for Rakhi — owner (approved Aug 26)
@@ -44,9 +45,30 @@
 - [ ] Submit sitemap in GSC — owner/agent  ⏳ REMAINING
 
 ## Analytics & Monetization (post-launch)
-- [x] Cookieless event endpoint stub — agent
+- [x] ~~Cookieless event endpoint stub~~ — removed 2026-08-27: it 404'd on this static (non-SSR)
+  Cloudflare Pages deploy and never actually recorded anything; see HANDOVER.md §2 — agent
 - [ ] Cloudflare Web Analytics enabled (beacon) — agent  ⏳ REMAINING
 - [ ] AdSense application — owner (apply ~mid-Sep)  ⏳ REMAINING
+
+### AdSense application — next steps
+- [ ] Owner: review Google's AdSense program policies/eligibility (original content, clear nav, privacy
+  policy) — this site already has about/contact/privacy/disclaimer pages, so should qualify
+- [ ] Owner: submit application at adsense.google.com for `festivalwishesindia.com`
+- [ ] Owner: hand the agent Google's site-ownership verification snippet (meta tag or JS) once issued
+- [ ] Agent: wire the verification snippet into `BaseLayout.astro`'s `<head>`
+- [ ] Owner: wait for Google's review (can take anywhere from a few days to a few weeks)
+- [ ] Owner: once approved, get the Publisher ID (`pub-XXXXXXXXXXXXXXXX`) and per-slot ad unit IDs from
+  the AdSense dashboard
+- [ ] Agent: add `public/ads.txt` with the `google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0`
+  line (exact Publisher ID from owner)
+- [ ] Agent: replace `AdSlot.astro`'s placeholder with the real AdSense loader script (`<head>`) and
+  `<ins class="adsbygoogle">` markup, targeting the existing `data-ad-slot` names (`hub-top`,
+  `hub-bottom`, `collection-top`, `collection-bottom`) — the toggle scaffold already exists, this is
+  the only code change needed
+- [ ] Agent: set `PUBLIC_ADS_ENABLED=true` in the Cloudflare Pages project's production env vars
+- [ ] Owner: spot-check ad placement doesn't resemble/overlap the Copy/Download/Share buttons, per
+  `agent-rules/publish-checklist.md`'s "ad slots do not resemble download or share controls" rule
+
 - [ ] AdSense approval + ads enabled — future  ⏳ REMAINING
 - [ ] Diwali festival content + Amazon Associates gift guides — future  ⏳ REMAINING
 

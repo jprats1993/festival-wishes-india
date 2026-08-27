@@ -36,6 +36,7 @@ const wishes = allWishes
   .sort((a, b) => a.data.id.localeCompare(b.data.id));
 
 const popularWishes = wishes.filter((w) => popularWishIds.includes(w.data.id));
+const wishNumbers = new Map(wishes.map((w, i) => [w.data.id, i + 1]));
 
 const relationTabs = [
   { slug: 'brother-wishes', label: { en: 'Brother', hi: 'भाई', hinglish: 'Bhai' } },
@@ -133,26 +134,26 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString();
 
   <!-- All wishes -->
   <section data-panel="all" class="grid gap-6 md:grid-cols-2">
-    {wishes.map((w, i) => (
+    {wishes.map((w) => (
       <WishCard
         id={w.data.id}
         text={w.data.languages[locale]}
         locale={locale}
         pageUrl={pageUrl}
-        number={i + 1}
+        number={wishNumbers.get(w.data.id)}
       />
     ))}
   </section>
 
   <!-- Popular wishes -->
   <section data-panel="popular" class="grid gap-6 md:grid-cols-2" hidden>
-    {popularWishes.map((w, i) => (
+    {popularWishes.map((w) => (
       <WishCard
         id={w.data.id}
         text={w.data.languages[locale]}
         locale={locale}
         pageUrl={pageUrl}
-        number={i + 1}
+        number={wishNumbers.get(w.data.id)}
       />
     ))}
   </section>

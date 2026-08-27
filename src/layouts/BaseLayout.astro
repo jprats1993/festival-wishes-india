@@ -13,8 +13,9 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, locale, alternateUrls = {}, image = '/og-default.jpg', noindex = false } = Astro.props;
+const { title, description, locale, alternateUrls = {}, image = '/og-default.png', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL(image, Astro.site).toString();
 const langAttr = localeBcp47[locale];
 ---
 
@@ -44,14 +45,14 @@ const langAttr = localeBcp47[locale];
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL('/og-default.svg', Astro.site).toString()} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content={langAttr} />
     
     {/* Twitter */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL('/og-default.svg', Astro.site).toString()} />
+    <meta name="twitter:image" content={ogImage} />
     
     <ClientRouter />
   </head>

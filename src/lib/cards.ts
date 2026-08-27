@@ -36,20 +36,6 @@ export const cards: Card[] = [
     "text": "प्यारे भाई, इस राखी पर आपके सुख, सफलता और स्वास्थ्य की कामना करती हूँ।"
   },
   {
-    "id": "rakhi-hinglish-1",
-    "lang": "hinglish",
-    "src": "/images/rakhi/cards/rakhi-hinglish-1.webp",
-    "alt": "Happy Raksha Bandhan! Bhai-behen ka pyaar hamesha bana rahe.",
-    "text": "Happy Raksha Bandhan! Bhai-behen ka pyaar hamesha bana rahe."
-  },
-  {
-    "id": "rakhi-hinglish-2",
-    "lang": "hinglish",
-    "src": "/images/rakhi/cards/rakhi-hinglish-2.webp",
-    "alt": "Pyaare bhai, is Rakhi pe aapke sukh aur safalta ki dua karti hoon.",
-    "text": "Pyaare bhai, is Rakhi pe aapke sukh aur safalta ki dua karti hoon."
-  },
-  {
     "id": "rakhi-en-3",
     "lang": "en",
     "src": "/images/rakhi/cards/rakhi-en-3.webp",

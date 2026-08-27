@@ -68,7 +68,8 @@ src/
 | `[locale]/privacy.astro` | `/en/privacy/`, … | Privacy policy (analytics/ads/affiliate disclosures). |
 | `[locale]/disclaimer.astro` | `/en/disclaimer/`, … | Disclaimer (dates/regional-customs caveats). |
 | `robots.txt.ts` | `/robots.txt` | Emits `User-agent: *` + sitemap pointer. |
-| `api/event.ts` | `/api/event` | POST endpoint — analytics event stub (logs in dev, no-op in prod). |
+> Note: `api/event.ts` (a POST analytics stub) was removed 2026-08-27 — it 404'd in production
+> because this is a static (non-SSR) deploy, so it never actually worked. See HANDOVER.md §2.
 
 ### 2.2 `src/components/`
 
@@ -76,7 +77,7 @@ src/
 |---|---|
 | `BaseLayout.astro` | (lives in `layouts/`, listed here for clarity) |
 | `WishCard.astro` | Renders a single wish (`<blockquote>` + number) and embeds a `ShareBar`. |
-| `ShareBar.astro` | Copy / Download / native-share / WhatsApp-fallback buttons; client JS handles clipboard, Web Share API, and fires `/api/event` tracking. |
+| `ShareBar.astro` | Copy / Download / native-share / WhatsApp-fallback buttons; client JS handles clipboard and the Web Share API (no analytics tracking — the `/api/event` call was removed, see note above). |
 | `LanguageSwitcher.astro` | Pill-style EN / हिन्दी / Hinglish switcher using `alternateUrls`. |
 | `AdSlot.astro` | Placeholder ad slot; shows a house-promo unless `PUBLIC_ADS_ENABLED=true`. |
 
@@ -176,7 +177,7 @@ and the owner must explicitly approve a new festival's first seed batch.
 |---|---|
 | `validate-content.mjs` | Content validator (`npm run validate`): checks every wish/festival JSON has required fields, each of the three languages is present and non-trivial, `source === "original"`, and no duplicate wish IDs. Exits non-zero on any error. |
 | `check-links.mjs` | Static dead-link / missing-asset checker (`npm run check:links`): walks every HTML file in `dist/`, resolves internal `href`/`src`, and verifies the target file exists. Skips external URLs, `mailto:`/`tel:`/`#`, and `/api/` endpoints. |
-| `card-specs.json` | Card-generation input: the 8 language-tagged card texts (`id`, `lang`, `text`). |
+| `card-specs.json` | Card-generation input: the 8 language-tagged card texts (`id`, `lang`, `text`) — note the live registry (`cards.ts`) now has 9 cards total; `card-specs.json` predates the `hinglish-3/4/5` batch and doesn't include them. |
 | `card-wish-ids.json` | List of wish IDs selected for card generation. |
 | `wish-assignments.json` | Seed-batch mapping of wish `id` → `numeric_id`, `relation`, and `tones` used to generate the initial wish set. |
 
@@ -192,7 +193,7 @@ and the owner must explicitly approve a new festival's first seed batch.
 | `_redirects` | Cloudflare Pages redirect rules: `rakhiwishes.in/* → festivalwishesindia.com/:splat` (301). |
 | `favicon.ico`, `favicon.svg` | Site favicons (referenced from `BaseLayout`). |
 | `og-default.svg` | Default Open Graph / social-share image. |
-| `images/rakhi/cards/*.webp` | 8 language-tagged shareable card images (`rakhi-en-1/2/3`, `rakhi-hi-1/2/3`, `rakhi-hinglish-1/2`). |
+| `images/rakhi/cards/*.webp` | 9 language-tagged shareable card images (`rakhi-en-1/2/3`, `rakhi-hi-1/2/3`, `rakhi-hinglish-3/4/5`). |
 
 Everything in `public/` is copied verbatim to the site root of the build output.
 
@@ -245,7 +246,6 @@ All routes are locale-prefixed (`prefixDefaultLocale: true`). BCP-47: `hinglish 
 | `/{locale}/{festival}/{collection}/` | `[locale]/[festival]/[collection].astro` | Collection page (relation-filtered). |
 | `/{locale}/about\|contact\|privacy\|disclaimer/` | `[locale]/*.astro` | Trust/static pages. |
 | `/robots.txt` | `robots.txt.ts` | Robots file. |
-| `/api/event` | `api/event.ts` | Analytics event endpoint (POST). |
 
 - **Collection slugs** come from `src/lib/collections.ts`: `short-wishes`, `brother-wishes`,
   `sister-wishes`, `bhaiya-bhabhi-wishes`, `whatsapp-messages`, `family-wishes`,

@@ -3,8 +3,11 @@
 > **Cold-start handover.** A fresh chat/model/harness on THIS SAME MACHINE should be able to
 > resume the project from this document alone, with zero prior context.
 >
-> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `4d47d97f1cca6fdd718a29433abb9765f448258e`
-> (`4d47d97`, "docs: refresh HANDOVER.md HEAD…") · **Branch:** `main` · **27 commits** · working tree clean.
+> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `6822a0e965cc4d67d46945d5fce2bfea449eaa99`
+> (`6822a0e`, "docs: correct handover known-deviations note") · **Branch:** `main` · **27 commits**.
+> **Working tree is currently DIRTY** — a round of bug fixes (§2 "Fixed this session") is applied on
+> disk but not yet committed; run `git status`/`git diff` for the exact file list before trusting any
+> "clean"/commit-count claim elsewhere in this document.
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -35,9 +38,11 @@
 - **Astro 7 static site, live** at `festivalwishesindia.com` (deployed 2026-08-26 evening).
 - **51 Rakhi wishes**, each in `en` + `hi` (Devanagari) + `hinglish` (Roman). All 51 are
   `reviewStatus: "approved"`, `reviewedBy: "reviewer-agent"`, `source: "original"`.
-- **11 card images** (WebP) in `public/images/rakhi/cards/`: `rakhi-en-1/2/3`,
-  `rakhi-hi-1/2/3`, `rakhi-hinglish-1/2/3/4/5`. (Single-language cards only; cards are decoupled
-  from wish JSONs and driven by the `src/lib/cards.ts` registry.)
+- **9 card images** (WebP) in `public/images/rakhi/cards/`: `rakhi-en-1/2/3`,
+  `rakhi-hi-1/2/3`, `rakhi-hinglish-3/4/5`. (Single-language cards only; cards are decoupled
+  from wish JSONs and driven by the `src/lib/cards.ts` registry. The original `hinglish-1/2` cards
+  were retired 2026-08-27 in favor of the better-aligned `hinglish-3/4/5` set — see "Fixed this
+  session" below.)
 - **Tabbed wish listing** on the festival hub: "All wishes (51)" / "Popular (12)" / relation tabs,
   with per-card `#n` numbering.
 - **CI pipeline** — `npm run ci` = `validate` + `build` + `check:links`. **Verified green** today:
@@ -51,9 +56,32 @@
 - **Trust/compliance pages** (`/en|hi|hinglish/about|contact|privacy|disclaimer`), AI-assist
   disclosure in footer, sitemap (`sitemap-index.xml`), `robots.txt`, OG image, hreflang + canonical.
 
+### ✅ Fixed this session (2026-08-27, uncommitted — see dirty-tree note above)
+- Removed the dead `src/pages/api/event.ts` analytics stub and the client-side `fetch('/api/event', …)`
+  calls in `ShareBar.astro`. On a static (non-SSR) Cloudflare Pages deploy a POST-only route can't
+  actually be served, so every call was silently 404-ing — no analytics were ever really recorded.
+- Fixed the sitemap `filter` in `astro.config.mjs`: it used to match literal `/thin-`/`/search`
+  substrings that don't exist anywhere in this site's URLs, so thin/`noindex` collection pages (e.g.
+  `parent-wishes`) still shipped in `sitemap-0.xml`. It now recomputes the same threshold the page
+  itself uses (`NOINDEX_THRESHOLD` in `src/lib/collections.ts`) and excludes them for real.
+- `short-wishes` and `whatsapp-messages` were unfiltered — both rendered all 51 wishes, identical to
+  the "All wishes" tab. They now filter on `tones: ["short"]` (37/51) and `formats: ["status"]`
+  (20/51) respectively, via new `collectionToneMap`/`collectionFormatMap` in `collections.ts`.
+- Native share cancel (`AbortError` from closing the OS share sheet) no longer force-opens a WhatsApp
+  fallback popup in `ShareBar.astro` — only a real share failure does.
+- Wish `#n` numbering is now globally consistent: relation-tab collection pages show the badge
+  (previously missing entirely), and the hub's "Popular" tab shows each wish's real position in the
+  full list instead of its position within the small popular subset.
+- `og:image`/`twitter:image` now point to a real PNG (`public/og-default.png`, rasterized from the
+  existing `og-default.svg` via `sharp`) instead of an SVG — WhatsApp/Facebook/X link-preview
+  scrapers generally don't render SVG for these tags, so shared links likely had no thumbnail before.
+  The previously dead `image` prop on `BaseLayout.astro` is now actually wired through.
+- Retired the 2 older Hinglish card images (`rakhi-hinglish-1/2.webp`) and their `cards.ts`/
+  `card-specs.json` entries, keeping the 3 newer, alignment-verified ones (`hinglish-3/4/5`).
+
 ### 🟡 Partially complete
-- **Analytics**: `src/pages/api/event.ts` is a cookieless **no-op stub** (POST only; logs in dev,
-  `{ok:true}` in prod). **Cloudflare Web Analytics beacon is NOT wired.** Privacy copy already
+- **Analytics**: none. The former `/api/event` stub (see above) is gone. **Cloudflare Web Analytics
+  beacon is still NOT wired** — that remains the real path to analytics. Privacy copy already
   discloses analytics.
 - **Card ↔ wish coupling**: schema has `imageAssets`/`altText` on wishes, but no wish file uses
   them — cards live independently in `cards.ts` (intentional).
@@ -84,14 +112,13 @@ consistency → `1807a85` 3 more Hinglish cards → `e80aaa1` cache headers.
    + `typescript`, which are absent from `package.json` (see §9).
 4. `humanReviewedSeed: false` on all 51 wishes, even though owner seed approval was recorded in
    `CHECKLIST.md`/`fa9cdd4` — flags not flipped (open question, §11).
-5. Build emits a benign `[WARN] No API Route handler exists for "GET" /api/event (handlers: POST)`.
 
 ### Content coverage (festival × language)
 - **Festivals:** `rakhi` only (1 festival file). No Diwali/Holi/Dussehra/Navratri content yet.
 - **Languages:** every wish carries `en`, `hi`, `hinglish`; `hi` is Devanagari (verified 51/51).
 - **Relation distribution (51):** brother **19** · sister **13** · bhaiya-bhabhi **7** · family **7** ·
   friend **3** · parent **2**.
-- **Cards (11):** English 3 · Hindi 3 · Hinglish 5. Cards are single-language, never mixed-script.
+- **Cards (9):** English 3 · Hindi 3 · Hinglish 3. Cards are single-language, never mixed-script.
 
 ---
 
@@ -127,7 +154,6 @@ consistency → `1807a85` 3 more Hinglish cards → `e80aaa1` cache headers.
 | `[locale]/[festival]/[collection].astro` | `/en/rakhi/brother-wishes/` … | Relation-filtered collection page (`noindex` when <3 results) |
 | `[locale]/{about,contact,privacy,disclaimer}.astro` | trust pages | Legal/info pages, per-locale copy |
 | `robots.txt.ts` | `/robots.txt` | `User-agent: *` + sitemap pointer |
-| `api/event.ts` | `POST /api/event` | Analytics event stub (no-op) |
 
 ### `src/components/`
 `WishCard.astro` (wish `<blockquote>` + `#n` + embedded `ShareBar`) · `ShareBar.astro` (copy/download/

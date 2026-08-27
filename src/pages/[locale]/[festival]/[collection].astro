@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WishCard from '../../../components/WishCard.astro';
 import AdSlot from '../../../components/AdSlot.astro';
-import { collections } from '../../../lib/collections';
+import { collections, NOINDEX_THRESHOLD } from '../../../lib/collections';
 import { locales, localeLabels, isLocale } from '../../../lib/i18n';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
@@ -32,12 +32,23 @@ if (!festival) {
 }
 
 const allWishes = await getCollection('wish');
+const festivalWishes = allWishes
+  .filter((w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved')
+  .sort((a, b) => a.data.id.localeCompare(b.data.id));
+const wishNumbers = new Map(festivalWishes.map((w, i) => [w.data.id, i + 1]));
+
 const relations = collections.getRelationsForCollection(collection) || [];
-let filtered = allWishes.filter(
-  (w) => w.data.festival === festivalSlug && w.data.reviewStatus === 'approved'
-);
+const tone = collections.getToneForCollection(collection);
+const format = collections.getFormatForCollection(collection);
+let filtered = festivalWishes;
 if (relations.length > 0) {
   filtered = filtered.filter((w) => w.data.relations.some((r) => relations.includes(r)));
+}
+if (tone) {
+  filtered = filtered.filter((w) => w.data.tones.includes(tone as (typeof w.data.tones)[number]));
+}
+if (format) {
+  filtered = filtered.filter((w) => w.data.formats.includes(format as (typeof w.data.formats)[number]));
 }
 
 const pageUrl = new URL(`/${locale}/${festivalSlug}/${collection}/`, Astro.site).toString();
@@ -105,7 +116,7 @@ const alternateUrls = Object.fromEntries(
 ) as Record<typeof locale, string>;
 
 // noindex if collection is too thin
-const noindex = filtered.length < 3;
+const noindex = filtered.length < NOINDEX_THRESHOLD;
 ---
 
 <BaseLayout
@@ -142,6 +153,7 @@ const noindex = filtered.length < 3;
           pageUrl={pageUrl}
           imageUrl={w.data.imageAssets?.square}
           alt={w.data.altText?.[locale]}
+          number={wishNumbers.get(w.data.id)}
         />
       ))}
     </div>
