@@ -75,22 +75,36 @@
   into the page — checked `/en/`, `/en/rakhi/`, `/hi/rakhi/` live HTML and confirmed no
   `cloudflareinsights.com` script is present, which is expected/correct for automatic mode, not a
   defect. Not independently verifiable via curl/DNS; taken on owner's word.
-- **Homepage festival header banners, commit `093ac69` (deployed to production):** each tile on the
-  `/{locale}/` festival-picker grid now shows an illustrated header banner above its title — Rakhi
-  (a sister tying a rakhi on her brother's wrist), Diwali (diya, string lights, sparkler, anar
-  cracker, laddoo + barfi), Dussehra (Rama's arrow mid-flight at the ten-headed, already-burning
-  Ravana effigy). All original SVG artwork — stock image sites were checked and rejected (nothing
-  free/unlicensed exists for this subject; every result required attribution or payment, which
-  `agent-rules/content-policy.md` doesn't allow for unattributed use). No text is baked into the
-  images, so one asset per festival works unchanged across all 3 locales. Went through owner review
-  rounds before sign-off: abstract icon-only mockups → full illustrated scenes → the Rakhi scene
-  specifically was simplified to faceless silhouettes after the owner found the illustrated
-  kids "disconcerting," then two further attempts at giving the silhouettes differentiated
-  hairstyles both read *worse* (one looked like a dark mask across her face) and were reverted —
-  final Rakhi art uses color/garment-shape only to differentiate the two figures, no hair detail.
-  Source SVGs: `scripts/banners/*.svg`; rendered via `scripts/generate-banners.mjs` (same
-  SVG→headless-Chrome→WebP pipeline as `generate-cards.mjs`, at 2x scale for a crisp 1600×1000
-  WebP) to `public/images/{festival}/banner.webp`.
+- **Homepage festival header banners, commits `093ac69` → `a0547d2` (deployed to production):**
+  each tile on the `/{locale}/` festival-picker grid shows an illustrated header banner above its
+  title — Rakhi (a sister tying a rakhi on her brother's wrist), Diwali (a family with sparklers,
+  fireworks, rangoli, and sweets), Dussehra (Rama's arrow mid-flight at the ten-headed, fireworks-lit
+  Ravana effigy). No text baked into any image, so one asset per festival works unchanged across all
+  3 locales.
+  - **First pass (`093ac69`):** hand-authored original SVG artwork (SVG→headless-Chrome→WebP,
+    matching the greeting-card pipeline) — stock image sites were checked and rejected first (nothing
+    free/unlicensed exists for this subject; every result required attribution or payment, which
+    `agent-rules/content-policy.md` doesn't allow for unattributed use). Went through several owner
+    review rounds: abstract icon-only mockups → full illustrated scenes → the Rakhi scene simplified
+    to faceless silhouettes after the owner found illustrated kids "disconcerting," then two further
+    hairstyle-differentiation attempts that both read *worse* and were reverted.
+  - **Replaced in `a0547d2`:** the owner separately generated higher-quality illustrated artwork
+    (via Claude Code Desktop's image tool — confirming that surface *does* have image generation,
+    unlike this CLI session) for all three festivals and asked for a quality comparison; the new
+    art was clearly better (real illustrated figures vs. flat silhouettes/icons) and replaced the
+    SVG set entirely. The owner's first Dussehra draft had bilingual text burned into the artwork
+    ("DUSSEHRA - VIJAYADASHAMI" / "दशहरा - विजयदशमी" in two separate corners, not croppable without
+    losing the main figures) — regenerated without text rather than accepted as-is, to preserve the
+    locale-agnostic-image convention. `scripts/banners/*.svg` and `scripts/generate-banners.mjs`
+    were deleted (superseded; kept-around risked a future re-run silently reintroducing the worse
+    art). **No in-repo source/script for these anymore** — they're committed directly as
+    `public/images/{festival}/banner.webp` (JPG→WebP, quality 90, native ~1376×768). If they ever
+    need edits, that has to happen outside this repo and the WebP re-committed.
+  - **Caching caveat:** `/images/*` is unhashed-path, 1-day-cached (`public/_headers`) — a CDN edge
+    or browser that already cached the old banner bytes will keep serving them for up to 24h after a
+    banner update, even though the origin serves the new file immediately (verified via a
+    cache-busting query param post-deploy). Not a bug, just worth knowing if a "the image didn't
+    change" report comes in shortly after a banner swap.
 - **Diwali + Dussehra launch, commits `f766d5c` + `82fff8f` (deployed to production):**
   - Added `src/content/festival/diwali.json` and `dussehra.json` — dates researched from
     drikpanchang.com (Diwali `2026-11-08`, Dussehra `2026-10-20`), recorded as
@@ -266,8 +280,9 @@ was duplicated between the hub and collection pages before) · `cards.ts` (27-ca
 ### `public/`
 `_headers` (cache policy) · `_redirects` (⚠️ stale) · `favicon.ico`/`favicon.svg` · `og-default.svg` ·
 `og-default.png` (rasterized OG image, added `b96f1dc`) · `images/{rakhi,diwali,dussehra}/cards/*.webp`
-(9 cards each, 27 total) · `images/{rakhi,diwali,dussehra}/banner.webp` (new 2026-08-27, commit
-`093ac69` — one 1600×1000 homepage header banner per festival, text-free/locale-agnostic).
+(9 cards each, 27 total) · `images/{rakhi,diwali,dussehra}/banner.webp` (one ~1376×768 homepage
+header banner per festival, text-free/locale-agnostic; owner-supplied AI-generated artwork as of
+commit `a0547d2`, no in-repo source — see §2).
 
 ### `agent-rules/`
 Governance source of truth — `content-policy.md`, `editorial-style.md`, `festival-rules.md`
@@ -281,12 +296,10 @@ instruction for the two new festivals), `publish-checklist.md` (see §5).
 `generate-hinglish-cards.mjs` (original, Rakhi-only, still used for its 3 existing Hinglish cards —
 untouched) · `generate-cards.mjs` (new 2026-08-27 — generalized, festival-parameterized version used
 for all of Diwali's and Dussehra's cards, and any future festival's; exports `generateCards()` +
-`THEMES`) · `generate-banners.mjs` (new 2026-08-27, commit `093ac69` — renders `banners/*.svg` to
-`public/images/{festival}/banner.webp` via the same headless-Chrome pipeline, at 2x scale) ·
-`banners/{rakhi,diwali,dussehra}.svg` (source artwork for the homepage banners — hand-authored, not
-generated from a text/theme system like the greeting cards, since each is a unique illustrated
-scene) · `card-specs.json` · `card-wish-ids.json` · `wish-assignments.json` (authoring-time inputs
-only, not consumed at build).
+`THEMES`) · `card-specs.json` · `card-wish-ids.json` · `wish-assignments.json` (authoring-time inputs
+only, not consumed at build). (A `generate-banners.mjs` + `banners/*.svg` pair briefly existed for
+the homepage banners, commit `093ac69` — deleted in `a0547d2` once owner-supplied artwork replaced
+that SVG version; see §2. The homepage banners now have no in-repo source/script at all.)
 
 ### ⚠️ Sensitive / high-signal files — read before touching
 `agent-rules/*` (governance) · `src/content.config.ts` (schemas — changing a field breaks every JSON) ·
@@ -395,11 +408,11 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
   confirms `## main...origin/main` with no ahead/behind markers).
-- **HEAD:** `7ee6c8c409a3ea80a722f9cdfd6c1be0c7ba013e` (`7ee6c8c` "docs: log 093ac69 deploy in
-  deployment-notes.md").
+- **HEAD:** `a0547d29cead6636db6f804ed52650656389fb61` (`a0547d2` "feat: replace SVG homepage banners
+  with AI-illustrated artwork").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 50.
+- **Commit count:** 52.
 - **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
@@ -503,23 +516,26 @@ Run/confirm these before signing off or deploying:
   rather than through that skill).
 - **Date:** 2026-08-27 (IST).
 - **Last verified commit:** see §8 (not restated here — single canonical record).
-- **Deployment verified by:** two production deploys since the last sync, both this session —
-  `82fff8f` (Diwali + Dussehra launch, preview `57b918ec`, verified via `curl` — `200` on
-  `/en/diwali/`, `/en/dussehra/`, `/hi/dussehra/spouse-wishes/`; "All wishes (50)" present on
-  `/en/diwali/`) and `093ac69` (homepage festival banners, preview `be356eb3`, verified via `curl` —
-  `200` on all 3 `banner.webp` URLs, and their `<img src>` present in `/en/`'s HTML). Both logged in
-  `deployment-notes.md`. This sync additionally re-verified the local repo/build state (`npm run ci`)
-  and re-derived wish/card/relation counts from source for all 3 festivals.
+- **Deployment verified by:** three production deploys since the last full doc sync, all this
+  session — `82fff8f` (Diwali + Dussehra launch, preview `57b918ec`), `093ac69` (first-pass SVG
+  homepage banners, preview `be356eb3`), and `a0547d2` (owner-supplied AI-illustrated banners
+  replacing the SVG set, preview `67bcb761` — verified via a **cache-busting** `curl` query param
+  against all 3 `banner.webp` URLs, since `/images/*`'s 1-day cache meant an un-busted `curl` right
+  after deploy still returned the old SVG-era byte sizes; `cf-cache-status: MISS` + correct size
+  confirmed the origin was actually updated). All three logged in `deployment-notes.md`. This sync
+  additionally re-verified the local repo/build state (`npm run ci`) and re-derived wish/card/relation
+  counts from source for all 3 festivals.
 - **Known deviations from older docs:** none intentional — `HANDOVER.md` and `CHECKLIST.md` were both
   updated this pass to agree with current HEAD (§8) on all live facts (wish/card counts, relation
   distribution, cards.ts registry, `spouse-wishes` collection, `src/lib/relations.ts`,
-  `scripts/generate-cards.mjs`/`generate-banners.mjs`, and the owner's seed-batch approval + banner
-  sign-off, both recorded this session outside a formal sync pass and reconciled here). `STRUCTURE.md`
-  **was** updated this pass too — real files were added (`scripts/banners/*.svg`,
-  `generate-banners.mjs`, `public/images/*/banner.webp`), which is exactly the structural-change
-  trigger the retired `/handover-sync` skill's Step 4 used to gate a `STRUCTURE.md` touch; that same
-  judgment call applies here even done by hand. `privacy.astro`'s stale `/api/event` reference (known
-  defect 5) is still unfixed — not touched this pass, still open.
+  `scripts/generate-cards.mjs`, and the owner's seed-batch approval + two rounds of banner sign-off,
+  all recorded across this session outside a formal sync pass and reconciled here). `STRUCTURE.md`
+  **was** updated this pass too, in both directions — `scripts/banners/*.svg` and
+  `generate-banners.mjs` were **removed** (not just added) once the owner's AI-illustrated artwork
+  replaced that pipeline entirely, which is exactly the structural-change trigger the retired
+  `/handover-sync` skill's Step 4 used to gate a `STRUCTURE.md` touch (a deletion counts the same as
+  an addition); that same judgment call applies here even done by hand. `privacy.astro`'s stale
+  `/api/event` reference (known defect 5) is still unfixed — not touched this pass, still open.
 - **Recommended next 3 actions:**
   1. **Owner:** sanity-check the two researched Diwali/Dussehra dates against drikpanchang.com or
      another source — the seed-batch content approval itself is done (2026-08-27), but the dates

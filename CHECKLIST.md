@@ -1,10 +1,10 @@
 # Festival Wishes India — Launch Checklist
 
 > Shared tracker. Agent updates `[agent]` rows; owner updates `[owner]` rows.
-> Last updated: 2026-08-27 (homepage festival banners deployed, commit `093ac69`)
+> Last updated: 2026-08-27 (homepage banners replaced with owner-supplied AI art, commit `a0547d2`)
 
 **Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; latest
-redeploy 2026-08-27, commit `093ac69` — see HANDOVER.md §2).
+redeploy 2026-08-27, commit `a0547d2` — see HANDOVER.md §2).
 `rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards).
 **Diwali and Dussehra 2026 content is deployed and owner-approved** (50 wishes + 9 cards each,
 seed-batch approval given 2026-08-27 — see "Content — Diwali & Dussehra 2026" below and
@@ -53,12 +53,18 @@ HANDOVER.md §11). The researched festival dates themselves are still unconfirme
 
 ## Homepage
 - [x] Illustrated header banner per festival (Rakhi, Diwali, Dussehra) on the `/{locale}/` festival
-  grid — agent (2026-08-27, commit `093ac69`). Original SVG artwork (no stock images — nothing
-  free/unlicensed existed for this subject; content-policy.md doesn't allow unattributed use of
-  attribution-required stock), no text baked in so one image works across all 3 locales. Went
-  through 2 owner review rounds (abstract icons → full illustrated scenes → faceless
-  silhouette treatment for Rakhi after two more-detailed hairstyle attempts read worse) before
-  sign-off. Source: `scripts/banners/*.svg`, rendered via `scripts/generate-banners.mjs`.
+  grid — no text baked in, so one image works across all 3 locales.
+  - First pass — agent (2026-08-27, commit `093ac69`): hand-authored SVG artwork (no stock images —
+    nothing free/unlicensed existed for this subject; content-policy.md doesn't allow unattributed
+    use of attribution-required stock). Went through 2 owner review rounds (abstract icons → full
+    illustrated scenes → faceless silhouette treatment for Rakhi after two more-detailed hairstyle
+    attempts read worse) before sign-off.
+  - Replaced — owner (2026-08-27, commit `a0547d2`): owner generated notably higher-quality
+    illustrated artwork via Claude Code Desktop's image tool and asked for a comparison; agent
+    confirmed it was better and swapped it in wholesale, deleting the now-superseded
+    `scripts/banners/*.svg` + `generate-banners.mjs`. Owner's Dussehra draft had bilingual text
+    baked in — regenerated without text rather than accepted or cropped. **No in-repo source for
+    the banners anymore** — committed directly as `public/images/{festival}/banner.webp`.
 
 ## Trust & Compliance
 - [x] About page — agent
