@@ -1,10 +1,19 @@
 ---
+import type { Locale } from '../lib/i18n';
+
 interface Props {
   slotName: string;
+  locale?: Locale;
 }
 
-const { slotName } = Astro.props;
+const { slotName, locale = 'en' } = Astro.props;
 const adsEnabled = import.meta.env.PUBLIC_ADS_ENABLED === 'true';
+
+const housePromo: Record<Locale, string> = {
+  en: '✨ Find more festival wishes and cards in our curated collections.',
+  hi: '✨ हमारे संकलनों में और भी त्योहार की शुभकामनाएँ और कार्ड देखें।',
+  hinglish: '✨ Hamare curated collections mein aur bhi festival wishes aur cards dekhein.',
+};
 ---
 
 <div class="ad-slot my-6 p-4 bg-stone-100 rounded-lg border border-stone-200 text-center" data-ad-slot={slotName}>
@@ -15,7 +24,7 @@ const adsEnabled = import.meta.env.PUBLIC_ADS_ENABLED === 'true';
     </div>
   ) : (
     <div class="house-promo text-sm text-stone-600">
-      <p>✨ Find more festival wishes and cards in our curated collections.</p>
+      <p>{housePromo[locale]}</p>
     </div>
   )}
 </div>

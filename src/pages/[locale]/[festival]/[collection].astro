@@ -177,7 +177,7 @@ const noindex = filtered.length < NOINDEX_THRESHOLD;
     ))}
   </div>
 
-  <AdSlot slotName="collection-top" />
+  <AdSlot slotName="collection-top" locale={locale} />
 
   {filtered.length === 0 ? (
     <p class="text-stone-600 text-center py-8">{emptyMessage}</p>
@@ -197,5 +197,5 @@ const noindex = filtered.length < NOINDEX_THRESHOLD;
     </div>
   )}
 
-  <AdSlot slotName="collection-bottom" />
+  <AdSlot slotName="collection-bottom" locale={locale} />
 </BaseLayout>

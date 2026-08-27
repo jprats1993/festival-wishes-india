@@ -88,7 +88,7 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString();
     <p class="text-stone-600 max-w-2xl mx-auto">{copy.subtitle}</p>
   </div>
 
-  <AdSlot slotName="hub-top" />
+  <AdSlot slotName="hub-top" locale={locale} />
 
   {festivalCards.length > 0 && (
     <>
@@ -159,7 +159,7 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString();
     ))}
   </section>
 
-  <AdSlot slotName="hub-bottom" />
+  <AdSlot slotName="hub-bottom" locale={locale} />
 </BaseLayout>
 
 <script>

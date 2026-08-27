@@ -72,10 +72,10 @@ const langAttr = localeBcp47[locale];
     <footer class="border-t border-stone-200 bg-white mt-auto">
       <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-stone-600">
         <div class="flex flex-wrap gap-4 justify-center">
-          <a href={`/${locale}/about/`} class="hover:text-rose-700">{locale === 'hi' ? 'हमारे बारे में' : locale === 'hinglish' ? 'About' : 'About'}</a>
-          <a href={`/${locale}/contact/`} class="hover:text-rose-700">Contact</a>
-          <a href={`/${locale}/privacy/`} class="hover:text-rose-700">Privacy</a>
-          <a href={`/${locale}/disclaimer/`} class="hover:text-rose-700">Disclaimer</a>
+          <a href={`/${locale}/about/`} class="hover:text-rose-700">{locale === 'hi' ? 'हमारे बारे में' : 'About'}</a>
+          <a href={`/${locale}/contact/`} class="hover:text-rose-700">{locale === 'hi' ? 'संपर्क करें' : 'Contact'}</a>
+          <a href={`/${locale}/privacy/`} class="hover:text-rose-700">{locale === 'hi' ? 'गोपनीयता नीति' : 'Privacy'}</a>
+          <a href={`/${locale}/disclaimer/`} class="hover:text-rose-700">{locale === 'hi' ? 'अस्वीकरण' : 'Disclaimer'}</a>
         </div>
         <p class="text-center mt-4">© {new Date().getFullYear()} Festival Wishes India. AI-assisted editorial content. Wishes are original — see our <a href={`/${locale}/about/`} class="hover:text-rose-700">editorial policy</a>.</p>
       </div>
