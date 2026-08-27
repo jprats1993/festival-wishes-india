@@ -28,10 +28,10 @@ zero prior context — ground yourself in the on-disk files before touching anyt
 3. If HANDOVER.md looks stale (its §8 HEAD SHA doesn't match `git log -1`, or
    it's been a while since "Prepared:"), refresh it before trusting its facts. The
    runbook for this is at:
-   /Users/varshajain/festival-wishes-india/.claude/skills/handover-sync/SKILL.md
-   It's plain markdown, not Claude-specific — any agent with shell + file-edit access
-   can open it and follow Steps 1-5 directly. (In Claude Code specifically, it's also
-   wired up as the `/handover-sync` skill, invokable by name.) It re-derives every
+   /Users/varshajain/festival-wishes-india/.agents/skills/handover-sync/SKILL.md
+   (and .claude/skills/handover-sync/SKILL.md for Claude Code).
+   It's plain markdown, harness-agnostic — any agent with shell + file-edit access
+   can open it and follow Steps 1-5 directly. It re-derives every
    fact from the live repo and patches CHECKLIST.md to match; only commits if asked.
 
 4. Read the governance rules before generating or editing any content:

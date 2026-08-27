@@ -19,6 +19,8 @@
 
 ```
 festival-wishes-india/
+├── .agents/                # Antigravity/Gemini workspace skills (handover-sync)
+├── .claude/                # Claude Code workspace skills (handover-sync)
 ├── agent-rules/            # Governance & editorial rules for content agents
 ├── public/                 # Static assets copied verbatim to the build output
 ├── scripts/                # Content/card-generation inputs + validation scripts
