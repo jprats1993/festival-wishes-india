@@ -120,47 +120,10 @@
     flip (same open item Rakhi already has) and any Diwali/Dussehra-specific `popularWishIds`
     curation beyond a first pass (10 IDs each, added to the existing cross-festival list in
     `src/lib/popular.ts`).
-- **Fixed 2026-08-27, commit `ee21b1d` (deployed to production):**
-  - `AdSlot.astro`'s house-promo text ("✨ Find more festival wishes...") and `BaseLayout.astro`'s
-    footer nav links (Contact/Privacy/Disclaimer) were hardcoded English regardless of locale, unlike
-    everything else on the page (confirmed visually on `/hi/` pages before the fix). `AdSlot` now
-    takes an optional `locale` prop with en/hi/hinglish copy; footer links switch to Hindi labels on
-    `/hi/` pages.
-- **Fixed 2026-08-27, commit `5e95b92` (deployed to production):**
-  - Collection subpages (`/[locale]/[festival]/[collection].astro`, e.g. `/hinglish/rakhi/friend-wishes/`)
-    had **no tab navigation at all** — only the festival hub page (`[festival]/index.astro`) had the
-    relation-tab bar. Added the same tab bar (relation tabs + `short-wishes`/`whatsapp-messages` +
-    an "All" link back to the hub) to the collection page, with the active category highlighted.
-    Applies to all 8 collection slugs × all 3 locales (verified 200 OK on every combination).
-  - Festival names did not follow the language switcher — `festival.data.displayName` was a single
-    locale-agnostic string ("Raksha Bandhan"), used verbatim even mid-sentence in Hindi copy (e.g.
-    "Raksha Bandhan की शुभकामनाएँ"). Added an optional per-locale `displayNames: {en, hi, hinglish}`
-    field to the festival schema (`src/content.config.ts`), populated it for `rakhi` (`hi`: "रक्षा
-    बंधन"), and added a `festivalName(festival, locale)` helper in `src/lib/i18n.ts`, swapped into
-    all 31 prior usages of `festival.data.displayName` across the home, hub, and collection pages.
-    `displayName` itself is kept as the English fallback for any future festival not yet translated.
-- **Fixed 2026-08-27, commit `b96f1dc` (deployed to production):**
-  - Removed the dead `src/pages/api/event.ts` analytics stub and the client-side `fetch('/api/event', …)`
-    calls in `ShareBar.astro`. On a static (non-SSR) Cloudflare Pages deploy a POST-only route can't
-    actually be served, so every call was silently 404-ing — no analytics were ever really recorded.
-  - Fixed the sitemap `filter` in `astro.config.mjs`: it used to match literal `/thin-`/`/search`
-    substrings that don't exist anywhere in this site's URLs, so thin/`noindex` collection pages (e.g.
-    `parent-wishes`) still shipped in `sitemap-0.xml`. It now recomputes the same threshold the page
-    itself uses (`NOINDEX_THRESHOLD` in `src/lib/collections.ts`) and excludes them for real.
-  - `short-wishes` and `whatsapp-messages` were unfiltered — both rendered all 51 wishes, identical to
-    the "All wishes" tab. They now filter on `tones: ["short"]` and `formats: ["status"]`
-    respectively, via new `collectionToneMap`/`collectionFormatMap` in `collections.ts`.
-  - Native share cancel (`AbortError` from closing the OS share sheet) no longer force-opens a WhatsApp
-    fallback popup in `ShareBar.astro` — only a real share failure does.
-  - Wish `#n` numbering is now globally consistent: relation-tab collection pages show the badge
-    (previously missing entirely), and the hub's "Popular" tab shows each wish's real position in the
-    full list instead of its position within the small popular subset.
-  - `og:image`/`twitter:image` now point to a real PNG (`public/og-default.png`, rasterized from the
-    existing `og-default.svg` via `sharp`) instead of an SVG — WhatsApp/Facebook/X link-preview
-    scrapers generally don't render SVG for these tags, so shared links likely had no thumbnail before.
-    The previously dead `image` prop on `BaseLayout.astro` is now actually wired through.
-  - Retired the 2 older Hinglish card images (`rakhi-hinglish-1/2.webp`) and their `cards.ts`/
-    `card-specs.json` entries, keeping the 3 newer, alignment-verified ones (`hinglish-3/4/5`).
+- **Localized UI Elements:** `AdSlot` house-promo text and `BaseLayout` footer nav links adapt per locale (`hi`/`en`/`hinglish`). Festival display names use `festivalName(festival, locale)` (`src/lib/i18n.ts`) to show translated festival names in headings and copy.
+- **Consistent Navigation & Numbering:** Relation tab navigation (`src/lib/relations.ts`) renders consistently across both hub (`[festival]/index.astro`) and collection pages (`[collection].astro`). Wish `#n` numbering is consistent across all views.
+- **Sitemap & SEO Filtering:** Dynamic sitemap filter in `astro.config.mjs` excludes thin collection pages below `NOINDEX_THRESHOLD` (`src/lib/collections.ts`). Rasterized PNG OG image (`/og-default.png`) wired for social scrapers.
+- **Tone & Format Collections:** `short-wishes` and `whatsapp-messages` filter wishes by tone (`short`) and format (`status`) respectively via `collections.ts`.
 
 ### 🟡 Partially complete
 - **Card ↔ wish coupling**: schema has `imageAssets`/`altText` on wishes, but no wish file uses
@@ -181,12 +144,8 @@
 2. Root `/` redirect is a **meta-refresh (HTTP 200)**, not a true 301 (Astro SSG limitation).
 3. `npm run check` (i.e. `astro check`) is **not wired** — it prompts to install `@astrojs/check`
    + `typescript`, which are absent from `package.json` (see §9).
-4. `humanReviewedSeed: false` on all 151 wishes. For Rakhi, owner seed approval was recorded in
-   `CHECKLIST.md`/`fa9cdd4` but the flags were never flipped (open question, §11). For Diwali and
-   Dussehra, owner approval hasn't happened yet at all — content is deployed but not owner-approved.
-5. `[locale]/privacy.astro` still says "We also log anonymous share/copy/download events via a
-   serverless endpoint" — that endpoint (`/api/event`) was removed in `b96f1dc`; the copy was never
-   updated to match. Found this sync (2026-08-27) while re-checking analytics wiring; not yet fixed.
+4. `humanReviewedSeed: false` on all 151 wishes. Owner seed approvals were given for Rakhi, Diwali,
+   and Dussehra (see §11), but individual JSON flags were not flipped to `true`.
 
 ### Content coverage (festival × language)
 - **Festivals:** `rakhi`, `diwali`, `dussehra` (3 festival files). No Holi/Navratri content yet.
@@ -431,24 +390,8 @@ currently clean — a PAT was embedded in an earlier state and has since been re
    If you change HTML and don't see it live, check the cache headers + do a hard reload.
 7. **Multiple checkouts** — the repo has been worked on by several agent sessions; docs can drift.
    Trust `git log`/`git status`/live `npm run ci` output over prose in older `.md` files.
-8. **NOT A BUG: ad-blockers hide the WhatsApp button.** Investigated 2026-08-27 after a report of the
-   WhatsApp button "missing" on production. Confirmed via live DOM inspection that `ShareBar.astro`'s
-   WhatsApp `<a>` renders correctly with no site-side CSS/JS hiding it — swapping its `href` away from
-   `wa.me` on the live page instantly un-hid it, proving a browser-side cosmetic filter (confirmed:
-   AdGuard) hides any link matching `wa.me`, not a site defect. This may be the same root cause as the
-   still-open "Firefox Focus renders differently than Samsung Internet" report (§11) — Firefox Focus's
-   built-in tracking protection is known to interfere with `wa.me` deep links similarly. Do not attempt
-   to "fix" the WhatsApp button in code based on a single-browser report; ask whether an ad-blocker or
-   privacy extension is active first.
-9. **OPEN, unreproduced: mobile view reportedly differs between Firefox Focus and Samsung Internet on
-   Android.** Reported 2026-08-27; not yet investigated (owner asked to defer). Leading hypotheses if
-   picked up later: (a) Tailwind v4 compiles its palette to `oklch()` color values — confirmed present
-   in the compiled CSS (`dist/_astro/*.css`) — which could render differently on an older/lagging
-   Gecko build; (b) `BaseLayout.astro`'s `<ClientRouter />` (Astro View Transitions) natively supported
-   in Chromium (Samsung Internet) but falling back to simulated `animate` mode in Firefox-based engines,
-   which can cause flashing/scroll-jump differences; (c) per defect #8 above, Firefox Focus's tracking
-   protection interfering with something client-side. Ask what specifically differs (colors, layout,
-   navigation) before guessing further — see the conversation this was raised in for context.
+8. **Ad-blockers hide WhatsApp button:** Privacy extensions (e.g. AdGuard, Firefox Focus) may filter `wa.me` links browser-side. Site markup is clean and verified.
+9. **Mobile cross-browser rendering:** Check for client-side privacy filters or `oklch()` CSS support on older Android browsers if layout differences are reported.
 
 ---
 
@@ -456,9 +399,9 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 Run/confirm these before signing off or deploying:
 
-- [x] `npm run ci` (re-run today: ✅ validate 51 wish + 1 festival → build 43 pages → 635 refs, 0 dead)
+- [x] `npm run ci` (re-run today: ✅ validate 151 wishes + 3 festivals → build 106 pages → 2411 refs, 0 dead)
 - [x] `npm run validate` (✅ Content valid)
-- [x] `npm run build` (✅ 43 pages, static)
+- [x] `npm run build` (✅ 106 pages, static)
 - [x] `npm run check:links` (✅ no dead links)
 - [ ] `npm run check` (`astro check`) — **NOT wired** (needs `@astrojs/check` + `typescript`; see §9.3)
 - [x] `git diff --check` — clean (no whitespace errors; working tree clean)

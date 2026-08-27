@@ -27,6 +27,49 @@ const PANEL_Y = (SIZE - PANEL_H) / 2;
 // + placement markup (top ornament, corner ornament, bottom accent). Panel layout/typography stay
 // identical across festivals so every card reads as the same product.
 export const THEMES = {
+  rakhi: {
+    bgStops: [
+      ['0%', '#FFE9A8'],
+      ['38%', '#F5BE4C'],
+      ['70%', '#D97A2B'],
+      ['100%', '#9C3B16'],
+    ],
+    panelGrad: [['0%', '#FFFDF6'], ['100%', '#FBF0D4']],
+    borderColor: '#8A1C1C',
+    goldColor: '#E8B54A',
+    textColor: '#4A0E0E',
+    motifDefs: `
+      <g id="cornerflower">
+        <circle r="34" fill="#E8B54A"/>
+        ${Array.from({ length: 8 }, (_, k) => `<ellipse cx="0" cy="-40" rx="12" ry="19" fill="#C0392B" transform="rotate(${k * 45})"/>`).join('\n        ')}
+        <circle r="12" fill="#8A1C1C"/>
+        <circle r="5" fill="#F5BE4C"/>
+      </g>
+      <g id="topmotif">
+        <path d="M-140,0 C-70,-30 70,-30 140,0" fill="none" stroke="#8A1C1C" stroke-width="3" opacity="0.55"/>
+        <circle r="48" fill="#C0392B"/>
+        <circle r="48" fill="none" stroke="#E8B54A" stroke-width="5"/>
+        <circle r="35" fill="#7A1F1F"/>
+        <circle r="35" fill="none" stroke="#F5BE4C" stroke-width="3"/>
+        ${Array.from({ length: 12 }, (_, k) => {
+          const a = (k * 30 * Math.PI) / 180;
+          return `<circle cx="${(40 * Math.cos(a)).toFixed(1)}" cy="${(40 * Math.sin(a)).toFixed(1)}" r="3.2" fill="#E8B54A"/>`;
+        }).join('\n        ')}
+        <circle r="18" fill="#E8B54A"/>
+        <circle r="7" fill="#C0392B"/>
+        <rect x="-1.6" y="48" width="3.2" height="52" fill="#8A1C1C"/>
+        <circle cy="104" r="5.5" fill="#E8B54A"/>
+        <rect x="-1.6" y="110" width="3.2" height="22" fill="#8A1C1C"/>
+      </g>
+      <g id="bottommotif">
+        <path d="M-30,0 Q0,-16 30,0 Q24,7 0,7 Q-24,7 -30,0 Z" fill="#8A1C1C"/>
+        <rect x="-32" y="6" width="64" height="5" rx="2.5" fill="#7A1F1F"/>
+        <path d="M0,-30 C7,-17 10,-8 0,0 C-10,-8 -7,-17 0,-30 Z" fill="#F5A623"/>
+        <path d="M0,-22 C3.5,-15 4.5,-8 0,-3 C-4.5,-8 -3.5,-15 0,-22 Z" fill="#FFF3C9"/>
+      </g>`,
+    topUse: `<use href="#topmotif" x="${SIZE / 2}" y="150"/>`,
+    bottomUse: `<use href="#bottommotif" x="${SIZE / 2 - 150}" y="880"/>\n  <use href="#bottommotif" x="${SIZE / 2 + 150}" y="880"/>`,
+  },
   diwali: {
     bgStops: [
       ['0%', '#FFE9A8'],

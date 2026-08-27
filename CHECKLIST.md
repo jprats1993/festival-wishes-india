@@ -51,26 +51,8 @@ either festival.
   (confirmed 2026-08-27; `dateVerifiedBy` flipped to `"owner"` in both festival JSONs)
 
 ## Homepage
-- [x] Illustrated header banner per festival (Rakhi, Diwali, Dussehra) on the `/{locale}/` festival
-  grid — no text baked in, so one image works across all 3 locales.
-  - First pass — agent (2026-08-27, commit `093ac69`): hand-authored SVG artwork (no stock images —
-    nothing free/unlicensed existed for this subject; content-policy.md doesn't allow unattributed
-    use of attribution-required stock). Went through 2 owner review rounds (abstract icons → full
-    illustrated scenes → faceless silhouette treatment for Rakhi after two more-detailed hairstyle
-    attempts read worse) before sign-off.
-  - Replaced — owner (2026-08-27, commit `a0547d2`): owner generated notably higher-quality
-    illustrated artwork via Claude Code Desktop's image tool and asked for a comparison; agent
-    confirmed it was better and swapped it in wholesale, deleting the now-superseded
-    `scripts/banners/*.svg` + `generate-banners.mjs`. Owner's Dussehra draft had bilingual text
-    baked in — regenerated without text rather than accepted or cropped. **No in-repo source for
-    the banners anymore** — committed directly as `public/images/{festival}/banner.webp`.
-  - Cache-busting fix — agent (2026-08-27, commit `124c42b`): owner reported still seeing the old
-    banner after the `a0547d2` deploy — `/images/*` caches for 1 day at an unhashed path, so the CDN
-    edge/browser kept serving stale bytes even though the origin was already updated. Tried to purge
-    the Cloudflare cache directly first; the deploy token doesn't have that permission (see
-    HANDOVER.md §7). Fixed by having `index.astro` append an md5-of-the-file-bytes query param
-    (`?v=<hash>`) to each banner `<img src>`, so any future swap gets a fresh cache key automatically
-    — confirmed live, no purge needed.
+- [x] Illustrated header banner per festival (Rakhi, Diwali, Dussehra) on `/{locale}/` grid (`public/images/{festival}/banner.webp`) — text-free / locale-agnostic.
+- [x] Query-param cache-busting (`?v=<hash>`) on banner `<img src>` for immediate CDN updates.
 
 ## Trust & Compliance
 - [x] About page — agent

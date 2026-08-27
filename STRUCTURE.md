@@ -191,8 +191,8 @@ and the owner must explicitly approve a new festival's first seed batch.
 |---|---|
 | `validate-content.mjs` | Content validator (`npm run validate`): checks every wish/festival JSON has required fields, each of the three languages is present and non-trivial, `source === "original"`, and no duplicate wish IDs. Exits non-zero on any error. |
 | `check-links.mjs` | Static dead-link / missing-asset checker (`npm run check:links`): walks every HTML file in `dist/`, resolves internal `href`/`src`, and verifies the target file exists. Skips external URLs, `mailto:`/`tel:`/`#`, and `/api/` endpoints. |
-| `generate-hinglish-cards.mjs` | Original, Rakhi-only card generator (SVG → headless Chrome → WebP), hardcoded to Rakhi's colors/motifs/output dir. Still used for its own 3 existing Hinglish cards; not used for anything new. |
-| `generate-cards.mjs` | Generalized version of the above — same pipeline, but festival-parameterized via a `THEMES` config (currently `diwali`, `dussehra`) and an exported `generateCards(cards)` function. Used for all of Diwali's and Dussehra's cards, and any future festival's. |
+| `generate-hinglish-cards.mjs` | Lightweight runner that delegates to `generate-cards.mjs` for Rakhi Hinglish cards. |
+| `generate-cards.mjs` | Generalized, festival-parameterized card generator (SVG → headless Chrome → WebP) supporting `rakhi`, `diwali`, and `dussehra` themes; exports `generateCards()` and `THEMES`. |
 | `card-specs.json` | Card-generation input: the 8 language-tagged card texts (`id`, `lang`, `text`) — note the live registry (`cards.ts`) now has 27 cards total across 3 festivals; `card-specs.json` predates all of that and only covers the original Rakhi batch. |
 | `card-wish-ids.json` | List of wish IDs selected for card generation. |
 | `wish-assignments.json` | Seed-batch mapping of wish `id` → `numeric_id`, `relation`, and `tones` used to generate the initial wish set. |

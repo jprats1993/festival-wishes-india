@@ -1,22 +1,21 @@
-## Development
+# Festival Wishes India — Agent Guide
 
-When starting the dev server, use background mode:
+Static festival-greetings site (Hindi / English / Hinglish) deployed on Cloudflare Pages.
 
-```
-astro dev --background
-```
+## Quick Reference
+- **Stack:** Astro 7 (SSG, strict glob loaders) + Tailwind CSS v4 (`@tailwindcss/vite`) + Sharp.
+- **Locales:** `en`, `hi` (Devanagari), `hinglish` (`hi-Latn`). All routes are prefixed: `/[locale]/[festival]/[collection]/`.
+- **Docs Hierarchy:** `HANDOVER.md` (authoritative status) > `CHECKLIST.md` (tasks) > `STRUCTURE.md` (architecture).
+- **Governance:** Read `agent-rules/` before generating content (`content-policy.md`, `editorial-style.md`, `festival-rules.md`).
+- **Secrets:** Names only (`~/.hermes/secrets/github-token`, `~/.hermes/secrets/cloudflare-token`). Never echo or commit values.
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+## Key Commands
+- `npm run ci` — Run before every deploy (`validate` + `build` + `check:links`). Must pass with 0 errors.
+- `npm run dev` — Local development server (`astro dev`).
+- `npm run validate` — Validate wish and festival JSON schemas.
+- `npm run check:links` — Check built HTML for broken links and missing assets.
 
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+## Critical Guardrails
+1. **Approval Gate:** Never deploy to production or publish new seed batches without explicit owner approval.
+2. **Originality:** All wishes must be original (`source: "original"`). No scraped/copied content.
+3. **Content Loaders:** In `src/content.config.ts`, always use explicit `glob({ pattern, base })` loaders.
