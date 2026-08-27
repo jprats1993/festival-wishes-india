@@ -1,0 +1,98 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="rakhiBg" cx="50%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#FFE9A8"/>
+      <stop offset="38%" stop-color="#F5BE4C"/>
+      <stop offset="72%" stop-color="#D97A2B"/>
+      <stop offset="100%" stop-color="#9C3B16"/>
+    </radialGradient>
+    <radialGradient id="rakhiGlow" cx="50%" cy="52%" r="34%">
+      <stop offset="0%" stop-color="#FFF3C9" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFF3C9" stop-opacity="0"/>
+    </radialGradient>
+    <g id="rSpark">
+      <path d="M0,-11 L2.2,-2.2 L11,0 L2.2,2.2 L0,11 L-2.2,2.2 L-11,0 L-2.2,-2.2 Z" fill="#FFF3C9" opacity="0.9"/>
+    </g>
+    <g id="rFlower">
+      <circle r="15" fill="#E8B54A"/>
+      <ellipse cx="0" cy="-18" rx="5.5" ry="8.5" fill="#C0392B"/>
+      <ellipse cx="0" cy="-18" rx="5.5" ry="8.5" fill="#C0392B" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-18" rx="5.5" ry="8.5" fill="#C0392B" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-18" rx="5.5" ry="8.5" fill="#C0392B" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-18" rx="5.5" ry="8.5" fill="#C0392B" transform="rotate(288)"/>
+      <circle r="5.5" fill="#7A1F1F"/>
+    </g>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#rakhiBg)"/>
+  <g fill="#FFF3C9" opacity="0.25">
+    <circle cx="60" cy="70" r="1.8"/><circle cx="140" cy="40" r="1.4"/><circle cx="220" cy="90" r="1.6"/>
+    <circle cx="700" cy="60" r="1.8"/><circle cx="640" cy="110" r="1.4"/><circle cx="760" cy="130" r="1.6"/>
+    <circle cx="90" cy="420" r="1.6"/><circle cx="180" cy="450" r="1.4"/>
+    <circle cx="730" cy="430" r="1.6"/><circle cx="650" cy="460" r="1.4"/>
+  </g>
+
+  <rect x="18" y="18" width="764" height="464" rx="26" fill="none" stroke="#7A1F1F" stroke-width="3"/>
+  <rect x="29" y="29" width="742" height="442" rx="19" fill="none" stroke="#E8B54A" stroke-width="1.6" opacity="0.85"/>
+
+  <use href="#rFlower" x="64" y="64"/>
+  <use href="#rFlower" x="736" y="64"/>
+  <use href="#rFlower" x="64" y="436"/>
+  <use href="#rFlower" x="736" y="436"/>
+
+  <circle cx="400" cy="270" r="170" fill="url(#rakhiGlow)"/>
+  <ellipse cx="400" cy="452" rx="190" ry="14" fill="#5B1210" opacity="0.22"/>
+
+  <!-- ===== abstract paper-cut figures, no faces — a folk-art silhouette pair rather than a cartoon ===== -->
+
+  <!-- girl: single rose-gold silhouette, head as a plain circle, no features -->
+  <g>
+    <path d="M258,448 Q248,360 262,300 Q270,258 300,246 Q332,254 340,296 Q350,360 336,448 Z" fill="#C0294F"/>
+    <circle cx="298" cy="216" r="38" fill="#C0294F"/>
+    <path d="M264,196 Q298,166 332,196 Q332,180 298,172 Q264,180 264,196 Z" fill="#7A1F1F" opacity="0.85"/>
+    <!-- extended arm toward the rakhi point -->
+    <path d="M336,286 Q374,278 404,286" fill="none" stroke="#C0294F" stroke-width="26" stroke-linecap="round"/>
+  </g>
+
+  <!-- boy: single teal silhouette, mirrored, offering wrist -->
+  <g>
+    <path d="M466,448 Q456,364 470,306 Q478,262 506,250 Q536,258 546,300 Q558,364 544,448 Z" fill="#1E8577"/>
+    <circle cx="504" cy="220" r="40" fill="#1E8577"/>
+    <path d="M468,204 Q504,168 540,204 Q540,190 504,180 Q468,190 468,204 Z" fill="#123F37" opacity="0.85"/>
+    <!-- offered wrist -->
+    <path d="M470,290 Q436,282 404,288" fill="none" stroke="#1E8577" stroke-width="26" stroke-linecap="round"/>
+    <!-- raised cheerful arm, simple curve -->
+    <path d="M540,268 Q568,244 566,204" fill="none" stroke="#1E8577" stroke-width="22" stroke-linecap="round"/>
+  </g>
+
+  <!-- rakhi thread joining the two silhouettes at the wrist -->
+  <g>
+    <path d="M400,282 Q408,270 420,276" fill="none" stroke="#E8B54A" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="410" cy="278" r="15" fill="#E8B54A" stroke="#7A1F1F" stroke-width="3"/>
+    <circle cx="410" cy="278" r="6" fill="#7A1F1F"/>
+    <path d="M405,291 Q403,304 397,310" fill="none" stroke="#E8B54A" stroke-width="2.6"/>
+    <path d="M415,291 Q417,304 423,310" fill="none" stroke="#E8B54A" stroke-width="2.6"/>
+  </g>
+
+  <!-- thali on the ground between them -->
+  <g transform="translate(400,432)">
+    <ellipse cx="0" cy="6" rx="88" ry="16" fill="#E8B54A"/>
+    <ellipse cx="0" cy="2" rx="88" ry="16" fill="#F5D889"/>
+    <ellipse cx="0" cy="2" rx="68" ry="10" fill="#FBE9C8"/>
+    <g transform="translate(-38,-6)">
+      <path d="M-16,0 Q0,-9 16,0 Q13,4 0,4 Q-13,4 -16,0 Z" fill="#7A1F1F"/>
+      <path d="M0,-17 C4,-10 5.5,-4.5 0,0 C-5.5,-4.5 -4,-10 0,-17 Z" fill="#F5A623"/>
+      <path d="M0,-12 C2,-8 2.5,-4 0,-1.5 C-2.5,-4 -2,-8 0,-12 Z" fill="#FFF3C9"/>
+    </g>
+    <circle cx="26" cy="-4" r="12" fill="#8A1C1C"/>
+    <circle cx="26" cy="-6" r="9" fill="#C0392B"/>
+    <circle cx="56" cy="-2" r="10" fill="#8A1C1C"/>
+    <circle cx="56" cy="-4" r="7" fill="#FBF0D4"/>
+  </g>
+
+  <use href="#rSpark" x="150" y="160"/>
+  <use href="#rSpark" x="650" y="160"/>
+  <use href="#rSpark" x="400" y="90"/>
+  <use href="#rSpark" x="120" y="300"/>
+  <use href="#rSpark" x="680" y="300"/>
+</svg>

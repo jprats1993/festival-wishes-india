@@ -56,19 +56,31 @@ const alternateUrls = Object.fromEntries(
   </div>
 
   <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {festivals.map((f) => (
+    {festivals.map((f, i) => (
       <a
         href={`/${locale}/${f.data.slug}/`}
-        class="block p-6 bg-white rounded-xl border border-stone-200 hover:border-rose-300 hover:shadow-sm transition text-center"
+        class="block bg-white rounded-xl border border-stone-200 overflow-hidden hover:border-rose-300 hover:shadow-sm transition text-center"
       >
-        <h2 class="text-xl font-semibold text-rose-700 mb-2">{festivalName(f, locale)}</h2>
-        <p class="text-sm text-stone-500">
-          {new Date(f.data.date).toLocaleDateString(locale === 'hi' ? 'hi-IN' : 'en-IN', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </p>
+        <img
+          src={`/images/${f.data.slug}/banner.webp`}
+          alt=""
+          width={1600}
+          height={1000}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : 'auto'}
+          decoding="async"
+          class="w-full h-auto aspect-[8/5] object-cover"
+        />
+        <div class="p-6">
+          <h2 class="text-xl font-semibold text-rose-700 mb-2">{festivalName(f, locale)}</h2>
+          <p class="text-sm text-stone-500">
+            {new Date(f.data.date).toLocaleDateString(locale === 'hi' ? 'hi-IN' : 'en-IN', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </p>
+        </div>
       </a>
     ))}
   </section>
