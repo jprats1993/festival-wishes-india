@@ -386,11 +386,11 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
   confirms `## main...origin/main` with no ahead/behind markers).
-- **HEAD:** `124c42b847243aed02b43523d7268437b0a8b5a9` (`124c42b` "fix: cache-bust homepage banner
-  images by content hash").
+- **HEAD:** `8ff11a01291311593afff30f0365fc4e88694ab3` (`8ff11a0` "docs: sync HANDOVER/CHECKLIST, trim
+  commit-history bloat re-added").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 54.
+- **Commit count:** 56.
 - **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
