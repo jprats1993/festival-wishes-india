@@ -102,17 +102,18 @@ src/
 
 | File | Purpose |
 |---|---|
-| `i18n.ts` | Locale constants (`en`, `hi`, `hinglish`), display labels, and BCP-47 mapping (`hinglish → hi-Latn`), plus `isLocale()` guard. |
-| `collections.ts` | `collectionMap`: collection slug → list of relation values (e.g. `brother-wishes → ["brother"]`); empty-array slugs (`short-wishes`, `whatsapp-messages`) are non-filtering. |
-| `cards.ts` | Hard-coded registry of shareable card images (`id → lang/src/alt/text`), decoupled from wish JSONs. |
-| `popular.ts` | Curated list of "popular" wish IDs surfaced under the Popular tab on festival hubs. |
+| `i18n.ts` | Locale constants (`en`, `hi`, `hinglish`), display labels, BCP-47 mapping (`hinglish → hi-Latn`), `isLocale()` guard, and `festivalName(festival, locale)` (resolves a festival's locale-specific display name, falling back to `displayName`). |
+| `collections.ts` | `collectionMap`: collection slug → list of relation values (e.g. `brother-wishes → ["brother"]`, `spouse-wishes → ["spouse"]`); empty-array slugs (`short-wishes`, `whatsapp-messages`) are non-filtering. |
+| `relations.ts` | `relationTabs`: the relation-tab bar data (slug + per-locale label) shown on both the festival hub and every collection subpage — single source of truth so the two pages can't drift out of sync. |
+| `cards.ts` | Registry of shareable card images (`id → festival/lang/src/alt/text`), decoupled from wish JSONs. `festival` field lets each hub filter to only its own cards. |
+| `popular.ts` | Curated list of "popular" wish IDs (across all festivals) surfaced under the Popular tab on each festival's hub. |
 
 ### 2.5 `src/content/`
 
 | Path | Purpose |
 |---|---|
-| `wish/*.json` | 51 wish files, one per wish, named `rakhi-<relation>-<NNN>.json`. |
-| `festival/rakhi.json` | Festival configuration for Raksha Bandhan (slug, date, minimums, etc.). |
+| `wish/*.json` | 151 wish files, one per wish, named `<festival>-<relation>-<NNN>.json`. |
+| `festival/rakhi.json`, `diwali.json`, `dussehra.json` | Per-festival configuration (slug, date, minimums, etc.). |
 
 ### 2.6 `src/content.config.ts`
 
@@ -130,7 +131,7 @@ Each file describes one wish in three languages. Schema fields:
 
 | Field | Type / constraint | Meaning |
 |---|---|---|
-| `id` | string `/^[a-z0-9-]+$/` | Unique kebab-case id, e.g. `rakhi-brother-001`. |
+| `id` | string `/^[a-z0-9-]+$/` | Unique kebab-case id, e.g. `rakhi-brother-001`, `diwali-family-001`. |
 | `festival` | enum `rakhi \| diwali \| holi \| dussehra \| navratri` | Owning festival slug. |
 | `languages` | `{ en, hi, hinglish }`, each string 5–500 chars | The wish text in each language. |
 | `relations` | array of enum `brother \| sister \| bhaiya-bhabhi \| family \| friend \| spouse \| parent` | Audience/relationship tags used for collection filtering. |
@@ -150,7 +151,8 @@ Each file configures one festival. Schema fields:
 | Field | Type / constraint | Meaning |
 |---|---|---|
 | `slug` | string | URL slug, e.g. `rakhi`. |
-| `displayName` | string | Human name, e.g. `Raksha Bandhan`. |
+| `displayName` | string | Human name (English fallback), e.g. `Raksha Bandhan`. |
+| `displayNames` | `{ en, hi, hinglish }` (optional) | Per-locale display name, resolved via `festivalName()` in `lib/i18n.ts`; falls back to `displayName` if absent. |
 | `aliases` | string[] | Alternate names. |
 | `date` | string `/^\d{4}-\d{2}-\d{2}$/` | Festival date (must be manually verified). |
 | `dateSourceUrl` | URL string | Where the date was sourced. |
@@ -176,8 +178,9 @@ and the owner must explicitly approve a new festival's first seed batch.
 |---|---|
 | `content-policy.md` | Editorial and language rules: publish only original, culturally respectful, natural-sounding wishes; no scraped or unlicensed material. Defines the AI-transparency requirement and a **publication gate** that rejects near-duplicates, unnatural Hindi, unsupported claims, unclear copyright, missing alt text, and keyword-stuffed pages. |
 | `editorial-style.md` | Voice and craft guidance: warm, concise, 1–3-sentence wishes; per-language conventions (natural Hindi, consistent Hinglish spelling); plus image rules (text on image must exactly match approved text, high contrast, readable Devanagari). |
-| `festival-rules.md` | Human-readable, per-festival rules (Rakhi: date, audience, minimum 24 wishes + 8 cards, 6-week lead time) and the review requirements every batch must pass. |
-| `festival-rules.yml` | Machine-readable example festival config ("copy this file per festival") mirroring the `festival` JSON schema, including the smoke-test exemption note. |
+| `festival-rules.md` | Human-readable, per-festival rules — now has sections for Rakhi, Dussehra, and Diwali (date, audience, minimum wishes/cards, lead time) — and the review requirements every batch must pass. |
+| `festival-rules.yml` | Machine-readable example festival config ("copy this file per festival") mirroring the `festival` JSON schema, including the smoke-test exemption note. Still the original Rakhi-only file (never renamed). |
+| `festival-rules-diwali.yml`, `festival-rules-dussehra.yml` | Machine-readable per-festival configs, added by literally following `festival-rules.yml`'s own "copy this file for each festival" instruction when Diwali/Dussehra launched. |
 | `publish-checklist.md` | A full pre-publish checklist across content, SEO, images/sharing, monetization/compliance, and release — used as the final gate before go-live. |
 
 ---
@@ -188,7 +191,9 @@ and the owner must explicitly approve a new festival's first seed batch.
 |---|---|
 | `validate-content.mjs` | Content validator (`npm run validate`): checks every wish/festival JSON has required fields, each of the three languages is present and non-trivial, `source === "original"`, and no duplicate wish IDs. Exits non-zero on any error. |
 | `check-links.mjs` | Static dead-link / missing-asset checker (`npm run check:links`): walks every HTML file in `dist/`, resolves internal `href`/`src`, and verifies the target file exists. Skips external URLs, `mailto:`/`tel:`/`#`, and `/api/` endpoints. |
-| `card-specs.json` | Card-generation input: the 8 language-tagged card texts (`id`, `lang`, `text`) — note the live registry (`cards.ts`) now has 9 cards total; `card-specs.json` predates the `hinglish-3/4/5` batch and doesn't include them. |
+| `generate-hinglish-cards.mjs` | Original, Rakhi-only card generator (SVG → headless Chrome → WebP), hardcoded to Rakhi's colors/motifs/output dir. Still used for its own 3 existing Hinglish cards; not used for anything new. |
+| `generate-cards.mjs` | Generalized version of the above — same pipeline, but festival-parameterized via a `THEMES` config (currently `diwali`, `dussehra`) and an exported `generateCards(cards)` function. Used for all of Diwali's and Dussehra's cards, and any future festival's. |
+| `card-specs.json` | Card-generation input: the 8 language-tagged card texts (`id`, `lang`, `text`) — note the live registry (`cards.ts`) now has 27 cards total across 3 festivals; `card-specs.json` predates all of that and only covers the original Rakhi batch. |
 | `card-wish-ids.json` | List of wish IDs selected for card generation. |
 | `wish-assignments.json` | Seed-batch mapping of wish `id` → `numeric_id`, `relation`, and `tones` used to generate the initial wish set. |
 
@@ -204,7 +209,7 @@ and the owner must explicitly approve a new festival's first seed batch.
 | `_redirects` | Cloudflare Pages redirect rules: `rakhiwishes.in/* → festivalwishesindia.com/:splat` (301). |
 | `favicon.ico`, `favicon.svg` | Site favicons (referenced from `BaseLayout`). |
 | `og-default.svg` | Default Open Graph / social-share image. |
-| `images/rakhi/cards/*.webp` | 9 language-tagged shareable card images (`rakhi-en-1/2/3`, `rakhi-hi-1/2/3`, `rakhi-hinglish-3/4/5`). |
+| `images/{rakhi,diwali,dussehra}/cards/*.webp` | 9 language-tagged shareable card images per festival (27 total): `<festival>-en-1/2/3`, `<festival>-hi-1/2/3`, `<festival>-hinglish-1/2/3` (Rakhi's Hinglish set is `hinglish-3/4/5` specifically, a historical numbering artifact). |
 
 Everything in `public/` is copied verbatim to the site root of the build output.
 
@@ -260,7 +265,7 @@ All routes are locale-prefixed (`prefixDefaultLocale: true`). BCP-47: `hinglish 
 
 - **Collection slugs** come from `src/lib/collections.ts`: `short-wishes`, `brother-wishes`,
   `sister-wishes`, `bhaiya-bhabhi-wishes`, `whatsapp-messages`, `family-wishes`,
-  `friend-wishes`, `parent-wishes`.
+  `friend-wishes`, `parent-wishes`, `spouse-wishes`.
 - **`noindex`:** collection pages with fewer than 3 approved wishes emit
   `<meta name="robots" content="noindex, follow">`; the sitemap filter additionally excludes
   `/thin-*` and `/search*` patterns (forward-looking).

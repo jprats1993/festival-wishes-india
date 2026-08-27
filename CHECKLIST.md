@@ -1,12 +1,15 @@
 # Festival Wishes India — Launch Checklist
 
 > Shared tracker. Agent updates `[agent]` rows; owner updates `[owner]` rows.
-> Last updated: 2026-08-27 (Search Console + Cloudflare Web Analytics confirmed done)
+> Last updated: 2026-08-27 (Diwali + Dussehra seed content deployed, commit `82fff8f`)
 
-**Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; bug-fix
-redeploy 2026-08-27, commit `b96f1dc` — see HANDOVER.md §2).
-`rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards, reduced
-from 11 on 2026-08-27 — see HANDOVER.md §2).
+**Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; latest
+redeploy 2026-08-27, commit `82fff8f` — see HANDOVER.md §2).
+`rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards).
+**Diwali and Dussehra 2026 content is now also deployed** (50 wishes + 9 cards each) — but per
+`agent-rules/content-policy.md`, a new festival's first seed batch needs explicit **owner approval**
+before it's treated as fully launched; that approval is still outstanding for both (see "Content —
+Diwali & Dussehra 2026" below and HANDOVER.md §11).
 
 ## Infrastructure
 - [x] Buy festivalwishesindia.com (Cloudflare Registrar) — owner
@@ -29,6 +32,23 @@ from 11 on 2026-08-27 — see HANDOVER.md §2).
 - [x] Tabbed wish listing (All 51 / Popular 12 / relation tabs) with numbering — agent
 - [x] Owner seed-batch approval for Rakhi — owner (approved Aug 26)
 - [x] Go-live — owner (Aug 26)
+
+## Content — Diwali & Dussehra 2026 (Phase 2)
+- [x] Diwali + Dussehra festival config (`src/content/festival/{diwali,dussehra}.json`), dates
+  sourced from drikpanchang.com — agent (2026-08-27; `dateVerifiedBy: "reviewer-agent"`, not yet
+  owner-confirmed — see HANDOVER.md §11)
+- [x] Generalize the Rakhi-only card-generation script into a festival-parameterized one
+  (`scripts/generate-cards.mjs`); fixed a real pixel-alignment bug found while validating it — agent
+- [x] Add `spouse-wishes` collection (schema already supported `spouse`, no page existed for it) —
+  agent
+- [x] Generate 50 wishes each (family/friend/parent/spouse × en/hi/hinglish) for Diwali and
+  Dussehra — agent (2026-08-27, commit `82fff8f`)
+- [x] Generate 9 cards each (3 en/hi/hinglish) for Diwali and Dussehra — agent
+- [x] Deploy to production — agent (2026-08-27, commit `82fff8f`)
+- [ ] Owner seed-batch approval for Diwali — owner  ⏳ REMAINING
+- [ ] Owner seed-batch approval for Dussehra — owner  ⏳ REMAINING
+- [ ] Owner: sanity-check the researched dates (Diwali 8 Nov 2026, Dussehra 20 Oct 2026) against
+  drikpanchang.com or another source  ⏳ REMAINING
 
 ## Trust & Compliance
 - [x] About page — agent
@@ -74,7 +94,7 @@ from 11 on 2026-08-27 — see HANDOVER.md §2).
   `agent-rules/publish-checklist.md`'s "ad slots do not resemble download or share controls" rule
 
 - [ ] AdSense approval + ads enabled — future  ⏳ REMAINING
-- [ ] Diwali festival content + Amazon Associates gift guides — future  ⏳ REMAINING
+- [ ] Amazon Associates gift guides — future  ⏳ REMAINING
 
 ## Owner Blockers / Decisions
 - [ ] Confirm rakhiwishes.in NIXI registrant-verification email was actioned  ⏳ REMAINING

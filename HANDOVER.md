@@ -8,8 +8,10 @@
 > **Prepared:** 2026-08-27 (IST) · working tree clean, in sync with `origin/main`. Exact HEAD SHA,
 > branch, and commit count are **not restated here** — see §8 for the single canonical record (this
 > doc used to repeat that SHA in three places; git log/status are authoritative for history, this doc
-> isn't). The `5e95b92` site fixes are **deployed to production** as of 2026-08-27 (verified via
-> `curl` — see §6/§9); commits since then are docs-only, no new site deploy required.
+> isn't). Commit `82fff8f` — **Diwali and Dussehra launch** (100 wishes + 18 cards, three festivals
+> live now instead of one) — is **deployed to production** as of 2026-08-27 (verified via `curl` —
+> see §6/§9). Diwali/Dussehra are deployed but their first-seed-batch **owner approval is still
+> outstanding** (see §11) — the site is live, the content isn't yet owner-signed-off.
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -25,7 +27,7 @@
 | Field | Value |
 |---|---|
 | Name | **Festival Wishes India** |
-| Purpose | Multilingual (Hindi / English / Hinglish) festival-greeting wishes + shareable image cards, ready to copy or forward on WhatsApp/status. Flagship festival: **Raksha Bandhan (Rakhi)**. |
+| Purpose | Multilingual (Hindi / English / Hinglish) festival-greeting wishes + shareable image cards, ready to copy or forward on WhatsApp/status. Live festivals: **Raksha Bandhan (Rakhi)**, **Diwali**, **Dussehra**. |
 | Local repo path | `/Users/varshajain/festival-wishes-india` |
 | GitHub | https://github.com/jprats1993/festival-wishes-india (owner `jprats1993`) |
 | Branch | `main` (see §8 for HEAD SHA/commit count — not restated here) |
@@ -39,17 +41,22 @@
 
 ### ✅ Complete (live / verified)
 - **Astro 7 static site, live** at `festivalwishesindia.com` (deployed 2026-08-26 evening).
-- **51 Rakhi wishes**, each in `en` + `hi` (Devanagari) + `hinglish` (Roman). All 51 are
-  `reviewStatus: "approved"`, `reviewedBy: "reviewer-agent"`, `source: "original"`.
-- **9 card images** (WebP) in `public/images/rakhi/cards/`: `rakhi-en-1/2/3`,
-  `rakhi-hi-1/2/3`, `rakhi-hinglish-3/4/5`. (Single-language cards only; cards are decoupled
-  from wish JSONs and driven by the `src/lib/cards.ts` registry — confirmed 1:1, all 9 files have a
-  matching `cards.ts` entry and vice versa. The original `hinglish-1/2` cards were retired 2026-08-27
-  in favor of the better-aligned `hinglish-3/4/5` set — see below.)
-- **Tabbed wish listing** on the festival hub: "All wishes (51)" / "Popular (12)" / relation tabs,
-  with per-card `#n` numbering.
+- **151 wishes across 3 festivals** (Rakhi 51, Diwali 50, Dussehra 50), each in `en` + `hi`
+  (Devanagari) + `hinglish` (Roman). All are `reviewStatus: "approved"`, `reviewedBy:
+  "reviewer-agent"`, `source: "original"` — but see the "Diwali/Dussehra launch" entry below and §11:
+  `humanReviewedSeed` is `false` on all 151, and Diwali/Dussehra's first-seed-batch **owner approval
+  is still outstanding** (site-live ≠ owner-approved here).
+- **27 card images** (WebP): 9 each for Rakhi (`public/images/rakhi/cards/`), Diwali
+  (`public/images/diwali/cards/`), Dussehra (`public/images/dussehra/cards/`). Cards are decoupled
+  from wish JSONs and driven by the `src/lib/cards.ts` registry, which now carries a `festival` field
+  per entry (added 2026-08-27, commit `f766d5c`) so each hub's card gallery only shows its own
+  festival's cards — confirmed 1:1, all 27 files have a matching `cards.ts` entry and vice versa.
+- **Tabbed wish listing** on the festival hub: "All wishes (N)" / "Popular (N)" / relation tabs
+  (brother/sister/bhaiya-bhabhi/family/friend/parent/**spouse**/short/whatsapp — `spouse-wishes` is
+  new as of 2026-08-27), with per-card `#n` numbering. The tab list itself is centralized in
+  `src/lib/relations.ts` (was duplicated between the hub and collection pages before).
 - **CI pipeline** — `npm run ci` = `validate` + `build` + `check:links`. **Verified green** today:
-  51 wish + 1 festival valid → 43 static pages built → 635 references, 0 dead links/missing assets.
+  151 wish + 3 festival valid → 106 static pages built → 2402 references, 0 dead links/missing assets.
 - **Share / copy / download buttons** (`ShareBar.astro`): icon+label Copy (with `execCommand` fallback),
   Download, native Share (hidden on desktop where Web Share is unavailable), WhatsApp `wa.me` fallback.
 - **Redirects**: `rakhiwishes.in` → `/en/rakhi/` 301 (zone-level rule, verified via `curl -I`);
@@ -66,6 +73,42 @@
   into the page — checked `/en/`, `/en/rakhi/`, `/hi/rakhi/` live HTML and confirmed no
   `cloudflareinsights.com` script is present, which is expected/correct for automatic mode, not a
   defect. Not independently verifiable via curl/DNS; taken on owner's word.
+- **Diwali + Dussehra launch, commits `f766d5c` + `82fff8f` (deployed to production):**
+  - Added `src/content/festival/diwali.json` and `dussehra.json` — dates researched from
+    drikpanchang.com (Diwali `2026-11-08`, Dussehra `2026-10-20`), recorded as
+    `dateVerifiedBy: "reviewer-agent"` (**not** owner-verified yet — see §11).
+    `isSmokeTest: false` for both (unlike Rakhi): both dates are well past the 42-day
+    `publishLeadTimeDays` from 2026-08-27, so no lead-time waiver was needed.
+  - Fixed real gaps found while scaffolding a second/third festival (all in `f766d5c`): `cards.ts`
+    had no `festival` field (would have shown Rakhi's cards on every hub the moment more festivals'
+    cards existed — fixed, see above); `relationTabs` was duplicated verbatim between
+    `[festival]/index.astro` and `[collection].astro` (root cause of the `5e95b92` missing-tabs bug
+    below) — centralized into `src/lib/relations.ts`; no `spouse-wishes` collection existed despite
+    `spouse` already being a valid schema relation — added it.
+  - Generalized the Rakhi-only `scripts/generate-hinglish-cards.mjs` into
+    `scripts/generate-cards.mjs`: same SVG→headless-Chrome→WebP pipeline, now themed per festival
+    (Diwali: diya/rangoli motifs; Dussehra: bow + marigold motifs) via a `THEMES` config instead of
+    hardcoded Rakhi colors/output dir. While validating it, found and fixed a real bug in the
+    alignment-verification step: it hardcoded a 4-byte RGBA pixel stride, but Chrome's screenshot PNG
+    has no alpha channel (3-byte RGB) — every sampled pixel was reading misaligned data, so the check
+    was silently meaningless. Now reads the actual channel count from `sharp`.
+  - Authored 100 wishes (50 each, family/friend/parent/spouse × en/hi/hinglish) via 8 parallel
+    subagents (per §9.1's known-good pattern) and 18 cards (9 each), in `82fff8f`. Dussehra content
+    stays within two agreed-safe mythological framings (Rama/Ravana, Durga/Mahishasura) per
+    `agent-rules/content-policy.md` — no invented rituals or disputed claims. Spot-checked a sample
+    per batch plus an automated near-duplicate-opening scan across all 100; found only one shared
+    6-word opening clause (both referencing the same sanctioned framing), diverging completely after
+    that — not a real duplicate.
+  - **Not done as part of this launch:** owner approval of the seed batch (required per
+    `content-policy.md` for a new festival's first batch — see §11), `humanReviewedSeed` flip (same
+    open item Rakhi already has), and any Diwali/Dussehra-specific `popularWishIds` curation beyond
+    a first pass (10 IDs each, added to the existing cross-festival list in `src/lib/popular.ts`).
+- **Fixed 2026-08-27, commit `ee21b1d` (deployed to production):**
+  - `AdSlot.astro`'s house-promo text ("✨ Find more festival wishes...") and `BaseLayout.astro`'s
+    footer nav links (Contact/Privacy/Disclaimer) were hardcoded English regardless of locale, unlike
+    everything else on the page (confirmed visually on `/hi/` pages before the fix). `AdSlot` now
+    takes an optional `locale` prop with en/hi/hinglish copy; footer links switch to Hindi labels on
+    `/hi/` pages.
 - **Fixed 2026-08-27, commit `5e95b92` (deployed to production):**
   - Collection subpages (`/[locale]/[festival]/[collection].astro`, e.g. `/hinglish/rakhi/friend-wishes/`)
     had **no tab navigation at all** — only the festival hub page (`[festival]/index.astro`) had the
@@ -112,7 +155,8 @@
 ### ⛔ Not started
 - **AdSense** application/approval (no ads live; `PUBLIC_ADS_ENABLED` unset → house-promo shown).
 - **Amazon Associates** (Diwali gift guides).
-- **Diwali / Holi / Dussehra / Navratri** content (schema enums exist; zero content files).
+- **Holi / Navratri** content (schema enums exist; zero content files). Diwali and Dussehra now have
+  content — see above.
 - **Git-integrated auto-deploy** (connecting Cloudflare Pages to the GitHub repo) — still CLI-only.
 
 ### Known defects
@@ -120,18 +164,24 @@
 2. Root `/` redirect is a **meta-refresh (HTTP 200)**, not a true 301 (Astro SSG limitation).
 3. `npm run check` (i.e. `astro check`) is **not wired** — it prompts to install `@astrojs/check`
    + `typescript`, which are absent from `package.json` (see §9).
-4. `humanReviewedSeed: false` on all 51 wishes, even though owner seed approval was recorded in
-   `CHECKLIST.md`/`fa9cdd4` — flags not flipped (open question, §11).
+4. `humanReviewedSeed: false` on all 151 wishes. For Rakhi, owner seed approval was recorded in
+   `CHECKLIST.md`/`fa9cdd4` but the flags were never flipped (open question, §11). For Diwali and
+   Dussehra, owner approval hasn't happened yet at all — content is deployed but not owner-approved.
 5. `[locale]/privacy.astro` still says "We also log anonymous share/copy/download events via a
    serverless endpoint" — that endpoint (`/api/event`) was removed in `b96f1dc`; the copy was never
    updated to match. Found this sync (2026-08-27) while re-checking analytics wiring; not yet fixed.
 
 ### Content coverage (festival × language)
-- **Festivals:** `rakhi` only (1 festival file). No Diwali/Holi/Dussehra/Navratri content yet.
-- **Languages:** every wish carries `en`, `hi`, `hinglish`; `hi` is Devanagari (verified 51/51).
-- **Relation distribution (51):** brother **19** · sister **13** · bhaiya-bhabhi **7** · family **7** ·
-  friend **3** · parent **2**.
-- **Cards (9):** English 3 · Hindi 3 · Hinglish 3. Cards are single-language, never mixed-script.
+- **Festivals:** `rakhi`, `diwali`, `dussehra` (3 festival files). No Holi/Navratri content yet.
+- **Languages:** every wish carries `en`, `hi`, `hinglish`; `hi` is Devanagari (verified 151/151).
+- **Relation distribution:**
+  - Rakhi (51): brother **19** · sister **13** · bhaiya-bhabhi **7** · family **7** · friend **3** ·
+    parent **2**.
+  - Diwali (50): family **14** · friend **14** · parent **11** · spouse **11**. (No
+    brother/sister/bhaiya-bhabhi content — intentional, see §11.)
+  - Dussehra (50): family **16** · friend **16** · parent **9** · spouse **9**. (Same intentional gap.)
+- **Cards (27):** 9 per festival (English 3 · Hindi 3 · Hinglish 3 each). Cards are single-language,
+  never mixed-script, and now `festival`-tagged in `cards.ts` so each hub only shows its own.
 
 ---
 
@@ -154,7 +204,8 @@
   (owner-confirmed 2026-08-27) — no code/beacon in the page, RUM is collected at the edge. The former
   cookieless `POST /api/event` stub was removed in `b96f1dc` (2026-08-27) — it 404'd on every call on
   this static, non-SSR Cloudflare Pages deploy, so no analytics were ever actually recorded through it.
-- **Image storage:** `public/images/rakhi/cards/*.webp`; generated via **SVG → headless render → WebP**
+- **Image storage:** `public/images/{rakhi,diwali,dussehra}/cards/*.webp`; generated via **SVG →
+  headless render → WebP**
   (text-to-image garbles Devanagari — see §9).
 
 ---
@@ -183,25 +234,35 @@ hreflang/OG/Twitter/favicon), header + language switcher, `<main>`, footer with 
 disclosure + editorial-policy link.
 
 ### `src/content/`
-`wish/*.json` (51 wishes, `rakhi-<relation>-<NNN>.json`) · `festival/rakhi.json` (Rakhi festival config).
+`wish/*.json` (151 wishes, `<festival>-<relation>-<NNN>.json`) · `festival/{rakhi,diwali,dussehra}.json`
+(per-festival config: display names, dates + source, minimums, indexable collections).
 
 ### `src/lib/`
-`i18n.ts` (locales/labels/BCP-47) · `collections.ts` (`collectionMap`: collection slug → relation
-values; empty-array slugs are non-filtering) · `cards.ts` (9-card registry) · `popular.ts` (12 curated
-popular IDs).
+`i18n.ts` (locales/labels/BCP-47, `festivalName()` helper) · `collections.ts` (`collectionMap`:
+collection slug → relation values, incl. `spouse-wishes` added 2026-08-27; empty-array slugs are
+non-filtering) · `relations.ts` (new 2026-08-27 — single source of truth for the relation-tab bar,
+was duplicated between the hub and collection pages before) · `cards.ts` (27-card registry, now
+`festival`-tagged) · `popular.ts` (32 curated popular IDs across all 3 festivals).
 
 ### `public/`
 `_headers` (cache policy) · `_redirects` (⚠️ stale) · `favicon.ico`/`favicon.svg` · `og-default.svg` ·
-`og-default.png` (rasterized OG image, added `b96f1dc`) · `images/rakhi/cards/*.webp` (9 cards).
+`og-default.png` (rasterized OG image, added `b96f1dc`) · `images/{rakhi,diwali,dussehra}/cards/*.webp`
+(9 cards each, 27 total).
 
 ### `agent-rules/`
-Governance source of truth — `content-policy.md`, `editorial-style.md`, `festival-rules.md`,
-`festival-rules.yml`, `publish-checklist.md` (see §5).
+Governance source of truth — `content-policy.md`, `editorial-style.md`, `festival-rules.md`
+(human-readable, now has Rakhi + Diwali + Dussehra sections), `festival-rules.yml` (still the
+original Rakhi-only example/template — never renamed per its own "copy this file" instruction) plus
+`festival-rules-diwali.yml`/`festival-rules-dussehra.yml` (added 2026-08-27, following that
+instruction for the two new festivals), `publish-checklist.md` (see §5).
 
 ### `scripts/`
 `validate-content.mjs` (`npm run validate`) · `check-links.mjs` (`npm run check:links`) ·
-`generate-hinglish-cards.mjs` · `card-specs.json` · `card-wish-ids.json` · `wish-assignments.json`
-(authoring-time inputs only, not consumed at build).
+`generate-hinglish-cards.mjs` (original, Rakhi-only, still used for its 3 existing Hinglish cards —
+untouched) · `generate-cards.mjs` (new 2026-08-27 — generalized, festival-parameterized version used
+for all of Diwali's and Dussehra's cards, and any future festival's; exports `generateCards()` +
+`THEMES`) · `card-specs.json` · `card-wish-ids.json` · `wish-assignments.json` (authoring-time inputs
+only, not consumed at build).
 
 ### ⚠️ Sensitive / high-signal files — read before touching
 `agent-rules/*` (governance) · `src/content.config.ts` (schemas — changing a field breaks every JSON) ·
@@ -310,11 +371,11 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
   confirms `## main...origin/main` with no ahead/behind markers).
-- **HEAD:** `73a6389eaab9b418905274d0fbe0029eb0ee1fa2` (`73a6389` "docs: log 5e95b92 deploy in
-  deployment-notes.md").
+- **HEAD:** `82fff8ffd1f694ff64565a9b56388deb432918b3` (`82fff8f` "content: seed batch of 100 Diwali +
+  Dussehra wishes and 18 cards").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 41.
+- **Commit count:** 46.
 - **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
@@ -399,34 +460,45 @@ Run/confirm these before signing off or deploying:
 | Hinglish as first-class locale | **Yes** (`hinglish` locale, BCP-47 `hi-Latn`) |
 | Ad network | AdSense — **not yet applied** (owner applies ~mid-Sep) |
 | User-submitted wishes | **NO for v1** (all content original, agent-authored) |
-| Content per festival | 51 wishes / 9 cards is the **Rakhi baseline** (minimums: 24 wishes, 8 cards) |
+| Content per festival | 50-51 wishes / 9 cards is the launch baseline (minimums: 24 wishes, 8 cards) — now applied to Rakhi, Diwali, and Dussehra |
 | Production deploy requires manual approval | **Yes** — never deploy without owner approval |
-| `humanReviewedSeed` flags | Open — owner approval recorded in docs but flags still `false` (flip or document intent) |
+| `humanReviewedSeed` flags | Open — owner approval recorded in docs but flags still `false` for all 151 wishes (flip or document intent) |
 | `public/_redirects` stale file | Open — delete or realign (zone-level rule governs) |
+| Diwali/Dussehra first-seed-batch owner approval | **Open, and notably not yet done** — `agent-rules/content-policy.md` requires explicit owner sign-off on a new festival's first seed batch before it's "launched", separate from the deploy-authorization gate above. The owner asked for push+deploy on 2026-08-27 (commit `82fff8f`) and that happened — but that instruction covered the deploy action, not a content-quality sign-off. Content is live at `/en\|hi\|hinglish/diwali/` and `/dussehra/` without that separate approval having been explicitly given. Flag this to the owner; don't assume it's implicitly covered. |
+| Diwali/Dussehra dates | Sourced from drikpanchang.com by the agent (`dateVerifiedBy: "reviewer-agent"`), **not yet owner-sanity-checked**. Diwali `2026-11-08`, Dussehra `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`). |
+| Diwali/Dussehra relation coverage | Intentionally skip `brother`/`sister`/`bhaiya-bhabhi` (Rakhi-specific relations) — those collection pages exist (shared `collectionMap`) but stay thin/`noindex` for these two festivals. Not a bug. |
+| `spouse-wishes` collection | New 2026-08-27 (`f766d5c`) — the wish schema always allowed `relations: ["spouse"]` but no collection page existed for it on any festival, including Rakhi, until this session added the slug. Rakhi still has zero spouse-relation wishes; only Diwali (11) and Dussehra (9) use it so far. |
 
 ---
 
 ## §12 — Sign-off
 
-- **Prepared by:** Claude Code (`/handover-sync` skill run).
+- **Prepared by:** Claude Code — manual doc update (the `/handover-sync` skill itself is restricted
+  to explicit user invocation via `/handover-sync` and refuses to be invoked any other way, so this
+  sync followed the same spirit — re-derive facts from the live repo, don't trust old prose — by hand
+  rather than through that skill).
 - **Date:** 2026-08-27 (IST).
 - **Last verified commit:** see §8 (not restated here — single canonical record).
-- **Deployment verified by:** production deploy of `festivalwishesindia.com` for `5e95b92` (collection
-  tabs + locale-aware festival names) was completed 2026-08-27, this session — verified live via
-  `curl` (`role="tablist"` present on `/hinglish/rakhi/friend-wishes/`; "रक्षा बंधन" present on `/hi/`)
-  immediately after `wrangler pages deploy` (preview hash `f0970e7b`, logged in
-  `deployment-notes.md`). This sync additionally re-verified the local repo/build state (§1 header,
-  `npm run ci`) and re-derived wish/card counts and analytics wiring from source.
-- **Known deviations from older docs:** none — `HANDOVER.md` and `CHECKLIST.md` agree with current
-  HEAD (§8) on all live facts (wish/card counts, relation distribution, cards.ts registry all
-  re-verified this run and unchanged since the last sync; `CHECKLIST.md` needed no edits). One new
-  defect surfaced this run and is now recorded in §2/§9: `privacy.astro` still describes the
-  `/api/event` endpoint that `b96f1dc` removed. `PROGRESS.md` remains retired. `STRUCTURE.md` is kept
-  only as a structural walkthrough — no file/dir changes since the last sync (this session's commit
-  only edited existing files), so it was left untouched, per the skill's Step 4.
+- **Deployment verified by:** production deploy of `festivalwishesindia.com` for `82fff8f` (Diwali +
+  Dussehra launch) was completed 2026-08-27, this session — verified live via `curl` (`200` on
+  `/en/diwali/`, `/en/dussehra/`, `/hi/dussehra/spouse-wishes/`; "All wishes (50)" present on
+  `/en/diwali/`) immediately after `wrangler pages deploy` (preview hash `57b918ec`, logged in
+  `deployment-notes.md`). This sync additionally re-verified the local repo/build state (`npm run ci`)
+  and re-derived wish/card/relation counts from source for all 3 festivals.
+- **Known deviations from older docs:** none intentional — `HANDOVER.md` and `CHECKLIST.md` were both
+  updated this pass to agree with current HEAD (§8) on all live facts (wish/card counts, relation
+  distribution, cards.ts registry, new `spouse-wishes` collection, new `src/lib/relations.ts` and
+  `scripts/generate-cards.mjs`). `STRUCTURE.md` **was** updated this pass too — real files were added
+  (new content dirs, new lib/scripts files, new agent-rules yml copies), which is exactly the
+  structural-change trigger the retired `/handover-sync` skill's Step 4 used to gate a `STRUCTURE.md`
+  touch; that same judgment call applies here even done by hand. `privacy.astro`'s stale
+  `/api/event` reference (known defect 5) is still unfixed — not touched this pass, still open.
 - **Recommended next 3 actions:**
-  1. Fix the stale `privacy.astro` copy (§2 known defect 5), delete/realign `public/_redirects`, and
-     flip (or document) the 51 `humanReviewedSeed` flags.
-  2. Wire `astro check` (add `@astrojs/check` + `typescript`) so type-checking joins the CI gate.
+  1. **Owner:** give (or explicitly withhold) first-seed-batch approval for Diwali and Dussehra per
+     `agent-rules/content-policy.md` — content is deployed but this specific approval step hasn't
+     happened yet (see §11's new "Diwali/Dussehra first-seed-batch owner approval" row). Also
+     sanity-check the two researched dates.
+  2. Fix the stale `privacy.astro` copy (§2 known defect 5), delete/realign `public/_redirects`, and
+     flip (or document) the 151 `humanReviewedSeed` flags.
   3. Owner: AdSense application (~mid-Sep) — the remaining go-live monetization item now that Search
      Console and Cloudflare Web Analytics are both confirmed done.
