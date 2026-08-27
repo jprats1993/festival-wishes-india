@@ -14,6 +14,7 @@ wrangler pages deploy dist --project-name festival-wishes-india --branch main
 ## Recent deploy history (newest first)
 | Commit | What changed | Preview URL |
 |---|---|---|
+| `093ac69` | Homepage festival header banners (original illustrated SVG->WebP art, 3 festivals) | be356eb3 |
 | `82fff8f` | Diwali + Dussehra launch: 100 wishes, 18 cards, spouse-wishes collection | 57b918ec |
 | `f766d5c` | Diwali/Dussehra scaffold: festival config, cards.ts festival-tagging, generalized card-gen script | (bundled with 82fff8f's deploy) |
 | `ee21b1d` | Localized AdSlot house-promo text + footer nav labels (Contact/Privacy/Disclaimer) | a50204ea |
