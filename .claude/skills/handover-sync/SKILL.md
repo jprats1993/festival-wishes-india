@@ -1,6 +1,6 @@
 ---
 name: handover-sync
-description: This skill should be used when the user asks to "sync the handover doc", "refresh HANDOVER.md", "regenerate the handover", "run handover-sync", "update the cold-start doc", or wants HANDOVER.md and the secondary docs (STRUCTURE.md, PROGRESS.md, CHECKLIST.md) re-grounded in the live state of the Festival Wishes India repo. Manual-only: never invoke automatically.
+description: This skill should be used when the user asks to "sync the handover doc", "refresh HANDOVER.md", "regenerate the handover", "run handover-sync", "update the cold-start doc", or wants HANDOVER.md re-grounded in the live state of the Festival Wishes India repo, with matching facts patched into CHECKLIST.md (and STRUCTURE.md only if the repo's file layout itself changed). Manual-only: never invoke automatically.
 argument-hint: [commit]
 disable-model-invocation: true
 allowed-tools: Read, Edit, Bash(git:*), Bash(npm:*), Bash(find:*), Bash(wc:*), Bash(ls:*), Glob, Grep
@@ -9,11 +9,19 @@ allowed-tools: Read, Edit, Bash(git:*), Bash(npm:*), Bash(find:*), Bash(wc:*), B
 # Handover sync — Festival Wishes India
 
 Regenerate `/Users/varshajain/festival-wishes-india/HANDOVER.md` from the actual, live state of the
-repo, then patch matching facts into `STRUCTURE.md`, `PROGRESS.md`, and `CHECKLIST.md` so they don't
-contradict it. This skill exists so a brand-new chat with zero prior context can run it and trust the
-result — never fill in a fact from memory of a previous handover, from this conversation's earlier
-turns, or from assumption. Every fact in the rewritten document must trace to a command run or a file
-read during *this* invocation.
+repo, then patch matching facts into `CHECKLIST.md` so it doesn't contradict it. `STRUCTURE.md` is a
+structural walkthrough (what files exist and what they do), not a fact tracker — touch it only when
+Step 2's repo-map check finds files actually added, removed, or renamed, never for count/status
+changes (wish/card counts, analytics status, git state — those live in HANDOVER.md alone). This skill
+exists so a brand-new chat with zero prior context can run it and trust the result — never fill in a
+fact from memory of a previous handover, from this conversation's earlier turns, or from assumption.
+Every fact in the rewritten document must trace to a command run or a file read during *this*
+invocation.
+
+**`PROGRESS.md` was retired 2026-08-27** — it duplicated HANDOVER.md's exact "cold-start handover"
+scope under a different name, and the two had already drifted out of sync more than once. Do not
+recreate it and do not patch facts into it. If it has reappeared in the repo, that's a regression to
+flag to the user, not a file to sync.
 
 ## Step 1 — Ground in live repo state
 
@@ -34,8 +42,8 @@ instead of silently reusing the last known-good status.
 
 ## Step 2 — Re-derive the facts HANDOVER.md depends on
 
-Do not trust old prose in HANDOVER.md, STRUCTURE.md, PROGRESS.md, or CHECKLIST.md for any of these —
-re-check each one directly:
+Do not trust old prose in HANDOVER.md, STRUCTURE.md, or CHECKLIST.md for any of these — re-check each
+one directly:
 
 - **Wish count:** `find src/content/wish -name '*.json' | wc -l`, then read a sample to confirm
   `reviewStatus`/`reviewedBy`/`source` values and re-tally the relation distribution (grep `"relations"`
@@ -85,32 +93,35 @@ listed as "Fixed this session (uncommitted)" in the previous version into "Compl
 shows it's now committed, or leave it under a session dated to when it was actually made if still
 dirty — never relabel a still-uncommitted change as complete. In §12, set "Prepared by" to whatever
 session/agent identity is running this skill, "Date" to today, and "Known deviations from older docs"
-to either "none" (only after Step 4 patches are actually applied) or an explicit list of what's still
-out of sync and why.
+to either "none" (only after Step 4's CHECKLIST.md patch is actually applied, and after confirming
+STRUCTURE.md's file/dir descriptions still match reality) or an explicit list of what's still out of
+sync and why.
 
 Do not remove §7's "NO TOKENS" warning or the credential-name-only convention. Do not add secret values
 anywhere.
 
-## Step 4 — Patch the secondary docs
+## Step 4 — Patch CHECKLIST.md (and STRUCTURE.md only if structure changed)
 
-STRUCTURE.md, PROGRESS.md, and CHECKLIST.md are explicitly superseded by HANDOVER.md but must stay
-roughly in sync. Do **not** rewrite them wholesale — make targeted `Edit` calls that fix only the facts
-that just changed:
+CHECKLIST.md is explicitly superseded by HANDOVER.md but must stay roughly in sync, since it's an
+actively-used owner/agent tracker. Do **not** rewrite it wholesale — make targeted `Edit` calls that
+fix only the facts that just changed:
 
-- Wish count and relation distribution (STRUCTURE.md §2.5/§3.1, PROGRESS.md §6/§9, CHECKLIST.md content
-  rows) wherever a stale number appears.
-- Card count and filenames (STRUCTURE.md §6, PROGRESS.md, CHECKLIST.md).
-- Analytics/ads status (STRUCTURE.md's `api/event` note, PROGRESS.md §9, CHECKLIST.md "Analytics &
-  Monetization" section) — match whatever Step 2 found in the actual code, including if a mechanism was
-  added, removed, or is still just a stub.
-- Any file that HANDOVER.md's repo map (§4) shows as renamed/added/removed since these docs were last
-  touched (e.g. a script or `agent-rules/` file that no longer exists).
-- Git state lines that quote a specific HEAD SHA or commit count (PROGRESS.md §14, CHECKLIST.md if
-  present).
+- Wish count and relation distribution, wherever a stale number appears in its content rows.
+- Card count and filenames.
+- Analytics/ads status (its "Analytics & Monetization" section) — match whatever Step 2 found in the
+  actual code/dashboard state, including if a mechanism was added, removed, enabled, or is still just
+  a stub.
+- Git state lines that quote a specific HEAD SHA or commit count, if present.
 
-Grep each doc for the specific stale value before editing (`grep -n "<old count>\|<old SHA>"
-STRUCTURE.md PROGRESS.md CHECKLIST.md`) so the patch is surgical, not a rewrite. If a secondary doc
-already agrees with the newly-verified facts, leave it untouched.
+Grep for the specific stale value before editing (`grep -n "<old count>\|<old SHA>" CHECKLIST.md`) so
+the patch is surgical, not a rewrite. If it already agrees with the newly-verified facts, leave it
+untouched.
+
+**STRUCTURE.md** only needs a patch when Step 2's `agent-rules`/`scripts` check or HANDOVER.md's repo
+map (§4) shows a file actually added, removed, or renamed since STRUCTURE.md was last touched — e.g. a
+new component, a retired script, a renamed content folder. Do **not** patch it for count or status
+facts (wish/card counts, analytics wiring, git state) — those belong in HANDOVER.md only, and
+STRUCTURE.md's own header says as much. If nothing structural changed, leave it untouched entirely.
 
 ## Step 5 — Report, do not commit
 
@@ -121,8 +132,8 @@ commits (confirmed via `git log`).
 
 Only stage and commit if the user's invocation explicitly asked for it — i.e. `$ARGUMENTS` contains
 `commit` (e.g. `/handover-sync commit`) or the user's own message alongside the invocation says to
-commit. In that case, stage exactly the four docs that were touched (`git add HANDOVER.md STRUCTURE.md
-PROGRESS.md CHECKLIST.md` — only the ones actually changed) and commit with a short `docs: ...` message
+commit. In that case, stage exactly the docs that were actually touched this run (`git add HANDOVER.md`
+and, only if changed, `CHECKLIST.md` and/or `STRUCTURE.md`) and commit with a short `docs: ...` message
 in the style of this repo's existing history (see `git log` for examples). Never push.
 
 ## Guardrails
@@ -132,3 +143,5 @@ in the style of this repo's existing history (see `git log` for examples). Never
 - Never commit or push unless explicitly asked at invocation time.
 - Never write credentials, tokens, or secret values into any of these docs — names only.
 - If `npm run ci` or any check fails, the doc must say so plainly; do not round a failure up to green.
+- Do not recreate `PROGRESS.md` and do not patch facts into `STRUCTURE.md` beyond structural
+  (file-existence) changes — that reintroduces the multi-doc drift this consolidation removed.

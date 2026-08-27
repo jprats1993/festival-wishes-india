@@ -7,6 +7,11 @@
 > Stack: **Astro 7** (fully static SSG) · **Tailwind CSS v4** (Vite plugin, CSS-first) ·
 > **Zod** content schemas · **Cloudflare Pages** hosting. No UI framework — plain `.astro`
 > components. Languages: English (`en`), Hindi (`hi`), Hinglish (`hinglish`).
+>
+> **This is a structural reference, not a live fact tracker.** For current wish/card counts, git
+> state, deploy status, and analytics/SEO status, see **`HANDOVER.md`** — the single authoritative
+> cold-start doc. This file is only refreshed when the repo's actual file/directory layout changes
+> (files added, removed, or renamed), not on every count or status change.
 
 ---
 
@@ -26,7 +31,8 @@ festival-wishes-india/
 ├── AGENTS.md               # Dev instructions for coding agents (Astro docs pointers)
 ├── CLAUDE.md               # Symlink → AGENTS.md
 ├── CHECKLIST.md            # Shared owner/agent launch tracker (checkboxes)
-├── PROGRESS.md             # Cold-start project handover doc (full project state)
+├── HANDOVER.md             # Authoritative cold-start handover doc (full project state)
+├── STRUCTURE.md            # This file — structural walkthrough, not a fact tracker
 ├── README.md               # Stock Astro starter README (boilerplate, not project-specific)
 ├── astro.config.mjs        # Astro config: site URL, i18n, sitemap, Tailwind
 ├── package.json            # Scripts + dependencies
@@ -37,8 +43,11 @@ festival-wishes-india/
 **Root markdown docs (purpose in brief):**
 - `AGENTS.md` — instructions for AI coding agents working in the repo (use `astro dev --background`, consult the linked Astro docs before touching routing/components/content/i18n). Symlinked as `CLAUDE.md`.
 - `CHECKLIST.md` — a live launch checklist split into `[agent]` and `[owner]` rows (infrastructure, content, trust/compliance, SEO, analytics/monetization, owner blockers).
-- `PROGRESS.md` — the authoritative project handover: tech stack, domains/infrastructure, secrets locations, content model, URL structure, current status, open decisions, and known pitfalls.
+- `HANDOVER.md` — the single authoritative cold-start handover: tech stack, domains/infrastructure, secrets locations, content model, URL structure, current status, open decisions, and known pitfalls. This is the doc to trust for any current fact.
 - `README.md` — the default Astro "Minimal" starter README; boilerplate only, not maintained for this project.
+
+> A prior `PROGRESS.md` duplicated HANDOVER.md's scope almost exactly (both called themselves the
+> "cold-start handover") and was retired 2026-08-27 to remove that redundancy — see HANDOVER.md §12.
 
 ---
 
@@ -278,4 +287,4 @@ wrangler pages deploy dist --project-name festival-wishes-india
 ```
 
 There is no `wrangler.toml` — deploys are driven entirely by CLI flags. Deploy credentials
-live outside the repo under `~/.hermes/secrets/` (see `PROGRESS.md` §4 for details).
+live outside the repo under `~/.hermes/secrets/` (see `HANDOVER.md` §7 for details).

@@ -11,8 +11,10 @@
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
-> `npm run ci` run). It supersedes the older `PROGRESS.md` / `STRUCTURE.md` snapshots (all handover docs are now synced
-> to the same HEAD — see §12).
+> `npm run ci` run). It is the **sole authoritative cold-start doc** — the previously-duplicate
+> `PROGRESS.md` was retired 2026-08-27 (it restated this document's exact scope under the same
+> "cold-start handover" framing). `STRUCTURE.md` remains as a structural repo walkthrough (file/dir
+> purposes) but is no longer kept in fact-lockstep with this doc — see §12.
 
 ---
 
@@ -400,11 +402,13 @@ Run/confirm these before signing off or deploying:
   re-run those live-site checks itself; it re-verified only the local repo/build state (§1 header,
   `npm run ci`). **Note:** no saved wrangler deploy logs, so exact per-deploy URLs/hashes are not
   recorded (see `deployment-notes.md`).
-- **Known deviations from older docs:** none as of this sync — `HANDOVER.md`, `STRUCTURE.md`,
-  `PROGRESS.md`, and `CHECKLIST.md` are all patched to agree with HEAD `7e9d6a6` (31 commits) on the
-  facts this run re-verified (wish/card counts, git state, analytics wiring). `deployment-notes.md`
-  was not touched by this sync. `PROGRESS.md` §4 also says the `origin` remote embeds a PAT — that has
-  since been **removed** (remote is clean).
+- **Known deviations from older docs:** none — `HANDOVER.md` and `CHECKLIST.md` agree with HEAD
+  `9428c6b` on all live facts. `PROGRESS.md` was **retired 2026-08-27** (git history preserves it if
+  ever needed): it duplicated this document's exact "cold-start handover" scope, and the two had
+  already drifted out of sync more than once, which is the redundancy this retirement removes.
+  `STRUCTURE.md` is kept only as a structural walkthrough — its file/dir descriptions are accurate,
+  but it is no longer patched for count/status facts (those live here only). `deployment-notes.md`
+  was not touched by this sync.
 - **Recommended next 3 actions:**
   1. Delete/realign the stale `public/_redirects` and flip (or document) the 51 `humanReviewedSeed`
      flags.
