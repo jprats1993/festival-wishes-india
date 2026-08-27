@@ -3,11 +3,11 @@
 > **Cold-start handover.** A fresh chat/model/harness on THIS SAME MACHINE should be able to
 > resume the project from this document alone, with zero prior context.
 >
-> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `6822a0e965cc4d67d46945d5fce2bfea449eaa99`
-> (`6822a0e`, "docs: correct handover known-deviations note") · **Branch:** `main` · **27 commits**.
-> **Working tree is currently DIRTY** — a round of bug fixes (§2 "Fixed this session") is applied on
-> disk but not yet committed; run `git status`/`git diff` for the exact file list before trusting any
-> "clean"/commit-count claim elsewhere in this document.
+> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `b96f1dc7b46ddac179e8ceffdf6b9217e810ae99`
+> (`b96f1dc`, "fix: remove dead analytics endpoint, fix sitemap noindex leak, wire real OG image") ·
+> **Branch:** `main` · **30 commits** · working tree clean, in sync with `origin/main`. This commit's
+> fixes (§2 "Fixed this session") are **deployed to production** as of 2026-08-27 (verified via `curl`
+> and live DOM inspection — see §6/§9).
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -56,7 +56,7 @@
 - **Trust/compliance pages** (`/en|hi|hinglish/about|contact|privacy|disclaimer`), AI-assist
   disclosure in footer, sitemap (`sitemap-index.xml`), `robots.txt`, OG image, hreflang + canonical.
 
-### ✅ Fixed this session (2026-08-27, uncommitted — see dirty-tree note above)
+### ✅ Fixed this session (2026-08-27, commit `b96f1dc`, deployed to production)
 - Removed the dead `src/pages/api/event.ts` analytics stub and the client-side `fetch('/api/event', …)`
   calls in `ShareBar.astro`. On a static (non-SSR) Cloudflare Pages deploy a POST-only route can't
   actually be served, so every call was silently 404-ing — no analytics were ever really recorded.
@@ -324,6 +324,24 @@ currently clean — a PAT was embedded in an earlier state and has since been re
    If you change HTML and don't see it live, check the cache headers + do a hard reload.
 7. **Multiple checkouts** — the repo has been worked on by several agent sessions; docs can drift.
    Trust `git log`/`git status`/live `npm run ci` output over prose in older `.md` files.
+8. **NOT A BUG: ad-blockers hide the WhatsApp button.** Investigated 2026-08-27 after a report of the
+   WhatsApp button "missing" on production. Confirmed via live DOM inspection that `ShareBar.astro`'s
+   WhatsApp `<a>` renders correctly with no site-side CSS/JS hiding it — swapping its `href` away from
+   `wa.me` on the live page instantly un-hid it, proving a browser-side cosmetic filter (confirmed:
+   AdGuard) hides any link matching `wa.me`, not a site defect. This may be the same root cause as the
+   still-open "Firefox Focus renders differently than Samsung Internet" report (§11) — Firefox Focus's
+   built-in tracking protection is known to interfere with `wa.me` deep links similarly. Do not attempt
+   to "fix" the WhatsApp button in code based on a single-browser report; ask whether an ad-blocker or
+   privacy extension is active first.
+9. **OPEN, unreproduced: mobile view reportedly differs between Firefox Focus and Samsung Internet on
+   Android.** Reported 2026-08-27; not yet investigated (owner asked to defer). Leading hypotheses if
+   picked up later: (a) Tailwind v4 compiles its palette to `oklch()` color values — confirmed present
+   in the compiled CSS (`dist/_astro/*.css`) — which could render differently on an older/lagging
+   Gecko build; (b) `BaseLayout.astro`'s `<ClientRouter />` (Astro View Transitions) natively supported
+   in Chromium (Samsung Internet) but falling back to simulated `animate` mode in Firefox-based engines,
+   which can cause flashing/scroll-jump differences; (c) per defect #8 above, Firefox Focus's tracking
+   protection interfering with something client-side. Ask what specifically differs (colors, layout,
+   navigation) before guessing further — see the conversation this was raised in for context.
 
 ---
 

@@ -3,7 +3,8 @@
 > Shared tracker. Agent updates `[agent]` rows; owner updates `[owner]` rows.
 > Last updated: 2026-08-26 (post-go-live)
 
-**Status:** 🟢 LIVE at https://festivalwishesindia.com (deployed Aug 26 evening).
+**Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; bug-fix
+redeploy 2026-08-27, commit `b96f1dc` — see HANDOVER.md §2).
 `rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards, reduced
 from 11 on 2026-08-27 — see HANDOVER.md §2).
 
