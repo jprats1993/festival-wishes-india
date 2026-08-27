@@ -1,7 +1,7 @@
 # Festival Wishes India — Launch Checklist
 
 > Shared tracker. Agent updates `[agent]` rows; owner updates `[owner]` rows.
-> Last updated: 2026-08-26 (post-go-live)
+> Last updated: 2026-08-27 (Search Console + Cloudflare Web Analytics confirmed done)
 
 **Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; bug-fix
 redeploy 2026-08-27, commit `b96f1dc` — see HANDOVER.md §2).
@@ -42,13 +42,16 @@ from 11 on 2026-08-27 — see HANDOVER.md §2).
 - [x] robots.txt — agent
 - [x] hreflang + canonical — agent
 - [x] OG image — agent
-- [ ] Search Console property + verification — owner (agent guides)  ⏳ REMAINING
-- [ ] Submit sitemap in GSC — owner/agent  ⏳ REMAINING
+- [x] Search Console property + verification — owner (verified via DNS `google-site-verification`
+  TXT record on `festivalwishesindia.com`, confirmed 2026-08-27)
+- [x] Submit sitemap in GSC — owner (confirmed submitted 2026-08-27)
 
 ## Analytics & Monetization (post-launch)
 - [x] ~~Cookieless event endpoint stub~~ — removed 2026-08-27: it 404'd on this static (non-SSR)
   Cloudflare Pages deploy and never actually recorded anything; see HANDOVER.md §2 — agent
-- [ ] Cloudflare Web Analytics enabled (beacon) — agent  ⏳ REMAINING
+- [x] Cloudflare Web Analytics enabled — owner, via the dashboard's **automatic** zone-level toggle
+  (no JS beacon in page source by design — automatic mode collects RUM at the edge; confirmed with
+  owner 2026-08-27, not independently verifiable via curl/DNS)
 - [ ] AdSense application — owner (apply ~mid-Sep)  ⏳ REMAINING
 
 ### AdSense application — next steps

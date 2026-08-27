@@ -55,6 +55,14 @@
   `/_astro/*` immutable 1y; `/images/*` 1d.
 - **Trust/compliance pages** (`/en|hi|hinglish/about|contact|privacy|disclaimer`), AI-assist
   disclosure in footer, sitemap (`sitemap-index.xml`), `robots.txt`, OG image, hreflang + canonical.
+- **Search Console**: property verified for `festivalwishesindia.com` — confirmed live via DNS
+  `google-site-verification` TXT record (2026-08-27; verification is DNS-based, not a meta tag, so
+  it's invisible in page source). Sitemap submitted in GSC (owner-confirmed 2026-08-27).
+- **Cloudflare Web Analytics**: enabled via the Cloudflare dashboard's **automatic** zone-level
+  toggle (owner-confirmed 2026-08-27). This mode collects RUM at the edge with no JS beacon injected
+  into the page — checked `/en/`, `/en/rakhi/`, `/hi/rakhi/` live HTML and confirmed no
+  `cloudflareinsights.com` script is present, which is expected/correct for automatic mode, not a
+  defect. Not independently verifiable via curl/DNS; taken on owner's word.
 - **Fixed 2026-08-27, commit `b96f1dc` (deployed to production):**
   - Removed the dead `src/pages/api/event.ts` analytics stub and the client-side `fetch('/api/event', …)`
     calls in `ShareBar.astro`. On a static (non-SSR) Cloudflare Pages deploy a POST-only route can't
@@ -79,9 +87,6 @@
     `card-specs.json` entries, keeping the 3 newer, alignment-verified ones (`hinglish-3/4/5`).
 
 ### 🟡 Partially complete
-- **Analytics**: none. The former `/api/event` stub (see above) is gone. **Cloudflare Web Analytics
-  beacon is still NOT wired** — that remains the real path to analytics. Privacy copy already
-  discloses analytics.
 - **Card ↔ wish coupling**: schema has `imageAssets`/`altText` on wishes, but no wish file uses
   them — cards live independently in `cards.ts` (intentional).
 - **`public/_redirects`**: still the stale blanket-splat rule (`rakhiwishes.in/* →
@@ -89,7 +94,6 @@
   or realigned (see §9).
 
 ### ⛔ Not started
-- **Search Console**: property creation, verification, sitemap submission.
 - **AdSense** application/approval (no ads live; `PUBLIC_ADS_ENABLED` unset → house-promo shown).
 - **Amazon Associates** (Diwali gift guides).
 - **Diwali / Holi / Dussehra / Navratri** content (schema enums exist; zero content files).
@@ -137,10 +141,10 @@ analytics endpoint removed, sitemap noindex leak fixed, real OG image wired.
   **explicit `glob()` loaders** (`src/content.config.ts`) — required in Astro 7.
 - **Localization:** locales `en | hi | hinglish`; BCP-47 `hinglish → hi-Latn`; `prefixDefaultLocale: true`
   so every route is `/[locale]/[festival]/[collection]/`.
-- **Analytics:** none wired. The former cookieless `POST /api/event` stub was removed in `b96f1dc`
-  (2026-08-27) — it 404'd on every call on this static, non-SSR Cloudflare Pages deploy, so no
-  analytics were ever actually recorded. Cloudflare Web Analytics beacon is the intended real path
-  and is still pending (privacy copy already discloses it).
+- **Analytics:** Cloudflare Web Analytics, enabled via the dashboard's automatic zone-level toggle
+  (owner-confirmed 2026-08-27) — no code/beacon in the page, RUM is collected at the edge. The former
+  cookieless `POST /api/event` stub was removed in `b96f1dc` (2026-08-27) — it 404'd on every call on
+  this static, non-SSR Cloudflare Pages deploy, so no analytics were ever actually recorded through it.
 - **Image storage:** `public/images/rakhi/cards/*.webp`; generated via **SVG → headless render → WebP**
   (text-to-image garbles Devanagari — see §9).
 
@@ -405,5 +409,5 @@ Run/confirm these before signing off or deploying:
   1. Delete/realign the stale `public/_redirects` and flip (or document) the 51 `humanReviewedSeed`
      flags.
   2. Wire `astro check` (add `@astrojs/check` + `typescript`) so type-checking joins the CI gate.
-  3. Owner: complete Search Console verification + sitemap submission, then Cloudflare Web Analytics
-     beacon (both are the remaining go-live trust/SEO items).
+  3. Owner: AdSense application (~mid-Sep) — the remaining go-live monetization item now that Search
+     Console and Cloudflare Web Analytics are both confirmed done.

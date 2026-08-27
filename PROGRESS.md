@@ -20,8 +20,8 @@ greeting messages and image cards for Indian festivals, in three languages (**Hi
   and forwards it on WhatsApp/status.
 - Diwali, Holi, Dussehra, and Navratri are planned to follow.
 - Monetization is **post-launch** (Cloudflare Web Analytics → AdSense → Amazon Associates gift guides
-  for Diwali). No ads are live yet. **Correction 2026-08-27: the Cloudflare Web Analytics beacon is
-  NOT actually wired** — that claim was wrong; see HANDOVER.md §2, the authoritative doc.
+  for Diwali). No ads are live yet. Cloudflare Web Analytics was enabled 2026-08-27 via the
+  dashboard's automatic zone-level toggle (owner-confirmed) — see HANDOVER.md §2, the authoritative doc.
 
 ---
 
@@ -214,12 +214,16 @@ Files in `agent-rules/`:
 - **Root `/` → `/en/`** redirect (meta-refresh) live; `rakhiwishes.in` → `/en/rakhi/` 301 live.
 - **AI-assisted content disclosure** now live in the footer (`BaseLayout`), About, and Disclaimer.
 
+**Done since (2026-08-27, owner-confirmed):**
+- Search Console property verified (DNS `google-site-verification` TXT record, confirmed live) +
+  sitemap submitted in GSC.
+- Cloudflare Web Analytics enabled via the dashboard's automatic zone-level toggle (no page-side
+  beacon by design; the old `/api/event` stub endpoint was separately removed 2026-08-27, it never
+  worked in production anyway).
+
 **Remaining (see §10 / CHECKLIST.md):**
 - Real-device QA (Android Chrome + iOS Safari) — owner.
-- Search Console property + verification + sitemap submission — owner.
 - `rakhiwishes.in` NIXI registrant-verification confirmation — owner.
-- Cloudflare Web Analytics beacon (privacy copy already discloses it; not wired yet — the old
-  `/api/event` stub endpoint was removed 2026-08-27, it never worked in production anyway).
 - AdSense application/approval + Diwali content + Amazon Associates gift guides (post-launch).
 
 **Data-level follow-up note:** owner seed-batch approval was recorded in the tracker (`fa9cdd4`), but
@@ -232,10 +236,13 @@ those fields to reflect the owner sign-off or confirm the flags are intentionall
 
 1. **Real-device QA** (Android Chrome + iOS Safari) by **Aug 28 afternoon** — download/share flows,
    native share, WhatsApp text-link fallback, Devanagari rendering.
-2. **Search Console**: create/verify the `festivalwishesindia.com` property and submit the sitemap.
+2. ~~**Search Console**: create/verify the `festivalwishesindia.com` property and submit the
+   sitemap.~~ Done 2026-08-27 (DNS TXT verification confirmed live; sitemap submitted, owner-confirmed).
 3. **NIXI**: confirm the `rakhiwishes.in` registrant-verification email was actioned (redirect is
    already live, but confirm for `.in` compliance to avoid suspension).
-4. **Cloudflare Web Analytics**: enable and add the beacon (post-launch).
+4. ~~**Cloudflare Web Analytics**: enable and add the beacon (post-launch).~~ Done 2026-08-27 —
+   enabled via the dashboard's automatic zone-level toggle (owner-confirmed; no beacon script by
+   design in this mode).
 5. **AdSense**: prepare application (owner applies ~mid-Sep); Diwali + Amazon Associates later.
 
 ---
