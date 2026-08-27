@@ -3,6 +3,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { locales, localeLabels, isLocale, festivalName } from '../../lib/i18n';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+// Cache-busting query param derived from the banner file's own content, so a swapped banner gets a
+// new URL automatically (public/_headers caches /images/* for 1 day; without this, a redeploy's new
+// image would keep serving the old cached bytes at the same URL for up to 24h).
+function bannerVersion(slug: string): string {
+  const bytes = readFileSync(join(process.cwd(), 'public', 'images', slug, 'banner.webp'));
+  return createHash('md5').update(bytes).digest('hex').slice(0, 8);
+}
 
 export const getStaticPaths = (() => {
   return locales.map((locale) => ({ params: { locale } }));
@@ -62,7 +73,7 @@ const alternateUrls = Object.fromEntries(
         class="block bg-white rounded-xl border border-stone-200 overflow-hidden hover:border-rose-300 hover:shadow-sm transition text-center"
       >
         <img
-          src={`/images/${f.data.slug}/banner.webp`}
+          src={`/images/${f.data.slug}/banner.webp?v=${bannerVersion(f.data.slug)}`}
           alt=""
           width={800}
           height={500}
