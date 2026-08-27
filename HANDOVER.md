@@ -8,12 +8,10 @@
 > **Prepared:** 2026-08-27 (IST) · working tree clean, in sync with `origin/main`. Exact HEAD SHA,
 > branch, and commit count are **not restated here** — see §8 for the single canonical record (this
 > doc used to repeat that SHA in three places; git log/status are authoritative for history, this doc
-> isn't). Commit `82fff8f` — **Diwali and Dussehra launch** (100 wishes + 18 cards, three festivals
-> live now instead of one) — is **deployed to production**, and commit `093ac69` — **homepage
-> festival header banners** (original illustrated artwork, one per festival) — is also deployed, both
-> as of 2026-08-27 (verified via `curl` — see §6/§9). Diwali/Dussehra's first-seed-batch **owner
-> approval was given 2026-08-27** (see §11) — the researched festival dates themselves are a separate,
-> still-open item.
+> isn't). Current production state: **3 festivals live** (Rakhi, Diwali, Dussehra — 151 wishes, 27
+> shareable cards), all with owner-approved seed batches **and** owner-confirmed dates, plus a
+> homepage with an owner-supplied AI-illustrated banner per festival (§2). No open approval items
+> remain from launch (§11 for the full decision log).
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -75,36 +73,16 @@
   into the page — checked `/en/`, `/en/rakhi/`, `/hi/rakhi/` live HTML and confirmed no
   `cloudflareinsights.com` script is present, which is expected/correct for automatic mode, not a
   defect. Not independently verifiable via curl/DNS; taken on owner's word.
-- **Homepage festival header banners, commits `093ac69` → `a0547d2` (deployed to production):**
-  each tile on the `/{locale}/` festival-picker grid shows an illustrated header banner above its
-  title — Rakhi (a sister tying a rakhi on her brother's wrist), Diwali (a family with sparklers,
-  fireworks, rangoli, and sweets), Dussehra (Rama's arrow mid-flight at the ten-headed, fireworks-lit
-  Ravana effigy). No text baked into any image, so one asset per festival works unchanged across all
-  3 locales.
-  - **First pass (`093ac69`):** hand-authored original SVG artwork (SVG→headless-Chrome→WebP,
-    matching the greeting-card pipeline) — stock image sites were checked and rejected first (nothing
-    free/unlicensed exists for this subject; every result required attribution or payment, which
-    `agent-rules/content-policy.md` doesn't allow for unattributed use). Went through several owner
-    review rounds: abstract icon-only mockups → full illustrated scenes → the Rakhi scene simplified
-    to faceless silhouettes after the owner found illustrated kids "disconcerting," then two further
-    hairstyle-differentiation attempts that both read *worse* and were reverted.
-  - **Replaced in `a0547d2`:** the owner separately generated higher-quality illustrated artwork
-    (via Claude Code Desktop's image tool — confirming that surface *does* have image generation,
-    unlike this CLI session) for all three festivals and asked for a quality comparison; the new
-    art was clearly better (real illustrated figures vs. flat silhouettes/icons) and replaced the
-    SVG set entirely. The owner's first Dussehra draft had bilingual text burned into the artwork
-    ("DUSSEHRA - VIJAYADASHAMI" / "दशहरा - विजयदशमी" in two separate corners, not croppable without
-    losing the main figures) — regenerated without text rather than accepted as-is, to preserve the
-    locale-agnostic-image convention. `scripts/banners/*.svg` and `scripts/generate-banners.mjs`
-    were deleted (superseded; kept-around risked a future re-run silently reintroducing the worse
-    art). **No in-repo source/script for these anymore** — they're committed directly as
-    `public/images/{festival}/banner.webp` (JPG→WebP, quality 90, native ~1376×768). If they ever
-    need edits, that has to happen outside this repo and the WebP re-committed.
-  - **Caching caveat:** `/images/*` is unhashed-path, 1-day-cached (`public/_headers`) — a CDN edge
-    or browser that already cached the old banner bytes will keep serving them for up to 24h after a
-    banner update, even though the origin serves the new file immediately (verified via a
-    cache-busting query param post-deploy). Not a bug, just worth knowing if a "the image didn't
-    change" report comes in shortly after a banner swap.
+- **Homepage festival header banners (deployed to production):** each tile on the `/{locale}/`
+  festival-picker grid shows an illustrated header banner above its title — original AI-illustrated
+  artwork, owner-supplied (not built from an in-repo source or script — if these ever need edits,
+  that happens outside the repo and the new WebP gets re-committed to `public/images/{festival}/
+  banner.webp`). No text baked into any image, so one asset per festival works unchanged across all
+  3 locales. `[locale]/index.astro` appends an md5-of-the-file-bytes query param (`?v=<hash>`) to
+  each banner `<img src>`, so a future swap gets a fresh cache key and shows up immediately — needed
+  because `/images/*` caches unhashed paths for 1 day (§7 has the cache-purge permission gap this
+  works around). Full design history (SVG draft → owner's replacement artwork → this cache fix) is
+  in `git log`, not repeated here.
 - **Diwali + Dussehra launch, commits `f766d5c` + `82fff8f` (deployed to production):**
   - Added `src/content/festival/diwali.json` and `dussehra.json` — dates researched from
     drikpanchang.com (Diwali `2026-11-08`, Dussehra `2026-10-20`), recorded as
@@ -392,7 +370,7 @@ Owner of all credentials: **Prateek Jain** (`jprats1993`).
 
 | Var | Purpose | Permission scope | Storage | Rotation |
 |---|---|---|---|---|
-| `CLOUDFLARE_API_TOKEN` | `wrangler pages deploy` auth | **Cloudflare Pages — Edit** (project `festival-wishes-india`; zone-scoped if you also manage DNS) | `~/.hermes/secrets/cloudflare-token` | Cloudflare dashboard → My Profile → API Tokens → Roll/revoke, then rewrite the secret file |
+| `CLOUDFLARE_API_TOKEN` | `wrangler pages deploy` auth | **Cloudflare Pages — Edit** only — confirmed 2026-08-27 it does **not** include zone cache-purge (`POST /zones/{id}/purge_cache` returns `Authentication error`, code 10000). Purging cache (e.g. after swapping an `/images/*` asset in place) needs either a token with that scope or the Cloudflare dashboard, manually. | `~/.hermes/secrets/cloudflare-token` | Cloudflare dashboard → My Profile → API Tokens → Roll/revoke, then rewrite the secret file |
 | `CLOUDFLARE_ACCOUNT_ID` | Deploy target account | n/a (identifier, not a secret) | `0ce865a7040b3f3b8ddf2ff1a2bf6afb` (in docs) | n/a |
 | `CLOUDFLARE_PROJECT_NAME` | Pages project target | n/a | `festival-wishes-india` (flag value) | n/a |
 | `GITHUB_TOKEN` | `git push` / `gh` auth | `repo` scope (read/write to `jprats1993/festival-wishes-india`) | `~/.hermes/secrets/github-token` | GitHub → Settings → Developer settings → Personal access tokens → revoke/regenerate |
@@ -408,11 +386,11 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
   confirms `## main...origin/main` with no ahead/behind markers).
-- **HEAD:** `a0547d29cead6636db6f804ed52650656389fb61` (`a0547d2` "feat: replace SVG homepage banners
-  with AI-illustrated artwork").
+- **HEAD:** `124c42b847243aed02b43523d7268437b0a8b5a9` (`124c42b` "fix: cache-bust homepage banner
+  images by content hash").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 52.
+- **Commit count:** 54.
 - **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
@@ -502,7 +480,7 @@ Run/confirm these before signing off or deploying:
 | `humanReviewedSeed` flags | Open — owner approval recorded in docs but flags still `false` for all 151 wishes (flip or document intent) |
 | `public/_redirects` stale file | Open — delete or realign (zone-level rule governs) |
 | Diwali/Dussehra first-seed-batch owner approval | **Given 2026-08-27** — the owner explicitly approved both seed batches (separately from the earlier push+deploy instruction, which only covered the deploy action). Recorded in `CHECKLIST.md`. `humanReviewedSeed` was **not** flipped to `true` on the 100 wishes, mirroring the same still-open gap Rakhi has (row above) — this was a content/publication approval, not a per-wish human-review sign-off. |
-| Diwali/Dussehra dates | Sourced from drikpanchang.com by the agent (`dateVerifiedBy: "reviewer-agent"`), **not yet owner-sanity-checked**. Diwali `2026-11-08`, Dussehra `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`). |
+| Diwali/Dussehra dates | Sourced from drikpanchang.com, **owner-confirmed 2026-08-27** (`dateVerifiedBy: "owner"` in both festival JSONs). Diwali `2026-11-08`, Dussehra `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`). Closed — no longer an open decision. |
 | Diwali/Dussehra relation coverage | Intentionally skip `brother`/`sister`/`bhaiya-bhabhi` (Rakhi-specific relations) — those collection pages exist (shared `collectionMap`) but stay thin/`noindex` for these two festivals. Not a bug. |
 | `spouse-wishes` collection | New 2026-08-27 (`f766d5c`) — the wish schema always allowed `relations: ["spouse"]` but no collection page existed for it on any festival, including Rakhi, until this session added the slug. Rakhi still has zero spouse-relation wishes; only Diwali (11) and Dussehra (9) use it so far. |
 
@@ -516,32 +494,30 @@ Run/confirm these before signing off or deploying:
   rather than through that skill).
 - **Date:** 2026-08-27 (IST).
 - **Last verified commit:** see §8 (not restated here — single canonical record).
-- **Deployment verified by:** three production deploys since the last full doc sync, all this
+- **Deployment verified by:** four production deploys since the last full doc sync, all this
   session — `82fff8f` (Diwali + Dussehra launch, preview `57b918ec`), `093ac69` (first-pass SVG
-  homepage banners, preview `be356eb3`), and `a0547d2` (owner-supplied AI-illustrated banners
-  replacing the SVG set, preview `67bcb761` — verified via a **cache-busting** `curl` query param
-  against all 3 `banner.webp` URLs, since `/images/*`'s 1-day cache meant an un-busted `curl` right
-  after deploy still returned the old SVG-era byte sizes; `cf-cache-status: MISS` + correct size
-  confirmed the origin was actually updated). All three logged in `deployment-notes.md`. This sync
-  additionally re-verified the local repo/build state (`npm run ci`) and re-derived wish/card/relation
-  counts from source for all 3 festivals.
+  homepage banners, preview `be356eb3`), `a0547d2` (owner-supplied AI-illustrated banners replacing
+  the SVG set, preview `67bcb761`), and `124c42b` (content-hash cache-busting fix, preview
+  `2bd2a794`). The `a0547d2` deploy needed a **cache-busting** `curl` query param to verify — the
+  origin updated immediately (`cf-cache-status: MISS` + correct size) but a plain `curl`, and the
+  owner's own browser, kept showing the pre-deploy image because `/images/*` caches unhashed paths
+  for 1 day; that's exactly what `124c42b` fixes going forward (per-file content-hash query param).
+  All four logged in `deployment-notes.md`. This sync additionally re-verified the local repo/build
+  state (`npm run ci`) and re-derived wish/card/relation counts from source for all 3 festivals.
 - **Known deviations from older docs:** none intentional — `HANDOVER.md` and `CHECKLIST.md` were both
   updated this pass to agree with current HEAD (§8) on all live facts (wish/card counts, relation
   distribution, cards.ts registry, `spouse-wishes` collection, `src/lib/relations.ts`,
-  `scripts/generate-cards.mjs`, and the owner's seed-batch approval + two rounds of banner sign-off,
-  all recorded across this session outside a formal sync pass and reconciled here). `STRUCTURE.md`
-  **was** updated this pass too, in both directions — `scripts/banners/*.svg` and
-  `generate-banners.mjs` were **removed** (not just added) once the owner's AI-illustrated artwork
+  `scripts/generate-cards.mjs`, the owner's seed-batch approval, two rounds of banner sign-off, and
+  the cache-busting fix — all recorded across this session outside a formal sync pass and reconciled
+  here). `STRUCTURE.md` **was** updated this pass too, in both directions — `scripts/banners/*.svg`
+  and `generate-banners.mjs` were **removed** (not just added) once the owner's AI-illustrated artwork
   replaced that pipeline entirely, which is exactly the structural-change trigger the retired
   `/handover-sync` skill's Step 4 used to gate a `STRUCTURE.md` touch (a deletion counts the same as
   an addition); that same judgment call applies here even done by hand. `privacy.astro`'s stale
   `/api/event` reference (known defect 5) is still unfixed — not touched this pass, still open.
-- **Recommended next 3 actions:**
-  1. **Owner:** sanity-check the two researched Diwali/Dussehra dates against drikpanchang.com or
-     another source — the seed-batch content approval itself is done (2026-08-27), but the dates
-     were agent-researched (`dateVerifiedBy: "reviewer-agent"`) and remain a separate, still-open
-     item (see §11).
-  2. Fix the stale `privacy.astro` copy (§2 known defect 5), delete/realign `public/_redirects`, and
+- **Recommended next 2 actions:** (the date-sanity-check action from earlier syncs is done — owner
+  confirmed both dates 2026-08-27, see §11)
+  1. Fix the stale `privacy.astro` copy (§2 known defect 5), delete/realign `public/_redirects`, and
      flip (or document) the 151 `humanReviewedSeed` flags.
-  3. Owner: AdSense application (~mid-Sep) — the remaining go-live monetization item now that Search
+  2. Owner: AdSense application (~mid-Sep) — the remaining go-live monetization item now that Search
      Console and Cloudflare Web Analytics are both confirmed done.

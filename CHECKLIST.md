@@ -1,15 +1,15 @@
 # Festival Wishes India — Launch Checklist
 
 > Shared tracker. Agent updates `[agent]` rows; owner updates `[owner]` rows.
-> Last updated: 2026-08-27 (homepage banners replaced with owner-supplied AI art, commit `a0547d2`)
+> Last updated: 2026-08-27 (owner confirmed Diwali + Dussehra dates)
 
 **Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; latest
-redeploy 2026-08-27, commit `a0547d2` — see HANDOVER.md §2).
+redeploy 2026-08-27, commit `124c42b` — see HANDOVER.md §2).
 `rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards).
-**Diwali and Dussehra 2026 content is deployed and owner-approved** (50 wishes + 9 cards each,
-seed-batch approval given 2026-08-27 — see "Content — Diwali & Dussehra 2026" below and
-HANDOVER.md §11). The researched festival dates themselves are still unconfirmed by the owner
-(separate open item).
+**Diwali and Dussehra 2026 content is deployed, owner-approved, and dates owner-confirmed**
+(50 wishes + 9 cards each; seed-batch approval + date confirmation both given 2026-08-27 — see
+"Content — Diwali & Dussehra 2026" below and HANDOVER.md §11). No open launch items remain for
+either festival.
 
 ## Infrastructure
 - [x] Buy festivalwishesindia.com (Cloudflare Registrar) — owner
@@ -35,8 +35,8 @@ HANDOVER.md §11). The researched festival dates themselves are still unconfirme
 
 ## Content — Diwali & Dussehra 2026 (Phase 2)
 - [x] Diwali + Dussehra festival config (`src/content/festival/{diwali,dussehra}.json`), dates
-  sourced from drikpanchang.com — agent (2026-08-27; `dateVerifiedBy: "reviewer-agent"`, not yet
-  owner-confirmed — see HANDOVER.md §11)
+  sourced from drikpanchang.com — agent (2026-08-27), owner-confirmed same day
+  (`dateVerifiedBy: "owner"`)
 - [x] Generalize the Rakhi-only card-generation script into a festival-parameterized one
   (`scripts/generate-cards.mjs`); fixed a real pixel-alignment bug found while validating it — agent
 - [x] Add `spouse-wishes` collection (schema already supported `spouse`, no page existed for it) —
@@ -47,9 +47,8 @@ HANDOVER.md §11). The researched festival dates themselves are still unconfirme
 - [x] Deploy to production — agent (2026-08-27, commit `82fff8f`)
 - [x] Owner seed-batch approval for Diwali — owner (approved 2026-08-27)
 - [x] Owner seed-batch approval for Dussehra — owner (approved 2026-08-27)
-- [ ] Owner: sanity-check the researched dates (Diwali 8 Nov 2026, Dussehra 20 Oct 2026) against
-  drikpanchang.com or another source — still open, not part of the seed-batch approval above
-  ⏳ REMAINING
+- [x] Owner: confirm the researched dates (Diwali 8 Nov 2026, Dussehra 20 Oct 2026) — owner
+  (confirmed 2026-08-27; `dateVerifiedBy` flipped to `"owner"` in both festival JSONs)
 
 ## Homepage
 - [x] Illustrated header banner per festival (Rakhi, Diwali, Dussehra) on the `/{locale}/` festival
@@ -65,6 +64,13 @@ HANDOVER.md §11). The researched festival dates themselves are still unconfirme
     `scripts/banners/*.svg` + `generate-banners.mjs`. Owner's Dussehra draft had bilingual text
     baked in — regenerated without text rather than accepted or cropped. **No in-repo source for
     the banners anymore** — committed directly as `public/images/{festival}/banner.webp`.
+  - Cache-busting fix — agent (2026-08-27, commit `124c42b`): owner reported still seeing the old
+    banner after the `a0547d2` deploy — `/images/*` caches for 1 day at an unhashed path, so the CDN
+    edge/browser kept serving stale bytes even though the origin was already updated. Tried to purge
+    the Cloudflare cache directly first; the deploy token doesn't have that permission (see
+    HANDOVER.md §7). Fixed by having `index.astro` append an md5-of-the-file-bytes query param
+    (`?v=<hash>`) to each banner `<img src>`, so any future swap gets a fresh cache key automatically
+    — confirmed live, no purge needed.
 
 ## Trust & Compliance
 - [x] About page — agent
