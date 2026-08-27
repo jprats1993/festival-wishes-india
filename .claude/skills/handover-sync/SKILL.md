@@ -23,19 +23,41 @@ scope under a different name, and the two had already drifted out of sync more t
 recreate it and do not patch facts into it. If it has reappeared in the repo, that's a regression to
 flag to the user, not a file to sync.
 
+**Token budget — this skill runs long, so be deliberate about what enters context:**
+- Never `cat`/`Read` a whole file to change a few facts. Find the exact line with `grep -n` first,
+  then `Read` only a small window around it (`offset`/`limit`), then `Edit`. This applies to
+  HANDOVER.md (§3) and CHECKLIST.md (§4) alike — a 400-line full read to fix one commit SHA is waste.
+  Only read a section in full when its structure itself is changing (e.g. adding a new "Fixed this
+  session" entry with several bullets).
+- Silence verbose command output — you need the pass/fail signal, not every line. See Step 1 for the
+  `npm run ci` pattern; apply the same instinct elsewhere (pipe through `grep`/`tail`, don't dump raw).
+- Combine independent read-only checks into one Bash call with `&&`/`;`/heredoc instead of one tool
+  call per command — cuts round-trip overhead, not just output volume.
+- Run `npm run ci` exactly once per invocation (Step 1). Never re-run it "to double check" — if you
+  need to confirm a build-affecting edit didn't break anything, that's a sign the edit belonged in a
+  real code change, not a docs sync.
+
 ## Step 1 — Ground in live repo state
 
-Run these from `/Users/varshajain/festival-wishes-india` and read every line of output before writing
-anything:
+Run these from `/Users/varshajain/festival-wishes-india`, read every line of output before writing
+anything, but keep the `npm run ci` output itself small — it's the single biggest token cost in this
+skill (Astro's build step prints one line per generated route, 40+ lines of pure noise on a healthy
+build):
 
 ```bash
-git status
-git log -1
-git log --oneline | wc -l          # commit count
-git rev-parse HEAD                 # full SHA
-git log --oneline -20               # for the "features deployed by commit" trail
-npm run ci                          # validate + build + check:links — must actually run, not be assumed
+git status && git log -1 && git log --oneline | wc -l && git rev-parse HEAD && git log --oneline -20
+npm run ci > /tmp/handover-sync-ci.log 2>&1; ci_status=$?
+if [ $ci_status -eq 0 ]; then
+  grep -E "✅|page\(s\) built|Checked .* references" /tmp/handover-sync-ci.log
+else
+  echo "CI FAILED (exit $ci_status) — full log:"; cat /tmp/handover-sync-ci.log
+fi
 ```
+
+The first line covers git status/log/count/SHA/trail in one call. The second block runs `npm run ci`
+(validate + build + check:links) exactly once, but only surfaces the summary lines on success —
+`✅ Content valid`, `43 page(s) built`, `Checked N references` / `✅ No dead links` — instead of the
+full per-route build listing. On failure it dumps the whole log, because then you need the detail.
 
 If `npm run ci` fails, do not report it as green. Record the actual failure in §9/§10 of HANDOVER.md
 instead of silently reusing the last known-good status.
@@ -45,9 +67,27 @@ instead of silently reusing the last known-good status.
 Do not trust old prose in HANDOVER.md, STRUCTURE.md, or CHECKLIST.md for any of these — re-check each
 one directly:
 
-- **Wish count:** `find src/content/wish -name '*.json' | wc -l`, then read a sample to confirm
-  `reviewStatus`/`reviewedBy`/`source` values and re-tally the relation distribution (grep `"relations"`
-  or read files) — don't reuse last session's per-relation breakdown without recomputing it.
+- **Wish count + relation distribution + review status, in one pass:** don't loop a `node -e` per file
+  (that's 51+ process spawns for one fact) and don't grep `-A3` around `"relations"` (it bleeds into
+  neighboring fields and produces a wrong tally — this happened once already). Instead read every wish
+  file's JSON in a single script, e.g.:
+  ```bash
+  node -e '
+    const fs=require("fs");
+    const dir="src/content/wish";
+    const files=fs.readdirSync(dir).filter(f=>f.endsWith(".json"));
+    const rel={}, status={};
+    for (const f of files) {
+      const w=JSON.parse(fs.readFileSync(dir+"/"+f));
+      for (const r of w.relations) rel[r]=(rel[r]||0)+1;
+      status[w.reviewStatus]=(status[w.reviewStatus]||0)+1;
+    }
+    console.log("total:", files.length);
+    console.log("relations:", rel);
+    console.log("reviewStatus:", status);
+  '
+  ```
+  One process, one compact output block, no stale per-relation breakdown carried forward.
 - **Card count:** `find public/images/rakhi/cards -name '*.webp' | wc -l`, and cross-check the filenames
   against `src/lib/cards.ts`'s registry (a card image with no matching `cards.ts` entry, or vice versa,
   is a defect to report in §9, not to paper over).
@@ -56,20 +96,31 @@ one directly:
   gone, don't just carry the note forward).
 - **Festival/collection coverage:** `find src/content/festival -name '*.json'` and diff against the
   `festival` enum in `src/content.config.ts`.
-- **Package/build surface:** re-read `package.json` (`scripts`, `dependencies`, `engines`) and
-  `astro.config.mjs` (site URL, integrations, sitemap filter logic) directly — don't assume they match
-  what HANDOVER.md currently claims.
+- **Package/build surface:** `grep -n "\"scripts\"\|\"dependencies\"\|\"engines\"" -A6 package.json`
+  and a targeted read of `astro.config.mjs` (site URL, integrations, sitemap filter logic) — don't
+  assume they match what HANDOVER.md currently claims, but don't full-`Read` package.json for this
+  either.
 - **`agent-rules/` and `scripts/`:** `ls agent-rules/ scripts/` and confirm the file list HANDOVER.md
   §4/§5 names still matches reality (files renamed, added, or removed since the last sync are defects
   or updates to call out, not silent no-ops).
 - **Known defects / open decisions:** re-verify each item currently listed in HANDOVER.md §9/§11 is
   still true (e.g. re-check `public/_redirects` content, re-check whether `humanReviewedSeed` flags were
   flipped) rather than copying the list forward unchanged.
-- **Git state:** working-tree cleanliness (`git status --porcelain`), ahead/behind `origin/main`
-  (`git status -sb` or `git rev-list --left-right --count origin/main...HEAD` if a remote is
-  reachable), full + short HEAD SHA, and commit count all come from the Step 1 output, not from memory.
+- **Git state:** working-tree cleanliness, ahead/behind `origin/main` (`git status -sb`, or
+  `git rev-list --left-right --count origin/main...HEAD` if a remote is reachable), full + short HEAD
+  SHA, and commit count all come from **Step 1's output** — don't re-run any of those commands here.
 
-## Step 3 — Rewrite HANDOVER.md
+Where practical, run these checks in one combined Bash call (`&&`/`;`-chained or a single heredoc)
+instead of one tool call per bullet — same information, fewer round trips.
+
+## Step 3 — Update HANDOVER.md with targeted edits, not a full rewrite
+
+**Do not `Read` the entire 400+-line file to patch a handful of facts.** For each fact from Step 2
+that changed, `grep -n "<old value>" HANDOVER.md` to find its line(s), `Read` a small window
+(`offset`/`limit`) around each hit, then `Edit` just that spot — the same surgical pattern Step 4 uses
+for CHECKLIST.md. A full `Read` of HANDOVER.md is only justified when a section's structure itself
+needs to change (a new "Fixed this session" entry with multiple new bullets, a new Known Issue, a
+reordered list) — and even then, read only the section(s) actually changing, not the whole document.
 
 Preserve the existing section structure exactly — do not invent a new outline:
 
