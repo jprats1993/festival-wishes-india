@@ -8,8 +8,8 @@
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
-> `npm run ci` run). It supersedes the older `PROGRESS.md` / `STRUCTURE.md` snapshots, which are
-> now stale in places (`STRUCTURE.md` still says "22 commits / HEAD 96a91f9 / 8 cards" — see §12 "Known deviations").
+> `npm run ci` run). It supersedes the older `PROGRESS.md` / `STRUCTURE.md` snapshots (all handover docs are now synced
+> to the same HEAD — see §12).
 
 ---
 
@@ -346,8 +346,8 @@ Run/confirm these before signing off or deploying:
   evening (recorded in `CHECKLIST.md`/`fa9cdd4`); the live `curl -I` of `rakhiwishes.in` → 301 →
   `/en/rakhi/` was verified previously. **Note:** no saved wrangler deploy logs, so exact per-deploy
   URLs/hashes are not recorded (see `deployment-notes.md`).
-- **Known deviations from older docs:** `STRUCTURE.md` says "22 commits / HEAD 96a91f9 / 8 cards";
-  actual = **27 commits / HEAD 4d47d97 / 11 cards**. `PROGRESS.md` and `CHECKLIST.md` are synced. `PROGRESS.md` §4 also says
+- **Known deviations from older docs:** none — all handover docs (`HANDOVER.md`, `STRUCTURE.md`,
+  `PROGRESS.md`, `CHECKLIST.md`, `deployment-notes.md`) are synced to HEAD `4d47d97` (27 commits). `PROGRESS.md` §4 also says
   the `origin` remote embeds a PAT — that has since been **removed** (remote is clean).
 - **Recommended next 3 actions:**
   1. Delete/realign the stale `public/_redirects` and flip (or document) the 51 `humanReviewedSeed`
