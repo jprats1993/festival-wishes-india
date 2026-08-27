@@ -10,8 +10,8 @@
 > doc used to repeat that SHA in three places; git log/status are authoritative for history, this doc
 > isn't). Commit `82fff8f` — **Diwali and Dussehra launch** (100 wishes + 18 cards, three festivals
 > live now instead of one) — is **deployed to production** as of 2026-08-27 (verified via `curl` —
-> see §6/§9). Diwali/Dussehra are deployed but their first-seed-batch **owner approval is still
-> outstanding** (see §11) — the site is live, the content isn't yet owner-signed-off.
+> see §6/§9). Diwali/Dussehra's first-seed-batch **owner approval was given 2026-08-27** (see §11) —
+> the researched festival dates themselves are a separate, still-open item.
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -99,10 +99,11 @@
     per batch plus an automated near-duplicate-opening scan across all 100; found only one shared
     6-word opening clause (both referencing the same sanctioned framing), diverging completely after
     that — not a real duplicate.
-  - **Not done as part of this launch:** owner approval of the seed batch (required per
-    `content-policy.md` for a new festival's first batch — see §11), `humanReviewedSeed` flip (same
-    open item Rakhi already has), and any Diwali/Dussehra-specific `popularWishIds` curation beyond
-    a first pass (10 IDs each, added to the existing cross-festival list in `src/lib/popular.ts`).
+  - **Owner approved both seed batches 2026-08-27** (required per `content-policy.md` for a new
+    festival's first batch — recorded in `CHECKLIST.md`; see §11). Still not done: `humanReviewedSeed`
+    flip (same open item Rakhi already has) and any Diwali/Dussehra-specific `popularWishIds`
+    curation beyond a first pass (10 IDs each, added to the existing cross-festival list in
+    `src/lib/popular.ts`).
 - **Fixed 2026-08-27, commit `ee21b1d` (deployed to production):**
   - `AdSlot.astro`'s house-promo text ("✨ Find more festival wishes...") and `BaseLayout.astro`'s
     footer nav links (Contact/Privacy/Disclaimer) were hardcoded English regardless of locale, unlike
@@ -464,7 +465,7 @@ Run/confirm these before signing off or deploying:
 | Production deploy requires manual approval | **Yes** — never deploy without owner approval |
 | `humanReviewedSeed` flags | Open — owner approval recorded in docs but flags still `false` for all 151 wishes (flip or document intent) |
 | `public/_redirects` stale file | Open — delete or realign (zone-level rule governs) |
-| Diwali/Dussehra first-seed-batch owner approval | **Open, and notably not yet done** — `agent-rules/content-policy.md` requires explicit owner sign-off on a new festival's first seed batch before it's "launched", separate from the deploy-authorization gate above. The owner asked for push+deploy on 2026-08-27 (commit `82fff8f`) and that happened — but that instruction covered the deploy action, not a content-quality sign-off. Content is live at `/en\|hi\|hinglish/diwali/` and `/dussehra/` without that separate approval having been explicitly given. Flag this to the owner; don't assume it's implicitly covered. |
+| Diwali/Dussehra first-seed-batch owner approval | **Given 2026-08-27** — the owner explicitly approved both seed batches (separately from the earlier push+deploy instruction, which only covered the deploy action). Recorded in `CHECKLIST.md`. `humanReviewedSeed` was **not** flipped to `true` on the 100 wishes, mirroring the same still-open gap Rakhi has (row above) — this was a content/publication approval, not a per-wish human-review sign-off. |
 | Diwali/Dussehra dates | Sourced from drikpanchang.com by the agent (`dateVerifiedBy: "reviewer-agent"`), **not yet owner-sanity-checked**. Diwali `2026-11-08`, Dussehra `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`). |
 | Diwali/Dussehra relation coverage | Intentionally skip `brother`/`sister`/`bhaiya-bhabhi` (Rakhi-specific relations) — those collection pages exist (shared `collectionMap`) but stay thin/`noindex` for these two festivals. Not a bug. |
 | `spouse-wishes` collection | New 2026-08-27 (`f766d5c`) — the wish schema always allowed `relations: ["spouse"]` but no collection page existed for it on any festival, including Rakhi, until this session added the slug. Rakhi still has zero spouse-relation wishes; only Diwali (11) and Dussehra (9) use it so far. |
@@ -494,10 +495,10 @@ Run/confirm these before signing off or deploying:
   touch; that same judgment call applies here even done by hand. `privacy.astro`'s stale
   `/api/event` reference (known defect 5) is still unfixed — not touched this pass, still open.
 - **Recommended next 3 actions:**
-  1. **Owner:** give (or explicitly withhold) first-seed-batch approval for Diwali and Dussehra per
-     `agent-rules/content-policy.md` — content is deployed but this specific approval step hasn't
-     happened yet (see §11's new "Diwali/Dussehra first-seed-batch owner approval" row). Also
-     sanity-check the two researched dates.
+  1. **Owner:** sanity-check the two researched Diwali/Dussehra dates against drikpanchang.com or
+     another source — the seed-batch content approval itself is done (2026-08-27), but the dates
+     were agent-researched (`dateVerifiedBy: "reviewer-agent"`) and remain a separate, still-open
+     item (see §11).
   2. Fix the stale `privacy.astro` copy (§2 known defect 5), delete/realign `public/_redirects`, and
      flip (or document) the 151 `humanReviewedSeed` flags.
   3. Owner: AdSense application (~mid-Sep) — the remaining go-live monetization item now that Search

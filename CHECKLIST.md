@@ -1,15 +1,15 @@
 # Festival Wishes India — Launch Checklist
 
 > Shared tracker. Agent updates `[agent]` rows; owner updates `[owner]` rows.
-> Last updated: 2026-08-27 (Diwali + Dussehra seed content deployed, commit `82fff8f`)
+> Last updated: 2026-08-27 (owner approved Diwali + Dussehra seed batches)
 
 **Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; latest
 redeploy 2026-08-27, commit `82fff8f` — see HANDOVER.md §2).
 `rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards).
-**Diwali and Dussehra 2026 content is now also deployed** (50 wishes + 9 cards each) — but per
-`agent-rules/content-policy.md`, a new festival's first seed batch needs explicit **owner approval**
-before it's treated as fully launched; that approval is still outstanding for both (see "Content —
-Diwali & Dussehra 2026" below and HANDOVER.md §11).
+**Diwali and Dussehra 2026 content is deployed and owner-approved** (50 wishes + 9 cards each,
+seed-batch approval given 2026-08-27 — see "Content — Diwali & Dussehra 2026" below and
+HANDOVER.md §11). The researched festival dates themselves are still unconfirmed by the owner
+(separate open item).
 
 ## Infrastructure
 - [x] Buy festivalwishesindia.com (Cloudflare Registrar) — owner
@@ -45,10 +45,11 @@ Diwali & Dussehra 2026" below and HANDOVER.md §11).
   Dussehra — agent (2026-08-27, commit `82fff8f`)
 - [x] Generate 9 cards each (3 en/hi/hinglish) for Diwali and Dussehra — agent
 - [x] Deploy to production — agent (2026-08-27, commit `82fff8f`)
-- [ ] Owner seed-batch approval for Diwali — owner  ⏳ REMAINING
-- [ ] Owner seed-batch approval for Dussehra — owner  ⏳ REMAINING
+- [x] Owner seed-batch approval for Diwali — owner (approved 2026-08-27)
+- [x] Owner seed-batch approval for Dussehra — owner (approved 2026-08-27)
 - [ ] Owner: sanity-check the researched dates (Diwali 8 Nov 2026, Dussehra 20 Oct 2026) against
-  drikpanchang.com or another source  ⏳ REMAINING
+  drikpanchang.com or another source — still open, not part of the seed-batch approval above
+  ⏳ REMAINING
 
 ## Trust & Compliance
 - [x] About page — agent
