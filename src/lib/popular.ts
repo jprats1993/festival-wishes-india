@@ -1,5 +1,6 @@
-// Curated "popular" wish IDs — a hand-picked, relation-diverse subset
-// surfaced under the Popular tab on festival hubs.
+// Curated "popular" wish IDs across all festivals — a hand-picked, relation-diverse subset
+// surfaced under the Popular tab on each festival's hub (already filtered to that festival's
+// wishes there, so IDs from other festivals are simply ignored).
 export const popularWishIds: string[] = [
   'rakhi-brother-001',
   'rakhi-brother-002',

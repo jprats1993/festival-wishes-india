@@ -1,0 +1,26 @@
+{
+  "slug": "dussehra",
+  "displayName": "Dussehra",
+  "displayNames": {
+    "en": "Dussehra",
+    "hi": "दशहरा",
+    "hinglish": "Dussehra"
+  },
+  "aliases": ["Vijayadashami", "Dasara", "Dasha-Hara"],
+  "date": "2026-10-20",
+  "dateSourceUrl": "https://www.drikpanchang.com/festivals/vijayadashami/vijayadashami-date-time.html",
+  "dateVerifiedAt": "2026-08-27T13:45:00Z",
+  "dateVerifiedBy": "reviewer-agent",
+  "isSmokeTest": false,
+  "region": "India and Indian diaspora",
+  "calendarConvention": "Hindu lunar calendar (Ashvin Shukla Dashami); Bengal observes it a day later",
+  "languages": ["en", "hi", "hinglish"],
+  "defaultIndexableCollections": ["short-wishes", "family-wishes", "friend-wishes", "whatsapp-messages"],
+  "minimums": {
+    "approvedWishes": 24,
+    "approvedCards": 8,
+    "uniqueIndexableCollections": 3
+  },
+  "publishLeadTimeDays": 42,
+  "humanReviewRequired": true
+}

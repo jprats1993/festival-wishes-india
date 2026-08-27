@@ -5,6 +5,7 @@ import AdSlot from '../../../components/AdSlot.astro';
 import { locales, localeLabels, isLocale, festivalName } from '../../../lib/i18n';
 import { cards } from '../../../lib/cards';
 import { popularWishIds } from '../../../lib/popular';
+import { relationTabs } from '../../../lib/relations';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
@@ -38,16 +39,7 @@ const wishes = allWishes
 const popularWishes = wishes.filter((w) => popularWishIds.includes(w.data.id));
 const wishNumbers = new Map(wishes.map((w, i) => [w.data.id, i + 1]));
 
-const relationTabs = [
-  { slug: 'brother-wishes', label: { en: 'Brother', hi: 'भाई', hinglish: 'Bhai' } },
-  { slug: 'sister-wishes', label: { en: 'Sister', hi: 'बहन', hinglish: 'Behen' } },
-  { slug: 'bhaiya-bhabhi-wishes', label: { en: 'Bhaiya-Bhabhi', hi: 'भैया-भाभी', hinglish: 'Bhaiya-Bhabhi' } },
-  { slug: 'family-wishes', label: { en: 'Family', hi: 'परिवार', hinglish: 'Family' } },
-  { slug: 'friend-wishes', label: { en: 'Friend', hi: 'दोस्त', hinglish: 'Dost' } },
-  { slug: 'parent-wishes', label: { en: 'Parents', hi: 'माता-पिता', hinglish: 'Parents' } },
-];
-
-const festivalCards = cards.filter((c) => c.lang === locale);
+const festivalCards = cards.filter((c) => c.lang === locale && c.festival === festivalSlug);
 
 const copy = {
   en: {

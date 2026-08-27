@@ -1,0 +1,26 @@
+{
+  "slug": "diwali",
+  "displayName": "Diwali",
+  "displayNames": {
+    "en": "Diwali",
+    "hi": "दिवाली",
+    "hinglish": "Diwali"
+  },
+  "aliases": ["Deepavali", "Deepawali", "Festival of Lights"],
+  "date": "2026-11-08",
+  "dateSourceUrl": "https://www.drikpanchang.com/diwali/diwali-puja-calendar.html",
+  "dateVerifiedAt": "2026-08-27T13:45:00Z",
+  "dateVerifiedBy": "reviewer-agent",
+  "isSmokeTest": false,
+  "region": "India and Indian diaspora",
+  "calendarConvention": "Hindu lunar calendar (Kartik Amavasya)",
+  "languages": ["en", "hi", "hinglish"],
+  "defaultIndexableCollections": ["short-wishes", "family-wishes", "friend-wishes", "whatsapp-messages"],
+  "minimums": {
+    "approvedWishes": 24,
+    "approvedCards": 8,
+    "uniqueIndexableCollections": 3
+  },
+  "publishLeadTimeDays": 42,
+  "humanReviewRequired": true
+}

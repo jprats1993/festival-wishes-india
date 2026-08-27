@@ -4,6 +4,7 @@ import WishCard from '../../../components/WishCard.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 import { collections, NOINDEX_THRESHOLD } from '../../../lib/collections';
 import { locales, localeLabels, isLocale, festivalName } from '../../../lib/i18n';
+import { relationTabs } from '../../../lib/relations';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
@@ -94,6 +95,11 @@ const titleMap: Record<string, Record<typeof locale, string>> = {
     hi: `${festivalName(festival, locale)} माता-पिता के लिए शुभकामनाएँ`,
     hinglish: `${festivalName(festival, locale)} parents ke liye wishes`,
   },
+  'spouse-wishes': {
+    en: `${festivalName(festival, locale)} wishes for spouse`,
+    hi: `${festivalName(festival, locale)} जीवनसाथी के लिए शुभकामनाएँ`,
+    hinglish: `${festivalName(festival, locale)} spouse ke liye wishes`,
+  },
 };
 
 const title = titleMap[collection]?.[locale] || `${festivalName(festival, locale)} wishes`;
@@ -114,17 +120,6 @@ const emptyMessage =
 const alternateUrls = Object.fromEntries(
   locales.map((loc) => [loc, `/${loc}/${festivalSlug}/${collection}/`])
 ) as Record<typeof locale, string>;
-
-const relationTabs = [
-  { slug: 'brother-wishes', label: { en: 'Brother', hi: 'भाई', hinglish: 'Bhai' } },
-  { slug: 'sister-wishes', label: { en: 'Sister', hi: 'बहन', hinglish: 'Behen' } },
-  { slug: 'bhaiya-bhabhi-wishes', label: { en: 'Bhaiya-Bhabhi', hi: 'भैया-भाभी', hinglish: 'Bhaiya-Bhabhi' } },
-  { slug: 'family-wishes', label: { en: 'Family', hi: 'परिवार', hinglish: 'Family' } },
-  { slug: 'friend-wishes', label: { en: 'Friend', hi: 'दोस्त', hinglish: 'Dost' } },
-  { slug: 'parent-wishes', label: { en: 'Parents', hi: 'माता-पिता', hinglish: 'Parents' } },
-  { slug: 'short-wishes', label: { en: 'Short', hi: 'छोटी', hinglish: 'Short' } },
-  { slug: 'whatsapp-messages', label: { en: 'WhatsApp', hi: 'व्हाट्सएप', hinglish: 'WhatsApp' } },
-];
 
 // noindex if collection is too thin
 const noindex = filtered.length < NOINDEX_THRESHOLD;

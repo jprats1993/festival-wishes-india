@@ -1,0 +1,25 @@
+# Copied from festival-rules.yml per its own instruction ("copy this file for each festival").
+festival:
+  slug: dussehra
+  display_name: Dussehra
+  aliases: [Vijayadashami, Dasara, Dasha-Hara]
+  date: "2026-10-20"
+  date_verified_by: reviewer-agent
+  is_smoke_test: false
+  target_regions: [India, Indian diaspora]
+  languages: [hi, en, hinglish]
+  default_indexable_collections:
+    - short-wishes
+    - family-wishes
+    - friend-wishes
+    - whatsapp-messages
+  prohibited_or_review_required:
+    - claims about regional rituals
+    - religious or historical assertions
+    - medical, financial, or political messaging
+  minimums:
+    approved_wishes: 24
+    approved_cards: 8
+    unique_indexable_collections: 3
+  publish_lead_time_days: 42
+  human_review_required: true

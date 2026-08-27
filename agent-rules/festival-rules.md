@@ -12,6 +12,27 @@ This file is the human-readable companion to the machine-readable festival confi
 - Minimum launch batch: 24 approved wishes and 8 approved cards.
 - Lead time for future festivals: publish the main hub approximately six weeks before the festival.
 
+## Dussehra 2026
+
+- Slug: `dussehra`
+- Date: `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`) — verify manually
+  before publication.
+- Audience: India and the Indian diaspora.
+- Languages: Hindi, English, Hinglish.
+- Initial collections: short wishes, family wishes, friend wishes, WhatsApp messages.
+- Minimum launch batch: 24 approved wishes and 8 approved cards.
+- Not a smoke test — 42-day publish lead time from today (2026-08-27) is satisfied.
+
+## Diwali 2026
+
+- Slug: `diwali`
+- Date: `2026-11-08` — verify manually before publication.
+- Audience: India and the Indian diaspora.
+- Languages: Hindi, English, Hinglish.
+- Initial collections: short wishes, family wishes, friend wishes, WhatsApp messages.
+- Minimum launch batch: 24 approved wishes and 8 approved cards.
+- Not a smoke test — 42-day publish lead time from today (2026-08-27) is satisfied.
+
 ## Review requirements
 
 - A reviewer-agent audits every batch. The first seed batch of a new festival requires explicit owner approval before publication.

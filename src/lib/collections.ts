@@ -11,6 +11,7 @@ export const collectionMap: Record<string, string[]> = {
   'family-wishes': ['family'],
   'friend-wishes': ['friend'],
   'parent-wishes': ['parent'],
+  'spouse-wishes': ['spouse'],
 };
 
 // Collections that filter by tone/format instead of (or in addition to) relation.

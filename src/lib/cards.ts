@@ -1,5 +1,6 @@
 export interface Card {
   id: string;
+  festival: 'rakhi' | 'diwali' | 'dussehra';
   lang: 'en' | 'hi' | 'hinglish';
   src: string;
   alt: string;
@@ -9,6 +10,7 @@ export interface Card {
 export const cards: Card[] = [
   {
     "id": "rakhi-en-1",
+    "festival": "rakhi",
     "lang": "en",
     "src": "/images/rakhi/cards/rakhi-en-1.webp",
     "alt": "Happy Raksha Bandhan! May the bond of love and protection between us grow stronger with every thread.",
@@ -16,6 +18,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-en-2",
+    "festival": "rakhi",
     "lang": "en",
     "src": "/images/rakhi/cards/rakhi-en-2.webp",
     "alt": "To my dear brother, on this Rakhi I pray for your happiness, success and good health.",
@@ -23,6 +26,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-hi-1",
+    "festival": "rakhi",
     "lang": "hi",
     "src": "/images/rakhi/cards/rakhi-hi-1.webp",
     "alt": "रक्षाबंधन की हार्दिक शुभकामनाएँ! भाई-बहन का प्यार और रक्षा का बंधन सदा बना रहे।",
@@ -30,6 +34,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-hi-2",
+    "festival": "rakhi",
     "lang": "hi",
     "src": "/images/rakhi/cards/rakhi-hi-2.webp",
     "alt": "प्यारे भाई, इस राखी पर आपके सुख, सफलता और स्वास्थ्य की कामना करती हूँ।",
@@ -37,6 +42,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-en-3",
+    "festival": "rakhi",
     "lang": "en",
     "src": "/images/rakhi/cards/rakhi-en-3.webp",
     "alt": "Wishing you a Raksha Bandhan full of love, laughter and sweet memories.",
@@ -44,6 +50,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-hi-3",
+    "festival": "rakhi",
     "lang": "hi",
     "src": "/images/rakhi/cards/rakhi-hi-3.webp",
     "alt": "राखी का पवित्र त्योहार आपके जीवन में खुशियाँ और समृद्धि लाए।",
@@ -51,6 +58,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-hinglish-3",
+    "festival": "rakhi",
     "lang": "hinglish",
     "src": "/images/rakhi/cards/rakhi-hinglish-3.webp",
     "alt": "Rakhi mubarak bhai! Tu hamesha mera hero rahega, kitne bhi jhagde ho.",
@@ -58,6 +66,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-hinglish-4",
+    "festival": "rakhi",
     "lang": "hinglish",
     "src": "/images/rakhi/cards/rakhi-hinglish-4.webp",
     "alt": "Behen teri Rakhi, aur teri khushi dono ke liye ready hoon. Rakhi mubarak!",
@@ -65,6 +74,7 @@ export const cards: Card[] = [
   },
   {
     "id": "rakhi-hinglish-5",
+    "festival": "rakhi",
     "lang": "hinglish",
     "src": "/images/rakhi/cards/rakhi-hinglish-5.webp",
     "alt": "Is Rakhi pe bas ek wish — tu khush rahe, aur hamesha meri side pe rahe.",
