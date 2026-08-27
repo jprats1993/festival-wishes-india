@@ -23,10 +23,18 @@ scope under a different name, and the two had already drifted out of sync more t
 recreate it and do not patch facts into it. If it has reappeared in the repo, that's a regression to
 flag to the user, not a file to sync.
 
+**Portability note:** the YAML frontmatter above (`name`/`description`/`argument-hint`/
+`disable-model-invocation`/`allowed-tools`) is Claude Code's skill-loading metadata — a different
+harness will just ignore it. Everything below is a plain runbook: shell commands to run and files to
+read/edit. Any agent (in any harness) with basic shell access and a way to view/modify files can
+follow Steps 1–5 directly, in order, without any Claude-specific tooling. "Read"/"edit" below mean the
+generic actions, not a particular product's tool names.
+
 **Token budget — this skill runs long, so be deliberate about what enters context:**
-- Never `cat`/`Read` a whole file to change a few facts. Find the exact line with `grep -n` first,
-  then `Read` only a small window around it (`offset`/`limit`), then `Edit`. This applies to
-  HANDOVER.md (§3) and CHECKLIST.md (§4) alike — a 400-line full read to fix one commit SHA is waste.
+- Never `cat`/read a whole file to change a few facts. Find the exact line with `grep -n` first,
+  then read only a small window around it (a line-range, `sed -n`, or your editor's line-scoped view),
+  then edit just that spot. This applies to HANDOVER.md (§3) and CHECKLIST.md (§4) alike — a 400-line
+  full read to fix one commit SHA is waste.
   Only read a section in full when its structure itself is changing (e.g. adding a new "Fixed this
   session" entry with several bullets).
 - Silence verbose command output — you need the pass/fail signal, not every line. See Step 1 for the
@@ -98,8 +106,8 @@ one directly:
   `festival` enum in `src/content.config.ts`.
 - **Package/build surface:** `grep -n "\"scripts\"\|\"dependencies\"\|\"engines\"" -A6 package.json`
   and a targeted read of `astro.config.mjs` (site URL, integrations, sitemap filter logic) — don't
-  assume they match what HANDOVER.md currently claims, but don't full-`Read` package.json for this
-  either.
+  assume they match what HANDOVER.md currently claims, but don't read the whole of package.json for
+  this either.
 - **`agent-rules/` and `scripts/`:** `ls agent-rules/ scripts/` and confirm the file list HANDOVER.md
   §4/§5 names still matches reality (files renamed, added, or removed since the last sync are defects
   or updates to call out, not silent no-ops).
@@ -115,12 +123,13 @@ instead of one tool call per bullet — same information, fewer round trips.
 
 ## Step 3 — Update HANDOVER.md with targeted edits, not a full rewrite
 
-**Do not `Read` the entire 400+-line file to patch a handful of facts.** For each fact from Step 2
-that changed, `grep -n "<old value>" HANDOVER.md` to find its line(s), `Read` a small window
-(`offset`/`limit`) around each hit, then `Edit` just that spot — the same surgical pattern Step 4 uses
-for CHECKLIST.md. A full `Read` of HANDOVER.md is only justified when a section's structure itself
-needs to change (a new "Fixed this session" entry with multiple new bullets, a new Known Issue, a
-reordered list) — and even then, read only the section(s) actually changing, not the whole document.
+**Do not read the entire 400+-line file to patch a handful of facts.** For each fact from Step 2
+that changed, `grep -n "<old value>" HANDOVER.md` to find its line(s), read a small window around
+each hit (a line-range view, not the whole file), then edit just that spot — the same surgical
+pattern Step 4 uses for CHECKLIST.md. A full read of HANDOVER.md is only justified when a section's
+structure itself needs to change (a new "Fixed this session" entry with multiple new bullets, a new
+Known Issue, a reordered list) — and even then, read only the section(s) actually changing, not the
+whole document.
 
 Preserve the existing section structure exactly — do not invent a new outline:
 
@@ -154,8 +163,8 @@ anywhere.
 ## Step 4 — Patch CHECKLIST.md (and STRUCTURE.md only if structure changed)
 
 CHECKLIST.md is explicitly superseded by HANDOVER.md but must stay roughly in sync, since it's an
-actively-used owner/agent tracker. Do **not** rewrite it wholesale — make targeted `Edit` calls that
-fix only the facts that just changed:
+actively-used owner/agent tracker. Do **not** rewrite it wholesale — make targeted edits that fix only
+the facts that just changed:
 
 - Wish count and relation distribution, wherever a stale number appears in its content rows.
 - Card count and filenames.
@@ -181,9 +190,10 @@ working tree edited but **uncommitted** — committing is a separate, explicit, 
 not this skill's job by default, matching this repo's convention of small standalone `docs: ...`
 commits (confirmed via `git log`).
 
-Only stage and commit if the user's invocation explicitly asked for it — i.e. `$ARGUMENTS` contains
-`commit` (e.g. `/handover-sync commit`) or the user's own message alongside the invocation says to
-commit. In that case, stage exactly the docs that were actually touched this run (`git add HANDOVER.md`
+Only stage and commit if this was explicitly requested — a `commit` argument in Claude Code's
+`/handover-sync commit`, or (in any harness, including a plain manual run of this runbook) the user's
+own message saying to commit. In that case, stage exactly the docs that were actually touched this run
+(`git add HANDOVER.md`
 and, only if changed, `CHECKLIST.md` and/or `STRUCTURE.md`) and commit with a short `docs: ...` message
 in the style of this repo's existing history (see `git log` for examples). Never push.
 

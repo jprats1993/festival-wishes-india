@@ -1,13 +1,16 @@
 # Festival Wishes India — HANDOVER
 
 > **Cold-start handover.** A fresh chat/model/harness on THIS SAME MACHINE should be able to
-> resume the project from this document alone, with zero prior context.
+> resume the project from this document alone, with zero prior context. For a copy-paste prompt
+> that bootstraps exactly that, see **`KICKOFF_PROMPT.md`** — keep it in sync with this file if
+> the doc set or tooling it references ever changes.
 >
-> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `7e9d6a657b2465ad11a05c64ac836ab1f703c258`
-> (`7e9d6a6`, "docs: record production deploy + AdGuard/wa.me false-alarm finding") ·
-> **Branch:** `main` · **31 commits** · working tree clean, in sync with `origin/main`. The `b96f1dc`
-> fixes (§2 "Fixed this session") are **deployed to production** as of 2026-08-27 (verified via `curl`
-> and live DOM inspection — see §6/§9).
+> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `891391eb5ef8f902b7fdce7f6d95a4b54e2fd15e`
+> (`891391e`, "perf: cut handover-sync token usage (quiet CI output, surgical edits)") ·
+> **Branch:** `main` · **36 commits** · working tree clean, in sync with `origin/main`. The `b96f1dc`
+> site fixes are **deployed to production** as of 2026-08-27 (verified via `curl` and live DOM
+> inspection — see §6/§9); the 5 commits since then (`3a5cc09`…`891391e`) are docs/tooling-only, no
+> new site deploy required.
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -27,7 +30,7 @@
 | Local repo path | `/Users/varshajain/festival-wishes-india` |
 | GitHub | https://github.com/jprats1993/festival-wishes-india (owner `jprats1993`) |
 | Branch | `main` |
-| HEAD commit SHA | `7e9d6a657b2465ad11a05c64ac836ab1f703c258` (short `7e9d6a6`) |
+| HEAD commit SHA | `891391eb5ef8f902b7fdce7f6d95a4b54e2fd15e` (short `891391e`) |
 | Primary domain | **https://festivalwishesindia.com** (canonical; `site` in `astro.config.mjs`) |
 | Redirect domain | **rakhiwishes.in** → 301 → `https://festivalwishesindia.com/en/rakhi/` |
 | Pages preview URL pattern | `https://<branch-or-hash>.festival-wishes-india.pages.dev` (Cloudflare Pages project `festival-wishes-india`) |
@@ -303,11 +306,11 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
   confirms `## main...origin/main` with no ahead/behind markers).
-- **HEAD:** `7e9d6a657b2465ad11a05c64ac836ab1f703c258` (`7e9d6a6` "docs: record production deploy +
-  AdGuard/wa.me false-alarm finding").
+- **HEAD:** `891391eb5ef8f902b7fdce7f6d95a4b54e2fd15e` (`891391e` "perf: cut handover-sync token usage
+  (quiet CI output, surgical edits)").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 31.
+- **Commit count:** 36.
 - **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
@@ -395,7 +398,7 @@ Run/confirm these before signing off or deploying:
 
 - **Prepared by:** Claude Code (`/handover-sync` skill run).
 - **Date:** 2026-08-27 (IST).
-- **Last verified commit SHA:** `7e9d6a657b2465ad11a05c64ac836ab1f703c258` (31 commits on `main`).
+- **Last verified commit SHA:** `891391eb5ef8f902b7fdce7f6d95a4b54e2fd15e` (36 commits on `main`).
 - **Deployment verified by:** production deploy of `festivalwishesindia.com` was completed 2026-08-26
   evening (recorded in `CHECKLIST.md`/`fa9cdd4`), with the `b96f1dc` bug-fix redeploy on 2026-08-27
   confirmed live (per `7e9d6a6`'s commit message — `curl` + live DOM inspection). This sync did not
@@ -403,12 +406,11 @@ Run/confirm these before signing off or deploying:
   `npm run ci`). **Note:** no saved wrangler deploy logs, so exact per-deploy URLs/hashes are not
   recorded (see `deployment-notes.md`).
 - **Known deviations from older docs:** none — `HANDOVER.md` and `CHECKLIST.md` agree with HEAD
-  `9428c6b` on all live facts. `PROGRESS.md` was **retired 2026-08-27** (git history preserves it if
-  ever needed): it duplicated this document's exact "cold-start handover" scope, and the two had
-  already drifted out of sync more than once, which is the redundancy this retirement removes.
-  `STRUCTURE.md` is kept only as a structural walkthrough — its file/dir descriptions are accurate,
-  but it is no longer patched for count/status facts (those live here only). `deployment-notes.md`
-  was not touched by this sync.
+  `891391e` on all live facts (wish/card counts, relation distribution, analytics/SEO status all
+  re-verified this run and unchanged since the last sync). `PROGRESS.md` remains retired (git history
+  preserves it if ever needed). `STRUCTURE.md` is kept only as a structural walkthrough — no
+  file/dir changes since the last sync, so it was left untouched this run, per the skill's Step 4.
+  `deployment-notes.md` was not touched by this sync.
 - **Recommended next 3 actions:**
   1. Delete/realign the stale `public/_redirects` and flip (or document) the 51 `humanReviewedSeed`
      flags.

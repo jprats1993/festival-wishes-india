@@ -32,6 +32,7 @@ festival-wishes-india/
 ├── CLAUDE.md               # Symlink → AGENTS.md
 ├── CHECKLIST.md            # Shared owner/agent launch tracker (checkboxes)
 ├── HANDOVER.md             # Authoritative cold-start handover doc (full project state)
+├── KICKOFF_PROMPT.md       # Copy-paste prompt to bootstrap a new chat/model/harness
 ├── STRUCTURE.md            # This file — structural walkthrough, not a fact tracker
 ├── README.md               # Stock Astro starter README (boilerplate, not project-specific)
 ├── astro.config.mjs        # Astro config: site URL, i18n, sitemap, Tailwind
@@ -44,6 +45,7 @@ festival-wishes-india/
 - `AGENTS.md` — instructions for AI coding agents working in the repo (use `astro dev --background`, consult the linked Astro docs before touching routing/components/content/i18n). Symlinked as `CLAUDE.md`.
 - `CHECKLIST.md` — a live launch checklist split into `[agent]` and `[owner]` rows (infrastructure, content, trust/compliance, SEO, analytics/monetization, owner blockers).
 - `HANDOVER.md` — the single authoritative cold-start handover: tech stack, domains/infrastructure, secrets locations, content model, URL structure, current status, open decisions, and known pitfalls. This is the doc to trust for any current fact.
+- `KICKOFF_PROMPT.md` — a copy-paste prompt for bootstrapping a brand-new chat/model/harness on this project; points at `HANDOVER.md` and the `handover-sync` runbook rather than duplicating their content, and deliberately carries no hardcoded facts (commit count, SHA, etc.) that could go stale.
 - `README.md` — the default Astro "Minimal" starter README; boilerplate only, not maintained for this project.
 
 > A prior `PROGRESS.md` duplicated HANDOVER.md's scope almost exactly (both called themselves the
