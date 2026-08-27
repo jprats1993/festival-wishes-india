@@ -71,7 +71,7 @@ src/
 | File | Route(s) generated | Purpose |
 |---|---|---|
 | `index.astro` | `/` | Root entry — immediately 301-redirects to `/en/` (the real homepage). |
-| `[locale]/index.astro` | `/en/`, `/hi/`, `/hinglish/` | Locale homepage — the "choose a festival" picker grid. |
+| `[locale]/index.astro` | `/en/`, `/hi/`, `/hinglish/` | Locale homepage — the "choose a festival" picker grid, each tile topped with a `banner.webp` header image. |
 | `[locale]/[festival]/index.astro` | `/en/rakhi/`, etc. | Festival hub: intro copy, "Shareable cards" gallery (locale-filtered), All/Popular wish tabs, and relation-tab links. |
 | `[locale]/[festival]/[collection].astro` | `/en/rakhi/brother-wishes/`, etc. | Collection page: filters approved wishes by relation, emits `noindex` when fewer than 3 results. |
 | `[locale]/about.astro` | `/en/about/`, … | About page (per-locale copy). |
@@ -193,6 +193,8 @@ and the owner must explicitly approve a new festival's first seed batch.
 | `check-links.mjs` | Static dead-link / missing-asset checker (`npm run check:links`): walks every HTML file in `dist/`, resolves internal `href`/`src`, and verifies the target file exists. Skips external URLs, `mailto:`/`tel:`/`#`, and `/api/` endpoints. |
 | `generate-hinglish-cards.mjs` | Original, Rakhi-only card generator (SVG → headless Chrome → WebP), hardcoded to Rakhi's colors/motifs/output dir. Still used for its own 3 existing Hinglish cards; not used for anything new. |
 | `generate-cards.mjs` | Generalized version of the above — same pipeline, but festival-parameterized via a `THEMES` config (currently `diwali`, `dussehra`) and an exported `generateCards(cards)` function. Used for all of Diwali's and Dussehra's cards, and any future festival's. |
+| `generate-banners.mjs` | Renders `banners/*.svg` (see below) to `public/images/{festival}/banner.webp` via the same SVG → headless Chrome → WebP pipeline, at 2x device scale for a crisp 1600×1000 output. Run with `node scripts/generate-banners.mjs`. |
+| `banners/rakhi.svg`, `banners/diwali.svg`, `banners/dussehra.svg` | Source artwork for the homepage festival header banners — hand-authored, unique illustrated scenes per festival (not generated from a text/theme system like the greeting cards, since each is a one-off composition). Edit these and re-run `generate-banners.mjs` to update the live banners. |
 | `card-specs.json` | Card-generation input: the 8 language-tagged card texts (`id`, `lang`, `text`) — note the live registry (`cards.ts`) now has 27 cards total across 3 festivals; `card-specs.json` predates all of that and only covers the original Rakhi batch. |
 | `card-wish-ids.json` | List of wish IDs selected for card generation. |
 | `wish-assignments.json` | Seed-batch mapping of wish `id` → `numeric_id`, `relation`, and `tones` used to generate the initial wish set. |
@@ -210,6 +212,7 @@ and the owner must explicitly approve a new festival's first seed batch.
 | `favicon.ico`, `favicon.svg` | Site favicons (referenced from `BaseLayout`). |
 | `og-default.svg` | Default Open Graph / social-share image. |
 | `images/{rakhi,diwali,dussehra}/cards/*.webp` | 9 language-tagged shareable card images per festival (27 total): `<festival>-en-1/2/3`, `<festival>-hi-1/2/3`, `<festival>-hinglish-1/2/3` (Rakhi's Hinglish set is `hinglish-3/4/5` specifically, a historical numbering artifact). |
+| `images/{rakhi,diwali,dussehra}/banner.webp` | One 1600×1000 illustrated header banner per festival, shown above its tile on the `/{locale}/` homepage grid. Text-free (locale-agnostic), sourced from `scripts/banners/*.svg`. |
 
 Everything in `public/` is copied verbatim to the site root of the build output.
 

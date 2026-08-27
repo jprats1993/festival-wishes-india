@@ -1,10 +1,10 @@
 # Festival Wishes India — Launch Checklist
 
 > Shared tracker. Agent updates `[agent]` rows; owner updates `[owner]` rows.
-> Last updated: 2026-08-27 (owner approved Diwali + Dussehra seed batches)
+> Last updated: 2026-08-27 (homepage festival banners deployed, commit `093ac69`)
 
 **Status:** 🟢 LIVE at https://festivalwishesindia.com (initial deploy Aug 26 evening; latest
-redeploy 2026-08-27, commit `82fff8f` — see HANDOVER.md §2).
+redeploy 2026-08-27, commit `093ac69` — see HANDOVER.md §2).
 `rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 9 cards).
 **Diwali and Dussehra 2026 content is deployed and owner-approved** (50 wishes + 9 cards each,
 seed-batch approval given 2026-08-27 — see "Content — Diwali & Dussehra 2026" below and
@@ -50,6 +50,15 @@ HANDOVER.md §11). The researched festival dates themselves are still unconfirme
 - [ ] Owner: sanity-check the researched dates (Diwali 8 Nov 2026, Dussehra 20 Oct 2026) against
   drikpanchang.com or another source — still open, not part of the seed-batch approval above
   ⏳ REMAINING
+
+## Homepage
+- [x] Illustrated header banner per festival (Rakhi, Diwali, Dussehra) on the `/{locale}/` festival
+  grid — agent (2026-08-27, commit `093ac69`). Original SVG artwork (no stock images — nothing
+  free/unlicensed existed for this subject; content-policy.md doesn't allow unattributed use of
+  attribution-required stock), no text baked in so one image works across all 3 locales. Went
+  through 2 owner review rounds (abstract icons → full illustrated scenes → faceless
+  silhouette treatment for Rakhi after two more-detailed hairstyle attempts read worse) before
+  sign-off. Source: `scripts/banners/*.svg`, rendered via `scripts/generate-banners.mjs`.
 
 ## Trust & Compliance
 - [x] About page — agent
