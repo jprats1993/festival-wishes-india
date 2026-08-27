@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WishCard from '../../../components/WishCard.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 import { collections, NOINDEX_THRESHOLD } from '../../../lib/collections';
-import { locales, localeLabels, isLocale } from '../../../lib/i18n';
+import { locales, localeLabels, isLocale, festivalName } from '../../../lib/i18n';
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
@@ -55,48 +55,48 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/${collection}/`, Astro.site)
 
 const titleMap: Record<string, Record<typeof locale, string>> = {
   'short-wishes': {
-    en: `Short ${festival.data.displayName} wishes`,
-    hi: `छोटी ${festival.data.displayName} शुभकामनाएँ`,
-    hinglish: `Short ${festival.data.displayName} wishes`,
+    en: `Short ${festivalName(festival, locale)} wishes`,
+    hi: `छोटी ${festivalName(festival, locale)} शुभकामनाएँ`,
+    hinglish: `Short ${festivalName(festival, locale)} wishes`,
   },
   'brother-wishes': {
-    en: `${festival.data.displayName} wishes for brother`,
-    hi: `${festival.data.displayName} भाई के लिए शुभकामनाएँ`,
-    hinglish: `${festival.data.displayName} bhai ke liye wishes`,
+    en: `${festivalName(festival, locale)} wishes for brother`,
+    hi: `${festivalName(festival, locale)} भाई के लिए शुभकामनाएँ`,
+    hinglish: `${festivalName(festival, locale)} bhai ke liye wishes`,
   },
   'sister-wishes': {
-    en: `${festival.data.displayName} wishes for sister`,
-    hi: `${festival.data.displayName} बहन के लिए शुभकामनाएँ`,
-    hinglish: `${festival.data.displayName} behen ke liye wishes`,
+    en: `${festivalName(festival, locale)} wishes for sister`,
+    hi: `${festivalName(festival, locale)} बहन के लिए शुभकामनाएँ`,
+    hinglish: `${festivalName(festival, locale)} behen ke liye wishes`,
   },
   'bhaiya-bhabhi-wishes': {
-    en: `${festival.data.displayName} wishes for bhaiya-bhabhi`,
-    hi: `${festival.data.displayName} भैया-भाभी के लिए शुभकामनाएँ`,
-    hinglish: `${festival.data.displayName} bhaiya-bhabhi ke liye wishes`,
+    en: `${festivalName(festival, locale)} wishes for bhaiya-bhabhi`,
+    hi: `${festivalName(festival, locale)} भैया-भाभी के लिए शुभकामनाएँ`,
+    hinglish: `${festivalName(festival, locale)} bhaiya-bhabhi ke liye wishes`,
   },
   'whatsapp-messages': {
-    en: `${festival.data.displayName} WhatsApp messages`,
-    hi: `${festival.data.displayName} व्हाट्सएप संदेश`,
-    hinglish: `${festival.data.displayName} WhatsApp messages`,
+    en: `${festivalName(festival, locale)} WhatsApp messages`,
+    hi: `${festivalName(festival, locale)} व्हाट्सएप संदेश`,
+    hinglish: `${festivalName(festival, locale)} WhatsApp messages`,
   },
   'family-wishes': {
-    en: `${festival.data.displayName} wishes for family`,
-    hi: `${festival.data.displayName} परिवार के लिए शुभकामनाएँ`,
-    hinglish: `${festival.data.displayName} family ke liye wishes`,
+    en: `${festivalName(festival, locale)} wishes for family`,
+    hi: `${festivalName(festival, locale)} परिवार के लिए शुभकामनाएँ`,
+    hinglish: `${festivalName(festival, locale)} family ke liye wishes`,
   },
   'friend-wishes': {
-    en: `${festival.data.displayName} wishes for friend`,
-    hi: `${festival.data.displayName} दोस्त के लिए शुभकामनाएँ`,
-    hinglish: `${festival.data.displayName} friend ke liye wishes`,
+    en: `${festivalName(festival, locale)} wishes for friend`,
+    hi: `${festivalName(festival, locale)} दोस्त के लिए शुभकामनाएँ`,
+    hinglish: `${festivalName(festival, locale)} friend ke liye wishes`,
   },
   'parent-wishes': {
-    en: `${festival.data.displayName} wishes for parents`,
-    hi: `${festival.data.displayName} माता-पिता के लिए शुभकामनाएँ`,
-    hinglish: `${festival.data.displayName} parents ke liye wishes`,
+    en: `${festivalName(festival, locale)} wishes for parents`,
+    hi: `${festivalName(festival, locale)} माता-पिता के लिए शुभकामनाएँ`,
+    hinglish: `${festivalName(festival, locale)} parents ke liye wishes`,
   },
 };
 
-const title = titleMap[collection]?.[locale] || `${festival.data.displayName} wishes`;
+const title = titleMap[collection]?.[locale] || `${festivalName(festival, locale)} wishes`;
 const description =
   locale === 'hi'
     ? `${title} हिन्दी, अंग्रेज़ी और हिंग्लिश में। कॉपी करें, डाउनलोड करें या व्हाट्सएप पर साझा करें।`
@@ -115,6 +115,17 @@ const alternateUrls = Object.fromEntries(
   locales.map((loc) => [loc, `/${loc}/${festivalSlug}/${collection}/`])
 ) as Record<typeof locale, string>;
 
+const relationTabs = [
+  { slug: 'brother-wishes', label: { en: 'Brother', hi: 'भाई', hinglish: 'Bhai' } },
+  { slug: 'sister-wishes', label: { en: 'Sister', hi: 'बहन', hinglish: 'Behen' } },
+  { slug: 'bhaiya-bhabhi-wishes', label: { en: 'Bhaiya-Bhabhi', hi: 'भैया-भाभी', hinglish: 'Bhaiya-Bhabhi' } },
+  { slug: 'family-wishes', label: { en: 'Family', hi: 'परिवार', hinglish: 'Family' } },
+  { slug: 'friend-wishes', label: { en: 'Friend', hi: 'दोस्त', hinglish: 'Dost' } },
+  { slug: 'parent-wishes', label: { en: 'Parents', hi: 'माता-पिता', hinglish: 'Parents' } },
+  { slug: 'short-wishes', label: { en: 'Short', hi: 'छोटी', hinglish: 'Short' } },
+  { slug: 'whatsapp-messages', label: { en: 'WhatsApp', hi: 'व्हाट्सएप', hinglish: 'WhatsApp' } },
+];
+
 // noindex if collection is too thin
 const noindex = filtered.length < NOINDEX_THRESHOLD;
 ---
@@ -129,7 +140,7 @@ const noindex = filtered.length < NOINDEX_THRESHOLD;
   <nav aria-label="Breadcrumb" class="text-sm text-stone-500 mb-4">
     <a href={`/${locale}/`} class="hover:text-rose-700">{localeLabels[locale]}</a>
     <span class="mx-2">/</span>
-    <a href={`/${locale}/${festivalSlug}/`} class="hover:text-rose-700">{festival.data.displayName}</a>
+    <a href={`/${locale}/${festivalSlug}/`} class="hover:text-rose-700">{festivalName(festival, locale)}</a>
     <span class="mx-2">/</span>
     <span class="text-stone-800">{title}</span>
   </nav>
@@ -137,6 +148,33 @@ const noindex = filtered.length < NOINDEX_THRESHOLD;
   <div class="text-center py-6">
     <h1 class="text-2xl md:text-3xl font-bold mb-2">{title}</h1>
     <p class="text-stone-600">{description}</p>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-2 mb-6" role="tablist" aria-label="Wish categories">
+    <a
+      href={`/${locale}/${festivalSlug}/`}
+      class="px-4 py-2 rounded-full border border-stone-300 text-stone-700 hover:border-rose-400 hover:text-rose-700 font-medium text-sm"
+    >
+      {locale === 'hi' ? 'सभी' : 'All'}
+    </a>
+    {relationTabs.map((t) => (
+      t.slug === collection ? (
+        <span
+          role="tab"
+          aria-selected="true"
+          class="px-4 py-2 rounded-full bg-rose-700 text-white font-medium text-sm"
+        >
+          {t.label[locale]}
+        </span>
+      ) : (
+        <a
+          href={`/${locale}/${festivalSlug}/${t.slug}/`}
+          class="px-4 py-2 rounded-full border border-stone-300 text-stone-700 hover:border-rose-400 hover:text-rose-700 font-medium text-sm"
+        >
+          {t.label[locale]}
+        </a>
+      )
+    ))}
   </div>
 
   <AdSlot slotName="collection-top" />

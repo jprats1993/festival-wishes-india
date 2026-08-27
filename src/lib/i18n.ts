@@ -22,3 +22,10 @@ export function localeFromSlug(slug: string): Locale | null {
   if (isLocale(slug)) return slug;
   return null;
 }
+
+export function festivalName(
+  festival: { data: { displayName: string; displayNames?: Record<Locale, string> } },
+  locale: Locale
+): string {
+  return festival.data.displayNames?.[locale] ?? festival.data.displayName;
+}

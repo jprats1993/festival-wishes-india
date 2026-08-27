@@ -31,6 +31,11 @@ const festival = defineCollection({
   schema: z.object({
     slug: z.string(),
     displayName: z.string(),
+    displayNames: z.object({
+      en: z.string(),
+      hi: z.string(),
+      hinglish: z.string(),
+    }).optional(),
     aliases: z.array(z.string()),
     date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     dateSourceUrl: z.string().url(),

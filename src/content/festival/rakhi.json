@@ -1,6 +1,11 @@
 {
   "slug": "rakhi",
   "displayName": "Raksha Bandhan",
+  "displayNames": {
+    "en": "Raksha Bandhan",
+    "hi": "रक्षा बंधन",
+    "hinglish": "Raksha Bandhan"
+  },
   "aliases": ["Rakhi", "Rakhi festival"],
   "date": "2026-08-28",
   "dateSourceUrl": "https://www.drikpanchang.com/festivals/raksha-bandhan/raksha-bandhan-date-time.html",

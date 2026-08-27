@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WishCard from '../../../components/WishCard.astro';
 import AdSlot from '../../../components/AdSlot.astro';
-import { locales, localeLabels, isLocale } from '../../../lib/i18n';
+import { locales, localeLabels, isLocale, festivalName } from '../../../lib/i18n';
 import { cards } from '../../../lib/cards';
 import { popularWishIds } from '../../../lib/popular';
 import { getCollection } from 'astro:content';
@@ -51,19 +51,19 @@ const festivalCards = cards.filter((c) => c.lang === locale);
 
 const copy = {
   en: {
-    subtitle: `Find ${festival.data.displayName} wishes in Hindi, English and Hinglish — short messages, cards and WhatsApp status.`,
+    subtitle: `Find ${festivalName(festival, locale)} wishes in Hindi, English and Hinglish — short messages, cards and WhatsApp status.`,
     cardsTitle: 'Shareable cards',
     allTab: 'All wishes',
     popularTab: 'Popular wishes',
   },
   hi: {
-    subtitle: `${festival.data.displayName} की शुभकामनाएँ हिन्दी, अंग्रेज़ी और हिंग्लिश में — छोटे संदेश, कार्ड और व्हाट्सएप स्टेटस।`,
+    subtitle: `${festivalName(festival, locale)} की शुभकामनाएँ हिन्दी, अंग्रेज़ी और हिंग्लिश में — छोटे संदेश, कार्ड और व्हाट्सएप स्टेटस।`,
     cardsTitle: 'साझा करने योग्य कार्ड',
     allTab: 'सभी शुभकामनाएँ',
     popularTab: 'लोकप्रिय शुभकामनाएँ',
   },
   hinglish: {
-    subtitle: `${festival.data.displayName} ki wishes Hindi, English aur Hinglish mein — chhote messages, cards aur WhatsApp status.`,
+    subtitle: `${festivalName(festival, locale)} ki wishes Hindi, English aur Hinglish mein — chhote messages, cards aur WhatsApp status.`,
     cardsTitle: 'Shareable cards',
     allTab: 'All wishes',
     popularTab: 'Popular wishes',
@@ -78,13 +78,13 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString();
 ---
 
 <BaseLayout
-  title={`${festival.data.displayName} Wishes in ${localeLabels[locale]} — Festival Wishes India`}
+  title={`${festivalName(festival, locale)} Wishes in ${localeLabels[locale]} — Festival Wishes India`}
   description={copy.subtitle}
   locale={locale}
   alternateUrls={alternateUrls}
 >
   <div class="text-center py-8">
-    <h1 class="text-3xl md:text-4xl font-bold mb-3">{festival.data.displayName}</h1>
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">{festivalName(festival, locale)}</h1>
     <p class="text-stone-600 max-w-2xl mx-auto">{copy.subtitle}</p>
   </div>
 
