@@ -5,12 +5,11 @@
 > that bootstraps exactly that, see **`KICKOFF_PROMPT.md`** — keep it in sync with this file if
 > the doc set or tooling it references ever changes.
 >
-> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `ce53eb781cd0da3d4c7571fdccf627d2f6f59327`
-> (`ce53eb7`, "docs: sync HANDOVER.md git state to HEAD 56ebd2d (37 commits)") ·
-> **Branch:** `main` · **38 commits** · working tree clean, in sync with `origin/main`. The `b96f1dc`
-> site fixes are **deployed to production** as of 2026-08-27 (verified via `curl` and live DOM
-> inspection — see §6/§9); the 7 commits since then (`3a5cc09`…`ce53eb7`) are docs/tooling-only, no
-> new site deploy required.
+> **Prepared:** 2026-08-27 (IST) · working tree clean, in sync with `origin/main`. Exact HEAD SHA,
+> branch, and commit count are **not restated here** — see §8 for the single canonical record (this
+> doc used to repeat that SHA in three places; git log/status are authoritative for history, this doc
+> isn't). The `5e95b92` site fixes are **deployed to production** as of 2026-08-27 (verified via
+> `curl` — see §6/§9); commits since then are docs-only, no new site deploy required.
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -29,8 +28,7 @@
 | Purpose | Multilingual (Hindi / English / Hinglish) festival-greeting wishes + shareable image cards, ready to copy or forward on WhatsApp/status. Flagship festival: **Raksha Bandhan (Rakhi)**. |
 | Local repo path | `/Users/varshajain/festival-wishes-india` |
 | GitHub | https://github.com/jprats1993/festival-wishes-india (owner `jprats1993`) |
-| Branch | `main` |
-| HEAD commit SHA | `ce53eb781cd0da3d4c7571fdccf627d2f6f59327` (short `ce53eb7`) |
+| Branch | `main` (see §8 for HEAD SHA/commit count — not restated here) |
 | Primary domain | **https://festivalwishesindia.com** (canonical; `site` in `astro.config.mjs`) |
 | Redirect domain | **rakhiwishes.in** → 301 → `https://festivalwishesindia.com/en/rakhi/` |
 | Pages preview URL pattern | `https://<branch-or-hash>.festival-wishes-india.pages.dev` (Cloudflare Pages project `festival-wishes-india`) |
@@ -68,6 +66,19 @@
   into the page — checked `/en/`, `/en/rakhi/`, `/hi/rakhi/` live HTML and confirmed no
   `cloudflareinsights.com` script is present, which is expected/correct for automatic mode, not a
   defect. Not independently verifiable via curl/DNS; taken on owner's word.
+- **Fixed 2026-08-27, commit `5e95b92` (deployed to production):**
+  - Collection subpages (`/[locale]/[festival]/[collection].astro`, e.g. `/hinglish/rakhi/friend-wishes/`)
+    had **no tab navigation at all** — only the festival hub page (`[festival]/index.astro`) had the
+    relation-tab bar. Added the same tab bar (relation tabs + `short-wishes`/`whatsapp-messages` +
+    an "All" link back to the hub) to the collection page, with the active category highlighted.
+    Applies to all 8 collection slugs × all 3 locales (verified 200 OK on every combination).
+  - Festival names did not follow the language switcher — `festival.data.displayName` was a single
+    locale-agnostic string ("Raksha Bandhan"), used verbatim even mid-sentence in Hindi copy (e.g.
+    "Raksha Bandhan की शुभकामनाएँ"). Added an optional per-locale `displayNames: {en, hi, hinglish}`
+    field to the festival schema (`src/content.config.ts`), populated it for `rakhi` (`hi`: "रक्षा
+    बंधन"), and added a `festivalName(festival, locale)` helper in `src/lib/i18n.ts`, swapped into
+    all 31 prior usages of `festival.data.displayName` across the home, hub, and collection pages.
+    `displayName` itself is kept as the English fallback for any future festival not yet translated.
 - **Fixed 2026-08-27, commit `b96f1dc` (deployed to production):**
   - Removed the dead `src/pages/api/event.ts` analytics stub and the client-side `fetch('/api/event', …)`
     calls in `ShareBar.astro`. On a static (non-SSR) Cloudflare Pages deploy a POST-only route can't
@@ -104,16 +115,6 @@
 - **Diwali / Holi / Dussehra / Navratri** content (schema enums exist; zero content files).
 - **Git-integrated auto-deploy** (connecting Cloudflare Pages to the GitHub repo) — still CLI-only.
 
-### Features deployed (by commit)
-`6834b58` scaffold → `5e23a4f` sitemap/OG/event endpoint → `635abeb` ClientRouter fix →
-`0d37e96` shared collection map → `4cd0ab7` CHECKLIST/PROGRESS → `b38d4ae` agent-rules →
-`f4d5e2c`+`12a6db2` wishes (30 seed → 51) → `6615552` rakhiwishes.in redirects → `ecacdaa`
-Tailwind import → `e2c8c22` glob loaders → `89e5d94` homepage cards → `14e2660` decoupled card
-gallery → `f8af333` friend/parent collections + validate script → `999c7b1` tabbed listing →
-`a13b628` CI pipeline + smoke-test exemption → `96a91f9` share buttons → `a907958` language
-consistency → `1807a85` 3 more Hinglish cards → `e80aaa1` cache headers → `b96f1dc` dead
-analytics endpoint removed, sitemap noindex leak fixed, real OG image wired.
-
 ### Known defects
 1. `public/_redirects` is stale (blanket splat) — cosmetic/confusing but not harmful (governed at zone level).
 2. Root `/` redirect is a **meta-refresh (HTTP 200)**, not a true 301 (Astro SSG limitation).
@@ -121,6 +122,9 @@ analytics endpoint removed, sitemap noindex leak fixed, real OG image wired.
    + `typescript`, which are absent from `package.json` (see §9).
 4. `humanReviewedSeed: false` on all 51 wishes, even though owner seed approval was recorded in
    `CHECKLIST.md`/`fa9cdd4` — flags not flipped (open question, §11).
+5. `[locale]/privacy.astro` still says "We also log anonymous share/copy/download events via a
+   serverless endpoint" — that endpoint (`/api/event`) was removed in `b96f1dc`; the copy was never
+   updated to match. Found this sync (2026-08-27) while re-checking analytics wiring; not yet fixed.
 
 ### Content coverage (festival × language)
 - **Festivals:** `rakhi` only (1 festival file). No Diwali/Holi/Dussehra/Navratri content yet.
@@ -306,11 +310,11 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
   confirms `## main...origin/main` with no ahead/behind markers).
-- **HEAD:** `ce53eb781cd0da3d4c7571fdccf627d2f6f59327` (`ce53eb7` "docs: sync HANDOVER.md git state
-  to HEAD 56ebd2d (37 commits)").
+- **HEAD:** `73a6389eaab9b418905274d0fbe0029eb0ee1fa2` (`73a6389` "docs: log 5e95b92 deploy in
+  deployment-notes.md").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 38.
+- **Commit count:** 41.
 - **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
@@ -406,22 +410,23 @@ Run/confirm these before signing off or deploying:
 
 - **Prepared by:** Claude Code (`/handover-sync` skill run).
 - **Date:** 2026-08-27 (IST).
-- **Last verified commit SHA:** `ce53eb781cd0da3d4c7571fdccf627d2f6f59327` (38 commits on `main`).
-- **Deployment verified by:** production deploy of `festivalwishesindia.com` was completed 2026-08-26
-  evening (recorded in `CHECKLIST.md`/`fa9cdd4`), with the `b96f1dc` bug-fix redeploy on 2026-08-27
-  confirmed live (per `7e9d6a6`'s commit message — `curl` + live DOM inspection). This sync did not
-  re-run those live-site checks itself; it re-verified only the local repo/build state (§1 header,
-  `npm run ci`). **Note:** no saved wrangler deploy logs, so exact per-deploy URLs/hashes are not
-  recorded (see `deployment-notes.md`).
-- **Known deviations from older docs:** none — `HANDOVER.md` and `CHECKLIST.md` agree with HEAD
-  `ce53eb7` on all live facts (wish/card counts, relation distribution, analytics/SEO status, cards.ts
-  registry all re-verified this run and unchanged since the last sync). `PROGRESS.md` remains retired
-  (git history preserves it if ever needed). `STRUCTURE.md` is kept only as a structural walkthrough — no
-  file/dir changes since the last sync, so it was left untouched this run, per the skill's Step 4.
-  `deployment-notes.md` was not touched by this sync.
+- **Last verified commit:** see §8 (not restated here — single canonical record).
+- **Deployment verified by:** production deploy of `festivalwishesindia.com` for `5e95b92` (collection
+  tabs + locale-aware festival names) was completed 2026-08-27, this session — verified live via
+  `curl` (`role="tablist"` present on `/hinglish/rakhi/friend-wishes/`; "रक्षा बंधन" present on `/hi/`)
+  immediately after `wrangler pages deploy` (preview hash `f0970e7b`, logged in
+  `deployment-notes.md`). This sync additionally re-verified the local repo/build state (§1 header,
+  `npm run ci`) and re-derived wish/card counts and analytics wiring from source.
+- **Known deviations from older docs:** none — `HANDOVER.md` and `CHECKLIST.md` agree with current
+  HEAD (§8) on all live facts (wish/card counts, relation distribution, cards.ts registry all
+  re-verified this run and unchanged since the last sync; `CHECKLIST.md` needed no edits). One new
+  defect surfaced this run and is now recorded in §2/§9: `privacy.astro` still describes the
+  `/api/event` endpoint that `b96f1dc` removed. `PROGRESS.md` remains retired. `STRUCTURE.md` is kept
+  only as a structural walkthrough — no file/dir changes since the last sync (this session's commit
+  only edited existing files), so it was left untouched, per the skill's Step 4.
 - **Recommended next 3 actions:**
-  1. Delete/realign the stale `public/_redirects` and flip (or document) the 51 `humanReviewedSeed`
-     flags.
+  1. Fix the stale `privacy.astro` copy (§2 known defect 5), delete/realign `public/_redirects`, and
+     flip (or document) the 51 `humanReviewedSeed` flags.
   2. Wire `astro check` (add `@astrojs/check` + `typescript`) so type-checking joins the CI gate.
   3. Owner: AdSense application (~mid-Sep) — the remaining go-live monetization item now that Search
      Console and Cloudflare Web Analytics are both confirmed done.

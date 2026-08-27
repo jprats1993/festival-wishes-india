@@ -25,7 +25,7 @@ zero prior context — ground yourself in the on-disk files before touching anyt
    git status && git log -1 && git log --oneline | wc -l
    (GitHub: jprats1993/festival-wishes-india, branch `main`.)
 
-3. If HANDOVER.md looks stale (its header commit SHA doesn't match `git log -1`, or
+3. If HANDOVER.md looks stale (its §8 HEAD SHA doesn't match `git log -1`, or
    it's been a while since "Prepared:"), refresh it before trusting its facts. The
    runbook for this is at:
    /Users/varshajain/festival-wishes-india/.claude/skills/handover-sync/SKILL.md

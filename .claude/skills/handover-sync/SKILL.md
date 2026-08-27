@@ -135,7 +135,8 @@ Preserve the existing section structure exactly — do not invent a new outline:
 
 - §1 Project identity
 - §2 Implementation status (Complete / Fixed this session / Partially complete / Not started /
-  Features deployed by commit / Known defects / Content coverage)
+  Known defects / Content coverage) — no commit-by-commit "Features deployed" list: that's exactly
+  what `git log` is authoritative for, and this doc isn't meant to duplicate git history
 - §3 Architecture
 - §4 Repository map
 - §5 Content & editorial rules
@@ -147,8 +148,10 @@ Preserve the existing section structure exactly — do not invent a new outline:
 - §11 Open decisions
 - §12 Sign-off
 
-Update the header block (prepared date, last-verified commit SHA + short SHA + subject, branch,
-working-tree cleanliness, commit count) to match Step 1's output exactly. In §2, fold anything that was
+Update the header block (prepared date, working-tree cleanliness) to match Step 1's output exactly.
+The exact HEAD SHA/short SHA/subject/branch/commit count live in **§8 only** — the single canonical
+record; the header, §1, and §12 reference it ("see §8") rather than restating it, so a sync only has
+to update that one spot instead of keeping three copies in lockstep. In §2, fold anything that was
 listed as "Fixed this session (uncommitted)" in the previous version into "Complete" once `git status`
 shows it's now committed, or leave it under a session dated to when it was actually made if still
 dirty — never relabel a still-uncommitted change as complete. In §12, set "Prepared by" to whatever
