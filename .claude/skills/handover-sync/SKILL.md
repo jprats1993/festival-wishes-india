@@ -206,3 +206,8 @@ in the style of this repo's existing history (see `git log` for examples). Never
 - If `npm run ci` or any check fails, the doc must say so plainly; do not round a failure up to green.
 - Do not recreate `PROGRESS.md` and do not patch facts into `STRUCTURE.md` beyond structural
   (file-existence) changes — that reintroduces the multi-doc drift this consolidation removed.
+- **Expect the sync to always find HANDOVER.md's HEAD SHA one commit stale — this is not a bug.**
+  Once a sync is committed, that very commit becomes the new HEAD, which the file (finalized before
+  its own commit's hash existed) can't have recorded. It's a fixed, self-correcting one-commit lag,
+  not drift. Don't try to "fix" it by adding a second commit, guessing the next SHA, or auto-committing
+  — just patch it normally on the next invocation, same as any other stale fact (see HANDOVER.md §8).
