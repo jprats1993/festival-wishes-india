@@ -14,6 +14,8 @@ wrangler pages deploy dist --project-name festival-wishes-india --branch main
 ## Recent deploy history (newest first)
 | Commit | What changed | Preview URL |
 |---|---|---|
+| `64722cf` | Perf: dedupe ShareBar icon SVGs into a shared sprite (-40% HTML on festival hub pages) | 6168c23e |
+| `124c42b` | Cache-bust homepage banner images by content hash | 2bd2a794 |
 | `a0547d2` | Replaced SVG homepage banners with owner-supplied AI-illustrated artwork; deleted generate-banners.mjs/banners/*.svg | 67bcb761 |
 | `093ac69` | Homepage festival header banners (original illustrated SVG->WebP art, 3 festivals) | be356eb3 |
 | `82fff8f` | Diwali + Dussehra launch: 100 wishes, 18 cards, spouse-wishes collection | 57b918ec |
