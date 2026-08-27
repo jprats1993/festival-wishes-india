@@ -94,14 +94,15 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString();
     <>
       <h2 class="text-2xl font-semibold mb-4">{copy.cardsTitle}</h2>
       <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
-        {festivalCards.map((card) => (
+        {festivalCards.map((card, i) => (
           <figure class="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm">
             <img
               src={card.src}
               alt={card.alt}
               width={1024}
               height={1024}
-              loading="lazy"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : 'auto'}
               decoding="async"
               class="w-full h-auto"
             />
