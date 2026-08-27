@@ -182,7 +182,7 @@ Files in `agent-rules/`:
   keyword-stuffed pages).
 - `editorial-style.md` — voice, wish format (1–3 sentences), Hindi/Hinglish conventions, image rules
   (image text must exactly match approved text, high-contrast readable Devanagari).
-- `festival-rules.md` — human-readable per-festival rules (Rakhi: 24 wishes + 11 cards minimum).
+- `festival-rules.md` — human-readable per-festival rules (Rakhi: 24 wishes + 8 cards minimum).
 - `festival-rules.yml` — machine-readable example config + **smoke-test exemption** (`is_smoke_test`).
 - `publish-checklist.md` — full pre-publish checklist (content, SEO, images/sharing, monetization,
   release).
@@ -193,7 +193,8 @@ Files in `agent-rules/`:
 
 **🟢 LIVE** at `festivalwishesindia.com`. Done:
 - Domains registered; `rakhiwishes.in` nameservers pointed to Cloudflare.
-- GitHub repo created and pushed (`f03ec8e`); 27 commits on `main`.
+- GitHub repo created and pushed (`f03ec8e`); 31 commits on `main` as of `7e9d6a6` (2026-08-27; see
+  `HANDOVER.md` for the current count going forward).
 - Astro 7 scaffold + i18n + content collections + base layout + Tailwind + sitemap + OG image +
   robots + event endpoint + trust pages (About/Contact/Privacy/Disclaimer).
 - **51 Rakhi wishes** committed (`12a6db2`): conversational-Hindi rewrite + 20 new. All
@@ -319,6 +320,7 @@ CHECKLIST.md                                 # owner/agent shared launch tracker
 
 ## 14. Version control identity & remote
 
-- Branch: `main` (also `origin/main`, `origin/HEAD`). 27 commits.
+- Branch: `main` (also `origin/main`, `origin/HEAD`). 31 commits as of HEAD `7e9d6a6` (2026-08-27; see
+  `HANDOVER.md` §8 for the current count going forward).
 - Remote: `https://github.com/jprats1993/festival-wishes-india.git` (clean — no token).
 - Author: `Prateek Jain <jprats1993@outlook.com>` on all commits (history rewritten — see §11.4).

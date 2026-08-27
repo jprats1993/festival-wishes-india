@@ -3,9 +3,9 @@
 > **Cold-start handover.** A fresh chat/model/harness on THIS SAME MACHINE should be able to
 > resume the project from this document alone, with zero prior context.
 >
-> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `b96f1dc7b46ddac179e8ceffdf6b9217e810ae99`
-> (`b96f1dc`, "fix: remove dead analytics endpoint, fix sitemap noindex leak, wire real OG image") ·
-> **Branch:** `main` · **30 commits** · working tree clean, in sync with `origin/main`. This commit's
+> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `7e9d6a657b2465ad11a05c64ac836ab1f703c258`
+> (`7e9d6a6`, "docs: record production deploy + AdGuard/wa.me false-alarm finding") ·
+> **Branch:** `main` · **31 commits** · working tree clean, in sync with `origin/main`. The `b96f1dc`
 > fixes (§2 "Fixed this session") are **deployed to production** as of 2026-08-27 (verified via `curl`
 > and live DOM inspection — see §6/§9).
 >
@@ -25,7 +25,7 @@
 | Local repo path | `/Users/varshajain/festival-wishes-india` |
 | GitHub | https://github.com/jprats1993/festival-wishes-india (owner `jprats1993`) |
 | Branch | `main` |
-| HEAD commit SHA | `4d47d97f1cca6fdd718a29433abb9765f448258e` (short `4d47d97`) |
+| HEAD commit SHA | `7e9d6a657b2465ad11a05c64ac836ab1f703c258` (short `7e9d6a6`) |
 | Primary domain | **https://festivalwishesindia.com** (canonical; `site` in `astro.config.mjs`) |
 | Redirect domain | **rakhiwishes.in** → 301 → `https://festivalwishesindia.com/en/rakhi/` |
 | Pages preview URL pattern | `https://<branch-or-hash>.festival-wishes-india.pages.dev` (Cloudflare Pages project `festival-wishes-india`) |
@@ -40,13 +40,13 @@
   `reviewStatus: "approved"`, `reviewedBy: "reviewer-agent"`, `source: "original"`.
 - **9 card images** (WebP) in `public/images/rakhi/cards/`: `rakhi-en-1/2/3`,
   `rakhi-hi-1/2/3`, `rakhi-hinglish-3/4/5`. (Single-language cards only; cards are decoupled
-  from wish JSONs and driven by the `src/lib/cards.ts` registry. The original `hinglish-1/2` cards
-  were retired 2026-08-27 in favor of the better-aligned `hinglish-3/4/5` set — see "Fixed this
-  session" below.)
+  from wish JSONs and driven by the `src/lib/cards.ts` registry — confirmed 1:1, all 9 files have a
+  matching `cards.ts` entry and vice versa. The original `hinglish-1/2` cards were retired 2026-08-27
+  in favor of the better-aligned `hinglish-3/4/5` set — see below.)
 - **Tabbed wish listing** on the festival hub: "All wishes (51)" / "Popular (12)" / relation tabs,
   with per-card `#n` numbering.
 - **CI pipeline** — `npm run ci` = `validate` + `build` + `check:links`. **Verified green** today:
-  51 wish + 1 festival valid → 43 static pages built → 639 references, 0 dead links/missing assets.
+  51 wish + 1 festival valid → 43 static pages built → 635 references, 0 dead links/missing assets.
 - **Share / copy / download buttons** (`ShareBar.astro`): icon+label Copy (with `execCommand` fallback),
   Download, native Share (hidden on desktop where Web Share is unavailable), WhatsApp `wa.me` fallback.
 - **Redirects**: `rakhiwishes.in` → `/en/rakhi/` 301 (zone-level rule, verified via `curl -I`);
@@ -55,29 +55,28 @@
   `/_astro/*` immutable 1y; `/images/*` 1d.
 - **Trust/compliance pages** (`/en|hi|hinglish/about|contact|privacy|disclaimer`), AI-assist
   disclosure in footer, sitemap (`sitemap-index.xml`), `robots.txt`, OG image, hreflang + canonical.
-
-### ✅ Fixed this session (2026-08-27, commit `b96f1dc`, deployed to production)
-- Removed the dead `src/pages/api/event.ts` analytics stub and the client-side `fetch('/api/event', …)`
-  calls in `ShareBar.astro`. On a static (non-SSR) Cloudflare Pages deploy a POST-only route can't
-  actually be served, so every call was silently 404-ing — no analytics were ever really recorded.
-- Fixed the sitemap `filter` in `astro.config.mjs`: it used to match literal `/thin-`/`/search`
-  substrings that don't exist anywhere in this site's URLs, so thin/`noindex` collection pages (e.g.
-  `parent-wishes`) still shipped in `sitemap-0.xml`. It now recomputes the same threshold the page
-  itself uses (`NOINDEX_THRESHOLD` in `src/lib/collections.ts`) and excludes them for real.
-- `short-wishes` and `whatsapp-messages` were unfiltered — both rendered all 51 wishes, identical to
-  the "All wishes" tab. They now filter on `tones: ["short"]` (37/51) and `formats: ["status"]`
-  (20/51) respectively, via new `collectionToneMap`/`collectionFormatMap` in `collections.ts`.
-- Native share cancel (`AbortError` from closing the OS share sheet) no longer force-opens a WhatsApp
-  fallback popup in `ShareBar.astro` — only a real share failure does.
-- Wish `#n` numbering is now globally consistent: relation-tab collection pages show the badge
-  (previously missing entirely), and the hub's "Popular" tab shows each wish's real position in the
-  full list instead of its position within the small popular subset.
-- `og:image`/`twitter:image` now point to a real PNG (`public/og-default.png`, rasterized from the
-  existing `og-default.svg` via `sharp`) instead of an SVG — WhatsApp/Facebook/X link-preview
-  scrapers generally don't render SVG for these tags, so shared links likely had no thumbnail before.
-  The previously dead `image` prop on `BaseLayout.astro` is now actually wired through.
-- Retired the 2 older Hinglish card images (`rakhi-hinglish-1/2.webp`) and their `cards.ts`/
-  `card-specs.json` entries, keeping the 3 newer, alignment-verified ones (`hinglish-3/4/5`).
+- **Fixed 2026-08-27, commit `b96f1dc` (deployed to production):**
+  - Removed the dead `src/pages/api/event.ts` analytics stub and the client-side `fetch('/api/event', …)`
+    calls in `ShareBar.astro`. On a static (non-SSR) Cloudflare Pages deploy a POST-only route can't
+    actually be served, so every call was silently 404-ing — no analytics were ever really recorded.
+  - Fixed the sitemap `filter` in `astro.config.mjs`: it used to match literal `/thin-`/`/search`
+    substrings that don't exist anywhere in this site's URLs, so thin/`noindex` collection pages (e.g.
+    `parent-wishes`) still shipped in `sitemap-0.xml`. It now recomputes the same threshold the page
+    itself uses (`NOINDEX_THRESHOLD` in `src/lib/collections.ts`) and excludes them for real.
+  - `short-wishes` and `whatsapp-messages` were unfiltered — both rendered all 51 wishes, identical to
+    the "All wishes" tab. They now filter on `tones: ["short"]` and `formats: ["status"]`
+    respectively, via new `collectionToneMap`/`collectionFormatMap` in `collections.ts`.
+  - Native share cancel (`AbortError` from closing the OS share sheet) no longer force-opens a WhatsApp
+    fallback popup in `ShareBar.astro` — only a real share failure does.
+  - Wish `#n` numbering is now globally consistent: relation-tab collection pages show the badge
+    (previously missing entirely), and the hub's "Popular" tab shows each wish's real position in the
+    full list instead of its position within the small popular subset.
+  - `og:image`/`twitter:image` now point to a real PNG (`public/og-default.png`, rasterized from the
+    existing `og-default.svg` via `sharp`) instead of an SVG — WhatsApp/Facebook/X link-preview
+    scrapers generally don't render SVG for these tags, so shared links likely had no thumbnail before.
+    The previously dead `image` prop on `BaseLayout.astro` is now actually wired through.
+  - Retired the 2 older Hinglish card images (`rakhi-hinglish-1/2.webp`) and their `cards.ts`/
+    `card-specs.json` entries, keeping the 3 newer, alignment-verified ones (`hinglish-3/4/5`).
 
 ### 🟡 Partially complete
 - **Analytics**: none. The former `/api/event` stub (see above) is gone. **Cloudflare Web Analytics
@@ -103,7 +102,8 @@
 Tailwind import → `e2c8c22` glob loaders → `89e5d94` homepage cards → `14e2660` decoupled card
 gallery → `f8af333` friend/parent collections + validate script → `999c7b1` tabbed listing →
 `a13b628` CI pipeline + smoke-test exemption → `96a91f9` share buttons → `a907958` language
-consistency → `1807a85` 3 more Hinglish cards → `e80aaa1` cache headers.
+consistency → `1807a85` 3 more Hinglish cards → `e80aaa1` cache headers → `b96f1dc` dead
+analytics endpoint removed, sitemap noindex leak fixed, real OG image wired.
 
 ### Known defects
 1. `public/_redirects` is stale (blanket splat) — cosmetic/confusing but not harmful (governed at zone level).
@@ -137,7 +137,10 @@ consistency → `1807a85` 3 more Hinglish cards → `e80aaa1` cache headers.
   **explicit `glob()` loaders** (`src/content.config.ts`) — required in Astro 7.
 - **Localization:** locales `en | hi | hinglish`; BCP-47 `hinglish → hi-Latn`; `prefixDefaultLocale: true`
   so every route is `/[locale]/[festival]/[collection]/`.
-- **Analytics:** cookieless `POST /api/event` stub (no-op in prod); Cloudflare Web Analytics pending.
+- **Analytics:** none wired. The former cookieless `POST /api/event` stub was removed in `b96f1dc`
+  (2026-08-27) — it 404'd on every call on this static, non-SSR Cloudflare Pages deploy, so no
+  analytics were ever actually recorded. Cloudflare Web Analytics beacon is the intended real path
+  and is still pending (privacy copy already discloses it).
 - **Image storage:** `public/images/rakhi/cards/*.webp`; generated via **SVG → headless render → WebP**
   (text-to-image garbles Devanagari — see §9).
 
@@ -157,8 +160,9 @@ consistency → `1807a85` 3 more Hinglish cards → `e80aaa1` cache headers.
 
 ### `src/components/`
 `WishCard.astro` (wish `<blockquote>` + `#n` + embedded `ShareBar`) · `ShareBar.astro` (copy/download/
-share/WhatsApp + client JS + `/api/event` tracking) · `LanguageSwitcher.astro` (EN / हिन्दी / Hinglish
-pills) · `AdSlot.astro` (house-promo unless `PUBLIC_ADS_ENABLED=true`).
+share/WhatsApp client JS; no analytics tracking — the `/api/event` call was removed in `b96f1dc`) ·
+`LanguageSwitcher.astro` (EN / हिन्दी / Hinglish pills) · `AdSlot.astro` (house-promo unless
+`PUBLIC_ADS_ENABLED=true`).
 
 ### `src/layouts/`
 `BaseLayout.astro` — the single page shell: `<html lang>`, head meta (title/description/canonical/
@@ -170,12 +174,12 @@ disclosure + editorial-policy link.
 
 ### `src/lib/`
 `i18n.ts` (locales/labels/BCP-47) · `collections.ts` (`collectionMap`: collection slug → relation
-values; empty-array slugs are non-filtering) · `cards.ts` (11-card registry) · `popular.ts` (12 curated
+values; empty-array slugs are non-filtering) · `cards.ts` (9-card registry) · `popular.ts` (12 curated
 popular IDs).
 
 ### `public/`
 `_headers` (cache policy) · `_redirects` (⚠️ stale) · `favicon.ico`/`favicon.svg` · `og-default.svg` ·
-`images/rakhi/cards/*.webp` (11 cards).
+`og-default.png` (rasterized OG image, added `b96f1dc`) · `images/rakhi/cards/*.webp` (9 cards).
 
 ### `agent-rules/`
 Governance source of truth — `content-policy.md`, `editorial-style.md`, `festival-rules.md`,
@@ -291,17 +295,17 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 ## §8 — Current Git state
 
-- **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits).
-- **HEAD:** `4d47d97f1cca6fdd718a29433abb9765f448258e` (`4d47d97` "docs: refresh HANDOVER.md HEAD…").
+- **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
+  confirms `## main...origin/main` with no ahead/behind markers).
+- **HEAD:** `7e9d6a657b2465ad11a05c64ac836ab1f703c258` (`7e9d6a6` "docs: record production deploy +
+  AdGuard/wa.me false-alarm finding").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 27.
-- **Uncommitted changes:** none (`git status` clean).
-- **Untracked files:** none at capture time (this `HANDOVER.md`, `CURRENT_DIFF.patch`, and
-  `deployment-notes.md` are the deliverables added after the snapshot).
+- **Commit count:** 31.
+- **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
-- `CLAUDE.md` is a symlink → `AGENTS.md`.
+- `CLAUDE.md` is a symlink → `AGENTS.md` (confirmed via `ls -la`).
 
 ---
 
@@ -349,7 +353,7 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 Run/confirm these before signing off or deploying:
 
-- [x] `npm ci` (re-run today: ✅ validate 51 wish + 1 festival → build 43 pages → 639 refs, 0 dead)
+- [x] `npm run ci` (re-run today: ✅ validate 51 wish + 1 festival → build 43 pages → 635 refs, 0 dead)
 - [x] `npm run validate` (✅ Content valid)
 - [x] `npm run build` (✅ 43 pages, static)
 - [x] `npm run check:links` (✅ no dead links)
@@ -374,7 +378,7 @@ Run/confirm these before signing off or deploying:
 | Hinglish as first-class locale | **Yes** (`hinglish` locale, BCP-47 `hi-Latn`) |
 | Ad network | AdSense — **not yet applied** (owner applies ~mid-Sep) |
 | User-submitted wishes | **NO for v1** (all content original, agent-authored) |
-| Content per festival | 51 wishes / 11 cards is the **Rakhi baseline** (minimums: 24 wishes, 8 cards) |
+| Content per festival | 51 wishes / 9 cards is the **Rakhi baseline** (minimums: 24 wishes, 8 cards) |
 | Production deploy requires manual approval | **Yes** — never deploy without owner approval |
 | `humanReviewedSeed` flags | Open — owner approval recorded in docs but flags still `false` (flip or document intent) |
 | `public/_redirects` stale file | Open — delete or realign (zone-level rule governs) |
@@ -383,16 +387,20 @@ Run/confirm these before signing off or deploying:
 
 ## §12 — Sign-off
 
-- **Prepared by:** Hermes Agent (subagent).
+- **Prepared by:** Claude Code (`/handover-sync` skill run).
 - **Date:** 2026-08-27 (IST).
-- **Last verified commit SHA:** `4d47d97f1cca6fdd718a29433abb9765f448258e`.
+- **Last verified commit SHA:** `7e9d6a657b2465ad11a05c64ac836ab1f703c258` (31 commits on `main`).
 - **Deployment verified by:** production deploy of `festivalwishesindia.com` was completed 2026-08-26
-  evening (recorded in `CHECKLIST.md`/`fa9cdd4`); the live `curl -I` of `rakhiwishes.in` → 301 →
-  `/en/rakhi/` was verified previously. **Note:** no saved wrangler deploy logs, so exact per-deploy
-  URLs/hashes are not recorded (see `deployment-notes.md`).
-- **Known deviations from older docs:** none — all handover docs (`HANDOVER.md`, `STRUCTURE.md`,
-  `PROGRESS.md`, `CHECKLIST.md`, `deployment-notes.md`) are synced to HEAD `4d47d97` (27 commits). `PROGRESS.md` §4 also says
-  the `origin` remote embeds a PAT — that has since been **removed** (remote is clean).
+  evening (recorded in `CHECKLIST.md`/`fa9cdd4`), with the `b96f1dc` bug-fix redeploy on 2026-08-27
+  confirmed live (per `7e9d6a6`'s commit message — `curl` + live DOM inspection). This sync did not
+  re-run those live-site checks itself; it re-verified only the local repo/build state (§1 header,
+  `npm run ci`). **Note:** no saved wrangler deploy logs, so exact per-deploy URLs/hashes are not
+  recorded (see `deployment-notes.md`).
+- **Known deviations from older docs:** none as of this sync — `HANDOVER.md`, `STRUCTURE.md`,
+  `PROGRESS.md`, and `CHECKLIST.md` are all patched to agree with HEAD `7e9d6a6` (31 commits) on the
+  facts this run re-verified (wish/card counts, git state, analytics wiring). `deployment-notes.md`
+  was not touched by this sync. `PROGRESS.md` §4 also says the `origin` remote embeds a PAT — that has
+  since been **removed** (remote is clean).
 - **Recommended next 3 actions:**
   1. Delete/realign the stale `public/_redirects` and flip (or document) the 51 `humanReviewedSeed`
      flags.
