@@ -3,7 +3,7 @@
 > Cold-start handover. A fresh agent (or human, Claude Code, or Codex) should be able to resume this
 > project from this document alone, with zero prior context.
 >
-> **Snapshot:** 2026-08-26 ~23:55 IST · HEAD `96a91f9` · branch `main` · 22 commits · working tree clean
+> **Snapshot:** 2026-08-26 ~23:55 IST · HEAD `4d47d97` · branch `main` · 27 commits · working tree clean
 > at time of writing. This file is a living document — update it as milestones move.
 
 ---
@@ -20,7 +20,7 @@ greeting messages and image cards for Indian festivals, in three languages (**Hi
   and forwards it on WhatsApp/status.
 - Diwali, Holi, Dussehra, and Navratri are planned to follow.
 - Monetization is **post-launch** (Cloudflare Web Analytics → AdSense → Amazon Associates gift guides
-  for Diwali). No ads are live yet; analytics beacon is not yet wired (see §9).
+  for Diwali). No ads are live yet; analytics beacon is now wired (Cloudflare Web Analytics, automatic setup) (see §9).
 
 ---
 
@@ -180,7 +180,7 @@ Files in `agent-rules/`:
   keyword-stuffed pages).
 - `editorial-style.md` — voice, wish format (1–3 sentences), Hindi/Hinglish conventions, image rules
   (image text must exactly match approved text, high-contrast readable Devanagari).
-- `festival-rules.md` — human-readable per-festival rules (Rakhi: 24 wishes + 8 cards minimum).
+- `festival-rules.md` — human-readable per-festival rules (Rakhi: 24 wishes + 11 cards minimum).
 - `festival-rules.yml` — machine-readable example config + **smoke-test exemption** (`is_smoke_test`).
 - `publish-checklist.md` — full pre-publish checklist (content, SEO, images/sharing, monetization,
   release).
@@ -191,14 +191,14 @@ Files in `agent-rules/`:
 
 **🟢 LIVE** at `festivalwishesindia.com`. Done:
 - Domains registered; `rakhiwishes.in` nameservers pointed to Cloudflare.
-- GitHub repo created and pushed (`f03ec8e`); 22 commits on `main`.
+- GitHub repo created and pushed (`f03ec8e`); 27 commits on `main`.
 - Astro 7 scaffold + i18n + content collections + base layout + Tailwind + sitemap + OG image +
   robots + event endpoint + trust pages (About/Contact/Privacy/Disclaimer).
 - **51 Rakhi wishes** committed (`12a6db2`): conversational-Hindi rewrite + 20 new. All
   `reviewStatus: approved`, `reviewedBy: reviewer-agent`.
   - Relations: brother 19 · sister 13 · bhaiya-bhabhi 7 · family 7 · friend 3 · parent 2.
-- **8 language-tagged card images** (`14e2660`): `rakhi-en-1/2/3`, `rakhi-hi-1/2/3`,
-  `rakhi-hinglish-1/2` in `public/images/rakhi/cards/`, driven by `src/lib/cards.ts` registry and a
+- **11 language-tagged card images** (`14e2660`): `rakhi-en-1/2/3`, `rakhi-hi-1/2/3`,
+  `rakhi-hinglish-1/2/3/4/5` in `public/images/rakhi/cards/`, driven by `src/lib/cards.ts` registry and a
   locale-filtered "Shareable cards" gallery on the hub. Cards are **decoupled** from wish JSONs
   (no `imageAssets` refs remain in wish files).
 - **Tabbed wish listing** (`999c7b1`): All (51) / Popular (12) / relation tabs, with per-card numbering.
@@ -290,7 +290,7 @@ src/content/wish/*.json                      # 51 wishes (rakhi-*-NNN.json)
 src/content/festival/rakhi.json              # Rakhi festival config (smoke test, dateVerifiedBy)
 src/lib/collections.ts                       # collection slug → relation map
 src/lib/i18n.ts                              # locales, labels, BCP-47 mapping
-src/lib/cards.ts                             # language-tagged card registry (8 cards)
+src/lib/cards.ts                             # language-tagged card registry (11 cards)
 src/lib/popular.ts                           # curated "popular" wish IDs (12) for the Popular tab
 src/components/WishCard.astro                # wish card + numbered display
 src/components/ShareBar.astro                # icon+label share buttons + copy fallback
@@ -304,7 +304,7 @@ src/pages/[locale]/{about,contact,privacy,disclaimer}.astro  # trust pages
 src/pages/api/event.ts                       # analytics event stub (no-op)
 src/pages/robots.txt.ts                      # robots.txt
 public/_redirects                            # ⚠️ stale blanket rakhiwishes.in rule (see §3/§11.9)
-public/images/rakhi/cards/*.webp             # 8 language-tagged card images
+public/images/rakhi/cards/*.webp             # 11 language-tagged card images
 scripts/validate-content.mjs                 # content validation (npm run validate)
 scripts/check-links.mjs                      # dead-link/asset checker (npm run check:links)
 scripts/{card-specs.json,card-wish-ids.json,wish-assignments.json}  # card-generation inputs
@@ -316,6 +316,6 @@ CHECKLIST.md                                 # owner/agent shared launch tracker
 
 ## 14. Version control identity & remote
 
-- Branch: `main` (also `origin/main`, `origin/HEAD`). 22 commits.
-- Remote: `https://jprats1993:<token>@github.com/jprats1993/festival-wishes-india.git`.
+- Branch: `main` (also `origin/main`, `origin/HEAD`). 27 commits.
+- Remote: `https://github.com/jprats1993/festival-wishes-india.git` (clean — no token).
 - Author: `Prateek Jain <jprats1993@outlook.com>` on all commits (history rewritten — see §11.4).

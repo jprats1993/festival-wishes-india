@@ -4,7 +4,7 @@
 > Last updated: 2026-08-26 (post-go-live)
 
 **Status:** 🟢 LIVE at https://festivalwishesindia.com (deployed Aug 26 evening).
-`rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 8 cards).
+`rakhiwishes.in` → `/en/rakhi/` 301 live. Rakhi 2026 content complete (51 wishes + 11 cards).
 
 ## Infrastructure
 - [x] Buy festivalwishesindia.com (Cloudflare Registrar) — owner
@@ -22,7 +22,7 @@
 ## Content — Rakhi 2026 (Phase 1)
 - [x] Generate English / Hindi / Hinglish Rakhi wishes — agent
 - [x] Merge + de-duplicate + audit all 51 wishes (30 seed + 20 expansion, conversational Hindi rewrite) — agent
-- [x] Generate 8 language-tagged card images (en/hi/hinglish) + src/lib/cards.ts registry — agent
+- [x] Generate 11 language-tagged card images (en/hi/hinglish) + src/lib/cards.ts registry — agent
 - [x] Decouple cards from wish JSONs + hub "Shareable cards" gallery — agent
 - [x] Tabbed wish listing (All 51 / Popular 12 / relation tabs) with numbering — agent
 - [x] Owner seed-batch approval for Rakhi — owner (approved Aug 26)
