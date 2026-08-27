@@ -73,6 +73,12 @@
   into the page — checked `/en/`, `/en/rakhi/`, `/hi/rakhi/` live HTML and confirmed no
   `cloudflareinsights.com` script is present, which is expected/correct for automatic mode, not a
   defect. Not independently verifiable via curl/DNS; taken on owner's word.
+- **ShareBar icon sprite (deployed to production):** the 4 Copy/Download/Share/WhatsApp icons are
+  defined once as `<symbol>`s in a hidden sprite in `BaseLayout.astro` and referenced via `<use>`
+  from every wish card, instead of each card inlining full SVG path data (WhatsApp's glyph alone is
+  ~1.4KB). On a 50-60-wish festival hub page this cut HTML size ~40% (243KB → 145KB on Diwali's hub)
+  — found while investigating a report of sluggish tab navigation, since Astro's `ClientRouter` has
+  to parse/swap that DOM on every relation-tab click.
 - **Homepage festival header banners (deployed to production):** each tile on the `/{locale}/`
   festival-picker grid shows an illustrated header banner above its title — original AI-illustrated
   artwork, owner-supplied (not built from an in-repo source or script — if these ever need edits,
@@ -386,11 +392,11 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits, `git status -sb`
   confirms `## main...origin/main` with no ahead/behind markers).
-- **HEAD:** `8ff11a01291311593afff30f0365fc4e88694ab3` (`8ff11a0` "docs: sync HANDOVER/CHECKLIST, trim
-  commit-history bloat re-added").
+- **HEAD:** `af04e808737bea814352fd6a9da00604548a930e` (`af04e80` "docs: log 124c42b and 64722cf
+  deploys in deployment-notes.md").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 56.
+- **Commit count:** 59.
 - **Uncommitted changes:** none (`git status` clean at time of this sync, before this skill's own edits).
 - **History rewritten:** all commits are authored `Prateek Jain <jprats1993@outlook.com>`; the GitHub
   user is `jprats1993`. Don't be surprised by the author/remote-user mismatch.
@@ -488,35 +494,17 @@ Run/confirm these before signing off or deploying:
 
 ## §12 — Sign-off
 
-- **Prepared by:** Claude Code — manual doc update (the `/handover-sync` skill itself is restricted
-  to explicit user invocation via `/handover-sync` and refuses to be invoked any other way, so this
-  sync followed the same spirit — re-derive facts from the live repo, don't trust old prose — by hand
-  rather than through that skill).
+- **Prepared by:** Claude Code (`/handover-sync` skill run, explicitly invoked by the owner).
 - **Date:** 2026-08-27 (IST).
 - **Last verified commit:** see §8 (not restated here — single canonical record).
-- **Deployment verified by:** four production deploys since the last full doc sync, all this
-  session — `82fff8f` (Diwali + Dussehra launch, preview `57b918ec`), `093ac69` (first-pass SVG
-  homepage banners, preview `be356eb3`), `a0547d2` (owner-supplied AI-illustrated banners replacing
-  the SVG set, preview `67bcb761`), and `124c42b` (content-hash cache-busting fix, preview
-  `2bd2a794`). The `a0547d2` deploy needed a **cache-busting** `curl` query param to verify — the
-  origin updated immediately (`cf-cache-status: MISS` + correct size) but a plain `curl`, and the
-  owner's own browser, kept showing the pre-deploy image because `/images/*` caches unhashed paths
-  for 1 day; that's exactly what `124c42b` fixes going forward (per-file content-hash query param).
-  All four logged in `deployment-notes.md`. This sync additionally re-verified the local repo/build
-  state (`npm run ci`) and re-derived wish/card/relation counts from source for all 3 festivals.
-- **Known deviations from older docs:** none intentional — `HANDOVER.md` and `CHECKLIST.md` were both
-  updated this pass to agree with current HEAD (§8) on all live facts (wish/card counts, relation
-  distribution, cards.ts registry, `spouse-wishes` collection, `src/lib/relations.ts`,
-  `scripts/generate-cards.mjs`, the owner's seed-batch approval, two rounds of banner sign-off, and
-  the cache-busting fix — all recorded across this session outside a formal sync pass and reconciled
-  here). `STRUCTURE.md` **was** updated this pass too, in both directions — `scripts/banners/*.svg`
-  and `generate-banners.mjs` were **removed** (not just added) once the owner's AI-illustrated artwork
-  replaced that pipeline entirely, which is exactly the structural-change trigger the retired
-  `/handover-sync` skill's Step 4 used to gate a `STRUCTURE.md` touch (a deletion counts the same as
-  an addition); that same judgment call applies here even done by hand. `privacy.astro`'s stale
-  `/api/event` reference (known defect 5) is still unfixed — not touched this pass, still open.
-- **Recommended next 2 actions:** (the date-sanity-check action from earlier syncs is done — owner
-  confirmed both dates 2026-08-27, see §11)
+- **This run:** re-verified `npm run ci` (green — see §2), re-derived wish/card/relation counts and
+  analytics/ads wiring from source, and diffed known defects/open decisions against the live repo.
+  Nothing had actually changed since the prior manual sync — all facts already matched; only §8's
+  HEAD/commit-count needed bumping to this commit.
+- **Known deviations from older docs:** none. `CHECKLIST.md` already agreed with `HANDOVER.md` on
+  every live fact checked this run. `STRUCTURE.md` unchanged — no files added/removed/renamed since
+  its last touch. `privacy.astro`'s stale `/api/event` reference (known defect 5) remains unfixed.
+- **Recommended next 2 actions:**
   1. Fix the stale `privacy.astro` copy (§2 known defect 5), delete/realign `public/_redirects`, and
      flip (or document) the 151 `humanReviewedSeed` flags.
   2. Owner: AdSense application (~mid-Sep) — the remaining go-live monetization item now that Search
