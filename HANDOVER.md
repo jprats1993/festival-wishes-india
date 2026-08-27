@@ -3,8 +3,8 @@
 > **Cold-start handover.** A fresh chat/model/harness on THIS SAME MACHINE should be able to
 > resume the project from this document alone, with zero prior context.
 >
-> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `e80aaa189581c3a4ba2db39f2dfbb612696fc5b3`
-> (`e80aaa1`, "feat: cache headers…") · **Branch:** `main` · **25 commits** · working tree clean.
+> **Prepared:** 2026-08-27 (IST) · **Last verified commit:** `56e227dcfcec9c4af1b0f233d84471b2128e9e21`
+> (`56e227d`, "docs: handover package…") · **Branch:** `main` · **26 commits** · working tree clean.
 >
 > This document is grounded in the actual on-disk repo (git log/status, file tree, content
 > collections, `package.json`, `astro.config.mjs`, `agent-rules/`, `scripts/`, and a live
@@ -22,7 +22,7 @@
 | Local repo path | `/Users/varshajain/festival-wishes-india` |
 | GitHub | https://github.com/jprats1993/festival-wishes-india (owner `jprats1993`) |
 | Branch | `main` |
-| HEAD commit SHA | `e80aaa189581c3a4ba2db39f2dfbb612696fc5b3` (short `e80aaa1`) |
+| HEAD commit SHA | `56e227dcfcec9c4af1b0f233d84471b2128e9e21` (short `56e227d`) |
 | Primary domain | **https://festivalwishesindia.com** (canonical; `site` in `astro.config.mjs`) |
 | Redirect domain | **rakhiwishes.in** → 301 → `https://festivalwishesindia.com/en/rakhi/` |
 | Pages preview URL pattern | `https://<branch-or-hash>.festival-wishes-india.pages.dev` (Cloudflare Pages project `festival-wishes-india`) |
@@ -266,10 +266,10 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 ## §8 — Current Git state
 
 - **Branch:** `main`; **up to date with `origin/main`** (no unpushed commits).
-- **HEAD:** `e80aaa189581c3a4ba2db39f2dfbb612696fc5b3` (`e80aaa1` "feat: cache headers…").
+- **HEAD:** `56e227dcfcec9c4af1b0f233d84471b2128e9e21` (`56e227d` "docs: handover package…").
 - **Remote:** `https://github.com/jprats1993/festival-wishes-india.git` (fetch + push) — **clean URL,
   no embedded token**.
-- **Commit count:** 25.
+- **Commit count:** 26.
 - **Uncommitted changes:** none (`git status` clean).
 - **Untracked files:** none at capture time (this `HANDOVER.md`, `CURRENT_DIFF.patch`, and
   `deployment-notes.md` are the deliverables added after the snapshot).
@@ -341,13 +341,13 @@ Run/confirm these before signing off or deploying:
 
 - **Prepared by:** Hermes Agent (subagent).
 - **Date:** 2026-08-27 (IST).
-- **Last verified commit SHA:** `e80aaa189581c3a4ba2db39f2dfbb612696fc5b3`.
+- **Last verified commit SHA:** `56e227dcfcec9c4af1b0f233d84471b2128e9e21`.
 - **Deployment verified by:** production deploy of `festivalwishesindia.com` was completed 2026-08-26
   evening (recorded in `CHECKLIST.md`/`fa9cdd4`); the live `curl -I` of `rakhiwishes.in` → 301 →
   `/en/rakhi/` was verified previously. **Note:** no saved wrangler deploy logs, so exact per-deploy
   URLs/hashes are not recorded (see `deployment-notes.md`).
 - **Known deviations from older docs:** `PROGRESS.md`/`STRUCTURE.md`/`CHECKLIST.md` say "22 commits /
-  HEAD 96a91f9 / 8 cards"; actual = **25 commits / HEAD e80aaa1 / 11 cards**. `PROGRESS.md` §4 also says
+  HEAD 96a91f9 / 8 cards"; actual = **26 commits / HEAD 56e227d / 11 cards**. `PROGRESS.md` §4 also says
   the `origin` remote embeds a PAT — that has since been **removed** (remote is clean).
 - **Recommended next 3 actions:**
   1. Delete/realign the stale `public/_redirects` and flip (or document) the 51 `humanReviewedSeed`
