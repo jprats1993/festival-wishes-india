@@ -4,7 +4,7 @@ festival:
   display_name: Dussehra
   aliases: [Vijayadashami, Dasara, Dasha-Hara]
   date: "2026-10-20"
-  date_verified_by: reviewer-agent
+  date_verified_by: owner
   is_smoke_test: false
   target_regions: [India, Indian diaspora]
   languages: [hi, en, hinglish]

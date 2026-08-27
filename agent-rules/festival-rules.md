@@ -15,8 +15,8 @@ This file is the human-readable companion to the machine-readable festival confi
 ## Dussehra 2026
 
 - Slug: `dussehra`
-- Date: `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`) — verify manually
-  before publication.
+- Date: `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`) — owner-confirmed
+  2026-08-27.
 - Audience: India and the Indian diaspora.
 - Languages: Hindi, English, Hinglish.
 - Initial collections: short wishes, family wishes, friend wishes, WhatsApp messages.
@@ -26,7 +26,7 @@ This file is the human-readable companion to the machine-readable festival confi
 ## Diwali 2026
 
 - Slug: `diwali`
-- Date: `2026-11-08` — verify manually before publication.
+- Date: `2026-11-08` — owner-confirmed 2026-08-27.
 - Audience: India and the Indian diaspora.
 - Languages: Hindi, English, Hinglish.
 - Initial collections: short wishes, family wishes, friend wishes, WhatsApp messages.

@@ -4,7 +4,7 @@ festival:
   display_name: Diwali
   aliases: [Deepavali, Deepawali, Festival of Lights]
   date: "2026-11-08"
-  date_verified_by: reviewer-agent
+  date_verified_by: owner
   is_smoke_test: false
   target_regions: [India, Indian diaspora]
   languages: [hi, en, hinglish]
