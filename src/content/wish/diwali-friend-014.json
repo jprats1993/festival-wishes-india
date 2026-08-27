@@ -1,0 +1,23 @@
+{
+  "id": "diwali-friend-014",
+  "festival": "diwali",
+  "languages": {
+    "en": "New clothes, new sweets, same chaotic friend energy — happy Diwali!",
+    "hi": "नए कपड़े, नई मिठाइयां, दोस्ती का वही मस्ती भरा जोश — हैप्पी दिवाली!",
+    "hinglish": "Naye kapde, nayi mithaiyaan, dosti ka wahi masti bhara josh — Happy Diwali!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

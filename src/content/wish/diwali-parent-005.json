@@ -1,0 +1,23 @@
+{
+  "id": "diwali-parent-005",
+  "festival": "diwali",
+  "languages": {
+    "en": "Dear Mummy and Papa, may this Diwali bring you good health, contentment, and every happiness you deserve. Thank you for shaping the person I am today.",
+    "hi": "प्रिय मम्मी-पापा, यह दीपावली आपके लिए अच्छी सेहत, संतोष और हर वह खुशी लेकर आए जिसकी आप हकदार हैं। मुझे आज जो कुछ भी बनाया है, उसके लिए धन्यवाद।",
+    "hinglish": "Priya Mummy-Papa, yeh Diwali aapke liye achhi sehat, santosh aur har woh khushi lekar aaye jiski aap hakdaar hain. Mujhe aaj jo kuch bhi banaya hai, uske liye shukriya."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "formal",
+    "warm"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "diwali-friend-002",
+  "festival": "diwali",
+  "languages": {
+    "en": "May your Diwali be as loud as your laugh and twice as bright, yaar!",
+    "hi": "इस दिवाली तुम्हारी हंसी जितनी तेज़ हो, रोशनी उससे भी दोगुनी हो, यार!",
+    "hinglish": "Is Diwali tumhari hansi jitni tez ho, roshni usse bhi dogunee ho, yaar!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

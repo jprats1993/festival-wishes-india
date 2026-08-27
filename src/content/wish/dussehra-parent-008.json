@@ -1,0 +1,24 @@
+{
+  "id": "dussehra-parent-008",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Every time life gets hard, I think of how you've always stood strong for our family, just like Lord Rama stood for what was right. Thank you for being my quiet strength every single day. Happy Dussehra, sending you both my love always.",
+    "hi": "जब भी जिंदगी मुश्किल लगती है, मुझे याद आता है कि आप हमेशा हमारे परिवार के लिए कितनी मजबूती से खड़े रहे हैं, बिल्कुल भगवान राम की तरह जो सही के लिए डटे रहे। हर दिन मेरी शांत ताकत बनने के लिए धन्यवाद। दशहरे की शुभकामनाएं, आप दोनों के लिए हमेशा मेरा प्यार है।",
+    "hinglish": "Jab bhi zindagi mushkil lagti hai, mujhe yaad aata hai ki aap hamesha hamare parivar ke liye kitni mazbooti se khade rahe hain, bilkul Bhagwan Ram ki tarah jo sahi ke liye date rahe. Har din meri shaant taakat banne ke liye dhanyawad. Dussehre ki shubhkamnayein, aap dono ke liye hamesha mera pyaar hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "emotional",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

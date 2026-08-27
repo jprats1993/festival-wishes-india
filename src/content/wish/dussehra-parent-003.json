@@ -1,0 +1,25 @@
+{
+  "id": "dussehra-parent-003",
+  "festival": "dussehra",
+  "languages": {
+    "en": "As Maa Durga triumphed over Mahishasura, may every difficulty in your life be defeated with the same grace and strength. I pray this Vijayadashami brings you good health, deep peace, and many more years of your blessings over me. Happy Dussehra, Maa and Papa.",
+    "hi": "जैसे माँ दुर्गा ने महिषासुर पर विजय पाई, वैसे ही आपके जीवन की हर कठिनाई भी उसी शक्ति और शांति से दूर हो। इस विजयादशमी पर मेरी यही प्रार्थना है कि आपको अच्छा स्वास्थ्य, गहरी शांति और आपका आशीर्वाद हमेशा मुझ पर बना रहे। दशहरे की शुभकामनाएं, माँ और पापा।",
+    "hinglish": "Jaise Maa Durga ne Mahishasur par vijay paayi, waise hi aapke jeevan ki har kathinai bhi usi shakti aur shanti se door ho. Is Vijayadashami par meri yahi prarthana hai ki aapko achha swasthya, gehri shanti aur aapka aashirwad hamesha mujh par bana rahe. Dussehre ki shubhkamnayein, Maa aur Papa."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "devotional",
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

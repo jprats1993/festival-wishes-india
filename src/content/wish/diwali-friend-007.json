@@ -1,0 +1,23 @@
+{
+  "id": "diwali-friend-007",
+  "festival": "diwali",
+  "languages": {
+    "en": "You're the friend who makes even boring rangoli-making feel like a competition show, and honestly, Diwali needs more of that energy. Here's to another year of you lighting up every room you walk into, literally and figuratively.",
+    "hi": "तुम वो दोस्त हो जो साधारण रंगोली बनाने को भी किसी मुकाबले जैसा बना देते हो, और सच कहूं तो दिवाली को यही एनर्जी चाहिए। इस साल भी तुम जहां जाओ, वहां रौनक छा जाए।",
+    "hinglish": "Tum woh dost ho jo saadhaaran rangoli banane ko bhi kisi muqable jaisa bana dete ho, aur sach kahoon toh Diwali ko yehi energy chahiye. Is saal bhi tum jahan jao, wahan raunak chha jaaye."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,24 @@
+{
+  "id": "diwali-family-011",
+  "festival": "diwali",
+  "languages": {
+    "en": "Miles may separate us this Diwali, but you are all still the first thing on my mind as I light the diyas tonight. Sending love, warmth, and a video call request to the whole family!",
+    "hi": "इस दिवाली भले ही हम मीलों दूर हों, लेकिन आज रात दीये जलाते वक़्त सबसे पहले आप सब ही याद आते हैं। पूरे परिवार को प्यार, गर्मजोशी और एक वीडियो कॉल का न्यौता भेज रही हूँ!",
+    "hinglish": "Is Diwali bhale hi hum meelon door hon, lekin aaj raat diye jalate waqt sabse pehle aap sab hi yaad aate hain. Poore parivar ko pyaar, garmjoshi aur ek video call ka nyauta bhej rahi hoon!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "emotional",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

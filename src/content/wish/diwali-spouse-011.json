@@ -1,0 +1,23 @@
+{
+  "id": "diwali-spouse-011",
+  "festival": "diwali",
+  "languages": {
+    "en": "Every diya we light together adds up to a lifetime of small, warm memories with you. Happy Diwali — thank you for making our home feel this good to come back to.",
+    "hi": "साथ मिलकर जलाया हर दीया, तुम्हारे साथ बिताई छोटी-छोटी गर्मजोशी भरी यादों की एक पूरी उम्र बन जाता है। दिवाली की शुभकामनाएं — हमारे घर को लौटने लायक इतनी अच्छी जगह बनाने के लिए शुक्रिया।",
+    "hinglish": "Saath milkar jalaya har diya, tumhare saath bitaayi chhoti-chhoti garmjoshi bhari yaadon ki ek poori umar ban jaata hai. Diwali ki shubhkamnayein — hamare ghar ko lautne layak itni achhi jagah banane ke liye shukriya."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

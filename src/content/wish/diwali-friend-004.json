@@ -1,0 +1,22 @@
+{
+  "id": "diwali-friend-004",
+  "festival": "diwali",
+  "languages": {
+    "en": "Warning: this Diwali message contains extremely high levels of glitter, ghee, and unsolicited advice to light your crackers from a safe distance. Happy Diwali, you absolute firecracker of a friend!",
+    "hi": "चेतावनी: इस दिवाली संदेश में बहुत सारी चमक, घी और बिना मांगे पटाखे दूर से जलाने की सलाह शामिल है। हैप्पी दिवाली, मेरे धमाकेदार दोस्त!",
+    "hinglish": "Chetavni: is Diwali message mein bahut saari chamak, ghee aur bina maange patakhe door se jalane ki salah shaamil hai. Happy Diwali, mere dhamakedar dost!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

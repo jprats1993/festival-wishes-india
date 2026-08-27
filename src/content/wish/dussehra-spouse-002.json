@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-spouse-002",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra! Thank you for defeating my bad moods faster than Ram defeated Ravana. Life just keeps getting funnier and better with you around.",
+    "hi": "दशहरा मुबारक! तुम मेरे बुरे मूड को राम के रावण को हराने से भी तेज़ हरा देते हो। तुम्हारे साथ जिंदगी दिन-ब-दिन और मजेदार होती जा रही है।",
+    "hinglish": "Dussehra mubarak! Tum mere bure mood ko Ram ke Ravan ko haraane se bhi tez hara dete ho. Tumhare saath zindagi din-ba-din aur mazedaar hoti ja rahi hai."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

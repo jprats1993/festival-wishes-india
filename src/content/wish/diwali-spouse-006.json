@@ -1,0 +1,23 @@
+{
+  "id": "diwali-spouse-006",
+  "festival": "diwali",
+  "languages": {
+    "en": "You, me, and a house full of diyas — happy Diwali, my favorite person.",
+    "hi": "तुम, मैं और दीयों से जगमगाता घर — दिवाली मुबारक हो, मेरे सबसे खास इंसान।",
+    "hinglish": "Tum, main aur diyon se jagmagaata ghar — Diwali mubarak ho, mere sabse khaas insaan."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "short"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

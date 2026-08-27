@@ -1,0 +1,23 @@
+{
+  "id": "diwali-parent-008",
+  "festival": "diwali",
+  "languages": {
+    "en": "This Diwali, I want to pause and thank you for every sacrifice you made quietly, every value you taught me without saying it out loud, and every diya you lit so our home always felt safe. I hope this festival gives you back even a little of the joy you've given all of us over the years.",
+    "hi": "इस दीपावली, ठहरकर आपको हर उस त्याग के लिए धन्यवाद कहना है जो आपने चुपचाप किया, हर उस संस्कार के लिए जो आपने बिना कहे सिखाया, और हर उस दीये के लिए जो आपने हमारा घर हमेशा सुरक्षित महसूस कराने के लिए जलाया। उम्मीद है यह त्योहार आपको भी उतनी ही खुशी लौटाए जितनी आपने इतने सालों में हम सबको दी है।",
+    "hinglish": "Is Diwali, thehar kar aapko har us tyaag ke liye shukriya kehna hai jo aapne chupchaap kiya, har us sanskaar ke liye jo aapne bina kahe sikhaya, aur har us diye ke liye jo aapne hamara ghar hamesha surakshit mehsoos karaane ke liye jalaya. Ummeed hai yeh tyohaar aapko bhi utni hi khushi lautaaye jitni aapne itne saalon mein hum sabko di hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

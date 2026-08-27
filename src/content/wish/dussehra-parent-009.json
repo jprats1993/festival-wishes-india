@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-parent-009",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Maa Durga's victory reminds us that light always finds a way through the darkness, just like your love and blessings have guided me through every hard time. Wishing you both a Dussehra filled with joy, gratitude, and good health.",
+    "hi": "माँ दुर्गा की जीत हमें याद दिलाती है कि रोशनी हमेशा अंधेरे के बीच अपना रास्ता ढूंढ लेती है, बिल्कुल वैसे ही जैसे आपके प्यार और आशीर्वाद ने हर मुश्किल वक्त में मुझे संभाला है। आप दोनों का दशहरा खुशियों, कृतज्ञता और अच्छी सेहत से भरा रहे।",
+    "hinglish": "Maa Durga ki jeet hamein yaad dilati hai ki roshni hamesha andhere ke beech apna raasta dhoond leti hai, bilkul waise hi jaise aapke pyaar aur aashirwad ne har mushkil waqt mein mujhe sambhala hai. Aap dono ka Dussehra khushiyon, kritagyata aur achhi sehat se bhara rahe."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "devotional"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,24 @@
+{
+  "id": "diwali-spouse-002",
+  "festival": "diwali",
+  "languages": {
+    "en": "Happy Diwali to my favorite person to light diyas with. Love you, always.",
+    "hi": "दिवाली की शुभकामनाएं उस इंसान को, जिसके साथ दीये जलाना सबसे अच्छा लगता है। हमेशा तुमसे प्यार है।",
+    "hinglish": "Diwali ki shubhkamnayein us insaan ko, jiske saath diye jalana sabse achha lagta hai. Hamesha tumse pyaar hai."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "short"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

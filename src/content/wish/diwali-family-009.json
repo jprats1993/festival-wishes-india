@@ -1,0 +1,22 @@
+{
+  "id": "diwali-family-009",
+  "festival": "diwali",
+  "languages": {
+    "en": "Warning: unlimited mithai, loud laughter, and Tauji's terrible jokes ahead. Get ready, family, Diwali at our house is about to begin!",
+    "hi": "चेतावनी: असीमित मिठाई, ज़ोरदार हंसी और ताऊजी के फूहड़ चुटकुले आने वाले हैं। तैयार हो जाओ परिवार, हमारे घर की दिवाली शुरू होने वाली है!",
+    "hinglish": "Chetavani: aseemit mithai, zordaar hansi aur Taauji ke phoohad chutkule aane waale hain. Taiyaar ho jao parivar, humare ghar ki Diwali shuru hone waali hai!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "funny"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

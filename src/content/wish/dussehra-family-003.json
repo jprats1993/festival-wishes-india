@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-003",
+  "festival": "dussehra",
+  "languages": {
+    "en": "On this Vijayadashami, may Lord Rama's victory over Ravana inspire our whole family to let go of anger and hold on to patience and love.",
+    "hi": "इस विजयादशमी पर, भगवान राम की रावण पर विजय हमारे पूरे परिवार को गुस्सा छोड़कर धैर्य और प्रेम अपनाने की प्रेरणा दे।",
+    "hinglish": "Is Vijayadashami par, Bhagwan Ram ki Ravan par jeet hamare poore parivar ko gussa chhodkar dhairya aur prem apnaane ki prerna de."
+  },
+  "relations": ["family"],
+  "tones": ["devotional", "warm"],
+  "formats": ["whatsapp"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

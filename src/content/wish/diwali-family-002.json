@@ -1,0 +1,24 @@
+{
+  "id": "diwali-family-002",
+  "festival": "diwali",
+  "languages": {
+    "en": "Wishing you both a very happy Diwali. Thank you for welcoming me into this family with so much warmth; may Lakshmi ji bless your home with prosperity and every celebration be as joyful as this one.",
+    "hi": "आप दोनों को दिवाली की बहुत-बहुत शुभकामनाएँ। इस परिवार में मुझे इतने प्यार से अपनाने के लिए धन्यवाद; माँ लक्ष्मी आपके घर को समृद्धि से भर दें और हर उत्सव इसी तरह खुशियों भरा हो।",
+    "hinglish": "Aap dono ko Diwali ki bahut-bahut shubhkaamnayein. Is parivar mein mujhe itne pyaar se apnaane ke liye dhanyavaad; Maa Lakshmi aapke ghar ko samriddhi se bhar dein aur har utsav isi tarah khushiyon bhara ho."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "formal"
+  ],
+  "formats": [
+    "card",
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

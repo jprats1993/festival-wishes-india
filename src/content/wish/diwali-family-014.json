@@ -1,0 +1,23 @@
+{
+  "id": "diwali-family-014",
+  "festival": "diwali",
+  "languages": {
+    "en": "May our home always be this full of light and laughter. Happy Diwali, family!",
+    "hi": "हमारा घर हमेशा इतनी ही रोशनी और हंसी से भरा रहे। हैप्पी दिवाली, परिवार!",
+    "hinglish": "Humara ghar hamesha itni hi roshni aur hansi se bhara rahe. Happy Diwali, parivar!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "short",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

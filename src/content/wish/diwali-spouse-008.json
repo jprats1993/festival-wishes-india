@@ -1,0 +1,24 @@
+{
+  "id": "diwali-spouse-008",
+  "festival": "diwali",
+  "languages": {
+    "en": "On this Diwali, I want to take a moment to thank you for the steady warmth you bring to our home and our life together. Wishing you a festival filled with peace, prosperity, and joy — and many more years of celebrating side by side.",
+    "hi": "इस दिवाली मैं एक पल निकालकर तुम्हें उस स्थिर गर्मजोशी के लिए धन्यवाद देना चाहता हूं, जो तुम हमारे घर और हमारी साझा ज़िंदगी में लाते हो। तुम्हें शांति, समृद्धि और खुशियों से भरी दिवाली की शुभकामनाएं — और साथ मिलकर मनाए जाने वाले ऐसे कई और साल।",
+    "hinglish": "Is Diwali main ek pal nikalkar tumhein us sthir garmjoshi ke liye dhanyavaad dena chahta hoon, jo tum hamare ghar aur hamari saanjhi zindagi mein late ho. Tumhein shanti, samriddhi aur khushiyon se bhari Diwali ki shubhkamnayein — aur saath milkar manaye jaane wale aise kai aur saal."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "formal"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

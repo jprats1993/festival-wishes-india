@@ -1,0 +1,24 @@
+{
+  "id": "diwali-parent-011",
+  "festival": "diwali",
+  "languages": {
+    "en": "No amount of lights can outshine the comfort of being home with you this Diwali. Thank you for making every festival feel like the safest place in the world.",
+    "hi": "कोई भी रोशनी इस दीपावली आपके साथ घर पर होने के सुकून के आगे फीकी है। हर त्योहार को दुनिया की सबसे सुरक्षित जगह जैसा महसूस कराने के लिए शुक्रिया।",
+    "hinglish": "Koi bhi roshni is Diwali aapke saath ghar par hone ke sukoon ke aage feeki hai. Har tyohaar ko duniya ki sabse surakshit jagah jaisa mehsoos karaane ke liye shukriya."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

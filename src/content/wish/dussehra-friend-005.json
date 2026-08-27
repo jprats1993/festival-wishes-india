@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-005",
+  "festival": "dussehra",
+  "languages": {
+    "en": "May this Dussehra burn away every worry standing between you and a good year, dost.",
+    "hi": "इस दशहरे तुम्हारी और एक अच्छे साल के बीच खड़ी हर चिंता जल जाए, दोस्त।",
+    "hinglish": "Is Dussehre tumhari aur ek achhe saal ke beech khadi har chinta jal jaye, dost."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "short",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

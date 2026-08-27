@@ -1,0 +1,24 @@
+{
+  "id": "diwali-parent-001",
+  "festival": "diwali",
+  "languages": {
+    "en": "Wishing you a Diwali as warm and bright as the love you've always given me, Mummy and Papa. Thank you for being the light of our home, today and always.",
+    "hi": "मम्मी-पापा, आपको दीपावली की ढेर सारी शुभकामनाएं, जितना प्यार आपने मुझे हमेशा दिया है, यह त्योहार उतना ही रोशन हो। आप हमारे घर के असली उजाले हैं, आज भी और हमेशा भी।",
+    "hinglish": "Mummy-Papa, aapko Diwali ki bahut saari shubhkamnayein, jitna pyar aapne mujhe hamesha diya hai, yeh tyohaar utna hi roshan ho. Aap hamare ghar ke asli ujale hain, aaj bhi aur hamesha bhi."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

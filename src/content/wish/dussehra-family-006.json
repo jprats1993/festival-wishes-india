@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-006",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Every Dussehra, I think about how far our family has come, through the hard years and the easy ones, and I feel lucky to call you all mine. May this Vijayadashami wash away whatever weighed us down this year and leave room for nothing but good news ahead.",
+    "hi": "हर दशहरे पर मुझे याद आता है कि हमारा परिवार कितनी दूर तक साथ चला है, मुश्किल सालों में भी और आसान सालों में भी, और मुझे गर्व होता है कि आप सब मेरे अपने हैं। यह विजयादशमी इस साल की सारी थकान बहा ले जाए और आगे सिर्फ अच्छी खबरों की जगह बचे।",
+    "hinglish": "Har Dussehre par mujhe yaad aata hai ki hamara parivar kitni door tak saath chala hai, mushkil saalon mein bhi aur aasaan saalon mein bhi, aur mujhe garv hota hai ki aap sab mere apne hain. Yeh Vijayadashami is saal ki saari thakaan baha le jaaye aur aage sirf achhi khabron ki jagah bache."
+  },
+  "relations": ["family"],
+  "tones": ["emotional", "warm"],
+  "formats": ["long"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

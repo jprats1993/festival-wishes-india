@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-009",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Ravana had ten heads and still lost. You have one and still can't decide what to eat. Happy Dussehra anyway!",
+    "hi": "रावण के दस सिर थे और फिर भी वो हार गया। तुम्हारा एक सिर है और तुम अब तक तय नहीं कर पाते क्या खाना है। फिर भी दशहरा मुबारक!",
+    "hinglish": "Ravan ke das sir the aur phir bhi woh haar gaya. Tumhara ek sir hai aur tum ab tak decide nahi kar paate kya khana hai. Phir bhi Dussehra mubarak!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

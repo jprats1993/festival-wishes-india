@@ -1,0 +1,24 @@
+{
+  "id": "dussehra-parent-007",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra to both of you. Just as good triumphed over evil on this day, I hope every year brings more reasons for our family to celebrate together, and I'm grateful for the warmth and acceptance you've always given me. May you both stay healthy and happy for many years to come.",
+    "hi": "आप दोनों को दशहरे की शुभकामनाएं। जैसे इस दिन अच्छाई ने बुराई पर जीत हासिल की, वैसे ही हर साल हमारे परिवार को साथ मिलकर खुशियाँ मनाने के और कारण मिलें, और मैं आपके दिए हुए प्यार और अपनेपन के लिए आभारी हूँ। आप दोनों हमेशा स्वस्थ और खुश रहें।",
+    "hinglish": "Aap dono ko Dussehre ki shubhkamnayein. Jaise is din achhai ne buraai par jeet haasil ki, waise hi har saal hamare parivar ko saath milkar khushiyan manane ke aur kaaran milein, aur main aapke diye hue pyaar aur apnepan ke liye aabhari hoon. Aap dono hamesha swasth aur khush rahein."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "formal"
+  ],
+  "formats": [
+    "card",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-008",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Grateful for this family, today and every Dussehra.",
+    "hi": "इस परिवार के लिए शुक्रगुज़ार हूं, आज भी और हर दशहरे पर भी।",
+    "hinglish": "Is parivar ke liye shukraguzaar hoon, aaj bhi aur har Dussehre par bhi."
+  },
+  "relations": ["family"],
+  "tones": ["warm"],
+  "formats": ["status"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

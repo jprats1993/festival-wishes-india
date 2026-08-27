@@ -1,0 +1,22 @@
+{
+  "id": "diwali-friend-005",
+  "festival": "diwali",
+  "languages": {
+    "en": "Wishing you a Diwali filled with warm diyas, warmer hugs, and all the little moments that make this festival feel like home. Take care of yourself and have a wonderful one, my friend.",
+    "hi": "तुम्हारे लिए ऐसी दिवाली की कामना है जिसमें दीयों की गर्माहट हो, गले लगने की गर्माहट उससे भी ज़्यादा हो, और हर छोटा पल घर जैसा महसूस हो। अपना ख्याल रखना और बहुत बढ़िया दिवाली मनाना।",
+    "hinglish": "Tumhare liye aisi Diwali ki kaamna hai jismein diyon ki garmahat ho, gale lagne ki garmahat usse bhi zyada ho, aur har chhota pal ghar jaisa mehsoos ho. Apna khayal rakhna aur bahut badhiya Diwali manana."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

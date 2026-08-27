@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-spouse-008",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Wishing you a joyful Dussehra. Grateful to walk through life's celebrations and challenges with someone as steady and kind as you.",
+    "hi": "आपको दशहरे की हार्दिक शुभकामनाएं। जिंदगी के हर उत्सव और हर चुनौती में आप जैसे स्थिर और दयालु साथी का होना सौभाग्य की बात है।",
+    "hinglish": "Aapko Dussehre ki hardik shubhkamnayein. Zindagi ke har utsav aur har chunauti mein aap jaise sthir aur dayalu saathi ka hona saubhagya ki baat hai."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "formal",
+    "warm"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

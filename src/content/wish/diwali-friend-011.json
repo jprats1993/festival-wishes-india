@@ -1,0 +1,23 @@
+{
+  "id": "diwali-friend-011",
+  "festival": "diwali",
+  "languages": {
+    "en": "On this Diwali, I hope your home is filled with light, your heart with peace, and your days ahead with success and good health. Wishing you and your loved ones a very happy and prosperous Diwali.",
+    "hi": "इस दिवाली, आपके घर में रोशनी हो, मन में शांति हो, और आने वाले दिन सफलता और अच्छी सेहत से भरे हों। आपको और आपके परिवार को दिवाली की हार्दिक शुभकामनाएं।",
+    "hinglish": "Is Diwali, aapke ghar mein roshni ho, mann mein shaanti ho, aur aane wale din safalta aur achhi sehat se bhare hon. Aapko aur aapke parivaar ko Diwali ki haardik shubhkaamnaayein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "formal"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

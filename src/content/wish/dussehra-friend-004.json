@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-004",
+  "festival": "dussehra",
+  "languages": {
+    "en": "They say Ravana had ten heads, but even he couldn't have handled our friend group chat. Happy Dussehra, may your notifications and your happiness both stay full.",
+    "hi": "कहते हैं रावण के दस सिर थे, पर वो भी हमारे ग्रुप चैट को शायद न झेल पाता। दशहरा मुबारक, तुम्हारे नोटिफिकेशन और खुशियां दोनों भरे रहें।",
+    "hinglish": "Kehte hain Ravan ke das sir the, par woh bhi hamare group chat ko shayad na jhel pata. Dussehra mubarak, tumhare notifications aur khushiyan dono bhare rahein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

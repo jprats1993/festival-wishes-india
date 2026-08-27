@@ -1,0 +1,24 @@
+{
+  "id": "diwali-spouse-001",
+  "festival": "diwali",
+  "languages": {
+    "en": "This Diwali, our home glows brighter simply because you fill it with warmth every single day. Happy Diwali, dear — here's to many more festivals of light and laughter by your side.",
+    "hi": "इस दिवाली हमारा घर इसलिए और रोशन लगता है क्योंकि हर दिन तुम इसे अपनी गर्मजोशी से भर देते हो। दिवाली की ढेरों शुभकामनाएं, प्रिय — रोशनी और हंसी से भरे ऐसे कई त्योहार अभी और साथ मनाने हैं।",
+    "hinglish": "Is Diwali hamara ghar isliye aur roshan lagta hai kyunki har din tum ise apni garmjoshi se bhar dete ho. Diwali ki dheron shubhkamnayein, priya — roshni aur hansi se bhare aise kai tyohaar abhi aur saath manane hain."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

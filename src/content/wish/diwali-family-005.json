@@ -1,0 +1,23 @@
+{
+  "id": "diwali-family-005",
+  "festival": "diwali",
+  "languages": {
+    "en": "From chachaji's laughter to the cousins' crazy antics, our Diwali get-togethers are never boring! Wishing the entire extended family a festival full of sweets, sparklers, and non-stop chatter.",
+    "hi": "चाचाजी की हंसी से लेकर कज़िन्स की मस्ती तक, हमारी दिवाली की मिलनसारी कभी बोरिंग नहीं होती! पूरे परिवार को मिठाइयों, फुलझड़ियों और ढेर सारी बातों से भरे त्योहार की शुभकामनाएँ।",
+    "hinglish": "Chachaji ki hansi se lekar cousins ki masti tak, humari Diwali ki milansaari kabhi boring nahi hoti! Poore parivar ko mithaiyon, phuljhadiyon aur dher saari baaton se bhare tyohaar ki shubhkaamnayein."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

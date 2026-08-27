@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-spouse-005",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Dussehra reminds us that no darkness lasts forever and good always finds its way through. You have been that good in my life, turning every hard season into something I could face without fear. Happy Vijayadashami to the reason my victories feel complete.",
+    "hi": "दशहरा हमें याद दिलाता है कि कोई भी अंधेरा हमेशा नहीं रहता और अच्छाई हमेशा अपना रास्ता खुद बना लेती है। मेरी जिंदगी में तुम वही अच्छाई हो, जिसने हर मुश्किल मौसम को ऐसा बना दिया जिसका मैं बिना डरे सामना कर सकूं। विजयादशमी की शुभकामनाएं उस वजह को, जिसकी वजह से मेरी हर जीत अधूरी नहीं लगती।",
+    "hinglish": "Dussehra hamein yaad dilata hai ki koi bhi andhera hamesha nahi rehta aur achhai hamesha apna raasta khud bana leti hai. Meri zindagi mein tum wahi achhai ho, jisne har mushkil mausam ko aisa bana diya jiska main bina dare saamna kar sakoon. Vijayadashami ki shubhkamnayein us wajah ko, jiski wajah se meri har jeet adhoori nahi lagti."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

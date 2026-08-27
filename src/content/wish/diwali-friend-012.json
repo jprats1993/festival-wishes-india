@@ -1,0 +1,23 @@
+{
+  "id": "diwali-friend-012",
+  "festival": "diwali",
+  "languages": {
+    "en": "This Diwali forecast: 90% chance of happiness, entirely your fault, dost.",
+    "hi": "इस दिवाली का पूर्वानुमान: 90% खुशी होने के आसार, और इसका पूरा दोष तुम्हारा है, दोस्त।",
+    "hinglish": "Is Diwali ka poorvanuman: 90% khushi hone ke aasar, aur iska poora dosh tumhara hai, dost."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

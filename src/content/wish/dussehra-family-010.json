@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-010",
+  "festival": "dussehra",
+  "languages": {
+    "en": "As Goddess Durga's triumph over Mahishasura reminds us that strength and courage always prevail, I pray our family finds that same strength whenever life gets hard. Happy Vijayadashami to the people who are my courage.",
+    "hi": "जैसे देवी दुर्गा की महिषासुर पर विजय हमें याद दिलाती है कि साहस और शक्ति की हमेशा जीत होती है, मेरी प्रार्थना है कि हमारा परिवार भी हर मुश्किल घड़ी में वही ताकत पाए। मेरे साहस बने इन अपनों को हैप्पी विजयादशमी।",
+    "hinglish": "Jaise Devi Durga ki Mahishasur par jeet hamein yaad dilaati hai ki saahas aur shakti ki hamesha jeet hoti hai, meri prarthana hai ki hamara parivar bhi har mushkil ghadi mein wahi taakat paaye. Mere saahas bane in apnon ko Happy Vijayadashami."
+  },
+  "relations": ["family"],
+  "tones": ["devotional", "emotional"],
+  "formats": ["card", "long"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

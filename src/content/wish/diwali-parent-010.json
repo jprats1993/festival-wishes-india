@@ -1,0 +1,22 @@
+{
+  "id": "diwali-parent-010",
+  "festival": "diwali",
+  "languages": {
+    "en": "Touching your feet this Diwali means more to me than any gift I could ever give you. Happy Diwali, Mummy-Papa.",
+    "hi": "इस दीपावली आपके पैर छूना मेरे लिए किसी भी तोहफे से ज्यादा मायने रखता है। मम्मी-पापा, आपको दीपावली की शुभकामनाएं।",
+    "hinglish": "Is Diwali aapke paanv chhuna mere liye kisi bhi tohfe se zyada maayne rakhta hai. Mummy-Papa, aapko Happy Diwali."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

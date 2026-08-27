@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-004",
+  "festival": "dussehra",
+  "languages": {
+    "en": "This Dussehra, may our family's arguments over the remote control finally see their own Ravana effigy go up in flames. Happy Vijayadashami!",
+    "hi": "इस दशहरे पर, रिमोट को लेकर हमारे परिवार की लड़ाई का भी अपना रावण दहन हो जाए। हैप्पी विजयादशमी!",
+    "hinglish": "Is Dussehre par, remote ko lekar hamare parivar ki ladai ka bhi apna Ravan dahan ho jaaye. Happy Vijayadashami!"
+  },
+  "relations": ["family"],
+  "tones": ["funny", "warm"],
+  "formats": ["whatsapp"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

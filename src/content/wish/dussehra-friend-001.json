@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-001",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra, yaar! May every bit of laziness, drama, and bad WiFi in your life get burned along with the Ravana effigy this year.",
+    "hi": "दशहरा की ढेर सारी शुभकामनाएं, दोस्त! उम्मीद है इस साल रावण के पुतले के साथ तुम्हारी सारी आलस, ड्रामा और खराब वाई-फाई भी जल जाए।",
+    "hinglish": "Happy Dussehra yaar! Ummeed hai is saal Ravan ke putle ke saath tumhari saari aalas, drama aur kharab WiFi bhi jal jaye."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

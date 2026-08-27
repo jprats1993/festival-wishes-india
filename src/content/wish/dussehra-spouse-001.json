@@ -1,0 +1,24 @@
+{
+  "id": "dussehra-spouse-001",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra to my favorite person. Just like good triumphs over evil today, I hope we always find our way back to each other, no matter what life brings.",
+    "hi": "मेरे सबसे खास इंसान को दशहरे की शुभकामनाएं। जैसे आज बुराई पर अच्छाई की जीत होती है, वैसे ही उम्मीद है कि जिंदगी में चाहे कुछ भी हो, हम हमेशा एक-दूसरे के साथ रहें।",
+    "hinglish": "Mere sabse khaas insaan ko Dussehra ki shubhkamnayein. Jaise aaj buraai par achhai ki jeet hoti hai, waise hi ummeed hai ki zindagi mein chahe kuch bhi ho, hum hamesha ek-doosre ke saath rahein."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

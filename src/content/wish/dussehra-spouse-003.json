@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-spouse-003",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra! May good always win in our story, just like it did today.",
+    "hi": "दशहरा की शुभकामनाएं! हमारी कहानी में हमेशा अच्छाई की जीत हो, बिल्कुल आज की तरह।",
+    "hinglish": "Dussehra ki shubhkamnayein! Hamari kahani mein hamesha achhai ki jeet ho, bilkul aaj ki tarah."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "short"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

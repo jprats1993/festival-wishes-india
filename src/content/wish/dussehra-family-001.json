@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-001",
+  "festival": "dussehra",
+  "languages": {
+    "en": "May this Dussehra remind our family how much stronger we are together, and may every year bring us closer than the last.",
+    "hi": "इस दशहरे पर हमारा परिवार यह याद रखे कि साथ रहकर हम कितने मज़बूत हैं, और हर साल हमें एक-दूसरे के और करीब लाए।",
+    "hinglish": "Is Dussehre par hamara parivar yeh yaad rakhe ki saath rehkar hum kitne mazboot hain, aur har saal hamein ek-doosre ke aur kareeb laaye."
+  },
+  "relations": ["family"],
+  "tones": ["warm", "emotional"],
+  "formats": ["whatsapp", "card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

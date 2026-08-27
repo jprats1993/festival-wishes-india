@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-011",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra to the friend who's basically my personal Ravana effigy of stress relief — one bad joke from you and everything just burns away.",
+    "hi": "उस दोस्त को दशहरा मुबारक जो मेरे स्ट्रेस के लिए किसी रावण के पुतले से कम नहीं — तुम्हारा एक घटिया जोक और सारी टेंशन जल जाती है।",
+    "hinglish": "Us dost ko Dussehra mubarak jo mere stress ke liye kisi Ravan ke putle se kam nahi — tumhara ek ghatiya joke aur saari tension jal jaati hai."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

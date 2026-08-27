@@ -1,0 +1,22 @@
+{
+  "id": "dussehra-friend-012",
+  "festival": "dussehra",
+  "languages": {
+    "en": "May this Dussehra clear out the year's clutter and leave room for good news, good food, and more evenings with friends like you. Take care and celebrate well.",
+    "hi": "उम्मीद है ये दशहरा इस साल की सारी उलझनें साफ कर दे और जगह बने अच्छी खबरों, अच्छे खाने और तुम्हारे जैसे दोस्तों के साथ और शामों के लिए। अपना ख्याल रखना और खूब त्योहार मनाना।",
+    "hinglish": "Ummeed hai yeh Dussehra is saal ki saari uljhanein saaf kar de aur jagah bane achhi khabron, achhe khane aur tumhare jaise doston ke saath aur shaamon ke liye. Apna khayal rakhna aur khoob tyohaar manana."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

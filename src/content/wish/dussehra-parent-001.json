@@ -1,0 +1,24 @@
+{
+  "id": "dussehra-parent-001",
+  "festival": "dussehra",
+  "languages": {
+    "en": "On this Dussehra, I'm reminded that the values you've taught me are my greatest victory over every wrong path I could have taken. Happy Dussehra, and thank you for always showing me the way of good.",
+    "hi": "इस दशहरे पर मुझे एहसास होता है कि आपने जो संस्कार सिखाए हैं, वही मेरी सबसे बड़ी जीत है हर गलत राह के खिलाफ। दशहरे की हार्दिक शुभकामनाएं, और हमेशा सही रास्ता दिखाने के लिए धन्यवाद।",
+    "hinglish": "Is Dussehre par mujhe ehsaas hota hai ki aapne jo sanskar sikhaye hain, wahi meri sabse badi jeet hai har galat raah ke khilaf. Dussehre ki hardik shubhkamnayein, aur hamesha sahi raasta dikhane ke liye dhanyawad."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-parent-006",
+  "festival": "dussehra",
+  "languages": {
+    "en": "May Lord Rama's victory fill our home with peace. Happy Dussehra, Maa and Papa.",
+    "hi": "भगवान राम की विजय हमारे घर को शांति से भर दे। दशहरे की शुभकामनाएं, माँ और पापा।",
+    "hinglish": "Bhagwan Ram ki vijay hamare ghar ko shanti se bhar de. Dussehre ki shubhkamnayein, Maa aur Papa."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "short",
+    "devotional"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

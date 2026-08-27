@@ -1,0 +1,23 @@
+{
+  "id": "diwali-family-010",
+  "festival": "diwali",
+  "languages": {
+    "en": "Wishing my susral parivaar a very happy and prosperous Diwali. Grateful for the love and warmth you've all shown me, and hoping this festival brings us even closer together.",
+    "hi": "अपने ससुराल परिवार को दिवाली की बहुत-बहुत शुभकामनाएँ। आप सबने मुझे जो प्यार और अपनापन दिया है उसके लिए आभारी हूँ, और उम्मीद करती हूँ कि यह त्योहार हमें और भी करीब लाएगा।",
+    "hinglish": "Apne susral parivaar ko Diwali ki bahut-bahut shubhkaamnayein. Aap sabne mujhe jo pyaar aur apnaapan diya hai uske liye aabhaari hoon, aur ummeed karti hoon ki yeh tyohaar humein aur bhi kareeb layega."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "formal"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

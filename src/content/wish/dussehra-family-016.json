@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-016",
+  "festival": "dussehra",
+  "languages": {
+    "en": "May this Vijayadashami burn away every bit of negativity around our family, just like the Ravana effigy, and leave behind only warmth, good health, and togetherness.",
+    "hi": "यह विजयादशमी हमारे परिवार के आसपास की हर नकारात्मकता को रावण के पुतले की तरह जला दे, और पीछे सिर्फ अपनापन, अच्छी सेहत और एकता छोड़ जाए।",
+    "hinglish": "Yeh Vijayadashami hamare parivar ke aaspaas ki har negativity ko Ravan ke putle ki tarah jala de, aur peeche sirf apnapan, achhi sehat aur ekta chhod jaaye."
+  },
+  "relations": ["family"],
+  "tones": ["devotional", "warm", "emotional"],
+  "formats": ["whatsapp", "card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

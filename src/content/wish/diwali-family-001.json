@@ -1,0 +1,24 @@
+{
+  "id": "diwali-family-001",
+  "festival": "diwali",
+  "languages": {
+    "en": "Mum, Dad, no diya shines as bright as the home you've built for us. This Diwali I just want to say thank you for every sacrifice, and I wish you a year full of health, laughter, and peace.",
+    "hi": "माँ, पापा, कोई भी दीया उतना नहीं चमकता जितना वो घर जो आपने हमारे लिए बनाया है। इस दिवाली मैं बस इतना कहना चाहता हूँ कि आपकी हर कुर्बानी के लिए शुक्रिया, और मैं आपके लिए सेहत, हँसी और सुकून से भरा साल चाहता हूँ।",
+    "hinglish": "Mumma, Papa, koi bhi diya utna nahi chamakta jitna woh ghar jo aapne humare liye banaya hai. Is Diwali main bas itna kehna chahta hoon ki aapki har qurbani ke liye shukriya, aur main aapke liye sehat, hansi aur sukoon se bhara saal chahta hoon."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

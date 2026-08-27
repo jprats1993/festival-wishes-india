@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-002",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Good triumphs over evil today — and over your terrible jokes too, hopefully. Happy Dussehra!",
+    "hi": "आज बुराई पर अच्छाई की जीत है — उम्मीद है तुम्हारे घटिया चुटकुलों पर भी। दशहरा मुबारक!",
+    "hinglish": "Aaj burai par achhai ki jeet hai — ummeed hai tumhare ghatiya jokes par bhi. Dussehra mubarak!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "short",
+    "funny"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "diwali-parent-006",
+  "festival": "diwali",
+  "languages": {
+    "en": "May the diyas we light this Diwali carry a small part of the gratitude I feel for you every single day, Mummy and Papa.",
+    "hi": "इस दीपावली जो दीये हम जलाते हैं, वो उस शुक्रगुज़ारी का थोड़ा हिस्सा भी साथ ले जाएं जो मम्मी-पापा, आपके लिए हर दिन मन में रहती है।",
+    "hinglish": "Is Diwali jo diye hum jalate hain, woh us shukrguzaari ka thoda hissa bhi saath le jaayein jo Mummy-Papa, aapke liye har din mann mein rehti hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "warm",
+    "devotional"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

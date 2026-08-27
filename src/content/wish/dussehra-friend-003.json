@@ -1,0 +1,22 @@
+{
+  "id": "dussehra-friend-003",
+  "festival": "dussehra",
+  "languages": {
+    "en": "On this Vijayadashami, I'm grateful for a friendship that has already survived every small war between us and come out stronger. Wishing you a season full of good news and better company.",
+    "hi": "इस विजयादशमी पर मैं उस दोस्ती के लिए शुक्रगुज़ार हूं जो हमारे बीच की हर छोटी-मोटी लड़ाई से भी मज़बूत होकर निकली है। तुम्हें ढेर सारी खुशखबरी और अच्छे साथ की शुभकामनाएं।",
+    "hinglish": "Is Vijayadashami par main us dosti ke liye shukraguzar hoon jo hamare beech ki har chhoti-moti ladai se bhi majboot hokar nikli hai. Tumhe dher saari khushkhabri aur achhe saath ki shubhkamnayein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

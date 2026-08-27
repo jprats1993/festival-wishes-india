@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-014",
+  "festival": "dussehra",
+  "languages": {
+    "en": "On this auspicious occasion of Vijayadashami, warm wishes to our beloved family. May this festival strengthen the bonds we share and fill our home with peace.",
+    "hi": "विजयादशमी के इस शुभ अवसर पर, हमारे प्यारे परिवार को हार्दिक शुभकामनाएं। यह पर्व हमारे रिश्तों को और मज़बूत करे और हमारे घर को शांति से भर दे।",
+    "hinglish": "Vijayadashami ke is shubh avsar par, hamare pyaare parivar ko hardik shubhkamnaayein. Yeh parv hamare rishton ko aur mazboot kare aur hamare ghar ko shanti se bhar de."
+  },
+  "relations": ["family"],
+  "tones": ["warm", "formal"],
+  "formats": ["card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "diwali-parent-007",
+  "festival": "diwali",
+  "languages": {
+    "en": "Happy Diwali, Papa and Mummy. Wherever I am, my heart is home with you.",
+    "hi": "पापा-मम्मी, आपको दीपावली की शुभकामनाएं। मैं जहां भी रहूं, मेरा दिल हमेशा आपके पास घर पर ही होता है।",
+    "hinglish": "Papa-Mummy, aapko Happy Diwali. Main jahan bhi rahoon, mera dil hamesha aapke paas ghar par hi hota hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "short",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

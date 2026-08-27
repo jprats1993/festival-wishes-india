@@ -1,0 +1,24 @@
+{
+  "id": "dussehra-friend-010",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Festivals always remind me how lucky I am to have a friend like you, someone who's stayed through the ordinary weeks and not just the celebrations. Happy Vijayadashami, here's to more good times winning over the bad ones.",
+    "hi": "त्योहार मुझे हर बार याद दिलाते हैं कि तुम्हारे जैसा दोस्त पाकर मैं कितना खुशकिस्मत हूं, कोई जो सिर्फ जश्न में नहीं बल्कि आम दिनों में भी साथ रहा। विजयादशमी मुबारक, आने वाले और भी अच्छे पलों के नाम जो बुरे पलों पर भारी पड़ें।",
+    "hinglish": "Tyohaar mujhe har baar yaad dilate hain ki tumhare jaise dost paakar main kitna khushkismat hoon, koi jo sirf jashn mein nahi balki aam dino mein bhi saath raha. Vijayadashami mubarak, aane wale aur bhi achhe palon ke naam jo bure palon par bhaari padein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-015",
+  "festival": "dussehra",
+  "languages": {
+    "en": "This family is my favourite kind of victory. Happy Dussehra.",
+    "hi": "यह परिवार ही मेरी सबसे प्यारी जीत है। हैप्पी दशहरा।",
+    "hinglish": "Yeh parivar hi meri sabse pyaari jeet hai. Happy Dussehra."
+  },
+  "relations": ["family"],
+  "tones": ["short", "warm"],
+  "formats": ["status"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-parent-005",
+  "festival": "dussehra",
+  "languages": {
+    "en": "You were the first ones to teach me that good always wins over evil, long before I understood what Dussehra truly meant. This festival simply reminds me how much I owe to your patience and love. Happy Dussehra to the two people who shaped everything good in me.",
+    "hi": "आप ही वो पहले लोग थे जिन्होंने मुझे सिखाया कि अच्छाई हमेशा बुराई पर जीत हासिल करती है, तब भी जब मुझे दशहरे का असली मतलब भी नहीं पता था। यह त्योहार मुझे बस याद दिलाता है कि मैं आपके धैर्य और प्यार का कितना ऋणी हूँ। दशहरे की शुभकामनाएं उन दो लोगों को, जिन्होंने मुझमें हर अच्छाई भरी।",
+    "hinglish": "Aap hi woh pehle log the jinhonne mujhe sikhaya ki achhai hamesha buraai par jeet haasil karti hai, tab bhi jab mujhe Dussehre ka asli matlab bhi nahi pata tha. Yeh tyohar mujhe bas yaad dilata hai ki main aapke dhairya aur pyaar ka kitna rini hoon. Dussehre ki shubhkamnayein un do logon ko, jinhonne mujhme har achhai bhari."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "emotional",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,24 @@
+{
+  "id": "dussehra-spouse-004",
+  "festival": "dussehra",
+  "languages": {
+    "en": "On this Vijayadashami, as we remember Goddess Durga's victory over evil, I pray for a marriage where patience always wins over anger, and love always wins over ego. Happy Dussehra, my partner in everything.",
+    "hi": "इस विजयादशमी पर, जब हम माँ दुर्गा की बुराई पर जीत को याद करते हैं, मेरी यही प्रार्थना है कि हमारे रिश्ते में गुस्से पर हमेशा सब्र की जीत हो और अहंकार पर हमेशा प्यार की। दशहरे की शुभकामनाएं, मेरे हर कदम के साथी।",
+    "hinglish": "Is Vijayadashami par, jab hum Maa Durga ki buraai par jeet ko yaad karte hain, meri yahi prarthana hai ki hamare rishte mein gusse par hamesha sabr ki jeet ho aur ahankar par hamesha pyaar ki. Dussehre ki shubhkamnayein, mere har kadam ke saathi."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "devotional",
+    "warm"
+  ],
+  "formats": [
+    "card",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

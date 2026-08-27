@@ -1,0 +1,24 @@
+{
+  "id": "diwali-friend-013",
+  "festival": "diwali",
+  "languages": {
+    "en": "As diyas are lit and Lakshmi Puja begins in homes everywhere, I hope this Diwali brings blessings, abundance, and quiet contentment into your life. May the light of this festival stay with you long after the diyas burn out, my friend.",
+    "hi": "जैसे हर घर में दीये जलते हैं और लक्ष्मी पूजा होती है, वैसे ही इस दिवाली तुम्हारे जीवन में आशीर्वाद, समृद्धि और शांति भी आए। दीये बुझने के बाद भी इस त्योहार की रोशनी तुम्हारे साथ बनी रहे, मेरे दोस्त।",
+    "hinglish": "Jaise har ghar mein diye jalte hain aur Lakshmi Puja hoti hai, waise hi is Diwali tumhare jeevan mein aashirwaad, samriddhi aur shaanti bhi aaye. Diye bujhne ke baad bhi is tyohaar ki roshni tumhare saath bani rahe, mere dost."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "devotional",
+    "warm"
+  ],
+  "formats": [
+    "card",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

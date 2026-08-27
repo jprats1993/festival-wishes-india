@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-015",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Vijayadashami! Here's to good always winning, especially in your corner of the world.",
+    "hi": "विजयादशमी की शुभकामनाएं! अच्छाई हमेशा जीते, खासकर तुम्हारी दुनिया में।",
+    "hinglish": "Vijayadashami ki shubhkamnayein! Achhai hamesha jeete, khaaskar tumhari duniya mein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "short",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

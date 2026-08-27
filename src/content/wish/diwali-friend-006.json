@@ -1,0 +1,22 @@
+{
+  "id": "diwali-friend-006",
+  "festival": "diwali",
+  "languages": {
+    "en": "As the diyas light up every corner this Diwali, I hope your life is just as full of warmth, good people, and reasons to smile. Wishing you a truly happy Diwali, my dear friend.",
+    "hi": "इस दिवाली जैसे हर कोना दीयों से रोशन होगा, वैसे ही तुम्हारी ज़िंदगी भी अपनेपन, अच्छे लोगों और मुस्कुराने की वजहों से भरी रहे। बहुत-बहुत खुशियों भरी दिवाली, मेरे प्यारे दोस्त।",
+    "hinglish": "Is Diwali jaise har kona diyon se roshan hoga, waise hi tumhari zindagi bhi apnepan, achhe logon aur muskurane ki wajahon se bhari rahe. Bahut-bahut khushiyon bhari Diwali, mere pyaare dost."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

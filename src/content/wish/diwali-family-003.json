@@ -1,0 +1,24 @@
+{
+  "id": "diwali-family-003",
+  "festival": "diwali",
+  "languages": {
+    "en": "Dadi, Dada, watching you light the first diya every year is still my favourite part of Diwali. Sending you both a warm hug this festival and praying you stay healthy and happy for many more celebrations to come.",
+    "hi": "दादी, दादा, हर साल आपके हाथों से पहला दीया जलते देखना आज भी दिवाली का मेरा सबसे प्यारा पल है। इस त्योहार पर आप दोनों को एक गर्मजोशी भरा गले लगाती हूँ और दुआ करती हूँ कि आप हमेशा स्वस्थ और खुश रहें।",
+    "hinglish": "Dadi, Dada, har saal aapke haathon se pehla diya jalte dekhna aaj bhi Diwali ka mera sabse pyaara pal hai. Is tyohaar par aap dono ko ek garmjoshi bhara gale lagati hoon aur dua karti hoon ki aap hamesha swasth aur khush rahein."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

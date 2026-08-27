@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-002",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra to the family that makes every victory sweeter.",
+    "hi": "हैप्पी दशहरा उस परिवार को, जो हर जीत को और मीठा बना देता है।",
+    "hinglish": "Happy Dussehra us parivar ko, jo har jeet ko aur meetha bana deta hai."
+  },
+  "relations": ["family"],
+  "tones": ["short", "warm"],
+  "formats": ["status"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

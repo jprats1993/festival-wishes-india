@@ -1,0 +1,24 @@
+{
+  "id": "diwali-family-013",
+  "festival": "diwali",
+  "languages": {
+    "en": "There's nothing quite like our whole family squeezed into one house for Diwali - the noise, the food, the endless card games late into the night. Here's to another year of chaos and love in equal measure; happy Diwali, everyone.",
+    "hi": "दिवाली पर पूरे परिवार का एक ही घर में इकट्ठा होना अपने आप में खास है - वो शोर, वो खाना, और देर रात तक चलने वाले ताश के खेल। इस साल भी उतनी ही मस्ती और उतना ही प्यार मिले; सभी को हैप्पी दिवाली।",
+    "hinglish": "Diwali par poore parivar ka ek hi ghar mein ikattha hona apne aap mein khaas hai - woh shor, woh khaana, aur der raat tak chalne waale taash ke khel. Is saal bhi utni hi masti aur utna hi pyaar mile; sabhi ko Happy Diwali."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "long",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

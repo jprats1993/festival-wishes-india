@@ -1,0 +1,23 @@
+{
+  "id": "diwali-family-007",
+  "festival": "diwali",
+  "languages": {
+    "en": "Diyas lit, hearts full, family near - that's Diwali. Happy Diwali to my whole world!",
+    "hi": "दीये जले, दिल भरे, परिवार पास - यही तो दिवाली है। मेरी पूरी दुनिया को हैप्पी दिवाली!",
+    "hinglish": "Diye jale, dil bhare, parivar paas - yahi toh Diwali hai. Meri poori duniya ko Happy Diwali!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "short",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

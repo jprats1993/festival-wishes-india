@@ -1,0 +1,23 @@
+{
+  "id": "diwali-spouse-005",
+  "festival": "diwali",
+  "languages": {
+    "en": "May Maa Lakshmi bless our home with the same peace and abundance you bring into my life every day. Wishing us a Diwali full of light, gratitude, and each other's company.",
+    "hi": "जितनी शांति और खुशहाली तुम हर दिन मेरी ज़िंदगी में लाते हो, माँ लक्ष्मी हमारे घर को उतनी ही रोशनी और समृद्धि से भर दें। हमें रोशनी, आभार और एक-दूसरे के साथ से भरी दिवाली की शुभकामनाएं।",
+    "hinglish": "Jitni shanti aur khushhali tum har din meri zindagi mein late ho, Maa Lakshmi hamare ghar ko utni hi roshni aur samriddhi se bhar dein. Humein roshni, aabhar aur ek-dusre ke saath se bhari Diwali ki shubhkamnayein."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "devotional"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

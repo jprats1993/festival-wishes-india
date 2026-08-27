@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-013",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Just as Goddess Durga's victory over Mahishasura shows that strength paired with righteousness always prevails, may you carry that same quiet strength through whatever comes your way this year. Happy Vijayadashami, dear friend.",
+    "hi": "जैसे देवी दुर्गा की महिषासुर पर जीत ये दिखाती है कि सच्चाई के साथ मिली ताकत हमेशा जीतती है, वैसे ही उम्मीद है तुम इस साल हर मुश्किल में वही शांत ताकत बनाए रखो। प्रिय दोस्त, विजयादशमी की शुभकामनाएं।",
+    "hinglish": "Jaise Devi Durga ki Mahishasur par jeet yeh dikhati hai ki sachchai ke saath mili taakat hamesha jeetti hai, waise hi ummeed hai tum is saal har mushkil mein wahi shaant taakat banaye rakho. Priya dost, Vijayadashami ki shubhkamnayein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "devotional",
+    "warm"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

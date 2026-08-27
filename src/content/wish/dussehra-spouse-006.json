@@ -1,0 +1,24 @@
+{
+  "id": "dussehra-spouse-006",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra! Today Ravana's ten heads lost to Ram, and my hundred excuses lose to you every single day. Grateful for a partner who always wins, especially when it comes to loving me.",
+    "hi": "दशहरा मुबारक! आज रावण के दस सिर राम से हार गए, और मेरे सौ बहाने रोज तुमसे हार जाते हैं। ऐसे साथी के लिए शुक्रगुजार हूं जो हर बार जीतता है, खासकर जब बात मुझे प्यार करने की हो।",
+    "hinglish": "Dussehra mubarak! Aaj Ravan ke das sir Ram se haar gaye, aur mere sau bahane roz tumse haar jaate hain. Aise saathi ke liye shukrguzaar hoon jo har baar jeetta hai, khaaskar jab baat mujhe pyaar karne ki ho."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

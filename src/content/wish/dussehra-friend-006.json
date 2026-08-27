@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-006",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Some friendships are loud, some are quiet, but ours has always known exactly when to show up for the other person. This Vijayadashami, as the effigies burn and the crowds cheer, I just wanted to say that having you around makes ordinary days feel like festivals too. May good keep winning, in the big ways and the small ones.",
+    "hi": "कुछ दोस्तियां शोर वाली होती हैं, कुछ शांत, पर हमारी दोस्ती को हमेशा पता रहा है कि दूसरे के लिए कब साथ खड़े होना है। इस विजयादशमी पर, जब पुतले जल रहे हों और भीड़ जश्न मना रही हो, बस इतना कहना चाहता हूं कि तुम्हारा साथ आम दिनों को भी त्योहार जैसा बना देता है। अच्छाई हमेशा जीतती रहे, बड़ी बातों में भी और छोटी बातों में भी।",
+    "hinglish": "Kuch dostiyan shor wali hoti hain, kuch shaant, par hamari dosti ko hamesha pata raha hai ki doosre ke liye kab saath khada hona hai. Is Vijayadashami par, jab putle jal rahe hon aur bheed jashn mana rahi ho, bas itna kehna chahta hoon ki tumhara saath aam dino ko bhi tyohaar jaisa bana deta hai. Achhai hamesha jeetti rahe, badi baaton mein bhi aur chhoti baaton mein bhi."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "emotional",
+    "warm"
+  ],
+  "formats": [
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

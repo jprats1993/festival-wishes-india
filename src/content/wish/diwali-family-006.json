@@ -1,0 +1,23 @@
+{
+  "id": "diwali-family-006",
+  "festival": "diwali",
+  "languages": {
+    "en": "Bhai, bhabhi, and my favourite little troublemakers - can't wait to see you all light up the house this Diwali. Save some sweets for me before the kids finish them all!",
+    "hi": "भाई, भाभी और मेरे प्यारे नटखट बच्चों - इस दिवाली आप सबके साथ घर को रोशन करते देखने का बेसब्री से इंतज़ार है। बच्चों के मिठाइयाँ खत्म करने से पहले मेरे लिए भी थोड़ी बचा रखना!",
+    "hinglish": "Bhai, bhabhi aur mere pyaare natkhat bachon - is Diwali aap sabke saath ghar ko roshan karte dekhne ka besabri se intezaar hai. Bachon ke mithaiyaan khatam karne se pehle mere liye bhi thodi bacha rakhna!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

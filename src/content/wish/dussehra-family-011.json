@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-011",
+  "festival": "dussehra",
+  "languages": {
+    "en": "No matter where life takes each of us, Dussehra always finds a way to bring this family back together. Happy Vijayadashami to all of you.",
+    "hi": "जिंदगी हम सबको चाहे जहां भी ले जाए, दशहरा हमेशा इस परिवार को फिर से एक साथ ले आता है। आप सबको हैप्पी विजयादशमी।",
+    "hinglish": "Zindagi hum sabko chahe jahan bhi le jaaye, Dussehra hamesha is parivar ko phir se ek saath le aata hai. Aap sabko Happy Vijayadashami."
+  },
+  "relations": ["family"],
+  "tones": ["warm"],
+  "formats": ["whatsapp"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

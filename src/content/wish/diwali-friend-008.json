@@ -1,0 +1,22 @@
+{
+  "id": "diwali-friend-008",
+  "festival": "diwali",
+  "languages": {
+    "en": "Lights outside, good vibes inside — happy Diwali, dost!",
+    "hi": "बाहर रोशनी, अंदर अच्छी वाइब्स — हैप्पी दिवाली, दोस्त!",
+    "hinglish": "Baahar roshni, andar achhi vibes — Happy Diwali, dost!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "short"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

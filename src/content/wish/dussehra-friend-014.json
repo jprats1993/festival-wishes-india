@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-014",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Consider this your official reminder that Dussehra is here, the mela has food stalls, and you promised to stop flaking on plans. Let's go make some memories, good over evil style.",
+    "hi": "ये रहा तुम्हें आधिकारिक याद दिलाना कि दशहरा आ गया है, मेले में खाने के स्टॉल लगे हैं, और तुमने प्लान कैंसिल न करने का वादा किया था। चलो कुछ यादें बनाते हैं, बिल्कुल अच्छाई की बुराई पर जीत वाले अंदाज़ में।",
+    "hinglish": "Yeh raha tumhe official yaad dilana ki Dussehra aa gaya hai, mele mein khane ke stall lage hain, aur tumne plan cancel na karne ka vaada kiya tha. Chalo kuch yaadein banate hain, bilkul achhai ki burai par jeet wale andaaz mein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

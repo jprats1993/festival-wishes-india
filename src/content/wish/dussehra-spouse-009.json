@@ -1,0 +1,25 @@
+{
+  "id": "dussehra-spouse-009",
+  "festival": "dussehra",
+  "languages": {
+    "en": "As Lord Rama's victory over Ravana reminds the world that righteousness always prevails, I find that same quiet victory in our home every day we choose kindness over conflict. Happy Dussehra to the one who makes goodness feel easy.",
+    "hi": "जैसे भगवान राम की रावण पर जीत दुनिया को याद दिलाती है कि सच्चाई की हमेशा जीत होती है, वैसे ही हमारे घर में भी वही शांत जीत मुझे हर उस दिन महसूस होती है जब हम झगड़े की बजाय प्यार चुनते हैं। दशहरे की शुभकामनाएं उस इंसान को, जिसकी वजह से अच्छाई निभाना इतना आसान लगता है।",
+    "hinglish": "Jaise Bhagwan Ram ki Ravan par jeet duniya ko yaad dilaati hai ki sachchai ki hamesha jeet hoti hai, waise hi hamare ghar mein bhi wahi shaant jeet mujhe har us din mehsoos hoti hai jab hum jhagde ki bajaye pyaar chunte hain. Dussehre ki shubhkamnayein us insaan ko, jiski wajah se achhai nibhaana itna aasaan lagta hai."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional"
+  ],
+  "formats": [
+    "whatsapp",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,24 @@
+{
+  "id": "diwali-family-008",
+  "festival": "diwali",
+  "languages": {
+    "en": "May Maa Lakshmi step into our home this Diwali and bless every member of our family with peace, good health, and abundance. Let's light our diyas together and thank god for keeping us united.",
+    "hi": "इस दिवाली माँ लक्ष्मी हमारे घर पधारें और हमारे परिवार के हर सदस्य को शांति, अच्छी सेहत और समृद्धि का आशीर्वाद दें। आइए हम सब मिलकर दीये जलाएं और भगवान का शुक्रिया अदा करें कि उन्होंने हमें एक साथ रखा है।",
+    "hinglish": "Is Diwali Maa Lakshmi humare ghar padharein aur humare parivar ke har sadasya ko shaanti, achhi sehat aur samriddhi ka aashirwad dein. Aaiye hum sab milkar diye jalayein aur bhagwan ka shukriya ada karein ki unhone humein ek saath rakha hai."
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "devotional",
+    "warm"
+  ],
+  "formats": [
+    "card",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

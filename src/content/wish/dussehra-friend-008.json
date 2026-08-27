@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-008",
+  "festival": "dussehra",
+  "languages": {
+    "en": "As Lord Rama's victory over Ravana reminds us that good always finds a way to win, I hope this Vijayadashami brings you the strength to overcome whatever you're up against. Happy Dussehra to a friend I always root for.",
+    "hi": "जैसे भगवान राम की रावण पर जीत हमें याद दिलाती है कि अच्छाई हमेशा जीतने का रास्ता ढूंढ लेती है, वैसे ही उम्मीद है ये विजयादशमी तुम्हें हर मुश्किल से पार पाने की ताकत दे। उस दोस्त को दशहरा मुबारक जिसकी जीत हमेशा चाहता हूं।",
+    "hinglish": "Jaise Bhagwan Ram ki Ravan par jeet humein yaad dilati hai ki achhai hamesha jeetne ka raasta dhoondh leti hai, waise hi ummeed hai yeh Vijayadashami tumhe har mushkil se paar paane ki taakat de. Us dost ko Dussehra mubarak jiski jeet hamesha chahta hoon."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "devotional"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

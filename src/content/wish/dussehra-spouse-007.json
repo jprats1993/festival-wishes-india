@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-spouse-007",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra, my favorite victory of all. Wishing us a lifetime of good beating bad, together.",
+    "hi": "दशहरा मुबारक, मेरी सबसे प्यारी जीत। हमारे लिए दुआ है कि हमेशा अच्छाई बुराई पर भारी पड़े, साथ में।",
+    "hinglish": "Dussehra mubarak, meri sabse pyaari jeet. Hamare liye dua hai ki hamesha achhai buraai par bhaari pade, saath mein."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "short"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-009",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Our family group chat could probably win its own war against negativity, one bad joke at a time. Happy Dussehra to the noisiest, warmest people I know.",
+    "hi": "हमारा फैमिली ग्रुप चैट तो अपने आप में एक-एक बुरे जोक से नकारात्मकता के खिलाफ जंग जीत सकता है। दुनिया के सबसे शोरगुल वाले और सबसे प्यारे लोगों को हैप्पी दशहरा।",
+    "hinglish": "Hamara family group chat toh apne aap mein ek-ek bure joke se negativity ke khilaaf jung jeet sakta hai. Duniya ke sabse shorgul waale aur sabse pyaare logon ko Happy Dussehra."
+  },
+  "relations": ["family"],
+  "tones": ["warm", "funny"],
+  "formats": ["whatsapp"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,22 @@
+{
+  "id": "diwali-family-004",
+  "festival": "diwali",
+  "languages": {
+    "en": "This Diwali, home is wherever all of you are. Happy Diwali, my beautiful family!",
+    "hi": "इस दिवाली, घर वहीं है जहाँ आप सब हैं। हैप्पी दिवाली, मेरे प्यारे परिवार!",
+    "hinglish": "Is Diwali, ghar wahin hai jahan aap sab hain. Happy Diwali, mere pyaare parivar!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

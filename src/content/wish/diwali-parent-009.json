@@ -1,0 +1,23 @@
+{
+  "id": "diwali-parent-009",
+  "festival": "diwali",
+  "languages": {
+    "en": "May Goddess Lakshmi and Lord Ganesh bless your home with prosperity, and may every diya we light this Diwali remind you how deeply you are loved and respected.",
+    "hi": "माँ लक्ष्मी और भगवान गणेश आपके घर को समृद्धि से भरें, और इस दीपावली जलाया गया हर दीया आपको यह याद दिलाए कि आपको कितना प्यार और सम्मान दिया जाता है।",
+    "hinglish": "Maa Lakshmi aur Bhagwan Ganesh aapke ghar ko samriddhi se bharein, aur is Diwali jalaya gaya har diya aapko yeh yaad dilaaye ki aapko kitna pyar aur samman diya jaata hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "devotional",
+    "formal"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,24 @@
+{
+  "id": "diwali-spouse-007",
+  "festival": "diwali",
+  "languages": {
+    "en": "Warning: living with you means rangoli that never looks symmetrical and diyas placed in questionable spots — and I wouldn't trade it for anything. Happy Diwali, partner in crime.",
+    "hi": "चेतावनी: तुम्हारे साथ रहने का मतलब है ऐसी रंगोली जो कभी सीधी नहीं बनती और दीये जो अजीब जगहों पर रखे जाते हैं — और मुझे यही सब सबसे प्यारा लगता है। दिवाली मुबारक, मेरे हमसफर।",
+    "hinglish": "Chetavni: tumhare saath rehne ka matlab hai aisi rangoli jo kabhi seedhi nahi banti aur diye jo ajeeb jagahon par rakhe jaate hain — aur mujhe yehi sab sabse pyara lagta hai. Diwali mubarak, mere humsafar."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

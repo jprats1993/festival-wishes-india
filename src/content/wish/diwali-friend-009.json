@@ -1,0 +1,23 @@
+{
+  "id": "diwali-friend-009",
+  "festival": "diwali",
+  "languages": {
+    "en": "We've celebrated so many Diwalis together, from bursting sparklers as kids to sharing sweets over video calls when we couldn't meet. Whatever this year looks like, I just wanted to say that having a friend like you makes every festival feel more special, and I hope it brings you all the peace and joy you deserve.",
+    "hi": "हमने साथ में इतनी दिवालियाँ मनाई हैं — बचपन में फुलझड़ियाँ जलाने से लेकर, जब मिल नहीं पाए तो वीडियो कॉल पर मिठाई बांटने तक। यह साल जैसा भी हो, बस इतना कहना है कि तुम्हारे जैसा दोस्त होना हर त्योहार को खास बना देता है, और उम्मीद है यह साल तुम्हें खूब सुकून और खुशियां दे।",
+    "hinglish": "Humne saath mein itni Diwaliyan manaayi hain — bachpan mein phuljhadiyan jalane se lekar, jab mil nahi paaye toh video call par mithai baantne tak. Yeh saal jaisa bhi ho, bas itna kehna hai ki tumhare jaisa dost hona har tyohaar ko khaas bana deta hai, aur ummeed hai yeh saal tumhe khoob sukoon aur khushiyaan de."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "emotional",
+    "warm"
+  ],
+  "formats": [
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

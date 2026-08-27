@@ -1,0 +1,23 @@
+{
+  "id": "diwali-family-012",
+  "festival": "diwali",
+  "languages": {
+    "en": "Family first, always - Happy Diwali!",
+    "hi": "परिवार सबसे पहले, हमेशा - हैप्पी दिवाली!",
+    "hinglish": "Parivar sabse pehle, hamesha - Happy Diwali!"
+  },
+  "relations": [
+    "family"
+  ],
+  "tones": [
+    "short",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

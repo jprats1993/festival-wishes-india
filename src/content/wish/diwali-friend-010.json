@@ -1,0 +1,22 @@
+{
+  "id": "diwali-friend-010",
+  "festival": "diwali",
+  "languages": {
+    "en": "Officially declaring myself your Diwali mithai-tasting partner for this year too, no applications required. Happy Diwali to my favorite partner in sweet crimes!",
+    "hi": "इस साल भी तुम्हारे मिठाई-चखने वाले ऑफिशियल पार्टनर का पद संभाल लिया है, किसी आवेदन की ज़रूरत नहीं थी। हैप्पी दिवाली मेरे पसंदीदा मीठे जुर्म के साथी!",
+    "hinglish": "Is saal bhi tumhare mithai-chakhne wale official partner ka pad sambhal liya hai, kisi application ki zaroorat nahi thi. Happy Diwali mere pasandeeda meethe jurm ke saathi!"
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "diwali-spouse-010",
+  "festival": "diwali",
+  "languages": {
+    "en": "As we light the diyas together this year, I pray Maa Lakshmi fills our home with as much love and stability as you've given me since the day we became partners. May this Diwali remind us how far we've come and how much more light we still have to share, together. Happy Diwali, my constant.",
+    "hi": "इस साल जब हम साथ मिलकर दीये जलाएंगे, तो मेरी प्रार्थना है कि माँ लक्ष्मी हमारे घर को उतने ही प्यार और स्थिरता से भर दें, जितना तुमने साथी बनने के दिन से मुझे दिया है। यह दिवाली हमें याद दिलाए कि हम कितनी दूर आ चुके हैं और अभी साथ मिलकर कितनी और रोशनी बांटनी बाकी है। दिवाली की शुभकामनाएं, मेरे स्थिर सहारे।",
+    "hinglish": "Is saal jab hum saath milkar diye jalayenge, toh meri prarthana hai ki Maa Lakshmi hamare ghar ko utne hi pyaar aur sthirta se bhar dein, jitna tumne saathi banne ke din se mujhe diya hai. Yeh Diwali humein yaad dilaaye ki hum kitni door aa chuke hain aur abhi saath milkar kitni aur roshni baantni baaki hai. Diwali ki shubhkamnayein, mere sthir sahaare."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional",
+    "devotional"
+  ],
+  "formats": [
+    "card",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

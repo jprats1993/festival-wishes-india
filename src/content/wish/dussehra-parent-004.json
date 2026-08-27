@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-parent-004",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Wishing you a very Happy Dussehra. May this Vijayadashami bring good fortune and happiness to our family, and may your kindness and wisdom continue to guide us always.",
+    "hi": "आपको दशहरे की हार्दिक शुभकामनाएं। यह विजयादशमी हमारे परिवार के लिए सौभाग्य और खुशियाँ लेकर आए, और आपकी दयालुता व समझदारी हमेशा हमारा मार्गदर्शन करती रहे।",
+    "hinglish": "Aapko Dussehre ki hardik shubhkamnayein. Yeh Vijayadashami hamare parivar ke liye saubhagya aur khushiyan lekar aaye, aur aapki dayalu aur samajhdaari hamesha hamara margdarshan karti rahe."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "formal",
+    "warm"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

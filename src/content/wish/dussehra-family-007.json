@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-007",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Wishing our entire family a joyous Vijayadashami. May this festival bring prosperity, good health, and unity to our home.",
+    "hi": "हमारे पूरे परिवार को विजयादशमी की हार्दिक शुभकामनाएं। यह पर्व हमारे घर में समृद्धि, अच्छा स्वास्थ्य और एकता लाए।",
+    "hinglish": "Hamare poore parivar ko Vijayadashami ki hardik shubhkamnaayein. Yeh parv hamare ghar mein samriddhi, achha swasthya aur ekta laaye."
+  },
+  "relations": ["family"],
+  "tones": ["formal", "warm"],
+  "formats": ["card"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

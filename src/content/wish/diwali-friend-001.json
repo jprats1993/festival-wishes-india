@@ -1,0 +1,24 @@
+{
+  "id": "diwali-friend-001",
+  "festival": "diwali",
+  "languages": {
+    "en": "Diwali without you would just be a bunch of diyas and no one to steal sweets with. Here's wishing you a festival full of light, laughter, and zero regrets about how many mithai you eat, dost.",
+    "hi": "तुम्हारे बिना दिवाली तो बस दीयों का मेला रह जाएगी, मिठाई चुराने वाला कोई नहीं होगा। दोस्त, इस दिवाली रोशनी भी खूब हो और मिठाई खाने का कोई पछतावा भी न हो।",
+    "hinglish": "Tumhare bina Diwali toh bas diyon ka mela reh jaayegi, mithai chura ne wala koi nahi hoga. Dost, is Diwali roshni bhi khoob ho aur mithai khaane ka koi pachtava bhi na ho."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

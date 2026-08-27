@@ -1,0 +1,22 @@
+{
+  "id": "dussehra-friend-007",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Wishing you a Dussehra where your patience lasts longer than Ravana's ego did. Enjoy the mela, and save me some jalebi.",
+    "hi": "दशहरे की शुभकामनाएं, उम्मीद है तुम्हारा धैर्य रावण के घमंड से ज़्यादा टिके। मेले का मज़ा लो, और मेरे लिए थोड़ी जलेबी बचा लेना।",
+    "hinglish": "Dussehre ki shubhkamnayein, ummeed hai tumhara dhairya Ravan ke ghamand se zyada tike. Mele ka maza lo, aur mere liye thodi jalebi bacha lena."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "funny"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "diwali-spouse-009",
+  "festival": "diwali",
+  "languages": {
+    "en": "Some years we've celebrated Diwali with a big spread of family and friends, and some years it's just been the two of us with a plate of sweets and too many diyas — either way, it's always been my favorite kind of festival. Thank you for making every version of Diwali feel complete. Happy Diwali to my favorite person to come home to.",
+    "hi": "कुछ सालों में हमने दिवाली परिवार और दोस्तों की भीड़ के साथ मनाई, तो कुछ सालों में सिर्फ हम दोनों थे, एक थाली मिठाई और ढेर सारे दीयों के साथ — दोनों ही तरह से यह मेरा पसंदीदा त्योहार रहा है। दिवाली के हर रूप को पूरा महसूस कराने के लिए शुक्रिया। दिवाली की शुभकामनाएं, मेरे सबसे पसंदीदा घर लौटने वाले साथी को।",
+    "hinglish": "Kuch saalon mein humne Diwali parivaar aur doston ki bheed ke saath manaayi, toh kuch saalon mein sirf hum dono the, ek thaali mithai aur dher saare diyon ke saath — dono hi tarah se yeh mera pasandeeda tyohaar raha hai. Diwali ke har roop ko poora mehsoos karaane ke liye shukriya. Diwali ki shubhkamnayein, mere sabse pasandeeda ghar lautne wale saathi ko."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm"
+  ],
+  "formats": [
+    "whatsapp",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

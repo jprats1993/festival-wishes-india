@@ -1,0 +1,23 @@
+{
+  "id": "diwali-parent-003",
+  "festival": "diwali",
+  "languages": {
+    "en": "Happy Diwali, Mummy-Papa. Your blessings are the brightest diya in my life.",
+    "hi": "मम्मी-पापा को दीपावली की शुभकामनाएं। आपका आशीर्वाद ही मेरी जिंदगी का सबसे रोशन दीया है।",
+    "hinglish": "Mummy-Papa ko Happy Diwali. Aapka aashirwad hi meri zindagi ka sabse roshan diya hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "short",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

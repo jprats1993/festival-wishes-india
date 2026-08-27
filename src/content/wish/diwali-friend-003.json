@@ -1,0 +1,24 @@
+{
+  "id": "diwali-friend-003",
+  "festival": "diwali",
+  "languages": {
+    "en": "Some friendships feel like the glow of a diya — steady, warm, and always finding their way back to you even in the dark. This Diwali, I just want you to know how much your friendship means to me, and I hope this year brings you every bit of light you deserve.",
+    "hi": "कुछ दोस्तियाँ दीये की रोशनी जैसी होती हैं — स्थिर, गर्मजोशी भरी, और अंधेरे में भी रास्ता दिखाने वाली। इस दिवाली बस इतना कहना है कि तुम्हारी दोस्ती मेरे लिए कितनी मायने रखती है, और उम्मीद है यह साल तुम्हें भरपूर रोशनी और खुशियाँ दे।",
+    "hinglish": "Kuch dostiyaan diye ki roshni jaisi hoti hain — sthir, garmjoshi bhari, aur andhere mein bhi raasta dikhane wali. Is Diwali bas itna kehna hai ki tumhari dosti mere liye kitni maayne rakhti hai, aur ummeed hai yeh saal tumhe bharpoor roshni aur khushiyaan de."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "long",
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

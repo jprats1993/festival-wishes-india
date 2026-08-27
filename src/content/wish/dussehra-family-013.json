@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-013",
+  "festival": "dussehra",
+  "languages": {
+    "en": "This Vijayadashami, I find myself thankful not just for the festival but for the family that makes every festival feel like home. May the victory of good over evil this season also mean the quiet victories in our own lives, the patience we found, the forgiveness we offered, and the love we kept choosing.",
+    "hi": "इस विजयादशमी पर मैं सिर्फ त्योहार के लिए नहीं, बल्कि उस परिवार के लिए भी शुक्रगुज़ार हूं जो हर त्योहार को घर जैसा महसूस कराता है। अच्छाई की बुराई पर यह जीत हमारी अपनी छोटी-छोटी जीतों की भी याद दिलाए, जो धैर्य हमने रखा, जो माफी हमने दी और जो प्यार हम बार-बार चुनते रहे।",
+    "hinglish": "Is Vijayadashami par main sirf tyohaar ke liye nahi, balki us parivar ke liye bhi shukraguzaar hoon jo har tyohaar ko ghar jaisa mehsoos karaata hai. Achhai ki buraai par yeh jeet hamari apni chhoti-chhoti jeeton ki bhi yaad dilaaye, jo dhairya humne rakha, jo maafi humne di aur jo pyaar hum baar-baar chunte rahe."
+  },
+  "relations": ["family"],
+  "tones": ["emotional", "devotional"],
+  "formats": ["long"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

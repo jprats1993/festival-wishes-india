@@ -1,0 +1,23 @@
+{
+  "id": "diwali-spouse-003",
+  "festival": "diwali",
+  "languages": {
+    "en": "Happy Diwali to the person who still hasn't figured out how many sweets is too many — I love that about you. May our home stay loud, messy, and full of light this year too.",
+    "hi": "दिवाली मुबारक उस इंसान को, जिसे आज तक ये समझ नहीं आया कि मिठाई कितनी ज़्यादा हो जाती है — और मुझे यही बात तुममें पसंद है। इस साल भी हमारा घर शोर, हंगामे और रोशनी से भरा रहे।",
+    "hinglish": "Diwali mubarak us insaan ko, jise aaj tak yeh samajh nahi aaya ki mithai kitni zyada ho jaati hai — aur mujhe yehi baat tum mein pasand hai. Is saal bhi hamara ghar shor, hangame aur roshni se bhara rahe."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "funny"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

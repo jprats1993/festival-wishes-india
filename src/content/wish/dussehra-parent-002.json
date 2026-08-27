@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-parent-002",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Happy Dussehra, Mom and Dad. May goodness always win in our home, just like it did for Lord Rama.",
+    "hi": "दशहरे की शुभकामनाएं, मम्मी और पापा। हमारे घर में हमेशा अच्छाई की जीत हो, जैसे भगवान राम की हुई थी।",
+    "hinglish": "Dussehre ki shubhkamnayein, Mummy aur Papa. Hamare ghar mein hamesha achhai ki jeet ho, jaise Bhagwan Ram ki hui thi."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "short",
+    "warm"
+  ],
+  "formats": [
+    "status"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

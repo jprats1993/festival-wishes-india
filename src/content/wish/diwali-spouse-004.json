@@ -1,0 +1,24 @@
+{
+  "id": "diwali-spouse-004",
+  "festival": "diwali",
+  "languages": {
+    "en": "From decorating the house together to figuring out whose turn it is to refill the diyas, every little Diwali ritual feels special only because we do it together. Thank you for being my partner in every celebration, big or small, and for making our home feel like the warmest place to be. Happy Diwali — may this year bring us even more moments worth lighting a lamp for.",
+    "hi": "घर सजाने से लेकर ये तय करने तक कि दीयों में तेल भरने की बारी किसकी है, दिवाली की हर छोटी रस्म इसलिए खास लगती है क्योंकि हम उसे साथ निभाते हैं। हर छोटे-बड़े जश्न में मेरा साथी बनने के लिए और हमारे घर को दुनिया की सबसे गर्मजोशी भरी जगह बनाने के लिए शुक्रिया। दिवाली की शुभकामनाएं — इस साल हमारी झोली में दीया जलाने लायक और भी पल आएं।",
+    "hinglish": "Ghar sajane se lekar yeh tay karne tak ki diyon mein tel bharne ki baari kiski hai, Diwali ki har chhoti rasm isliye khaas lagti hai kyunki hum use saath nibhate hain. Har chhote-bade jashn mein mera saathi banne ke liye aur hamare ghar ko duniya ki sabse garmjoshi bhari jagah banane ke liye shukriya. Diwali ki shubhkamnayein — is saal hamari jholi mein diya jalane layak aur bhi pal aayein."
+  },
+  "relations": [
+    "spouse"
+  ],
+  "tones": [
+    "warm",
+    "emotional"
+  ],
+  "formats": [
+    "card",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

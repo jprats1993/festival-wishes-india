@@ -1,0 +1,24 @@
+{
+  "id": "diwali-parent-002",
+  "festival": "diwali",
+  "languages": {
+    "en": "On this Diwali, my prayer to Goddess Lakshmi is for your good health, peace, and happiness, because everything good in my life began with you. May our home always be filled with the same warmth you have given it for so many years.",
+    "hi": "इस दीपावली, माँ लक्ष्मी से मेरी यही प्रार्थना है कि आप हमेशा स्वस्थ, शांत और खुश रहें, क्योंकि मेरी जिंदगी की हर अच्छाई की शुरुआत आप ही से हुई है। हमारा घर हमेशा उसी गर्माहट से भरा रहे जो आपने इतने सालों में इसमें भरी है।",
+    "hinglish": "Is Diwali, Maa Lakshmi se meri yahi prarthna hai ki aap hamesha swasth, shant aur khush rahein, kyunki meri zindagi ki har achhai ki shuruaat aap hi se hui hai. Hamara ghar hamesha usi garmahat se bhara rahe jo aapne itne saalon mein isme bhari hai."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "devotional",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp",
+    "long"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

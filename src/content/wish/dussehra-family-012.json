@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-012",
+  "festival": "dussehra",
+  "languages": {
+    "en": "May your family drama end like Ravana's did this Dussehra.",
+    "hi": "इस दशहरे पर आपके परिवार का ड्रामा भी रावण जैसा खत्म हो जाए।",
+    "hinglish": "Is Dussehre par aapke parivar ka drama bhi Ravan jaisa khatam ho jaaye."
+  },
+  "relations": ["family"],
+  "tones": ["short", "funny"],
+  "formats": ["status"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "diwali-parent-004",
+  "festival": "diwali",
+  "languages": {
+    "en": "Every Diwali reminds me how much you both have given up quietly so that I could have everything. This year, I just want to say thank you and wish you the happiest, most peaceful festival.",
+    "hi": "हर दीपावली मुझे याद दिलाती है कि आप दोनों ने चुपचाप कितना कुछ छोड़ा ताकि मुझे सब कुछ मिल सके। इस साल बस इतना कहना है: शुक्रिया, और आपको सबसे खुशहाल, सबसे शांत त्योहार की शुभकामनाएं।",
+    "hinglish": "Har Diwali mujhe yaad dilati hai ki aap dono ne chupchaap kitna kuch chhoda taaki mujhe sab kuch mil sake. Is saal bas itna kehna hai: shukriya, aur aapko sabse khushhaal, sabse shant tyohaar ki shubhkamnayein."
+  },
+  "relations": [
+    "parent"
+  ],
+  "tones": [
+    "emotional",
+    "warm"
+  ],
+  "formats": [
+    "whatsapp"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

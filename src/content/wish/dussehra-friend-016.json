@@ -1,0 +1,23 @@
+{
+  "id": "dussehra-friend-016",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Wishing you a Dussehra filled with the same triumph and renewal this festival represents, and a year ahead where your efforts are matched by good fortune. Take care, and enjoy the celebrations with the people who matter most.",
+    "hi": "आपको दशहरे की शुभकामनाएं, ये त्योहार जिस जीत और नई शुरुआत का प्रतीक है वो आपके जीवन में भी आए, और आने वाला साल आपकी मेहनत को अच्छे भाग्य से जोड़े। अपना ख्याल रखें और अपने खास लोगों के साथ त्योहार का आनंद लें।",
+    "hinglish": "Aapko Dussehre ki shubhkamnayein, yeh tyohaar jis jeet aur nayi shuruaat ka prateek hai woh aapke jeevan mein bhi aaye, aur aane wala saal aapki mehnat ko achhe bhagya se jode. Apna khayal rakhein aur apne khaas logon ke saath tyohaar ka anand lein."
+  },
+  "relations": [
+    "friend"
+  ],
+  "tones": [
+    "warm",
+    "formal"
+  ],
+  "formats": [
+    "card"
+  ],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}

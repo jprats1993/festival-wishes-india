@@ -1,0 +1,16 @@
+{
+  "id": "dussehra-family-005",
+  "festival": "dussehra",
+  "languages": {
+    "en": "Good always wins. Happy Dussehra to my family.",
+    "hi": "अच्छाई की हमेशा जीत होती है। मेरे परिवार को हैप्पी दशहरा।",
+    "hinglish": "Achhai ki hamesha jeet hoti hai. Mere parivar ko Happy Dussehra."
+  },
+  "relations": ["family"],
+  "tones": ["short", "devotional"],
+  "formats": ["status"],
+  "source": "original",
+  "reviewStatus": "approved",
+  "reviewedBy": "reviewer-agent",
+  "humanReviewedSeed": false
+}
