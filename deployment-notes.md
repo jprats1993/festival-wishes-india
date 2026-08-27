@@ -14,6 +14,7 @@ wrangler pages deploy dist --project-name festival-wishes-india --branch main
 ## Recent deploy history (newest first)
 | Commit | What changed | Preview URL |
 |---|---|---|
+| `ee21b1d` | Localized AdSlot house-promo text + footer nav labels (Contact/Privacy/Disclaimer) | a50204ea |
 | `5e95b92` | Category tabs on collection subpages + localized festival names (displayNames) | f0970e7b |
 | `e80aaa1` | Cache headers (`public/_headers`: HTML revalidate, hashed assets immutable) | aa78f2a7 |
 | `1807a85` | +3 well-aligned Hinglish cards (5 total) | b4f445f6 |
