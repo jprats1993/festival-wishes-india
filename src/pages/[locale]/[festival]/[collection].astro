@@ -184,8 +184,6 @@ const noindex = filtered.length < NOINDEX_THRESHOLD;
           text={w.data.languages[locale]}
           locale={locale}
           pageUrl={pageUrl}
-          imageUrl={w.data.imageAssets?.square}
-          alt={w.data.altText?.[locale]}
           number={wishNumbers.get(w.data.id)}
         />
       ))}

@@ -18,7 +18,7 @@ const wish = defineCollection({
       square: z.string().optional(),
       portrait: z.string().optional(),
     }).optional(),
-    altText: z.record(z.string()).optional(),
+    altText: z.record(z.string(), z.string()).optional(),
     source: z.literal('original'),
     reviewStatus: z.enum(['pending', 'approved', 'rejected']).default('pending'),
     reviewedBy: z.enum(['reviewer-agent', 'owner']).optional(),

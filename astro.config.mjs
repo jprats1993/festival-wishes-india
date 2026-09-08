@@ -15,12 +15,13 @@ const approvedWishes = readdirSync(wishDir)
   .map((f) => JSON.parse(readFileSync(join(wishDir, f), 'utf-8')))
   .filter((w) => w.reviewStatus === 'approved');
 
+/** @param {string} festivalSlug @param {string} collectionSlug */
 function collectionWishCount(festivalSlug, collectionSlug) {
   const relations = collections.getRelationsForCollection(collectionSlug);
   const tone = collections.getToneForCollection(collectionSlug);
   const format = collections.getFormatForCollection(collectionSlug);
   let filtered = approvedWishes.filter((w) => w.festival === festivalSlug);
-  if (relations.length > 0) filtered = filtered.filter((w) => w.relations.some((r) => relations.includes(r)));
+  if (relations.length > 0) filtered = filtered.filter((w) => w.relations.some((/** @type {string} */ r) => relations.includes(r)));
   if (tone) filtered = filtered.filter((w) => w.tones?.includes(tone));
   if (format) filtered = filtered.filter((w) => w.formats?.includes(format));
   return filtered.length;

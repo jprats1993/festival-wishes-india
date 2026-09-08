@@ -1,5 +1,8 @@
-https://rakhiwishes.in/* https://festivalwishesindia.com/:splat 301!
-http://rakhiwishes.in/* https://festivalwishesindia.com/:splat 301!
+# rakhiwishes.in -> /en/rakhi/ is NOT handled here. A Cloudflare Pages project's _redirects file
+# only applies to requests against that Pages project's own domains — it can't redirect traffic
+# arriving at a different domain/zone. rakhiwishes.in is redirected by a zone-level Bulk Redirect
+# rule on its own zone (see HANDOVER.md §6, zone IDs there). The two lines that used to sit here
+# (rakhiwishes.in/* -> festivalwishesindia.com/:splat) never did anything — removed 2026-09-08.
 
 # Edge-level redirect for the bare root — without this, Astro's static build serves
 # dist/index.html which is just a meta-refresh + JS redirect page, so visitors see a

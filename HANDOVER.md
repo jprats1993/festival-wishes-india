@@ -55,8 +55,9 @@
   (brother/sister/bhaiya-bhabhi/family/friend/parent/**spouse**/short/whatsapp — `spouse-wishes` is
   new as of 2026-08-27), with per-card `#n` numbering. The tab list itself is centralized in
   `src/lib/relations.ts` (was duplicated between the hub and collection pages before).
-- **CI pipeline** — `npm run ci` = `validate` + `build` + `check:links`. **Verified green** today:
-  151 wish + 3 festival valid → 106 static pages built → 2411 references, 0 dead links/missing assets.
+- **CI pipeline** — `npm run ci` = `validate` + `check` (`astro check`, wired 2026-09-08) + `build` +
+  `check:links`. **Verified green** 2026-09-08: 151 wish + 3 festival valid → 0 type errors →
+  106 static pages built → 2359 references, 0 dead links/missing assets.
 - **Share / copy / download buttons** (`ShareBar.astro`): icon+label Copy (with `execCommand` fallback),
   Download, native Share (hidden on desktop where Web Share is unavailable), WhatsApp `wa.me` fallback.
 - **Redirects**: `rakhiwishes.in` → `/en/rakhi/` 301 (zone-level rule, verified via `curl -I`);
@@ -128,9 +129,6 @@
 ### 🟡 Partially complete
 - **Card ↔ wish coupling**: schema has `imageAssets`/`altText` on wishes, but no wish file uses
   them — cards live independently in `cards.ts` (intentional).
-- **`public/_redirects`**: still the stale blanket-splat rule (`rakhiwishes.in/* →
-  festivalwishesindia.com/:splat`). Superseded by the real zone-level redirect; should be deleted
-  or realigned (see §9).
 
 ### ⛔ Not started
 - **AdSense** application/approval (no ads live; `PUBLIC_ADS_ENABLED` unset → house-promo shown).
@@ -140,10 +138,19 @@
 - **Git-integrated auto-deploy** (connecting Cloudflare Pages to the GitHub repo) — still CLI-only.
 
 ### Known defects
-1. `public/_redirects` is stale (blanket splat) — cosmetic/confusing but not harmful (governed at zone level).
-2. Root `/` redirect is a **meta-refresh (HTTP 200)**, not a true 301 (Astro SSG limitation).
-3. `npm run check` (i.e. `astro check`) is **not wired** — it prompts to install `@astrojs/check`
-   + `typescript`, which are absent from `package.json` (see §9).
+1. ~~`public/_redirects` is stale (blanket splat)~~ — **fixed 2026-09-08**: the dead
+   `rakhiwishes.in/* → festivalwishesindia.com/:splat` lines were removed and replaced with a
+   comment pointing at the real zone-level Bulk Redirect rule (§6).
+2. ~~Root `/` redirect is a meta-refresh (HTTP 200), not a true 301~~ — **fixed 2026-09-08**: added
+   an edge-level `/ /en/ 301` rule to `public/_redirects` (Cloudflare Pages honors this ahead of
+   serving the Astro-generated meta-refresh stub, so visitors now get a real 301 with no flash).
+   Same fix applied to the `hi/hinglish` privacy/disclaimer redirect stubs (see §11's Privacy/
+   Disclaimer localization row). The underlying Astro SSG limitation (`Astro.redirect()` on
+   `output: 'static'` only ever produces a meta-refresh page) is unchanged — the edge rule just
+   intercepts before that page is served.
+3. ~~`npm run check` (i.e. `astro check`) is not wired~~ — **fixed 2026-09-08**: added
+   `@astrojs/check` + `typescript` as devDependencies and folded `check` into `npm run ci`. Fixing
+   the 7 real type errors it surfaced (not just installing the deps) is covered in §9.3.
 4. `humanReviewedSeed: false` on all 151 wishes. Owner seed approvals were given for Rakhi, Diwali,
    and Dussehra (see §11), but individual JSON flags were not flipped to `true`.
 
@@ -168,7 +175,7 @@
   `@astrojs/sitemap`. No UI framework — plain `.astro` components.
 - **Node:** `>=22.12.0` (this machine runs v26.7.0). Package manager: **npm**.
 - **Build commands** (`package.json`): `dev`, `build`, `preview`, `astro`, `check`, `validate`,
-  `check:links`, `ci` (= validate → build → check:links).
+  `check:links`, `ci` (= validate → check → build → check:links).
 - **Hosting:** Cloudflare Pages, project **`festival-wishes-india`**; DNS on Cloudflare.
 - **Repo → deploy connection:** **manual `wrangler` CLI** (v4.126.0), **no `wrangler.toml`**,
   **NOT git-integrated**. Deploy = `wrangler pages deploy dist --project-name festival-wishes-india`.
@@ -305,7 +312,7 @@ Rakhi 2026). Full gate = `agent-rules/publish-checklist.md`.
 ```bash
 cd /Users/varshajain/festival-wishes-india
 npm install                      # first time (Node >=22.12.0)
-npm run ci                       # validate + build + check:links  ← MUST be green before deploy
+npm run ci                       # validate + check + build + check:links  ← MUST be green before deploy
 ```
 
 - **Build:** `npm run build` → `dist/` (43 static pages).
@@ -378,9 +385,22 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 2. **Astro 7 `glob()` loader pitfall** — the *default* loader silently returned **empty collections**
    (site built with zero wishes, no errors). **Always** use `loader: glob({ pattern, base })` (fixed in
    `e2c8c22`; see `src/content.config.ts`).
-3. **`astro check` missing deps** — `npm run check` is interactive and prompts to install
-   `@astrojs/check` + `typescript`, neither of which is in `package.json`. The CI gate therefore uses
-   `validate + build + check:links` (no type-check). Either add the deps or keep `check` out of CI.
+3. **`astro check` wired 2026-09-08** — added `@astrojs/check` + `typescript` as devDependencies;
+   `npm run ci` is now `validate + check + build + check:links`. Running it cold surfaced 7 real
+   type errors, all fixed:
+   - `astro.config.mjs`: `collectionWishCount(festivalSlug, collectionSlug)` and its `.some((r) =>
+     ...)` callback had implicit-`any` params — added JSDoc `@param` annotations.
+   - `ShareBar.astro` / `[festival]/index.astro`: `querySelector`/`querySelectorAll` calls typed
+     their results as `Element` (no `.style`/`.hidden`), not `HTMLElement` — added the generic
+     (`querySelector<HTMLElement>(...)`).
+   - `[collection].astro`: passed `imageUrl`/`alt` props to `<WishCard>` that `WishCard`'s `Props`
+     interface never declared and the component never rendered — always `undefined` anyway since no
+     wish file populates `imageAssets`/`altText` (see the Card↔wish coupling note above). Removed
+     the two dead props to match the other two `<WishCard>` call sites; no behavior change.
+   - `content.config.ts`: `altText: z.record(z.string())` — `astro:content`'s `z` resolves to
+     Astro's own bundled **zod v4** (`node_modules/astro/dist/zod.js`), not the top-level zod v3 in
+     `package.json`; v4's `record()` requires the key-schema argument. Changed to
+     `z.record(z.string(), z.string())`, valid in both versions.
 4. **`image_generate` garbles Devanagari** — text-to-image mangles Hindi text. **Fix:** build **SVG
    cards → headless Chrome/WebKit render → Pillow/sharp → WebP** (`scripts/generate-hinglish-cards.mjs`).
 5. **Interrupted subagents** leave partial artifacts (half-written card/wish JSONs). Recover by
@@ -399,11 +419,12 @@ currently clean — a PAT was embedded in an earlier state and has since been re
 
 Run/confirm these before signing off or deploying:
 
-- [x] `npm run ci` (re-run today: ✅ validate 151 wishes + 3 festivals → build 106 pages → 2411 refs, 0 dead)
+- [x] `npm run ci` (re-run 2026-09-08: ✅ validate 151 wishes + 3 festivals → check 0 type errors →
+  build 106 pages → 2359 refs, 0 dead)
 - [x] `npm run validate` (✅ Content valid)
+- [x] `npm run check` (`astro check`) — **wired 2026-09-08** (✅ 0 errors; see §9.3 for what it caught)
 - [x] `npm run build` (✅ 106 pages, static)
 - [x] `npm run check:links` (✅ no dead links)
-- [ ] `npm run check` (`astro check`) — **NOT wired** (needs `@astrojs/check` + `typescript`; see §9.3)
 - [x] `git diff --check` — clean (no whitespace errors; working tree clean)
 - [ ] Mobile smoke test (Android Chrome / iOS Safari): copy/download/share/WhatsApp, Devanagari render
 - [ ] Desktop smoke test: share button hidden where Web Share unsupported; tabs switch
@@ -427,7 +448,8 @@ Run/confirm these before signing off or deploying:
 | Content per festival | 50-51 wishes / 9 cards is the launch baseline (minimums: 24 wishes, 8 cards) — now applied to Rakhi, Diwali, and Dussehra |
 | Production deploy requires manual approval | **Yes** — never deploy without owner approval |
 | `humanReviewedSeed` flags | Open — owner approval recorded in docs but flags still `false` for all 151 wishes (flip or document intent) |
-| `public/_redirects` stale file | Open — delete or realign (zone-level rule governs) |
+| `public/_redirects` stale file | **Resolved 2026-09-08** — dead rakhiwishes.in lines removed, replaced with a comment pointing at the zone-level rule that actually governs it |
+| Privacy/Disclaimer localization | **No** — consolidated 2026-09-08 to one canonical `/en/` page each; `hi`/`hinglish` routes 301 to it (they were never actually translated, and GSC had flagged the duplicate content) |
 | Diwali/Dussehra first-seed-batch owner approval | **Given 2026-08-27** — the owner explicitly approved both seed batches (separately from the earlier push+deploy instruction, which only covered the deploy action). Recorded in `CHECKLIST.md`. `humanReviewedSeed` was **not** flipped to `true` on the 100 wishes, mirroring the same still-open gap Rakhi has (row above) — this was a content/publication approval, not a per-wish human-review sign-off. |
 | Diwali/Dussehra dates | Sourced from drikpanchang.com, **owner-confirmed 2026-08-27** (`dateVerifiedBy: "owner"` in both festival JSONs). Diwali `2026-11-08`, Dussehra `2026-10-20` (Bengal observes Vijayadashami a day later, `2026-10-21`). Closed — no longer an open decision. |
 | Diwali/Dussehra relation coverage | Intentionally skip `brother`/`sister`/`bhaiya-bhabhi` (Rakhi-specific relations) — those collection pages exist (shared `collectionMap`) but stay thin/`noindex` for these two festivals. Not a bug. |

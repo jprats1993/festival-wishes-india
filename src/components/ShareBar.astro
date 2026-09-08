@@ -43,7 +43,7 @@ const whatsappUrl = `https://wa.me/?text=${shareText}`;
       const url = bar.getAttribute('data-url') || window.location.href;
 
       const copyBtn = bar.querySelector('[data-action="copy"]');
-      const shareBtn = bar.querySelector('[data-action="share-native"]');
+      const shareBtn = bar.querySelector<HTMLElement>('[data-action="share-native"]');
 
       // Hide native share where Web Share API is unavailable (desktop).
       if (shareBtn && typeof navigator.share !== 'function') {

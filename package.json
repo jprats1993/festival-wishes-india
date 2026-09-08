@@ -13,7 +13,7 @@
     "check": "astro check",
     "validate": "node scripts/validate-content.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "ci": "npm run validate && npm run build && npm run check:links"
+    "ci": "npm run validate && npm run check && npm run build && npm run check:links"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -25,5 +25,9 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
   }
 }

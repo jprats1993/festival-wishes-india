@@ -101,5 +101,10 @@ either festival.
 - [ ] Amazon Associates gift guides — future  ⏳ REMAINING
 
 ## Owner Blockers / Decisions
-- [ ] Confirm rakhiwishes.in NIXI registrant-verification email was actioned  ⏳ REMAINING
-- [ ] Real-device QA (Android Chrome + iOS Safari) by Aug 28 afternoon  ⏳ REMAINING
+- [x] Confirm rakhiwishes.in NIXI registrant-verification email was actioned — investigated 2026-09-08:
+  no NIXI verification email in the registrant inbox (checked all Gmail tabs), no verification banner
+  anywhere in Spaceship (Domain Manager, Domain Contacts, Notification Centre), and WHOIS status is
+  `clientTransferProhibited` only (no `clientHold`/suspension flag). The one "verify your account"
+  notification in Spaceship predates the domain purchase by 4 minutes — that's account signup
+  verification, not NIXI. Treating as resolved/moot; re-open only if the domain shows a hold later.
+- [ ] Real-device QA (Android Chrome + iOS Safari) by Aug 28 afternoon  ⏳ REMAINING — overdue
