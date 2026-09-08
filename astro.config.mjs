@@ -42,10 +42,17 @@ export default defineConfig({
       },
     },
     filter: (page) => {
+      const parts = new URL(page).pathname.split('/').filter(Boolean);
+      const [locale, festivalSlug, collectionSlug] = parts;
+
+      // Privacy/Disclaimer only have a canonical /en/ page now — the hi/hinglish
+      // routes are redirect stubs (see public/_redirects), not content to index.
+      if ((festivalSlug === 'privacy' || festivalSlug === 'disclaimer') && locale !== 'en') {
+        return false;
+      }
+
       // Mirror [collection].astro's noindex logic: exclude collection pages
       // that are too thin to index (matches NOINDEX_THRESHOLD there).
-      const parts = new URL(page).pathname.split('/').filter(Boolean);
-      const [, festivalSlug, collectionSlug] = parts;
       if (collectionSlug && collectionSlugs.has(collectionSlug)) {
         return collectionWishCount(festivalSlug, collectionSlug) >= NOINDEX_THRESHOLD;
       }

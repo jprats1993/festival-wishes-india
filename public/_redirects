@@ -5,3 +5,13 @@ http://rakhiwishes.in/* https://festivalwishesindia.com/:splat 301!
 # dist/index.html which is just a meta-refresh + JS redirect page, so visitors see a
 # visible "Redirecting from / to /en/" flash before the real homepage loads.
 / /en/ 301
+
+# Privacy/Disclaimer are legal boilerplate with one canonical English page (never
+# actually translated per-locale — see cards.ts/index.astro commit history). The
+# hi/hinglish routes still build as Astro meta-refresh redirect stubs so old
+# indexed URLs don't 404, but that means a visible flash same as the root case
+# above — so redirect at the edge before that stub is served.
+/hi/privacy/ /en/privacy/ 301
+/hi/disclaimer/ /en/disclaimer/ 301
+/hinglish/privacy/ /en/privacy/ 301
+/hinglish/disclaimer/ /en/disclaimer/ 301

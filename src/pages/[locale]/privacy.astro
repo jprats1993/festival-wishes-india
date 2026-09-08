@@ -3,14 +3,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { locales, isLocale } from '../../lib/i18n';
 import type { GetStaticPaths } from 'astro';
 
+// Legal boilerplate isn't translated (see git history — hi/hinglish were just
+// title-translated wrappers around the same English body), so there's one
+// canonical English page. hi/hinglish/unknown locales all redirect to it.
 export const getStaticPaths = (() => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
 
 const { locale } = Astro.params;
-if (!isLocale(locale)) return Astro.redirect('/en/privacy/');
+if (!isLocale(locale) || locale !== 'en') return Astro.redirect('/en/privacy/', 301);
 
-const alternateUrls = Object.fromEntries(locales.map((loc) => [loc, `/${loc}/privacy/`])) as Record<typeof locale, string>;
+const alternateUrls = { en: '/en/privacy/' };
 
-const title = locale === 'hi' ? 'गोपनीयता नीति' : locale === 'hinglish' ? 'Privacy Policy' : 'Privacy Policy';
+const title = 'Privacy Policy';
 ---
 
 <BaseLayout title={title} description="Privacy policy for Festival Wishes India" locale={locale} alternateUrls={alternateUrls}>
