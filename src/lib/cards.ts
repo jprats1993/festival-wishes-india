@@ -3,6 +3,7 @@ export interface Card {
   festival: 'rakhi' | 'diwali' | 'dussehra';
   lang: 'en' | 'hi' | 'hinglish';
   src: string;
+  webSrc: string;
   alt: string;
   text: string;
 }
@@ -51,6 +52,10 @@ const rawCards: RawCard[] = [
 
 export const cards: Card[] = rawCards.map((c) => ({
   ...c,
+  // Full-res original — used for the Download link so shared/saved cards stay sharp.
   src: `/images/${c.festival}/cards/${c.id}.webp`,
+  // Smaller re-encode — used for on-page display so the card grid doesn't ship 1024px
+  // originals to a ~300-600px slot.
+  webSrc: `/images/${c.festival}/cards/${c.id}-web.webp`,
   alt: c.text,
 }));

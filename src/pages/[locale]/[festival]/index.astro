@@ -89,11 +89,11 @@ const pageUrl = new URL(`/${locale}/${festivalSlug}/`, Astro.site).toString();
         {festivalCards.map((card, i) => (
           <figure class="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm">
             <img
-              src={card.src}
+              src={card.webSrc}
               alt={card.alt}
-              width={1024}
-              height={1024}
-              loading={i === 0 ? 'eager' : 'lazy'}
+              width={640}
+              height={640}
+              loading="eager"
               fetchpriority={i === 0 ? 'high' : 'auto'}
               decoding="async"
               class="w-full h-auto"

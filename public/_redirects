@@ -1,2 +1,7 @@
 https://rakhiwishes.in/* https://festivalwishesindia.com/:splat 301!
 http://rakhiwishes.in/* https://festivalwishesindia.com/:splat 301!
+
+# Edge-level redirect for the bare root — without this, Astro's static build serves
+# dist/index.html which is just a meta-refresh + JS redirect page, so visitors see a
+# visible "Redirecting from / to /en/" flash before the real homepage loads.
+/ /en/ 301
